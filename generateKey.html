@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vault0x</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#212739">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, target-densitydpi=device-dpi">
+    <meta name="author" content="http://psdhtml.me">
+
+    <link rel="stylesheet" media="screen" href="styles/screen.css">
+    <link rel="stylesheet" media="print" href="styles/print.css">
+    
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website"> 
+    <meta property="og:description" content=".">
+    <meta property="og:site_name" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <script type='application/ld+json'>
+      {
+        "@context": "http://schema.org/",
+        "@type": "Organization",
+        "url": "",
+        "name": "Vault0x",
+        "legalName": "Vault0x",
+        "description": "",
+        "logo": "",
+        "image": "",
+        "author": "psdHTML.me",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer service",
+          "telephone": ""
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "",
+          "addressRegion": "",
+          "postalCode": "",
+          "addressCountry": ""
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <header id="top">
+        <p id="logo"><a href="./" accesskey="h">Vault0x</a></p>
+        <nav id="skip">
+          <ul>
+            <li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
+            <li><a href="#content" accesskey="c">Skip to content (c)</a></li>
+            <li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
+          </ul>
+        </nav>
+        <nav id="nav">
+          <ul>
+            <li class="sub"><a accesskey="1" href="./">Tosh-2 <span>(Switch Device)</span></a> <em>(1)</em>
+              <ul>
+                <li><a href="./">Toshendra</a></li>
+                <li class="active"><a href="./">Tosh-2</a></li>
+                <li class="a"><a href="./">Add Device</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul>
+            <li class="a"><a accesskey="2" href="./"><i class="icon-cog"></i> Settings</a> <em>(2)</em></li>
+            <li><a accesskey="3" href="./">Support</a> <em>(3)</em></li>
+            <li><a accesskey="4" href="./">Docs</a> <em>(4)</em></li>
+            <li><a accesskey="5" href="./"><i class="icon-globe"></i> Language</a> <em>(5)</em></li>
+            <li class="b"><a accesskey="6" href="./">TS</a> <em>(6)</em></li>
+          </ul>
+        </nav>
+      </header>
+      <nav id="aside">
+        <ul>
+          <li class="active"><a href="./"><i class="icon-bitcoin-circle"></i> <span>Bitcoin (BTC)</span></a></li>
+          <li><a href="./"><i class="icon-bitcoin-square"></i> <span>Bitcoin (BTC)</span></a></li>
+          <li><a href="./"><i class="icon-dash"></i> <span>Dash (DASH)</span></a></li>
+          <li><a href="./"><i class="icon-litecoin"></i> <span>Litecoin (LTC)</span></a></li>
+          <li><a href="./"><i class="icon-zcash"></i> <span>Zcash (ZEC)</span></a></li>
+          <li><a href="./"><i class="icon-ethereum"></i> <span>Ethereum (ETH)</span></a></li>
+          <li><a href="./"><i class="icon-ethereum-classic"></i> <span>Ethereum Classic (ETC)</span></a></li>
+        </ul>
+
+
+      </nav>                 
+      <form action="./" method="post" id="heading">
+        <h1>Bitcoin (BTC)</h1>
+        <ul>
+          <li><label for="aca"><input type="checkbox" id="aca" name="aca" checked> Account #1</label></li>
+          <li><label for="acb"><input type="checkbox" id="acb" name="acb"> Account #2</label></li>
+          <li><a href="./">Add account</a></li>
+          <li class="text-right"><a href="./">Legacy accounts <i class="icon-info"></i></a></li>
+        </ul>
+      </form> 
+      <article id="content">
+        <input type="submit" value="Generate Key" onclick="generateWIFKey();"></input>
+        <p>Key: </p>
+      
+        <p id="paraKey"></p></br>
+        <ul id="todos"></ul>
+        <p>Address: </p>
+        <p id="paraAddress"></p>
+        <input type="submit" value="Generate Random Mnemonic" onclick="generateMnemonic();"></input>
+        <p>Mnemonic: </p>
+        <p id="paraMnemonic"></p>
+        <p>HD Key: </p>
+        <p id="paraHDKey"></p>
+        <p>HD Master Address: </p>
+        <p id="paraHDAddress"></p>
+        <input type="submit" value="Generate Child Address" onclick="chidAddressFromHDKey();"></input>
+        <p>Child Addresses: </p>
+        <p id="paraChildAdd"></p>
+        <br/>
+        <input type="submit" value="Generate Change Address" onclick="changeAddressFromHDKey();"></input>
+        <p>Change Addresses: </p>
+        <p id="paraChangeAdd"></p>
+
+        <input type="submit" value="Get unspent output" onclick="getUTXO();"></input>
+        <p>Total Balance: </p>
+        <p id="paraTotalBalance"></p>
+        <p>Enter sending address: </p>
+        <input id="txtSendAddress" type="text" value=""></input>
+        <p>Enter amount: </p>
+        <input id="txtAmount" type="text"></input>
+        <p>Enter fees: </p>
+        <input id="txtFees" type="text"></input>
+        <br/>
+        <input type="submit" value="Send Transaction" onclick="sendTrans();"></input>
+        <p id="paraTransaction"></p><br/><br/>
+
+        <input type="submit" value="Generate Mnemonics with Pass" onclick="mnemonicsWithPass();"></input> <br/><br/>
+        <p></p>
+        <input type="submit" value="Get last address" onclick="last();"></input>
+      </article>
+      <footer id="footer">
+        <ul>
+          <li>Copyright Vault0x @<span class="date">2017</span></li>
+          <li><a href="./">Terms</a></li>
+          <li><a href="./">Privacy Policy</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="javascript/jquery.js"></script>
+    <script src="javascript/scripts.js"></script>
+    <script src="javascript/custom.js"></script>
+    <script src="javascript/mobile.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <script src="javascript/bitcore-lib/bitcore-lib.min.js"></script>
+    <script src="javascript/bitcore-mnemonic/bitcore-mnemonic.min.js"></script>
+    <script src="javascript/bitcore-explorers/bitcore-explorers.min.js"></script>
+   
+    <script src="javascript/app.js"></script>
+     <script type="text/javascript">
+
+    function generateWIFKey()  {
+      var key = generateWIFPrivateKey("testnet");
+      var address = getAddressFromWIF(key);
+      $("#paraKey").text(key);
+      $("#paraAddress").text(address);
+      
+
+
+    }
+    function generateMnemonic() {
+      var mnemonicString = generateRandomMnemonic();
+      var hdkey = genHDPrivKeyMnemonics(mnemonicString,'');
+      var mastAdd = getMasterAddressFromHDKey(hdkey, 'testnet');
+      $("#paraMnemonic").text(mnemonicString);
+      $("#paraHDKey").text(hdkey);
+      $("#paraHDAddress").text(mastAdd);
+
+    }
+    function chidAddressFromHDKey() {
+      var xpriv = $("#paraHDKey").text();
+      var childadd = genChildAddress(xpriv,'testnet');
+      $("#paraChildAdd").append('<br/>' + childadd);
+    }
+
+    function changeAddressFromHDKey() {
+      var xpriv = $("#paraHDKey").text();
+      var changeadd = genChangeAddress(xpriv,'testnet');
+      $("#paraChangeAdd").append('<br/>' + changeadd);
+    }
+
+    async function getUTXO() {
+      var add1 = 'miE3tcB1NSz5ZkGLK9s42iaMAkvCNmvawP';
+      var add2 = 'mvzyDSRpEkaHxpg45PNTXoPkZA6m5N7sou';
+      var add3 = 'mh2KzVRN5t9NprCpDdpvkvbNgMZ1DLobEM';
+      var add = [];
+      add.push(add1);
+      add.push(add2);
+      add.push(add3);
+      //var normalAdd = 'mrAVRTdpeRseU6F1R3kkApWKpxTAEg7ywQ';
+      //add.push(normalAdd);
+      try {
+        var result = await getBalancefromUtxosTestnet(add);
+      }
+      catch(err)
+      {
+        console.log(err);
+      }
+      
+      console.log(result);
+      $("#paraTotalBalance").append(result);
+
+    }
+
+    var tx;
+    async function sendTrans() {
+      // var privatekey = 'xprv9s21ZrQH143K2sA8Fi1fGkP1wH36jJbBAUdVdWRK9ySAcRNXZ5P6JCRB4FKKZWRTbc5BAuNpmHbw9ken58TK6uv3x26jbauFQoCBdRY7WWA';
+      // var childkey1 = 'xprv9uoSGe19dhrjJBbuBmP4vjuFUprUQM32Us3o3hdKnnqYr6t4UxCk9TaDWFxnGdoQsQboMs2Yvuuzpbu73QCVU8vq54hsbdQJr1FUBgUM2iB';
+      // var childkey2 = 'xprv9uoSGe19dhrjMhrjpmNwCo6jWigWoUVqUfUrEoPr4YLfGQRJG2hQGnayYXe98i7bn6CouhaDJGT9L3nY61LTqKFtKEqidktadExNFydChWw';
+      // var childkey3 = 'xprv9uoSGe19dhrjNVfEG1GzN4wPTEdkZQserrzhnedSjMkuVLWyFaDqtnTEAnyEoMLFAbNnDCuxvCpR3PJ4M2r57j4nFkEancwNbbhrg66mXTK';
+      // var childkeys =[];
+      // childkeys.push(childkey1);
+      // childkeys.push(childkey2);
+      // childkeys.push(childkey3);
+      // var add1 = 'miE3tcB1NSz5ZkGLK9s42iaMAkvCNmvawP';
+      // var add2 = 'mvzyDSRpEkaHxpg45PNTXoPkZA6m5N7sou';
+      // var add3 = 'mh2KzVRN5t9NprCpDdpvkvbNgMZ1DLobEM';
+
+      var addresses1 = 'mz5zuqbCqJ27omvnhN2eH92RfXseCTCQ9o';
+      var addresses2 = 'myikb48svJrP9pUPYW7VVqxLRQGskU5jag';
+      var addresses3 = 'n37YHrgVXauo7X5jjMuBCiaPCf8AhCLhh6';
+      var addresses4 = 'mtoBfmDS7JMSxPRpXQYs1QJmHF3pxmY9zG';
+
+      var childkey1 = 'xprv9xDBkK3n4M3qrYuaw5byQeAYxyML4CWMF72SQPnLegNm2V2EAy4HkzsANitenW5WmbgdjXBtSoUtvcWHgvdiUY6FEd5FCKJpV9e3o3WCVVX';
+
+      var childkey2 = 'xprv9xDBkK3n4M3qsTkG4uMRC98m67o9DfkHhyGuuZVGdKTmHtcejWXyKrthG9hzNyNgwcRDHk55eHjBZFuXBpcWc1164AuDh1XcqGnNgYMfsvu';
+      var childkey3 = 'xprv9xDBkK3n4M3qvmmHx5UEYvb1cY8WeAdW1wNzDuAtQtr2nE3FG8GemLz2KqBqqmd64VsEr53uZsuw3RX4bnFDCUL7fMgC8uTepjZbWJH7pDX';
+
+      var childkey4 = 'xprv9xDBkK3n4M3qyyFzpPu7Zs5PS3vYCQjn2mHsGZoPfnKkBPGrgtexbUPJbXTsLW78feCSoYpKzg6oWMQtyr7R7w7uaCZTqVZsdPiqxfd412s';
+      
+      var sendarray = [];
+      sendarray.push(addresses1);
+      sendarray.push(addresses2);
+      sendarray.push(addresses3);
+      sendarray.push(addresses4);
+      console.log("array", sendarray);
+
+      var childarray = [];
+      childarray.push(childkey1);
+      childarray.push(childkey2);
+      childarray.push(childkey3);
+      childarray.push(childkey4);
+
+      console.log("childarray", childarray);
+      var sendAddress = 'miMFq4xj1nKQ7Z8KDYZz6y5PkN23kJkrGw';//$("#txtSendAddress").val(); //n1YQfbZ7CTZz8m3xeekryaMBtdXNbhbJUj
+      var amount = 0.05;
+      var fees = 0.05;
+      // var add = [];
+      // add.push(add1);
+      // add.push(add2);
+      // add.push(add3);
+      //var normalAdd = 'mrAVRTdpeRseU6F1R3kkApWKpxTAEg7ywQ';
+      //add.push(normalAdd);
+      try {
+        txID = await sendTransactionfromUtxosTestnet(sendarray, sendAddress, amount, fees, childarray);
+        $("#paraTransaction").append(txID);
+        //console.log(tx);
+      }
+      catch(err)
+      {
+        console.log(err);
+      }
+
+    }
+
+    function mnemonicsWithPass() {
+      var mnemonicString = generateRandomMnemonic();
+
+      var password = "123456789";
+      var HDkey = genHDPrivKeyMnemonicsPass(mnemonicString, password, '');
+
+        // Check browser support and add values in localstorage
+        if (typeof(Storage) !== "undefined") { 
+            // Store
+           localStorage.setItem("mnemonicString", mnemonicString); //store mnemonics string
+           localStorage.setItem("password", password); //sore password
+           localStorage.setItem("HDkey", HDkey); //HDkey
+              
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            }
+
+    }
+
+    async function last() {
+      var xp = 'xprv9s21ZrQH143K2y3y8LTx37XF6eCucSqM9CxrbnQbCpNqB2ovmU3ZogviNGqgDCxccp5JX3krtkEtpDNU7ZtvpWG19WUUtuWQh4jqFTyEvWV';
+      var ect = 20;
+      var sct = 1;
+      //var lt = lastUsedAddress(xp, sct, ect);
+      var lastAddressUsed = await loopPromiseGetLastAddress(xp, sct, ect);
+      console.log("The last address used is :");
+      console.log(lastAddressUsed);
+      
+    }
+      
+
+    </script>
+   
+  </body>
+</html>

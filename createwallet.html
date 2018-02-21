@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vault0x</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#212739">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, target-densitydpi=device-dpi">
+    <meta name="author" content="http://psdhtml.me">
+    <Link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="styles/screen.css">
+    <link rel="stylesheet" media="print" href="styles/print.css">
+    <link rel="stylesheet" href="styles/wallet.css">
+    
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website"> 
+    <meta property="og:description" content=".">
+    <meta property="og:site_name" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <script type='application/ld+json'>
+      {
+        "@context": "http://schema.org/",
+        "@type": "Organization",
+        "url": "",
+        "name": "Vault0x",
+        "legalName": "Vault0x",
+        "description": "",
+        "logo": "",
+        "image": "",
+        "author": "psdHTML.me",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer service",
+          "telephone": ""
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "",
+          "addressRegion": "",
+          "postalCode": "",
+          "addressCountry": ""
+        }
+      }
+    </script>
+    <style type="text/css">
+      #root {
+    padding-right: 20px;
+    padding-left: 16px !important;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <header id="top">
+        <p id="logo"><a href="./" accesskey="h">Vault0x</a></p>
+        <nav id="skip">
+          <ul>
+            <li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
+            <li><a href="#content" accesskey="c">Skip to content (c)</a></li>
+            <li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
+          </ul>
+        </nav>
+         <nav id="nav">
+          <ul>
+            <!-- <li class="sub"><a accesskey="1" href="./">Tosh-2 <span>(Switch Device)</span></a> <em>(1)</em> -->
+             <!--  <ul>
+                <li><a href="./">Toshendra</a></li>
+                <li class="active"><a href="./">Tosh-2</a></li>
+                <li class="a"><a href="./">Add Device</a></li>
+              </ul> -->
+            </li>
+          </ul>
+          <ul>
+            <!-- <li class="a"><a accesskey="2" href="./"><i class="icon-cog"></i> Settings</a> <em>(2)</em></li> -->
+            <li><a accesskey="3" href="./">Support</a> <em>(3)</em></li>
+            <li><a accesskey="4" href="./">Docs</a> <em>(4)</em></li>
+            <li><a accesskey="5" href="./"><i class="icon-globe"></i> Language</a> <em>(5)</em></li>
+            <li class="b"><a accesskey="6" href="./">TS</a> <em>(6)</em></li>
+          </ul>
+        </nav>
+      </header>
+                    
+    
+      <article id="content">
+       <!-- <div id="result"></div> -->
+       <div class="tabs-a">
+          <ul>
+            <li class="active"><a href="./">New Wallet</a></li>
+            <li><a href="./">Existing Wallet</a></li>
+          </ul>
+          <div>
+            <div><a href="./" class="tabs-header mobile-only">Transactions</a>
+              <div class="tabs-inner">
+                  <div class="walletcont">
+                   <h1 class="createwalletheading">Create New Wallet</h1>
+                   <p class="newpasspara">Enter a New Password</p>
+                   <div class="inputcont">
+                       <form action = "" id="myForm">
+                         <input type="password" name="password" value="" placeholder="Do Not Forget To Save This!" id="dontforgetpass" onkeyup="myFunction()">
+                         <input type="submit" name="passsubmit" value="" class="showPassword">
+                         <i class="fa fa-lg fa-eye-slash showPassword" aria-hidden="true"  ></i>
+                       </form>
+                   </div>
+                   <input type="submit" name="walletsubmit" value="Create New Wallet" class="walletsubmit" id="walletsubmit">
+
+                   <p class="inforpara">
+                     This key encrypts your <i> private </i> key . This does not act as a seed to generate your keys. you will need this <strong> password + your wallet key </strong>to unlock your wallet.
+                   </p>
+                   <p>
+                      <a href=""><span class="infospan" >How to create a wallet </span></a>  
+                      <a href=""> <span class="infospan">Getting Started </span></a>  
+                   </p>
+                  </div>
+              </div>
+            </div>
+            <div class="hidden"><a href="./" class="tabs-header mobile-only">Existing Wallet</a>
+              <div class="tabs-inner">    
+                  <h1>How would you like to access your account?</h1>
+                  <form action="" class="radioExistwaltForm">
+                    <input type="radio" name="Existingwallet" value="Mnemonics" class="radioExistingwallet" id="ExistingMnemonics"> Mnemonics<br>
+                    <input type="radio" name="Existingwallet" value="ExistingPassword" class="radioExistingwallet" id="Existingwalletpass">Private Key<br>
+
+                  </form>
+                  <div class="ExistingsideDiv">
+                      <input type="textarea" name="ExistingMnemonics" placeholder="Enter your Mnemonics" rows="4" cols="50" id="existMnemonics"><br>
+                      <input type="password" name="ExistingPassword" placeholder="password" id="existInputPass"><br><br>
+                       <input type="submit" name="StartExistWalletMnemonics" value="Retrieve Wallet" id="startwalletMnemonics">
+                  </div>
+                  <div class="ExistingPassDiv">
+                      <input type="text" name="ExistingPassPass" value="" placeholder="Private Key">
+                      <br><br>
+                      <input type="submit" name="StartExistWalletPassword" value="Retrieve Wallet" id="startwalletPass">
+                  </div>
+              </div>
+            </div>  
+          </div>
+        </div>
+       
+      
+      </article>
+      <footer id="footer">
+        <ul>
+          <li>Copyright Vault0x @<span class="date">2017</span></li>
+          <li><a href="./">Terms</a></li>
+          <li><a href="./">Privacy Policy</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="javascript/jquery.js"></script>
+    <script src="javascript/scripts.js"></script>
+    <script src="javascript/custom.js"></script>
+    <script src="javascript/mobile.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="javascript/bitcore-lib/bitcore-lib.min.js"></script>
+    <script src="javascript/bitcore-mnemonic/bitcore-mnemonic.min.js"></script>
+    <script src="javascript/bitcore-explorers/bitcore-explorers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script src="javascript/app.js"></script>
+    <script src="javascript/wallet.js"></script>
+    <script type="text/javascript">
+      function myFunction() {
+
+                        var x = document.forms["myForm"]["password"].value.length;
+                        if (x < 9) {
+                              jQuery('#dontforgetpass').css("border-color" ,"red", "margin-right" , "2px");
+                            
+                              return false;
+                          }
+                          else{
+                             jQuery('#dontforgetpass').css("border-color" ,  "green", "margin-right" , "2px");
+                          }
+      }
+    </script>
+
+     
+
+   
+  </body>
+</html>

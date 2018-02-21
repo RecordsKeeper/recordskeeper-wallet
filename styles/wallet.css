@@ -1,0 +1,252 @@
+.walletcont{
+     width: 100%;
+    float: left;
+    text-align: center;
+    padding-top: 85px;
+    background: #ffffff;
+    border-radius: 4px;
+    padding-bottom: 6% ;
+}
+.radioExistingwallet{
+    -webkit-appearance: radio !important;
+    appearance: radio;
+    -moz-appearance: radio;
+    float: left;
+    width: auto;
+    margin-right: 6px;
+    margin-top: 3px;
+    height: 13px !important;
+  }
+.radioExistwaltForm{
+  font-size: 15px;
+    width: 30%;
+    float: left;
+}
+#hexdata{
+  width: 85%;
+}
+.qrcody{
+
+}
+.ExistingsideDiv, .ExistingPassDiv{
+  width: 50%;
+  float: left;
+  display: none;
+}
+
+.inputcont{
+ width: 60%;
+    position: relative;
+    padding-left: 40px;
+    margin: 0 auto;
+}
+
+.inputcont input[type="password"], .inputcont input[type="text"]{
+      width: 87%;
+    height: 40px;
+    border: 1px solid gainsboro;
+    float: left;
+}
+.inputcont input[type="submit"]{
+ width: 30px;
+    height: 40px;
+    border: 1px solid gainsboro;
+    background: #ececec;
+    float: left;
+    box-shadow: none;
+    border-radius: 0px;
+    margin-left: -2px;
+}
+.fa-lg {
+    font-size: 3.333333em;
+    line-height: .75em;
+    vertical-align: -15%;
+    position: absolute;
+    top: 5px;
+    right: 38px;
+    z-index: 9;
+    cursor: pointer;
+}
+.showPassword{
+  z-index: 99 !important;
+}
+.keydivcont{
+      position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+.createwalletheading{
+      margin: 0 0 40px;
+    color: #3f4454;
+    font-size: 3.3em;
+    font-weight: 400;
+    line-height: 1.1;
+}
+.newpasspara{
+  font-size: 1.4rem;
+    color: black;
+    font-weight: 700;
+}
+.walletsubmit{
+        width: 210px !important;
+    /*border-radius: 0px!important;*/
+    /*height: 50px!important;*/
+    font-size: 20px!important;
+    text-transform: capitalize!important;
+    /*background: #22283a !important;*/
+    margin-left: 41%!important;
+    margin-right: 41%!important;
+    text-align: center!important;
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
+}
+.inforpara{
+         font-size: 15px;
+    color: #1f232d;
+    font-weight: 200;
+    font-family: Lato, sans-serif;
+    margin-top: 50px;
+}
+
+.infospan{
+  font-size: 16px;
+    font-weight: 600;
+    color: black;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.faqcont{
+      width: 22%;
+    background: white;
+    /*height: 400px;*/
+    float: left;
+    margin-left: 2%;
+    padding: 25px;
+}
+
+.already{
+      margin: 0 0 20px;
+    color: #3f4454;
+    font-size: 2.2em;
+    font-weight: 700;
+    line-height: 1.1;
+    font-family: Lato, sans-serif;
+}
+.alreadyul{
+  padding-left: 10px;
+}
+
+.alreadyli{
+      font-size: 1.6em;
+}
+.keydiv{
+        height: 35px;
+    width: 100%;
+    background: #ececec;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fa-clone{
+  font-size: 22px;
+    position: absolute;
+    top: 7px;
+    /* color: white; */
+    right: 8px;
+}
+.ppwbtn{
+      border-radius: 0px;
+    text-transform: capitalize;
+    margin-left: 40%;
+    margin-right: 40%;
+    width: 22%;
+        border-radius: 48px;
+}
+.saveheading{
+      font-size: 3em;
+    font-weight: 400;
+}
+
+.disclaimerdiv{
+      margin-top: 80px;
+    font-size: 12px;
+     line-height: 22px;
+
+    background: white;
+    margin-bottom: 40px;
+    padding: 30px;
+    height: 200px;
+}
+.pinkspan{
+  color: #a119b9;
+}
+.margintop30{
+  margin-top: 30px;
+}
+.notify{
+      width: 75px;
+    background: #22283a;
+    color: white;
+    padding: 5px;
+    font-size: 13px;
+    border-radius: 6px;
+    position: absolute;
+    right: 0px;
+    top: 18px;
+    text-align: center;
+     -moz-animation: cssAnimation 0s ease-in 1s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 1s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 1s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 1s forwards;
+    /*-webkit-animation-fill-mode: forwards;*/
+    animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.qrcody{ display: none; }
+
+/* Paste this css to your style sheet file or under head tag */
+/* This only works with JavaScript, 
+if it's not present, don't show loader */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url(../images/precon.gif) center no-repeat #fff;
+}
+
+.background-highlight{
+  background: gainsboro;
+}
+
+
+.formerrorpara{
+      z-index: 12;
+    font-size: 13px;
+    color: #c12f2f;
+    /* visibility: hidden; */
+}
+#logo img{
+      width: 275px;
+    margin-top: 7px;
+}

@@ -1,0 +1,41 @@
+.root1{
+	       overflow: hidden !important;
+    position: relative!important;
+    width: 100%!important;
+    min-height: 100vh!important;
+    padding: 60px 20px 0px 20px!important;
+}
+.wallethomecont{
+	    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 170px !important;
+    text-align: center;
+    margin-top: 70px !important;
+}
+h1{
+	    font-size: 3.1em;
+    margin-bottom: 30px;
+}
+h4{
+	    font-size: 2.4em;
+    margin-bottom: 30px;
+}
+.inputbtn{
+	    position: relative;
+    margin-bottom: 70px;
+}
+.walletpass{
+	    width: 75%;
+    float: left;
+    height: 44px;
+    box-shadow: 0 2px 4px rgba(11,31,79,.5);
+    border-radius: 0px;
+}
+.walletbtn{
+	    width: 100px!important;
+    border-radius: 0px!important;
+    margin-left: -8px!important;
+    height: 45px!important;
+    background: #22283a !important;
+}

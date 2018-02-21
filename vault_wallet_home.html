@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Vault0x</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="theme-color" content="#212739">
+		<meta name="MobileOptimized" content="320">
+		<meta name="HandheldFriendly" content="true">
+		<meta name="viewport" content="width=device-width, initial-scale=1, target-densitydpi=device-dpi">
+		<meta name="author" content="http://psdhtml.me">
+		<link rel="stylesheet" media="screen" href="styles/screen.css">
+		<link rel="stylesheet" media="screen" href="styles/vaulthome.css">
+		<link rel="stylesheet" media="print" href="styles/print.css">
+		<link rel="icon" type="image/x-icon" href="favicon.png">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<meta property="og:title" content="">
+		<meta property="og:type" content="website"> 
+		<meta property="og:description" content=".">
+		<meta property="og:site_name" content="">
+		<meta property="og:url" content="">
+		<meta property="og:image" content="">
+		<script type='application/ld+json'>
+			{
+				"@context": "http://schema.org/",
+				"@type": "Organization",
+				"url": "",
+				"name": "Vault0x",
+				"legalName": "Vault0x",
+				"description": "",
+				"logo": "",
+				"image": "",
+				"author": "psdHTML.me",
+				"contactPoint": {
+					"@type": "ContactPoint",
+					"contactType": "Customer service",
+					"telephone": ""
+				},
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "",
+					"addressLocality": "",
+					"addressRegion": "",
+					"postalCode": "",
+					"addressCountry": ""
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="root" class="root1">
+			<header id="top">
+				<p id="logo"><a href="./" accesskey="h">Vault0x</a></p>
+				<nav id="skip">
+					<ul>
+						<li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
+						<li><a href="#content" accesskey="c">Skip to content (c)</a></li>
+						<li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
+					</ul>
+				</nav>
+				<nav id="nav">
+					<ul>
+						<li class="sub"><a accesskey="1" href="./">Tosh-2 <span>(Switch Device)</span></a> <em>(1)</em>
+							<ul>
+								<li><a href="./">Toshendra</a></li>
+								<li class="active"><a href="./">Tosh-2</a></li>
+								<li class="a"><a href="./">Add Device</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul>
+						<li class="a"><a accesskey="2" href="./"><i class="icon-cog"></i> Settings</a> <em>(2)</em></li>
+						<li><a accesskey="3" href="./">Support</a> <em>(3)</em></li>
+						<li><a accesskey="4" href="./">Docs</a> <em>(4)</em></li>
+						<li><a accesskey="5" href="./"><i class="icon-globe"></i> Language</a> <em>(5)</em></li>
+						<li class="b"><a accesskey="6" href="./">TS</a> <em>(6)</em></li>
+					</ul>
+				</nav>
+			</header>
+			                
+			
+			<article id="content">
+				<div class="wallethomecont">
+					<h1>Create New Wallet</h1>
+					<h4>Enter a Password</h4>
+					<div class="inputbtn">
+						<input type="Password" name="walletinputpass" value="" placeholder="Do NOT Forget To Save this !" class="walletpass">
+					<input class="walletbtn" type="submit" name="walletbtn" value="" onclick="generateWIFKey();">
+					</div>
+				</div>
+			</article>
+			<footer id="footer">
+				<ul>
+					<li>Copyright Vault0x @<span class="date">2017</span></li>
+					<li><a href="./">Terms</a></li>
+					<li><a href="./">Privacy Policy</a></li>
+				</ul>
+			</footer>
+		</div>
+		<script src="javascript/jquery.js"></script>
+		<script src="javascript/scripts.js"></script>
+		<script src="javascript/custom.js"></script>
+		<script src="javascript/mobile.js"></script>
+		 <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <script src="javascript/bitcore-lib/bitcore-lib.min.js"></script>
+    <script src="javascript/bitcore-mnemonic/bitcore-mnemonic.min.js"></script>
+    <script src="javascript/bitcore-explorers/bitcore-explorers.min.js"></script>
+
+    <script src="app.js"></script>
+     <script type="text/javascript">
+
+    function generateWIFKey()  {
+      var key = generateWIFPrivateKey("testnet");
+      var address = getAddressFromWIF(key);
+      $("#paraKey").text(key);
+      $("#paraAddress").text(address);
+    }
+    function generateMnemonic() {
+      var mnemonicString = generateRandomMnemonic();
+      var hdkey = genHDPrivKeyMnemonics(mnemonicString,'');
+      var mastAdd = getMasterAddressFromHDKey(hdkey, 'testnet');
+      $("#paraMnemonic").text(mnemonicString);
+      $("#paraHDKey").text(hdkey);
+      $("#paraHDAddress").text(mastAdd);
+
+    }
+    function chidAddressFromHDKey() {
+      var xpriv = $("#paraHDKey").text();
+      var childadd = genChildAddress(xpriv,'testnet');
+      $("#paraChildAdd").append('<br/>' + childadd);
+    }
+
+    async function getUTXO() {
+      var add1 = 'miE3tcB1NSz5ZkGLK9s42iaMAkvCNmvawP';
+      var add2 = 'mvzyDSRpEkaHxpg45PNTXoPkZA6m5N7sou';
+      var add3 = 'mh2KzVRN5t9NprCpDdpvkvbNgMZ1DLobEM';
+      var add = [];
+      add.push(add1);
+      add.push(add2);
+      add.push(add3);
+      //var normalAdd = 'mrAVRTdpeRseU6F1R3kkApWKpxTAEg7ywQ';
+      //add.push(normalAdd);
+      try {
+        var result = await getBalancefromUtxosTestnet(add);
+      }
+      catch(err)
+      {
+        console.log(err);
+      }
+      
+      console.log(result);
+      $("#paraTotalBalance").append(result);
+
+    }
+
+    var tx;
+    async function sendTrans() {
+      var privatekey = 'xprv9s21ZrQH143K2sA8Fi1fGkP1wH36jJbBAUdVdWRK9ySAcRNXZ5P6JCRB4FKKZWRTbc5BAuNpmHbw9ken58TK6uv3x26jbauFQoCBdRY7WWA';
+      var childkey1 = 'xprv9uoSGe19dhrjJBbuBmP4vjuFUprUQM32Us3o3hdKnnqYr6t4UxCk9TaDWFxnGdoQsQboMs2Yvuuzpbu73QCVU8vq54hsbdQJr1FUBgUM2iB';
+      var childkey2 = 'xprv9uoSGe19dhrjMhrjpmNwCo6jWigWoUVqUfUrEoPr4YLfGQRJG2hQGnayYXe98i7bn6CouhaDJGT9L3nY61LTqKFtKEqidktadExNFydChWw';
+      var childkey3 = 'xprv9uoSGe19dhrjNVfEG1GzN4wPTEdkZQserrzhnedSjMkuVLWyFaDqtnTEAnyEoMLFAbNnDCuxvCpR3PJ4M2r57j4nFkEancwNbbhrg66mXTK';
+      var childkeys =[];
+      childkeys.push(childkey1);
+      childkeys.push(childkey2);
+      childkeys.push(childkey3);
+      var add1 = 'miE3tcB1NSz5ZkGLK9s42iaMAkvCNmvawP';
+      var add2 = 'mvzyDSRpEkaHxpg45PNTXoPkZA6m5N7sou';
+      var add3 = 'mh2KzVRN5t9NprCpDdpvkvbNgMZ1DLobEM';
+      var sendAddress = $("#txtSendAddress").val(); //n1YQfbZ7CTZz8m3xeekryaMBtdXNbhbJUj
+      var amount = parseInt($("#txtAmount").val());
+      var fees = parseInt($("#txtFees").val());
+      var add = [];
+      add.push(add1);
+      add.push(add2);
+      add.push(add3);
+      //var normalAdd = 'mrAVRTdpeRseU6F1R3kkApWKpxTAEg7ywQ';
+      //add.push(normalAdd);
+      try {
+        txID = await sendTransactionfromUtxosTestnet(add, sendAddress, amount, fees, childkeys);
+        $("#paraTransaction").append(txID);
+        //console.log(tx);
+      }
+      catch(err)
+      {
+        console.log(err);
+      }
+
+    }
+      
+
+    </script>
+	</body>
+</html>

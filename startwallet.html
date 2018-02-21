@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vault0x</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#212739">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, target-densitydpi=device-dpi">
+    <meta name="author" content="http://psdhtml.me">
+    <Link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="styles/screen.css">
+    <link rel="stylesheet" media="print" href="styles/print.css">
+    <link rel="stylesheet" href="styles/wallet.css">
+    
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website"> 
+    <meta property="og:description" content=".">
+    <meta property="og:site_name" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <script type='application/ld+json'>
+      {
+        "@context": "http://schema.org/",
+        "@type": "Organization",
+        "url": "",
+        "name": "Vault0x",
+        "legalName": "Vault0x",
+        "description": "",
+        "logo": "",
+        "image": "",
+        "author": "psdHTML.me",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer service",
+          "telephone": ""
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "",
+          "addressRegion": "",
+          "postalCode": "",
+          "addressCountry": ""
+        }
+      }
+    </script>
+    <style type="text/css">
+      #root {
+    padding-right: 20px;
+    padding-left: 16px !important;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <header id="top">
+        <p id="logo"><a href="./" accesskey="h">Vault0x</a></p>
+        <nav id="skip">
+          <ul>
+            <li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
+            <li><a href="#content" accesskey="c">Skip to content (c)</a></li>
+            <li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
+          </ul>
+        </nav>
+        <nav id="nav">
+          <ul>
+            <!-- <li class="sub"><a accesskey="1" href="./">Tosh-2 <span>(Switch Device)</span></a> <em>(1)</em> -->
+             <!--  <ul>
+                <li><a href="./">Toshendra</a></li>
+                <li class="active"><a href="./">Tosh-2</a></li>
+                <li class="a"><a href="./">Add Device</a></li>
+              </ul> -->
+            </li>
+          </ul>
+          <ul>
+            <!-- <li class="a"><a accesskey="2" href="./"><i class="icon-cog"></i> Settings</a> <em>(2)</em></li> -->
+            <li><a accesskey="3" href="./">Support</a> <em>(3)</em></li>
+            <li><a accesskey="4" href="./">Docs</a> <em>(4)</em></li>
+            <li><a accesskey="5" href="./"><i class="icon-globe"></i> Language</a> <em>(5)</em></li>
+            <li class="b"><a accesskey="6" href="./">TS</a> <em>(6)</em></li>
+          </ul>
+        </nav>
+      </header>
+                    
+    
+      <article id="content">
+       <!-- <div id="result"></div> -->
+       
+        <div class="walletcont">
+            <h1 class="saveheading">Save your <span class="pinkspan">Private Key </span> </h1>
+            <div class="keydivcont">
+                <div class="keydiv" id="keydiv">
+                
+
+                </div> 
+                <!-- <i class="fa fa-clone" aria-hidden="true" id="copyButton"></i> -->
+            </div>
+           
+            <h1 class="saveheading">Save your <span class="pinkspan"> Mnemonics </span> </h1>
+
+              <div class="keydivcont">
+                     <div class="keydiv" id="Mnemonics">
+              
+        
+                      </div>
+                      <!-- <i class="fa fa-clone" aria-hidden="true" id="copyButton2"></i> -->
+              </div>
+              <div>
+                <button class="ppwbtn" id="ppwbtn">Print Paper Wallet</button>
+              </div>
+               <div class="disclaimerdiv">
+                  <div>**Do not Loose it!** It cannot be recovered if you loose it.</div>
+                  <div>**Do not Share it!** Your funds would be stolen if you use this file on a malicious/ phising site.
+                  </div>
+                  <div>**Make a Backup** Secure it like the million of Dollars it may one day be worth.</div>
+                  <a > <button class="ppwbtn margintop30" id="startWallet" >Start Wallet</button>  </a> 
+               </div>     
+        </div>
+      
+      </article>
+      <footer id="footer">
+        <ul>
+          <li>Copyright Vault0x @<span class="date">2017</span></li>
+          <li><a href="./">Terms</a></li>
+          <li><a href="./">Privacy Policy</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="javascript/jquery.js"></script>
+    <script src="javascript/scripts.js"></script>
+    <script src="javascript/custom.js"></script>
+    <script src="javascript/mobile.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <script src="javascript/bitcore-lib/bitcore-lib.min.js"></script>
+    <script src="javascript/bitcore-mnemonic/bitcore-mnemonic.min.js"></script>
+    <script src="javascript/bitcore-explorers/bitcore-explorers.min.js"></script>
+
+    <script src="javascript/app.js"></script>
+     <script type="text/javascript">
+      $("#ppwbtn").click(function(){
+           window.print();
+        });
+    
+      $("#startWallet").click(async function(){
+       
+        if(localStorage.getItem("NewwalletFlag") != 1){
+        let startCounter = 1;
+        let endCounter = 20;
+        let HDkey = localStorage.getItem("HDkey");
+       
+       var finalAddressUsed = await loopPromiseGetLastAddress(HDkey, startCounter, endCounter);
+        localStorage.setItem("finalAddressUsed", lastaddress);
+        window.location.href='index.html';
+
+        }
+        else{
+          window.location.href='index.html';
+        }
+        
+
+      });
+    // Check browser support
+        if (typeof(Storage) !== "undefined") {
+            // retrieve
+            localStorage.getItem("key");
+            localStorage.getItem("mnemonicString");
+            localStorage.getItem("password");
+            localStorage.getItem("HDkey");
+            // Retrieve
+            document.getElementById("keydiv").innerHTML = localStorage.getItem("HDkey");
+            document.getElementById("Mnemonics").innerHTML= localStorage.getItem("mnemonicString");
+
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+
+
+
+  
+
+    </script>
+   
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>promise</title>
+</head>
+<body>
+<script type="text/javascript">
+	let promiseToCleanTheRoom = new promise(function(resolve, reject)){
+		//cleaning the room
+		let isClean = true;
+
+		if(isClean){
+			resolve('clean');
+		}else{
+			reject('Not Clean');
+		}
+
+	});
+
+	promiseToCleanTheRoom.then(function(fromResolve){
+		console.log('The room is' + fromResolve);
+
+	}).catch(function(fromReject){
+		console.log('The room is ' + fromReject);
+	});
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
