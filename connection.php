@@ -1,12 +1,9 @@
+<?php
 
-  <?php
-
-  		 $port = '8348';
-  $url = 'http://52.91.207.11:8348';
-  $chain = 'chain1';
-  $method = 'getnewaddress';
-
-
-
-
-  ?>
+return array(
+    'rk_user' => 'rkrpc',
+    'rk_pass' => 'GnCeLzpeZAWJ2RkGNJusYuSUiZdDuAuEkhZQTw31pATe',
+    "rk_host" => 'http://35.172.1.247:7344',
+    "rk_port" => '7344',
+    "chain" => 'recordskeeper-test'
+);

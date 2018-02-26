@@ -28,6 +28,33 @@
 .qrcody{
 
 }
+.createwalletBtn{
+        float: none !important;
+    margin: 0 auto;
+    overflow: hidden;
+    float: left;
+    min-width: 80px;
+    padding: 7.5px 27px;
+    box-shadow: 0 2px 4px rgba(11,31,79,.5);
+    border-radius: 4px;
+    border: 0;
+    background: #22283a;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.loginContainer{
+        width: 600px;
+    background: white;
+    padding: 30px;
+    margin: 0 auto;
+    margin-top: 50px;
+    box-shadow: 0 3px 4px rgba(24,59,101,.37);
+    text-align: center;
+    margin-bottom: 17%;
+}
+
 .ExistingsideDiv, .ExistingPassDiv{
   width: 50%;
   float: left;
@@ -186,6 +213,18 @@
 .margintop30{
   margin-top: 30px;
 }
+.logininputs{
+        display: block;
+    width: 79%;
+    border-radius: 4px;
+    border: 1px solid #a4aaba;
+    background: #fff;
+    color: #a4aaba;
+    font-size: 12px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
 .notify{
       width: 75px;
     background: #22283a;
@@ -249,4 +288,26 @@ if it's not present, don't show loader */
 #logo img{
       width: 275px;
     margin-top: 7px;
+}
+
+
+
+
+
+/*some media queries here */
+
+@media only screen and (max-width : 638px){
+    
+    .loginputcontainer{
+            width: 480px;
+    }
+}
+
+
+
+@media only screen and (max-width : 438px){
+    
+    .loginputcontainer{
+            width: 380px;
+    }
 }

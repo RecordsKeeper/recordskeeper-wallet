@@ -302,7 +302,7 @@ ul, ol, dd, blockquote { padding-left: 40px; }
 	.list-a + * { margin-top: 36px; }
 	
 .list-charts { list-style: none; margin: 0 0 57px; padding: 0; color: #7f91a3; font-weight: 700; text-transform: uppercase; }
-	.list-charts li { position: relative; margin: 0 0 34px; font-size: 1.3em; }
+	.list-charts li { position: relative; margin: 0 0 34px; font-size: 1.3em; width : 48% ; float : left; }
 	.list-charts figure { position: absolute; top: 50%; left: 300px; right: 0; z-index: 9; margin: 0; text-align: right; }
 		.list-charts figure > * { clear: both; }
 		.list-charts figure img, .list-charts figure canvas { display: block; float: right; }

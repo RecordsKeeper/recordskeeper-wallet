@@ -344,188 +344,21 @@
 		
 		
 		<article id="content">
-			<p class="mb-b">You are accessing Bitcoin in Tosh - 2 Device Via Account #1</p>
-			<div class="tabs-a">
-				<ul>
-					<li><a href="./">Transactions</a></li>
-					<li><a href="./">Receive</a></li>
-					<li><a href="./">Send</a></li>
-					<!-- <li><a href="./">Sign &amp; Verify</a></li> -->
-				</ul>
-				<div>
-					<div>
-						<ul class="list-charts">
-							<li>
-								<span>Balance</span>
-								<ul>
-									<li id="liBalanceBTC">6.1966585 XRK</li>
-									<li id="liBalanceUSD">$ 41396.11</li>
-								</ul>
-								
-							</li>
-							<li>
-								<span>Income</span>
-								<ul>
-									<li id="liIncomeBTC">8.1966585 XRK</li>
-									<li id="liIncomeUSD">$ 65,789.63</li>
-								</ul>
-								
-							</li>
-							<li>
-								<span>Expenses</span>
-								<ul>
-									<li id="liExpensesBTC">6.1966585 XRK</li>
-									<li id="liExpensesUSD">$ 41396.11</li>
-								</ul>
-								
-							</li>
-							<li>
-								<span>Rate</span>
-								<ul>
-									<li>1.00 XRK</li>
-									<li id="liCurrentBTCRate">$ 5,572.36</li>
-								</ul>
-								
-							</li>
-						</ul>
-		<header class="double">
-
-			<h2>Transactions History</h2>
-			<ul class="list-inline">
-				<li class="a"><span id="currentdate"> </span><a href="./"><i class="icon-filter"></i> Filters</a></li>
-				<li>
-					<form action="./" method="post">
-						<p>
-							<label for="lia">Search</label>
-							<input type="text" id="lia" name="lia" required  onkeyup="filterTable()">
-							<button type="submit">Submit</button>
-						</p>
-					</form>
-				</li>
-				<li><a ><i class="icon-csv" id="export"></i> <span class="hidden">Download CSV</span></a></li>
-				
-			</ul>
-		</header>
-		<table class="table-a" id="tableone">
-			<tr>
-				<th>Address</th>
-				<th>Date and Time</th>
-				
-				
-				<th>Balance</th>
-			</tr>
-			
-			
-		</table>
-	</div>
-	<div>
-		<h2>Address List</h2>
-		<div class="cols-a">
-			<div>
-				<table class="table-b">
-					<tr>
-						<th>S. No.</th>
-						<th>Address</th>
-						<th>Show</th>
-						<th>Copy</th>
-					</tr>
-					
-					
-				</table>
-				<p class="link-btn text-center"><a class="b" id="addChildAddress"><i class="icon-plus"></i> Add Fresh Address</a></p>
-			</div>
-			<aside>
-				<figure>
-				
-					<div id="divQrCode">
-						
-					</div>
-				</figure>
-			</aside>
-		</div>
-	</div>
-	<form  name="myForm" method="post" class="form-a" onsubmit="return validateForm()">
-		<h2>Send Payments</h2>
-		<div class="quadruple a">
-			<p>
-				<label for="faa">Enter Amount</label>
-				<input type="number" id="sendBTC" name="sendBTC">
-				<span class="suffix">XRK</span>
-			</p>
-			<p>
-				<label for="fab">Convert the amount to....</label>
-				<input type="number" id="sendUSD" name="fab">
-				<span class="suffix">USD</span>
-			</p>
-			<p>
-				<label for="sendRecipientaddress">Enter Receipient Address after checking</label>
-				<input type="text" id="sendRecipientaddress" name="sendRecipientaddress">
-				<span class="suffix"><i class="icon-qr"></i></span>
-			</p>
-		</div>
-		<p>
-			<input type="text" name="senddata" value="" placeholder="Send Data" id="hexdata">
-		</p>
-		<p class="formerrorpara">
-			
-		</p>
-		<div class="double">
-			
-			<p><button type="submit" id="sendTransactionBtn" ><i class="icon-check"></i> Send</button></p>
-		</div>
-	</form>
-	<div class="width-a">
-		<div class="notification">
-			<h2>This is your Bitcoin Cash (BCH) wallet. Do not receive bitcoins to the address in this wallet.</h2>
-			<p>To claim your Bitcoin Cash coins, please use our <a href="./">coin splittng tool</a></p>
-			<p>For more information, please refer to <a href="./">our guide</a></p>
-		</div>
-		<div class="double a">
-			<form action="" method="post" class="form-a">
-				<h2>Sign Message</h2>
-				<p>
-					<label for="fae">Enter Message</label>
-					<textarea id="fae" name="fae" required></textarea>
-				</p>
-				<p>
-					<label for="faf">Enter Receipient Address after checking</label>
-					<input type="text" id="faf" name="faf" required>
-					<span class="suffix"><i class="icon-qr"></i></span>
-				</p>
-				<p>
-					<label for="fag">Enter Signature</label>
-					<textarea id="fag" name="fag" required></textarea>
-				</p>
-				<p class="double">
-					<button type="submit">Sign</button>
-					<button type="reset">Clear</button>
-				</p>
-			</form>
-			<form action="./" method="post" class="form-a">
-				<h2>Verify Message</h2>
-				<p>
-					<label for="fah">Enter Message</label>
-					<textarea id="fah" name="fah" required></textarea>
-				</p>
-				<p>
-					<label for="fai">Enter Receipient Address after checking</label>
-					<input type="text" id="fai" name="fai" required>
-					<span class="suffix"><i class="icon-qr"></i></span>
-				</p>
-				<p>
-					<label for="faj">Enter Signature</label>
-					<textarea id="faj" name="faj" required></textarea>
-				</p>
-				<p class="double">
-					<button type="submit">Verify</button>
-					<button type="reset">Clear</button>
-				</p>
-			</form>
-		</div>
-	</div>
-</div>
-</div>
-</article>
+			<div class="row">
+                <div class="loginContainer">
+                    <div class="row">
+                        <p>If you're a new user please click on the create RK wallet button.</p>
+                        <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn">Create RK Wallet</button>
+                    </div>
+                    <div class="row margintop30">
+                        <p>Or if you are already a registered member then enter your address and private key.</p>
+                        <input type = "text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your wallet address" value="">
+                        <input type="text" class="reg_priv_key margintop30 logininputs" name="reg_priv_key" value="" placeholder="Enter your Private Key" id="reg_priv_key">
+                        <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </article>
 
 
 

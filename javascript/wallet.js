@@ -1,4 +1,3 @@
-
 	/////////////////////////////
    // Recordskeeper Wallet JS //
   // Adarsha Jha			 //
@@ -7,8 +6,14 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+var CONSOLE_DEBUG = true;
+var privkey1;
+var  pubaddr;
+var pubkey1;
+ var net = "test";
+
 $( document ).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
-		  
+		 
 		   // Animate loader off screen
 		   $(".se-pre-con").fadeOut("slow");  // fadeout the preloader
 
@@ -16,16 +21,16 @@ $( document ).ready(function() { // document ready function starts here, so you 
       	  
 		   var newAddressCount = 1; // set the newAddressCounter to 1
 
-		   listwallettransactions(); // call listwallettransactions() here which is mentioned down below
+		   //listwallettransactions(); // call listwallettransactions() here which is mentioned down below
 
-		   converTableToCSV(); // call converTableTOCSV function here when the DOM is ready.
+		  // converTableToCSV(); // call converTableTOCSV function here when the DOM is ready.
 
-		   onClickToCopy(); //click to copy ClipBoard and show a small tooltip notification
+		   //onClickToCopy(); //click to copy ClipBoard and show a small tooltip notification
 
-		   onClickEye();  // on click eye selects the address and generates the correct qrcode
+		  // onClickEye();  // on click eye selects the address and generates the correct qrcode
 
-		   	
-		   sendTransaction(); // send Transaction function 
+		   generateAddress();
+		  // sendTransaction(); // send Transaction function 
 		   
 			
 
@@ -36,20 +41,77 @@ $( document ).ready(function() { // document ready function starts here, so you 
 		   	 document.getElementById("currentdate").innerHTML = Date();
 		   }
 
-		 
+		 $("#walletloginbtn").click(function(){
+    
+           var walletaddr = $("#registered_adr").val();
+           CONSOLE_DEBUG && console.log("wallet address " , walletaddr);
+           var walletkey = $("#reg_priv_key").val();
+           CONSOLE_DEBUG && console.log("wallet key " , walletkey);
+            if(walletaddr == '' ){
+              
+            } else{
+                window.location.href = "index.php";
+            }
+            
+        });
 		
 
-		   if(document.getElementById("sendBTC") !=null){
-		   	    document.getElementById("sendBTC").addEventListener("keyup", sendBTCFunction);
-		   } 
-		   if(document.getElementById("sendUSD") != null){
-		   	   document.getElementById("sendUSD").addEventListener("keyup", sendUSDFunction);
-
-		   }  
 		 
 }); //document ready function ends here 
 
 
+function generateAddress(){
+    $("#createkeypairsbtn").click(function(){
+        createkeypairs(net);
+       
+        
+    });
+}
+
+
+
+// 
+
+
+
+
+
+
+
+
+
+
+function createkeypairs(net){
+	var netw = net;
+	 $.ajax({
+    type: "POST",
+    url: 'createkeypairs.php',
+    data:{net: netw},
+    success:function(Response) {
+        var x = Response;
+        x = JSON.parse(x);
+    //  x = x.result;
+        
+        CONSOLE_DEBUG && console.log('result in json format :', x);
+        
+        pubaddr = x.result[0].address;   //public address here 
+        
+        privkey1 = x.result[0].privkey;    // privkey here
+        
+        pubkey1    = x.result[0].pubkey;      // pubkey here
+        
+        CONSOLE_DEBUG && console.log('private key : ', privkey1);  
+        CONSOLE_DEBUG && console.log('public address :', pubaddr);
+        CONSOLE_DEBUG && console.log('public key :', pubkey1);
+        
+        localStorage.setItem("public address", pubaddr);
+        
+         $("#registered_adr").val(pubaddr); //set the value to textbox automatically
+         $("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
+
+}
+	 });
+}
 
 
 /*
@@ -107,81 +169,85 @@ getCurrentBTCRate : It uses get method to get the current rates of BTC.
 @param: urlCoinDesk - This is the url for  api to get the current BTC rates.
 @return: This returns the current Bitcoin rate
 */
- function getCurrentBTCRate(urlCoinDesk){
-		    $.ajax({
-	           type: 'GET', // type of method
-	           url: urlCoinDesk, // get the url from the variable 
-	           success: function(data) {
-		               data;  
-		               console.log(data);
-		               var responseData = JSON.parse(data); // parse the json data
-		               var  currentBTCRate = responseData.bpi.USD.rate; // currentBTCRate logic
+//  function getCurrentBTCRate(urlCoinDesk){
+// 		    $.ajax({
+// 	           type: 'GET', // type of method
+// 	           url: urlCoinDesk, // get the url from the variable 
+// 	           success: function(data) {
+// 		               data;  
+// 		               console.log(data);
+// 		               var responseData = JSON.parse(data); // parse the json data
+// 		               var  currentBTCRate = responseData.bpi.USD.rate; // currentBTCRate logic
 		               
-		               $('#liCurrentBTCRate').html("$"+ currentBTCRate); // add value to the li element #liCurrentBTCRate
-		               currentBTCRate = currentBTCRate.replace(/,/g,""); // remove commas from the currentBTCRate value that is coming from the coindesk
-		               glbCurrentBTCRate = currentBTCRate;// pass current rate to  glbCurrentBTCRate
-		               currentBTCRate = parseFloat(currentBTCRate); // parse the currentBTCRate value into Float
-		               var liExpensesBTC = $('#liExpensesBTC').html(); // add the value of liExpensesBTC to the id #liExpensesBTC
-		               liExpensesBTC = parseFloat(liExpensesBTC); // parse the value of liExpensesBTC into float
-		               var liExpensesUSD = liExpensesBTC * currentBTCRate; // liExpensesUSD equals to multiplication of liExpensesBTC and currentBTCRate
-		               liExpensesUSD = liExpensesUSD.toFixed(2); // show decimal values only upto two digits using javascript function .tofixed(2)
-		               $('#liExpensesUSD').html("$"+ liExpensesUSD);// add value to the li element #liExpensesUSD
-		               var liIncomeBTC = $('#liIncomeBTC').html();// get the value of element #liIncomeBTC
-		               liIncomeBTC = parseFloat(liIncomeBTC);// parse the value of liIncomeBTC into float
-		               liIncomeUSD = liIncomeBTC * currentBTCRate; // liIncomeUSD value euqals to multiplication of liIncomeBTC and currentBTCRate		              
-		               liIncomeUSD = liIncomeUSD.toFixed(2); // round the decimal value of liIncomeUSD to two digits
-		               $('#liIncomeUSD').html("$" + liIncomeUSD);// add the value of liIncomeUSD to the element #liIncomeUSD
-		               var liBalanceBTC = $('#liBalanceBTC').html(); // get the html value of element #liBalanceBTC
-		               liBalanceBTC = parseFloat(liBalanceBTC); // parse the value into float 
-		               liBalanceUSD = liBalanceBTC * currentBTCRate;// liBalanceUSD value equals to the multiplication of liBalanceBTC and currentBTCRate
-		               liBalanceUSD = liBalanceUSD.toFixed(2);// round the liBalanceUSD to two digits
-		               $('#liBalanceUSD').html("$" + liBalanceUSD);// attach the value of liBalanceUSD to the element #liBalanceUSD	              
-	          		 }
-      		});
- }
+// 		               $('#liCurrentBTCRate').html("$"+ currentBTCRate); // add value to the li element #liCurrentBTCRate
+// 		               currentBTCRate = currentBTCRate.replace(/,/g,""); // remove commas from the currentBTCRate value that is coming from the coindesk
+// 		               glbCurrentBTCRate = currentBTCRate;// pass current rate to  glbCurrentBTCRate
+// 		               currentBTCRate = parseFloat(currentBTCRate); // parse the currentBTCRate value into Float
+// 		               var liExpensesBTC = $('#liExpensesBTC').html(); // add the value of liExpensesBTC to the id #liExpensesBTC
+// 		               liExpensesBTC = parseFloat(liExpensesBTC); // parse the value of liExpensesBTC into float
+// 		               var liExpensesUSD = liExpensesBTC * currentBTCRate; // liExpensesUSD equals to multiplication of liExpensesBTC and currentBTCRate
+// 		               liExpensesUSD = liExpensesUSD.toFixed(2); // show decimal values only upto two digits using javascript function .tofixed(2)
+// 		               $('#liExpensesUSD').html("$"+ liExpensesUSD);// add value to the li element #liExpensesUSD
+// 		               var liIncomeBTC = $('#liIncomeBTC').html();// get the value of element #liIncomeBTC
+// 		               liIncomeBTC = parseFloat(liIncomeBTC);// parse the value of liIncomeBTC into float
+// 		               liIncomeUSD = liIncomeBTC * currentBTCRate; // liIncomeUSD value euqals to multiplication of liIncomeBTC and currentBTCRate		              
+// 		               liIncomeUSD = liIncomeUSD.toFixed(2); // round the decimal value of liIncomeUSD to two digits
+// 		               $('#liIncomeUSD').html("$" + liIncomeUSD);// add the value of liIncomeUSD to the element #liIncomeUSD
+// 		               var liBalanceBTC = $('#liBalanceBTC').html(); // get the html value of element #liBalanceBTC
+// 		               liBalanceBTC = parseFloat(liBalanceBTC); // parse the value into float 
+// 		               liBalanceUSD = liBalanceBTC * currentBTCRate;// liBalanceUSD value equals to the multiplication of liBalanceBTC and currentBTCRate
+// 		               liBalanceUSD = liBalanceUSD.toFixed(2);// round the liBalanceUSD to two digits
+// 		               $('#liBalanceUSD').html("$" + liBalanceUSD);// attach the value of liBalanceUSD to the element #liBalanceUSD	              
+// 	          		 }
+//       		});
+//  }
 	
 
 
-function sendBTCFunction() {
-    var x = document.getElementById("sendBTC");
-    x=  x.value ;
-    x = parseFloat(x);   
-    var sendUSD = document.getElementById('sendUSD').value;
-    sendUSD = x * glbCurrentBTCRate ;
-    sendUSD = sendUSD.toFixed(2);
+// function sendBTCFunction() {
+//     var x = document.getElementById("sendBTC");
+//     x=  x.value ;
+//     x = parseFloat(x);   
+//     var sendUSD = document.getElementById('sendUSD').value;
+//     sendUSD = x * glbCurrentBTCRate ;
+//     sendUSD = sendUSD.toFixed(2);
 
-    document.getElementById('sendUSD').value = sendUSD;      
-}
+//     document.getElementById('sendUSD').value = sendUSD;      
+// }
 
 /*
 sendUSDFunction : Onkeyup function convert the value of input sendBTC.
 @param: none
 */
 
-function sendUSDFunction(){
- 	var x = document.getElementById("sendUSD");
- 	x = x.value;
- 	x = parseFloat(x);
- 	var sendBTC = document.getElementById("sendBTC").value;
- 	sendBTC = x / glbCurrentBTCRate;
- 	console.log(sendBTC);
- 	document.getElementById('sendBTC').value = sendBTC;
-}
+// function sendUSDFunction(){
+//  	var x = document.getElementById("sendUSD");
+//  	x = x.value;
+//  	x = parseFloat(x);
+//  	var sendBTC = document.getElementById("sendBTC").value;
+//  	sendBTC = x / glbCurrentBTCRate;
+//  	console.log(sendBTC);
+//  	document.getElementById('sendBTC').value = sendBTC;
+// }
 
 
 // sendwithdata function here that makes a post request to sendwithdata.php
 //params : NULL
 // get_address
-function sendwithdata() {
+function sendwithdata(a, b, net) {
+	var c = a; 
+	var d = b;
+	var networked = net;
+	console.log(c);
 	$.ajax({
 	type: "POST",
 	url: 'sendwithdata.php',
-	data:{action:'get_address'},
-	success:function(html) {
-	var x = JSON.parse(html);
-	
+	data:({addr: d, val: c, net: networked}),
+	success:function(Response) {
+	var x = JSON.parse(Response);
+	//x = x.result[0];
 	console.log('result in json format',x);
-	x = x.result;
+	
 	}
 	
 	});
@@ -263,7 +329,7 @@ $('#addChildAddress').click(function(){
 		 { 
 		 	$('canvas').remove();
 		 }
-		 	getaddress();
+		 	//getaddress();
 });
 
 
@@ -313,7 +379,6 @@ function validateForm(e) {
 
 
 
-    	sendwithdata();
 
 			
     	
@@ -333,43 +398,12 @@ var  newAddressCount = 0;
 
 		if($('#cb1').is(':checked'))
 			{
-			  // document.getElementById('togglecontlabel').innerHTML == 'Mainnetwork' ;
-			 $('#togglecontlabel').text("Testnetwork").fadeIn('slow');
-			 $('#togglecontlabel').append("<input type = 'Hidden' name = 'Port' id='Port' value = ''>");
-			 $('#togglecontlabel').append("<input type = 'Hidden' name = 'Url' id='Url' value = ''>");
-			 $('#togglecontlabel').append("<input type = 'Hidden' name = 'ChainName' id='ChainName'  value = ''>");
-			 $('#togglecontlabel').append("<input type = 'Hidden' name = 'Authorization' id='Authorization' value = ''>");
-			 $("#top").css("background", "#212739");
-			 $('#Port').text = Port;
-			 Port = 8348;
-			 nodeUrl = "http://52.91.207.11:8348";
-			 ChainName = 'chain1';
-			 Authorization = 'Basic bXVsdGljaGFpbnJwYzpFNldxV2hWVG9RWW5FdkRGTFRXS3hReUpCa0N5dEVKcG56TEpoc2Z6cndYeg==';
-			 console.log ('Testnetwork: ', 'Port', Port , 'URLnode' , nodeUrl, 'ChainName: ', ChainName, 'Authorization', Authorization);
-			 nodeUrl;
-			 ChainName;
-			 Authorization;
-
-
+			 net = "main";
 
 			}
 			else
 			{
-				// document.getElementById('togglecontlabel').innerHTML == 'Testnetwork';
-				 $('#togglecontlabel').text("Mainnetwork").fadeIn('slow');
-				 nodeUrl;
-				 ChainName;
-				 Authorization;
-				 $('#top').css('background', "rgb(17, 63, 74)");
-
-				 // unchecked
-				 Port = 6798;
-				 nodeUrl = "http://52.86.200.44:6798";
-				 ChainName = 'recordskeeper';
-				 Authorization = 'Basic bXVsdGljaGFpbnJwYzpFNldxV2hWVG9RWW5FdkRGTFRXS3hReUpCa0N5dEVKcG56TEpoc2Z6cndYeg==';
-
-				 qrgenerate;
-				  console.log ('Mainnetwork: ', 'Port', Port , 'URLnode' , nodeUrl, 'ChainName: ', ChainName, 'Authorization', Authorization);
+				net = "test";
 			}
 
 	}
@@ -390,11 +424,15 @@ function CopyToClipboard(){
 
 }
 
-function sendTransaction(){
+
 	$('#sendTransactionBtn').click(function(){
-		   		sendwithdata();
+		var a = $('#sendBTC').val();
+		console.log(a);
+		var b = $('#sendRecipientaddress').val();
+		console.log(b);
+		   		sendwithdata(a, b);
 		   	});
-}
+
 
 
 
