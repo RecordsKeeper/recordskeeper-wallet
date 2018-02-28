@@ -344,20 +344,205 @@
 		
 		
 		<article id="content">
-			<div class="row">
-                <div class="loginContainer">
-                    <div class="row">
-                        <p>If you're a new user please click on the create RK wallet button.</p>
-                        <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn">Create RK Wallet</button>
-                    </div>
-                    <div class="row margintop30">
-                        <p>Or if you are already a registered member then enter your Wallet Address.</p>
-                        <input type = "text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your wallet address" value="">
-                        <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </article>
+			
+			<div class="tabs-a">
+				<ul>
+					<li><a href="./">Transactions</a></li>
+					<li><a href="./">Receive</a></li>
+					<li><a href="./">Send</a></li>
+					<!-- <li><a href="./">Sign &amp; Verify</a></li> -->
+				</ul>
+				<div>
+					<div>
+						<ul class="list-charts">
+							<li>
+								<span id = "alpha">Balance</span>
+								<ul>
+									<li id="liBalanceBTC"></li>
+<!--									<li id="liBalanceUSD"></li>-->
+								</ul>
+								
+							</li>
+<!--
+							<li>
+								<span>Income</span>
+								<ul>
+									<li id="liIncomeBTC">8.1966585 XRK</li>
+									<li id="liIncomeUSD">$ 65,789.63</li>
+								</ul>
+								
+							</li>
+-->
+<!--
+							<li>
+								<span>Expenses</span>
+								<ul>
+									<li id="liExpensesBTC">6.1966585 XRK</li>
+									<li id="liExpensesUSD">$ 41396.11</li>
+								</ul>
+								
+							</li>
+-->
+<!--
+							<li>
+								<span>Rate</span>
+								<ul>
+									<li>1.00 XRK</li>
+									<li id="liCurrentBTCRate">$ 5,572.36</li>
+								</ul>
+								
+							</li>
+-->
+						</ul>
+		<header class="double">
+
+			<h2>Transactions History</h2>
+			<ul class="list-inline">
+<!--
+				<li class="a"><span id="currentdate"> </span><a href="./"><i class="icon-filter"></i> Filters</a></li>
+				<li>
+					<form action="./" method="post">
+						<p>
+							<label for="lia">Search</label>
+							<input type="text" id="lia" name="lia" required  onkeyup="filterTable()">
+							<button type="submit">Submit</button>
+						</p>
+					</form>
+				</li>
+-->
+				<li><a ><i class="icon-csv" id="export"></i> <span class="hidden">Download CSV</span></a></li>
+				
+			</ul>
+		</header>
+		<table class="table-a" id="tableone">
+			<tr>
+				<th>Address</th>
+				<th>Date and Time</th>
+				
+				
+				<th>fee</th>
+			</tr>
+			
+			
+		</table>
+	</div>
+	<div>
+		<h2>Public Address </h2>
+        <P class="pcolor">Use this address to recieve payments.</P>
+		<div class="cols-a">
+			<div>
+				<table class="table-b">
+					<tr>
+						
+					</tr>
+					
+					
+				</table>
+				<p class="link-btn text-center"><a class="b" id="addChildAddress"><i class="icon-plus"></i> Add Fresh Address</a></p>
+			</div>
+			<aside>
+				<figure>
+				
+					<div id="divQrCode">
+						
+					</div>
+				</figure>
+			</aside>
+		</div>
+	</div>
+	<div  name="myForm" method="post" class="" id="pfform">
+		<h2>Send Payments</h2>
+		<div class="quadruple a">
+			<p>
+				<label for="faa">Enter Amount</label>
+				<input type="number" id="sendBTC" name="sendBTC">
+				<span class="suffix">XRK</span>
+			</p>
+			<p>
+				<label for="fab">Enter the private key</label>
+				<input type="text" id="sendUSD" name="fab">
+				<span class="suffix">key</span>
+			</p>
+			<p>
+				<label for="sendRecipientaddress">Enter Receipient Address after checking</label>
+				<input type="text" id="sendRecipientaddress" name="sendRecipientaddress">
+				<span class="suffix"><i class="icon-qr"></i></span>
+			</p>
+		</div>
+		<p>
+			<label for="fac">Enter the data to save</label>
+			<input type="text" name="senddata" value="" placeholder="Send Data" id="hexdata">
+		</p>
+		<p>
+			<label for="fad">Enter the key label for transaction</label>
+			<input type="text" name="sendd" value="" placeholder="Send key" id="keydata">
+		</p>
+		<p class="formerrorpara">
+			
+		</p>
+		<div id ="txid"></div>
+		<div class="double">
+			
+			<p><button type="submit" id="sendTransactionBtn" ><i class="icon-check"></i> Send</button>
+			
+			<button id="sendt">SEND</button>
+
+			
+			</p>
+		</div>
+	</div>
+	<div class="width-a">
+		<div class="notification">
+			<h2>This is your Bitcoin Cash (BCH) wallet. Do not receive bitcoins to the address in this wallet.</h2>
+			<p>To claim your Bitcoin Cash coins, please use our <a href="./">coin splittng tool</a></p>
+			<p>For more information, please refer to <a href="./">our guide</a></p>
+		</div>
+		<div class="double a">
+			<form action="" method="post" class="form-a">
+				<h2>Sign Message</h2>
+				<p>
+					<label for="fae">Enter Message</label>
+					<textarea id="fae" name="fae" required></textarea>
+				</p>
+				<p>
+					<label for="faf">Enter Receipient Address after checking</label>
+					<input type="text" id="faf" name="faf" required>
+					<span class="suffix"><i class="icon-qr"></i></span>
+				</p>
+				<p>
+					<label for="fag">Enter Signature</label>
+					<textarea id="fag" name="fag" required></textarea>
+				</p>
+				<p class="double">
+					<button type="submit">Sign</button>
+					<button type="reset">Clear</button>
+				</p>
+			</form>
+			<form action="./" method="post" class="form-a">
+				<h2>Verify Message</h2>
+				<p>
+					<label for="fah">Enter Message</label>
+					<textarea id="fah" name="fah" required></textarea>
+				</p>
+				<p>
+					<label for="fai">Enter Receipient Address after checking</label>
+					<input type="text" id="fai" name="fai" required>
+					<span class="suffix"><i class="icon-qr"></i></span>
+				</p>
+				<p>
+					<label for="faj">Enter Signature</label>
+					<textarea id="faj" name="faj" required></textarea>
+				</p>
+				<p class="double">
+					<button type="submit">Verify</button>
+					<button type="reset">Clear</button>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</article>
 
 
 
@@ -389,8 +574,28 @@ crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 <script src="javascript/wallet.js"></script>
 <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/js/tableexport.js"></script>
+<script type="text/javascript">
 
+//	do the work after everything was loaded (DOM, media elements) 
+//	params : null 
+// 	return : NULL
+
+	window.onload = function () {
+	getaddressbalances(); //load the first address on page load.
+
+	}
+
+ // on click of export button download all list transactions into csv format
+ // table2csv js library is used here which has a function table2csv
+ // Name of the file can be changed by going to the libray in the javascript folder
+ // so let's put this code inside a function called convertTableToCSV
+
+
+	
+
+
+</script>
 </body>
 </html>
