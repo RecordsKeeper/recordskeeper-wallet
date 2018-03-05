@@ -37,6 +37,7 @@ $( document ).ready(function() { // document ready function starts here, so you 
 		  // sendTransaction(); // send Transaction function 
 		   
 			 $('#top').css('background', '#54b2ce');
+        $('#top').css('color', '#ffffff');
 
 		   networkToggle(); // Network Toggle function
 		   
@@ -345,6 +346,7 @@ var  newAddressCount = 0;
                localStorage.setItem("network","MainNetwork");
                 
                  $('#top').css('background', '#22283a');
+                  $('#top').css('color', '#ffffff');
                  
                    $('#togglecontlabel').text('Main Network');
 			}
