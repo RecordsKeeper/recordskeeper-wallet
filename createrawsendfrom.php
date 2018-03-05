@@ -1,6 +1,6 @@
 <?php
 $net = $_POST['net'];
-if ($net == 'test'){
+if ($net == 'TestNetwork'){
 $config = include('config.php');}
 else {
   $config = include('connection.php');

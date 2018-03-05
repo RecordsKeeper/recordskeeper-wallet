@@ -558,12 +558,33 @@ if it's not present, don't show loader */
 }
 
 
+.toggldiv{
+        width: auto;
+    margin-right: 30px;
+    margin-top: 7px;
+    float: right;
+}
 
-
-
+.menu{
+    display: none !important;
+}
 /*toggle container*/
 
+
+.width-a.hidden {
+    display: none;
+}
 /*some media queries here */
+
+@media only screen and (max-width: 900px){
+    .loginContainer{
+        width: 100%;
+    }
+    #top > .menu{
+        display: none;
+    }
+}
+
 
 @media only screen and (max-width : 638px){
     
@@ -571,7 +592,20 @@ if it's not present, don't show loader */
             width: 480px;
     }
 }
-
+@media only screen and (max-width : 458px){
+    
+    .loginputcontainer{
+            width: 380px;
+    }
+    .toggldiv{
+            position: absolute;
+    right: 0;
+    top: 50px;
+    }
+    #togglecontlabel{
+        color: black;
+    }
+}
 
 
 @media only screen and (max-width : 438px){
