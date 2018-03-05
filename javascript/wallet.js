@@ -36,7 +36,7 @@ $( document ).ready(function() { // document ready function starts here, so you 
 		   //generateAddress();
 		  // sendTransaction(); // send Transaction function 
 		   
-			
+			 $('#top').css('background', '#54b2ce');
 
 		   networkToggle(); // Network Toggle function
 		   
@@ -328,17 +328,25 @@ var  newAddressCount = 0;
 	function ToggleNetwork(){
 
 		if($('#cb1').is(':checked'))
+
 			{
-			 net = "main";
-//                localStorage.setItem("network", "main");
+			 net = "test";
+               localStorage.setItem("network", "TestNetwork");
+                $('#top').css('background', '#54b2ce');
+                 $('#togglecontlabel').text('Test Network');
+
+
               
 
 			}
 			else
 			{
-				net = "test";
-//                localStorage.setItem("network","test");
-//                  $('#top').css('background', '#54b2ce');
+				net = "main";
+               localStorage.setItem("network","MainNetwork");
+                
+                 $('#top').css('background', '#22283a');
+                 
+                   $('#togglecontlabel').text('Main Network');
 			}
 
 	}

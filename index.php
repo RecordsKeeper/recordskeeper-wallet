@@ -96,7 +96,7 @@
 }
 
 .tgl-light + .tgl-btn {
-  background: #f0f0f0;
+  background: #777171;
   border-radius: 2em;
   padding: 2px;
   -webkit-transition: all .4s ease;
