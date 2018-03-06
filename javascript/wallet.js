@@ -104,6 +104,15 @@ function createkeypairs(net){
         
          $("#registered_adr").val(pubaddr); //set the value to textbox automatically
          $("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
+
+          ///////////////
+         var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_key"'+":"+'"'+privkey1+'"'+'}');
+          var dlAnchorElem = document.getElementById('downloadlink');
+          dlAnchorElem.setAttribute("href",     dataStr     );
+          dlAnchorElem.setAttribute("download", "Recordskeeper-wallet.json");
+          dlAnchorElem.click();
+
+         
          (function () {
             var textFile = null,
               makeTextFile = function (text) {
@@ -126,7 +135,7 @@ function createkeypairs(net){
 
 
                 var link = document.getElementById('downloadlink');
-                link.href = makeTextFile(privkey1);
+                link.href = makeTextFile('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_key"'+":"+'"'+privkey1+'"'+'}');
                 link.style.display = 'block';
  
         })();
