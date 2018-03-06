@@ -32,7 +32,12 @@ span.xrk {
     font-weight: 600;
     font-size: 13px;
 }
-
+.showaddr{
+  font-size: 15px;
+    font-weight: 600;
+    color: black;
+    text-align: right;
+}
 
 
 #export{ display: none}

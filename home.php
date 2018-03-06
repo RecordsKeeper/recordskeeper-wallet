@@ -344,7 +344,7 @@
 		
 		
 		<article id="content">
-			
+			<div class="showaddr"> Address</div>
 			<div class="tabs-a">
 				<ul>
 					<li><a href="./">Transactions</a></li>

@@ -135,7 +135,7 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 	.cols-a > header:first-child + *, .cols-a > *:first-child { float: left; width: 100%; }
 	.cols-a > header:first-child, .cols-a > aside { float: right; width: 204px; margin: 0 -358px 0 0; }
 
-.double { display: block; position: relative; width: 200px; }
+.double { display: block; position: relative; width: 200px;}
 	.double > * { display: block; position: relative; float: right; clear: none; border-left: 0 solid rgba(0,0,0,0); }
 	.double > *:first-child { float: left; }
 .double.a { margin-left: -17px; }
