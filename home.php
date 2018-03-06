@@ -416,11 +416,11 @@
 		</header>
 		<table class="table-a" id="tableone">
 			<tr>
-				<th>Address</th>
+				<th>Transaction ID</th>
 				<th>Date and Time</th>
 				
 				
-				<th>fee</th>
+				<th>Transaction Amount</th>
 			</tr>
 			
 			
@@ -428,6 +428,7 @@
 	</div>
 	<div>
 		<h2>Public Address </h2>
+		<P class="pcolor">Address </P>
         <P class="pcolor">Use this address to recieve payments.</P>
 		<div class="cols-a">
 			<div>
