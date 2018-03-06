@@ -1,9 +1,9 @@
 <?php
 $net = $_POST['net'];
 if ($net == 'TestNetwork'){
-$config = include('config.php');}
+$config = include('config-testnet.php');}
 else {
-  $config = include('connection.php');
+  $config = include('config-mainnet.php');
 }
 $chain = $config['chain'];
 $curl = curl_init();
