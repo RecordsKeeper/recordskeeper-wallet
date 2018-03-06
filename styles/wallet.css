@@ -40,6 +40,7 @@ span.xrk.out {
     float: left;
     text-align: center;
     margin-right: 10px;
+    text-transform: uppercase;
 }
 span.xrk.in {
     background: green;
@@ -53,6 +54,7 @@ span.xrk.in {
     float: left;
     text-align: center;
     margin-right: 10px;
+    text-transform: uppercase;
 }
 
 label#modalshowaddr {
