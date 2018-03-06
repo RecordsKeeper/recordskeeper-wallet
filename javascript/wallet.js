@@ -29,11 +29,15 @@ $( document ).ready(function() { // document ready function starts here, so you 
                  
                    $('#togglecontlabel').text('Main Network');
             }
-            else{
+           else if(net == "TestNetwork"){
 
-                 $('#top').css('background', '#54b2ce');
-                 $('#togglecontlabel').text('Test Network');
-            }
+                $('#top').css('background', '#54b2ce');
+                $('#togglecontlabel').text('Test Network');
+           }
+           else{
+               net == "TestNetwork";
+               localStorage.setItem("network", "TestNetwork");
+           }
 //            generateQRcode();
            //listwallettransactions(); // call listwallettransactions() here which is mentioned down below
           // converTableToCSV(); // call converTableTOCSV function here when the DOM is ready.
