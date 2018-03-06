@@ -22,21 +22,45 @@
     width: 30%;
     float: left;
 }
-#hexdata{
+/*#hexdata{
   width: 85%;
-}
+}*/
 .qrcody{
 
+}
+.hrcolor{
+  border-top: 1px solid #da83cb;
+}
+.mt40{
+  margin-top: 40px;
+}
+.senderaddr{
+      color: #8e9eae !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+}
+.modal-header .close {
+    margin-top: -2px;
+    box-shadow: none;
+    width: auto;
+    float: right;
+    text-align: right;
+}
+.showaddr{
+      color: #3f4453;
+    font-size: 14px;
+    font-weight: 600;
+    float: right;
+}
+.fleft{
+  float: left !important;
+}
+.fnone{
+  float: none !important; 
 }
 span.xrk {
     font-weight: 600;
     font-size: 13px;
-}
-.showaddr{
-  font-size: 15px;
-    font-weight: 600;
-    color: black;
-    text-align: right;
 }
 
 

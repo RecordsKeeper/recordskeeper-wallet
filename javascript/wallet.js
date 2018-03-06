@@ -18,8 +18,14 @@ $( document ).ready(function() { // document ready function starts here, so you 
           
            var newAddressCount = 1; // set the newAddressCounter to 1
 
+           sendTransactionSubmit();
 
-    
+
+            showAddress();
+
+            checkRecAddressFilled();
+
+            checkAmountFilled();
 
             recieve();
             if(net == "MainNetwork"){
@@ -110,7 +116,7 @@ function createkeypairs(net){
          $("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
 
           ///////////////
-         var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_key"'+":"+'"'+privkey1+'"'+'}');
+         var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_privatekey"'+":"+'"'+privkey1+'"'+'}');
           var dlAnchorElem = document.getElementById('downloadlink');
           dlAnchorElem.setAttribute("href",     dataStr     );
           dlAnchorElem.setAttribute("download", "Recordskeeper-wallet.json");
@@ -139,7 +145,7 @@ function createkeypairs(net){
 
 
                 var link = document.getElementById('downloadlink');
-                link.href = makeTextFile('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_key"'+":"+'"'+privkey1+'"'+'}');
+                link.href = makeTextFile('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_privatekey"'+":"+'"'+privkey1+'"'+'}');
                 link.style.display = 'block';
  
         })();
@@ -219,6 +225,9 @@ copyToClipBoard : It Copies the html of element childAddresses
 @param: id
 @return: executes Copy command
 */
+
+
+
 function copyToClipBoard(id) {
     var $temp = $("<input>");
     $("body").append($temp);
@@ -226,6 +235,10 @@ function copyToClipBoard(id) {
     document.execCommand("copy");
     $temp.remove();
 }
+
+
+
+
 function listaddresstransactions(){
     var local =localStorage.getItem("network");
     var a = localStorage.getItem("pubaddr");
@@ -238,22 +251,28 @@ function listaddresstransactions(){
              var date = new Date();
             console.log(x, "list transaction result");
              for(var i= 0; i < x.result.length; i++) {
-var date = new Date((x.result[i].time)*1000);
-if (local == "TestNetwork"){
-var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
-}
-else{
-    var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
-}
-var str2 = x.result[i].txid;
-var str3 = str1.concat(str2);
-console.log(str3);
+              var date = new Date((x.result[i].time)*1000);
+              if (local == "TestNetwork"){
+              var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
+              }
+              else{
+                  var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
+              }
+              var str2 = x.result[i].txid;
+              var str3 = str1.concat(str2);
+              console.log(str3);
                 $('.table-a').append("<tr> <td id='childAddresses'> <a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+date+"</td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK </span>"+ "</td></tr>");
              }
              // add a table row here   
         }
     });
 }
+
+function showAddress(){
+  var address = localStorage.getItem("pubaddr");
+  $('.showaddr').append("XRK Address : ", address);
+}
+
 // code to generate qr code 
 function generateQRcode(){
     
@@ -446,4 +465,57 @@ function filterTable() {
     }       
   }
 }
+
+
+
+
+
+
+
+
+
+function sendTransactionSubmit(){
+
+  var senderaddr = $('#sendRecipientaddress').val();
+  var xrkAmount =  $('#sendBTC').val();
+
+
+
+  if( senderaddr == ''){
+    // $('#sendRecipientaddress').css('border', '1px solid red');
+
+    $('#myModal2').modal('hide') ;
+
+  }
+
+   else{
+
+
+   }
+
+}
+
+
+function checkRecAddressFilled() {
+  var inputVal = document.getElementById("sendRecipientaddress");
+    if (inputVal.value == "") {
+        $('#sendRecipientaddress').css('border', '1px solid red');
+    }
+    else{
+        $('#sendRecipientaddress').css('border', '1px solid green');
+    }
+}
+
+function checkAmountFilled() {
+  var inputVal = document.getElementById("sendBTC");
+    if (inputVal.value == "") {
+        $('#sendBTC').css('border', '1px solid red');
+    }
+    else{
+        $('#sendBTC').css('border', '1px solid green');
+    }
+}
+
+
+
 // Globally declare values of port and url

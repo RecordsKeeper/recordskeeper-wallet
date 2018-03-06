@@ -13,6 +13,8 @@
 		<meta name="MobileOptimized" content="320">
 		<meta name="HandheldFriendly" content="true">
 		<meta name="viewport" content="width=device-width, initial-scale=1, target-densitydpi=device-dpi">
+		 <!-- Bootstrap core CSS -->
+    	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 		<meta name="author" content="http://psdhtml.me">
 		<link rel="stylesheet" media="screen" href="styles/screen.css">
 		<link rel="stylesheet" media="print" href="styles/print.css">
@@ -20,6 +22,7 @@
 		<link rel="stylesheet" media="screen" href="styles/wallet.css">
 		<!-- link for table to css cdn here  -->
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/css/tableexport.css">
+
 		<meta property="og:title" content="">
 		<meta property="og:type" content="website">
 		<meta property="og:description" content=".">
@@ -344,7 +347,7 @@
 		
 		
 		<article id="content">
-			<div class="showaddr"> Address</div>
+			<div class="showaddr"> </div>
 			<div class="tabs-a">
 				<ul>
 					<li><a href="./">Transactions</a></li>
@@ -451,7 +454,7 @@
 			</aside>
 		</div>
 	</div>
-	<div  name="myForm" method="post" class="" id="pfform">
+	<!-- <div  name="myForm" method="post" class="" id="pfform">
 		<h2>Send Payments</h2>
 		<div class="quadruple a">
 			<p>
@@ -491,56 +494,72 @@
 			
 			</p>
 		</div>
-	</div>
-	<div class="width-a">
-		<div class="notification">
-			<h2>This is your Bitcoin Cash (BCH) wallet. Do not receive bitcoins to the address in this wallet.</h2>
-			<p>To claim your Bitcoin Cash coins, please use our <a href="./">coin splittng tool</a></p>
-			<p>For more information, please refer to <a href="./">our guide</a></p>
+	</div> -->
+	<div  name="myForm" method="post" class="" id="pfform">
+		<h2>Send Payments</h2>
+		<p class="showaddr fnone senderaddr">
+				Sender's
+		</p>
+		<div class="">
+			
+<!-- 
+			<p>
+				<label for="fab">Enter the private key</label>
+				<input type="text" id="sendUSD" name="fab">
+				<span class="suffix">key</span>
+			</p>
+ -->
+			<p>
+				<label for="sendRecipientaddress">Enter Receipient Address after checking</label>
+				<input type="text" id="sendRecipientaddress" name="sendRecipientaddress" placeholder="receipient address" onchange="checkRecAddressFilled();">
+				<span class="suffix"><i class="icon-qr"></i></span>
+		    </p>
+
+		    <p>
+				<label for="faa">Enter XRK Amount</label>
+				<input type="number" id="sendBTC" name="sendBTC" placeholder="XRK Amount" onchange="checkAmountFilled();">
+				<span class="suffix">XRK</span>
+			</p>
+
 		</div>
-		<div class="double a">
-			<form action="" method="post" class="form-a">
-				<h2>Sign Message</h2>
-				<p>
-					<label for="fae">Enter Message</label>
-					<textarea id="fae" name="fae" required></textarea>
-				</p>
-				<p>
-					<label for="faf">Enter Receipient Address after checking</label>
-					<input type="text" id="faf" name="faf" required>
-					<span class="suffix"><i class="icon-qr"></i></span>
-				</p>
-				<p>
-					<label for="fag">Enter Signature</label>
-					<textarea id="fag" name="fag" required></textarea>
-				</p>
-				<p class="double">
-					<button type="submit">Sign</button>
-					<button type="reset">Clear</button>
-				</p>
-			</form>
-			<form action="./" method="post" class="form-a">
-				<h2>Verify Message</h2>
-				<p>
-					<label for="fah">Enter Message</label>
-					<textarea id="fah" name="fah" required></textarea>
-				</p>
-				<p>
-					<label for="fai">Enter Receipient Address after checking</label>
-					<input type="text" id="fai" name="fai" required>
-					<span class="suffix"><i class="icon-qr"></i></span>
-				</p>
-				<p>
-					<label for="faj">Enter Signature</label>
-					<textarea id="faj" name="faj" required></textarea>
-				</p>
-				<p class="double">
-					<button type="submit">Verify</button>
-					<button type="reset">Clear</button>
-				</p>
-			</form>
+		<div class="row">
+			<div class="col-md-5">
+				<hr class="hrcolor">
+			</div>
+			<div class="col-md-2 text-center">
+				<p class="theme-color theme-color"> Optional Record Data </p>
+			</div>
+			<div class="col-md-5">
+				<hr class="hrcolor">
+			</div>
+		</div>
+		<div class="optionaldiv">
+			<p>
+			<label for="fac">Enter the data to save</label>
+			<input type="text" name="senddata" value="" placeholder="Optional Data" id="hexdata">
+			</p>
+			<p>
+				<label for="fad">Enter the key label for transaction</label>
+				<input type="text" name="sendd" value="" placeholder="Record Identifier Key" id="keydata">
+			</p>
+		</div>
+		<button id="sendpopup" data-toggle="modal" data-target="#myModal2" id="sendTransSubmit">Submit</button>
+		
+		<p class="formerrorpara">
+			
+		</p>
+		<div id ="txid"></div>
+		<div class="double">
+			
+			<p><button type="submit" id="sendTransactionBtn" ><i class="icon-check"></i> Send</button>
+			
+			
+
+			
+			</p>
 		</div>
 	</div>
+	
 </div>
 </div>
 </article>
@@ -561,6 +580,31 @@
 </footer>
 </div>
 
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Recordskeeper Wallet</h4>
+      </div>
+      <div class="modal-body standfont">
+        	<p>
+				<label for="fab">Enter the private key</label>
+				<input type="text" id="sendUSD" name="fab">
+				<span class="suffix">key</span>
+			</p>
+
+      </div>
+      <div class="modal-footer">
+        <button id="sendt">SEND</button>
+      </div>
+    </div>
+
+  </div>
+</div>     
+
 
 <!-- all the script here to make the page load faster -->
 
@@ -570,6 +614,7 @@
 <script src="javascript/custom.js"></script>
 <script src="javascript/mobile.js"></script>
 <script src="javascript/table2CSV.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 crossorigin="anonymous"></script>
