@@ -434,7 +434,7 @@ table { display: table; width: 100%; border-collapse: collapse; border-spacing: 
 	table i.icon-eye { display: inline-block; position: relative; top: 2px; font-size: 19px; line-height: 1px; }
 
 .table-a { }
-	.table-a td { padding-top: 28px; }
+	.table-a td { padding-top: 28px; font-weight: 600px; }
 	.table-a tr:first-child + tr td { padding-top: 19px; }
 .table-b { }
 	.table-b tr > *:first-child { width: 67px; min-width: 67px; text-align: center; }
