@@ -548,9 +548,14 @@
 
 <footer id="footer">
 <ul>
-<li>Copyright Vault0x @<span class="date">2017</span></li>
-<li><a href="./">Terms</a></li>
-<li><a href="./">Privacy Policy</a></li>
+<li>Copyright RecordsKeeper @<span class="date">2018</span></li>
+<li><a href="./" target="_blank">Terms</a></li>
+<li><a href="./" target="_blank">Privacy Policy</a></li>
+<li><a href="http://explorer.recordskeeper.co/" target="_blank">Mainnet Explorer</a></li>
+<li><a href="http://test-explorer.recordskeeper.co/" target="_blank">Testnet Explorer</a></li>
+<li><a href="http://faucet.recordskeeper.co/" target="_blank">Faucet</a></li>
+<li><a href="http://stats.recordskeeper.co/" target="_blank">Stats</a></li>
+<li><a href="http://demo.recordskeeper.co/" target="_blank">Demo</a></li>
 </ul>
 </footer>
 </div>

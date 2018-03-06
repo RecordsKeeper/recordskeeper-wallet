@@ -107,12 +107,12 @@
 			<div class="row">
                 <div class="loginContainer">
                     <div class="row">
-                        <p>If you're a new user please click on the create RK wallet button.</p>
-                        <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn" data-toggle="modal" data-target="#myModal">Create RK Wallet</button>
+                        <p>If you're a new user please click on the create XRK wallet button.</p>
+                        <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn" data-toggle="modal" data-target="#myModal">Create XRK Wallet</button>
                     </div>
                     <div class="row margintop30">
-                        <p>Or if you are already a registered member then enter your Wallet Address.</p>
-                        <input type = "text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your wallet address" value="">
+                        <p>If you already have XRK wallet, please enter your wallet address here. </p>
+                        <input type = "text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your XRK wallet address" value="">
                         <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
                     </div>
                 </div>

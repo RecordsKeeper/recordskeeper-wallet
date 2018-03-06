@@ -28,6 +28,13 @@
 .qrcody{
 
 }
+span.xrk {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
+
 #export{ display: none}
 .suffix, #sendTransactionBtn,#addChildAddress{ display: none;
 }

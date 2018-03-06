@@ -240,7 +240,7 @@ function listaddresstransactions(){
              for(var i= 0; i < x.result.length; i++) {
 var date = new Date((x.result[i].time)*1000);
 if (local == "TestNetwork"){
-var str1 = "http://test-exp.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
+var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
 }
 else{
     var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
@@ -248,7 +248,7 @@ else{
 var str2 = x.result[i].txid;
 var str3 = str1.concat(str2);
 console.log(str3);
-                $('.table-a').append("<tr> <a href="+str3+"> <td id='childAddresses'>"+x.result[i].txid+"</td></a><td>"+date+"</td><td>"+x.result[i].balance['amount']+ "</td></tr>");
+                $('.table-a').append("<tr> <td id='childAddresses'> <a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+date+"</td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK </span>"+ "</td></tr>");
              }
              // add a table row here   
         }
