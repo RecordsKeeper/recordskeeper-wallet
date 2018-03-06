@@ -18,14 +18,14 @@ $( document ).ready(function() { // document ready function starts here, so you 
           
            var newAddressCount = 1; // set the newAddressCounter to 1
 
-           sendTransactionSubmit();
+      
 
 
             showAddress();
 
-            checkRecAddressFilled();
+            // checkRecAddressFilled();
 
-            checkAmountFilled();
+            // checkAmountFilled();
 
             recieve();
             if(net == "MainNetwork"){
@@ -251,18 +251,55 @@ function listaddresstransactions(){
              var date = new Date();
             console.log(x, "list transaction result");
              for(var i= 0; i < x.result.length; i++) {
-              var date = new Date((x.result[i].time)*1000);
-              if (local == "TestNetwork"){
-              var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
-              }
-              else{
-                  var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
-              }
-              var str2 = x.result[i].txid;
-              var str3 = str1.concat(str2);
-              console.log(str3);
-                $('.table-a').append("<tr> <td id='childAddresses'> <a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+date+"</td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK </span>"+ "</td></tr>");
-             }
+                if (x.result[i].balance.amount >= 0){
+var date = new Date((x.result[i].time)*1000);
+var date1 = new Date();
+var diff = date1 - date;
+diff = diff/1000;
+ diff = diff/60;
+ diff = diff/60;
+ var hours = Math.floor(diff % 24);  
+ var days = Math.floor(diff/24);
+console.log(days);
+console.log(hours);
+console.log(x.result);
+if (local == "TestNetwork"){
+var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
+}
+else{
+   var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
+}
+var str2 = x.result[i].txid;
+var str3 = str1.concat(str2);
+console.log(str3);
+               $('.table-a').append("<tr> <a href="+str3+"> <td id='childAddresses'>"+x.result[i].txid+"</td></a><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+x.result[i].balance['amount']+"<span class='xrk in'> in </span></td></tr>");
+            }
+            else {
+                var date = new Date((x.result[i].time)*1000);
+                var date1 = new Date();
+var diff = date1 - date;
+var diff = date1 - date;
+diff = diff/1000;
+ diff = diff/60;
+ diff = diff/60;
+ var hours = Math.floor(diff % 24);  
+ var days = Math.floor(diff/24);
+console.log(days);
+console.log(hours);
+console.log(x.result)
+if (local == "TestNetwork"){
+var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
+}
+else{
+   var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
+}
+var str2 = x.result[i].txid;
+var str3 = str1.concat(str2);
+console.log(str3);
+               $('.table-a').append("<tr> <a href="+str3+"> <td id='childAddresses'>"+x.result[i].txid+"</td></a><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk out'> Out </span></td></tr>");
+            }
+            // add a table row here
+            }
              // add a table row here   
         }
     });
@@ -271,6 +308,7 @@ function listaddresstransactions(){
 function showAddress(){
   var address = localStorage.getItem("pubaddr");
   $('.showaddr').append("XRK Address : ", address);
+  $('#modalshowaddr').append(address);
 }
 
 // code to generate qr code 
@@ -474,35 +512,19 @@ function filterTable() {
 
 
 
-function sendTransactionSubmit(){
 
-  var senderaddr = $('#sendRecipientaddress').val();
-  var xrkAmount =  $('#sendBTC').val();
-
-
-
-  if( senderaddr == ''){
-    // $('#sendRecipientaddress').css('border', '1px solid red');
-
-    $('#myModal2').modal('hide') ;
-
-  }
-
-   else{
-
-
-   }
-
-}
 
 
 function checkRecAddressFilled() {
   var inputVal = document.getElementById("sendRecipientaddress");
     if (inputVal.value == "") {
         $('#sendRecipientaddress').css('border', '1px solid red');
+        $('#sendpopup').removeAttr('data-toggle');
+
     }
     else{
         $('#sendRecipientaddress').css('border', '1px solid green');
+        $("#sendpopup").attr("data-toggle", "modal");
     }
 }
 
@@ -510,9 +532,11 @@ function checkAmountFilled() {
   var inputVal = document.getElementById("sendBTC");
     if (inputVal.value == "") {
         $('#sendBTC').css('border', '1px solid red');
+         $('#sendpopup').removeAttr('data-toggle');
     }
     else{
         $('#sendBTC').css('border', '1px solid green');
+        $("#sendpopup").attr("data-toggle", "modal");
     }
 }
 

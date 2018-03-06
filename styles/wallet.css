@@ -28,6 +28,35 @@
 .qrcody{
 
 }
+span.xrk.out {
+    background: green;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    /* width: 50px; */
+    margin-left: 5px;
+    font-size: 12px;
+}
+span.xrk.in {
+    background: green;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    /* width: 50px; */
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+label#modalshowaddr {
+    color: #3f4453;
+    font-size: 13px;
+    font-weight: 400;
+}
+.optionalrecdata{
+  font-size: 13px;
+    font-weight: 600;
+    padding-top: 5px;
+}
 .hrcolor{
   border-top: 1px solid #da83cb;
 }
@@ -45,6 +74,9 @@
     width: auto;
     float: right;
     text-align: right;
+}
+.sendform{
+  width: 45%;
 }
 .showaddr{
       color: #3f4453;

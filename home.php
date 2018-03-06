@@ -29,259 +29,7 @@
 		<meta property="og:site_name" content="">
 		<meta property="og:url" content="">
 		<meta property="og:image" content="">
-		<style type="text/css">
-
-
-.tg-list {
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.tg-list-item {
-  margin: 0 2em;
-}
-
-#togglecont{
-	margin-top: 7px;
-	float: left;
-}
-#togglecontlabel{
-	   float: right;
-    margin-left: 13px;
-    margin-top: 7px;
-    font-size: 15px;
-}
-.tgl {
-  display: none;
-}
-.tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
-  background: none;
-}
-.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
-  background: none;
-}
-.tgl + .tgl-btn {
-  outline: 0;
-  display: block;
-  width: 4em;
-  height: 2em;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-.tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
-  position: relative;
-  display: block;
-  content: "";
-  width: 50%;
-  height: 100%;
-}
-.tgl + .tgl-btn:after {
-  left: 0;
-}
-.tgl + .tgl-btn:before {
-  display: none;
-}
-.tgl:checked + .tgl-btn:after {
-  left: 50%;
-}
-
-.tgl-light + .tgl-btn {
-  background: #f0f0f0;
-  border-radius: 2em;
-  padding: 2px;
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
-}
-.tgl-light + .tgl-btn:after {
-  border-radius: 50%;
-  background: #fff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-}
-.tgl-light:checked + .tgl-btn {
-  background: #a119b9;
-}
-
-.tgl-ios + .tgl-btn {
-  background: #fbfbfb;
-  border-radius: 2em;
-  padding: 2px;
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
-  border: 1px solid #e8eae9;
-}
-.tgl-ios + .tgl-btn:after {
-  border-radius: 2em;
-  background: #fbfbfb;
-  -webkit-transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
-  transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
-  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
-          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
-}
-.tgl-ios + .tgl-btn:hover:after {
-  will-change: padding;
-}
-.tgl-ios + .tgl-btn:active {
-  -webkit-box-shadow: inset 0 0 0 2em #e8eae9;
-          box-shadow: inset 0 0 0 2em #e8eae9;
-}
-.tgl-ios + .tgl-btn:active:after {
-  padding-right: .8em;
-}
-.tgl-ios:checked + .tgl-btn {
-  background: #86d993;
-}
-.tgl-ios:checked + .tgl-btn:active {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-.tgl-ios:checked + .tgl-btn:active:after {
-  margin-left: -.8em;
-}
-
-.tgl-skewed + .tgl-btn {
-  overflow: hidden;
-  -webkit-transform: skew(-10deg);
-          transform: skew(-10deg);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  font-family: sans-serif;
-  background: #888;
-}
-.tgl-skewed + .tgl-btn:after, .tgl-skewed + .tgl-btn:before {
-  -webkit-transform: skew(10deg);
-          transform: skew(10deg);
-  display: inline-block;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  line-height: 2em;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-}
-.tgl-skewed + .tgl-btn:after {
-  left: 100%;
-  content: attr(data-tg-on);
-}
-.tgl-skewed + .tgl-btn:before {
-  left: 0;
-  content: attr(data-tg-off);
-}
-.tgl-skewed + .tgl-btn:active {
-  background: #888;
-}
-.tgl-skewed + .tgl-btn:active:before {
-  left: -10%;
-}
-.tgl-skewed:checked + .tgl-btn {
-  background: #86d993;
-}
-.tgl-skewed:checked + .tgl-btn:before {
-  left: -100%;
-}
-.tgl-skewed:checked + .tgl-btn:after {
-  left: 0;
-}
-.tgl-skewed:checked + .tgl-btn:active:after {
-  left: 10%;
-}
-
-.tgl-flat + .tgl-btn {
-  padding: 2px;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  background: #fff;
-  border: 4px solid #f2f2f2;
-  border-radius: 2em;
-}
-.tgl-flat + .tgl-btn:after {
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  background: #f2f2f2;
-  content: "";
-  border-radius: 1em;
-}
-.tgl-flat:checked + .tgl-btn {
-  border: 4px solid #7FC6A6;
-}
-.tgl-flat:checked + .tgl-btn:after {
-  left: 50%;
-  background: #7FC6A6;
-}
-
-.tgl-flip + .tgl-btn {
-  padding: 2px;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  font-family: sans-serif;
-  -webkit-perspective: 100px;
-          perspective: 100px;
-}
-.tgl-flip + .tgl-btn:after, .tgl-flip + .tgl-btn:before {
-  display: inline-block;
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  line-height: 2em;
-  font-weight: bold;
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  border-radius: 4px;
-}
-.tgl-flip + .tgl-btn:after {
-  content: attr(data-tg-on);
-  background: #02C66F;
-  -webkit-transform: rotateY(-180deg);
-          transform: rotateY(-180deg);
-}
-.tgl-flip + .tgl-btn:before {
-  background: #FF3A19;
-  content: attr(data-tg-off);
-}
-.tgl-flip + .tgl-btn:active:before {
-  -webkit-transform: rotateY(-20deg);
-          transform: rotateY(-20deg);
-}
-.tgl-flip:checked + .tgl-btn:before {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
-}
-.tgl-flip:checked + .tgl-btn:after {
-  -webkit-transform: rotateY(0);
-          transform: rotateY(0);
-  left: 0;
-  background: #7FC6A6;
-}
-.tgl-flip:checked + .tgl-btn:active:after {
-  -webkit-transform: rotateY(20deg);
-          transform: rotateY(20deg);
-}
-
-		</style>
+		
 		<script type='application/ld+json'>
 			{
 				"@context": "http://schema.org/",
@@ -420,7 +168,7 @@
 		<table class="table-a" id="tableone">
 			<tr>
 				<th>Transaction ID</th>
-				<th>Date and Time</th>
+				<th>Time</th>
 				
 				
 				<th>Transaction Amount</th>
@@ -495,8 +243,8 @@
 			</p>
 		</div>
 	</div> -->
-	<div  name="myForm" method="post" class="" id="pfform">
-		<h2>Send Payments</h2>
+	<div  name="myForm" method="post" class="sendform" id="pfform">
+		<!-- <h2 class="showaddr">Send Payments</h2> -->
 		<p class="showaddr fnone senderaddr">
 				Sender's
 		</p>
@@ -510,7 +258,7 @@
 			</p>
  -->
 			<p>
-				<label for="sendRecipientaddress">Enter Receipient Address after checking</label>
+				<label for="sendRecipientaddress">Enter Receipient Address </label>
 				<input type="text" id="sendRecipientaddress" name="sendRecipientaddress" placeholder="receipient address" onchange="checkRecAddressFilled();">
 				<span class="suffix"><i class="icon-qr"></i></span>
 		    </p>
@@ -523,13 +271,13 @@
 
 		</div>
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-4">
 				<hr class="hrcolor">
 			</div>
-			<div class="col-md-2 text-center">
+			<div class="col-md-4 text-center optionalrecdata">
 				<p class="theme-color theme-color"> Optional Record Data </p>
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-4">
 				<hr class="hrcolor">
 			</div>
 		</div>
@@ -587,11 +335,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Recordskeeper Wallet</h4>
+        <h4 class="modal-title">Authorize Transaction</h4>
       </div>
       <div class="modal-body standfont">
+      		
         	<p>
-				<label for="fab">Enter the private key</label>
+				<label for="fab" id="modalshowaddr">Enter the private key for XRK address : </label>
 				<input type="text" id="sendUSD" name="fab">
 				<span class="suffix">key</span>
 			</p>
@@ -624,6 +373,7 @@ crossorigin="anonymous"></script>
 <!-- <script src="javascript/app.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 <script src="javascript/wallet.js"></script>
+<script src="javascript/dashboard.js"></script>
 <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/js/tableexport.js"></script>
