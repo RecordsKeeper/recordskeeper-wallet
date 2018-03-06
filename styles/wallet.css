@@ -33,9 +33,13 @@ span.xrk.out {
     color: white;
     padding: 5px;
     border-radius: 5px;
-    /* width: 50px; */
+    width: 50px;
     margin-left: 5px;
     font-size: 12px;
+    text-align: right;
+    float: left;
+    text-align: center;
+    margin-right: 10px;
 }
 span.xrk.in {
     background: green;

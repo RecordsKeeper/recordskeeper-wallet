@@ -272,7 +272,7 @@ else{
 var str2 = x.result[i].txid;
 var str3 = str1.concat(str2);
 console.log(str3);
-               $('.table-a').append("<tr> <a href="+str3+"> <td id='childAddresses'>"+x.result[i].txid+"</td></a><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+x.result[i].balance['amount']+"<span class='xrk in'> in </span></td></tr>");
+               $('.table-a').append("<tr> <a href="+str3+"> <td id='childAddresses'>"+x.result[i].txid+"</td></a><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+x.result[i].balance['amount']+"<span class='xrk'>XRK</span> <span class='xrk in'> in </span></td></tr>");
             }
             else {
                 var date = new Date((x.result[i].time)*1000);
@@ -296,7 +296,7 @@ else{
 var str2 = x.result[i].txid;
 var str3 = str1.concat(str2);
 console.log(str3);
-               $('.table-a').append("<tr> <a href="+str3+"> <td id='childAddresses'>"+x.result[i].txid+"</td></a><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk out'> Out </span></td></tr>");
+               $('.table-a').append("<tr> <a href="+str3+"> <td id='childAddresses'>"+x.result[i].txid+"</td></a><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'>XRK</span><span class='xrk out'> Out </span></td></tr>");
             }
             // add a table row here
             }
