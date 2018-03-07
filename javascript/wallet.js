@@ -474,6 +474,7 @@ function sendrawtransaction(globe) {
 //        $('#txid').text(x.result);
         console.log ("txurl", txUrl+x.result);
         var aurl = txUrl+x.result;
+
         swal({
                     title:'Your transction has been processed.',
                    
@@ -482,6 +483,12 @@ function sendrawtransaction(globe) {
                     showConfirmButton: false,
                     timer: 15000
             });
+
+        $("#sendt").val('');
+        $("#sendRecipientaddress").val('');
+        $("#sendBTC").val('');
+        $("#hexdata").val('');
+        $("#keydata").val('');
         
     }
 });
@@ -518,7 +525,9 @@ console.log(count);
 
 
 
-
+$('#myModal2').on('hidden.bs.modal', function () {
+    $('#sendUSD').val('');
+})
 
 
 

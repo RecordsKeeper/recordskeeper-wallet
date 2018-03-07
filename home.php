@@ -285,13 +285,15 @@
 			</div>
 		</div>
 		<div class="optionaldiv">
-			<p>
-			<label for="fac">Enter the data to save</label>
-			<input type="text" name="senddata" value="" placeholder="Optional Data" id="hexdata">
-			</p>
+			
 			<p>
 				<label for="fad">Enter the key label for transaction</label>
 				<input type="text" name="sendd" value="" placeholder="Record Identifier Key" id="keydata">
+			</p>
+
+			<p>
+			<label for="fac">Enter the data to save</label>
+			<input type="text" name="senddata" value="" placeholder="Optional Data" id="hexdata">
 			</p>
 		</div>
 		<button id="sendpopup" data-toggle="modal" data-target="#myModal2" id="sendTransSubmit">Submit</button>

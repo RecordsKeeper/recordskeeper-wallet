@@ -41,18 +41,45 @@ function checkAmountFilled() {
     }
     else{
         $('#sendBTC').css('border', '1px solid green');
-        $("#sendpopup").attr("data-toggle", "modal");
+        // $("#sendpopup").attr("data-toggle", "modal");
     }
 }
 
 function checkBoth(){
+		if (inputVal.value == "") {
+        		$('#sendRecipientaddress').css('border', '1px solid red');
+       		 $('#sendpopup').removeAttr('data-toggle');
 
-	if (inputVal.value == "" && inputVal1.value == "" ) {
+   		 }
+
+		if (inputVal1.value == "") {
+         $('#sendBTC').css('border', '1px solid red');
+
+         $('#sendpopup').removeAttr('data-toggle');
+         return false;
+    	} 
+    	
+
+		if (inputVal.value == "" && inputVal1.value == "" ) {
 		 $('#sendRecipientaddress').css('border', '1px solid red');
 		 $('#sendBTC').css('border', '1px solid red');
 		 $("#sendpopup").removeAttr('data-toggle');
 		
 		}
+
+		if (inputVal.value != "" && inputVal1.value == "" ) {
+		 // $('#sendRecipientaddress').css('border', '1px solid red');
+		 $('#sendBTC').css('border', '1px solid red');
+		 $("#sendpopup").removeAttr('data-toggle');
+		
+		}
+		if (inputVal.value == "" && inputVal1.value != "" ) {
+		 $('#sendRecipientaddress').css('border', '1px solid red');
+		 // $('#sendBTC').css('border', '1px solid red');
+		 $("#sendpopup").removeAttr('data-toggle');
+		
+		}
+		
 
 		else{
 			 $("#sendpopup").attr("data-toggle", "modal");

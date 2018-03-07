@@ -669,7 +669,9 @@ if it's not present, don't show loader */
   border: 1px solid #a4aaba ;
 }
 
-
+.tabs-inner {
+  padding-bottom: 20px !important;
+}
 
 
 
@@ -688,7 +690,7 @@ if it's not present, don't show loader */
 }
 
 
-@media only screen and (max-width : 638px){
+@media only screen and (max-width : 770px){
     
     .loginputcontainer{
             width: 480px;
@@ -703,10 +705,16 @@ if it's not present, don't show loader */
     z-index: 2;
     margin-top: 40px;
   }
-.sendform {
-    width: 100%;
-}
+  .sendform {
+      width: 100%;
+  }
+  #content > *:last-child {
+    margin-bottom: 94px;
+  }
 
+  a.tabs-header.mobile-only{
+    width: 100%;
+  }
 .senderaddr {
     color: #3f4453 !important;
     font-size: 11px !important;
