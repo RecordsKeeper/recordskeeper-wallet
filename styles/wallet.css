@@ -669,6 +669,19 @@ if it's not present, don't show loader */
     .loginputcontainer{
             width: 480px;
     }
+    .showaddr{
+      font-size: 11px;
+    }
+   
+
+    #content {
+    position: relative;
+    z-index: 2;
+    margin-top: 40px;
+  }
+
+
+
 }
 @media only screen and (max-width : 458px){
     
@@ -683,6 +696,27 @@ if it's not present, don't show loader */
     #togglecontlabel{
         color: black;
     }
+     #nav {
+       right: 20px;
+    margin-top: 50px;
+    background: #54b2ce;
+    position: initial;
+    text-align: right;
+    }
+    #content {
+    position: relative;
+    z-index: 2;
+    margin-top: 40px;
+  }
+  #togglecont {
+    margin-top: 9px;
+    float: left;
+    margin-left: 36px;
+}
+
+
+
+
 }
 
 

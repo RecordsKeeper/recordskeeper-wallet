@@ -95,7 +95,7 @@
 		
 		
 		<article id="content">
-			<div class="showaddr"> </div>
+			<div > <p class="showaddr"></p> </div>
 			<div class="tabs-a">
 				<ul>
 					<li><a href="./">Transactions</a></li>
@@ -147,7 +147,9 @@
 						</ul>
 		<header class="double">
 
+
 			<h2>Transactions History</h2>
+
 			<ul class="list-inline">
 <!--
 				<li class="a"><span id="currentdate"> </span><a href="./"><i class="icon-filter"></i> Filters</a></li>
@@ -165,6 +167,7 @@
 				
 			</ul>
 		</header>
+		<hr class="theme-color"></hr>
 		<table class="table-a" id="tableone">
 			<tr>
 				<th>Transaction ID</th>
