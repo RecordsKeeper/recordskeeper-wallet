@@ -353,6 +353,7 @@
       </div>
       <div class="modal-footer">
         <button id="sendt">SEND</button>
+        <button type="button" class="close errorclose" data-dismiss="modal">CLOSE</button>
       </div>
     </div>
 
