@@ -11,6 +11,7 @@ $(document).ready(function(){
 
 $("#sendpopup").click(function(){
 	checkBoth();
+
 });
 
 
@@ -46,11 +47,14 @@ function checkAmountFilled() {
 }
 
 function checkBoth(){
+
+	
+
 		if (inputVal.value == "") {
 
         		$('#sendRecipientaddress').css('border', '1px solid red');
 
-        		
+
 
    		 }
 
@@ -84,6 +88,50 @@ function checkBoth(){
 		
 
 		else{
+
+
+				var netw = net;
+
+                var senderAddress = $('#sendRecipientaddress').val();
+
+                   $('#sendpopup').removeAttr('data-toggle');
+
+                    $.ajax({
+                     type: "POST",
+                     url: 'validateaddress.php',
+                     data:{net:netw, senderAddress: senderAddress},
+                     success:function(Response) {
+                         var x = Response;
+                         x = JSON.parse(x);
+
+                          //  x = x.result;
+
+
+                        CONSOLE_DEBUG && console.log('validate address result :', x);
+                       
+                        var  validateaddr =  x.result['isvalid'];
+                         
+                         CONSOLE_DEBUG && console.log('validate address result :', validateaddr);
+                         
+                          if( validateaddr == false){
+
+                             CONSOLE_DEBUG && console.log('You Entered an invalid Recipient Address');
+                             $('#modalshowaddr').text('You Entered You Entered an invalid Recipient Address');
+                              $('#modalshowaddr').css("color", "red");
+                          }else{
+
+                          	CONSOLE_DEBUG && console.log('You Entered valid Recipient Address');
+                          	 $('#modalshowaddr').css("color", "#3f4453");
+                          	 document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
+                          }
+                         
+                       
+                       
+
+                               
+                       }
+                   });
+
 			 $("#sendpopup").attr("data-toggle", "modal");
 		}
 
