@@ -60,8 +60,9 @@ $( document ).ready(function() { // document ready function starts here, so you 
            if(document.getElementById("currentdate") != null){
              document.getElementById("currentdate").innerHTML = Date();
            }
+
          $("#walletloginbtn").click(function(){
-    
+            var netw = net;
            pubaddr = $("#registered_adr").val();
            localStorage.setItem("pubaddr", pubaddr);
            net = localStorage.getItem("network");
@@ -69,8 +70,15 @@ $( document ).ready(function() { // document ready function starts here, so you 
            CONSOLE_DEBUG && console.log("wallet address " , pubaddr);
             if(pubaddr == '' ){
               
+               $("#registered_adr").css("border", "1px solid red");
+
             } else{
+
+
                 importAddress(net);
+
+
+                
                 
                 
             }
@@ -88,7 +96,7 @@ $( document ).ready(function() { // document ready function starts here, so you 
 // 
 function createkeypairs(net){
     var netw = net;
-     $.ajax({
+  $.ajax({
     type: "POST",
     url: 'createkeypairs.php',
     data:{net: netw},
@@ -171,7 +179,7 @@ function importAddress(netw) {
             x = JSON.parse(x);
         //  x = x.result;
             CONSOLE_DEBUG && console.log('importaddress result :', x);
-window.location.href = "home.php";
+            window.location.href = "home.php";
         }
         
     });

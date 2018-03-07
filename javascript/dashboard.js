@@ -47,8 +47,10 @@ function checkAmountFilled() {
 
 function checkBoth(){
 		if (inputVal.value == "") {
+
         		$('#sendRecipientaddress').css('border', '1px solid red');
-       		 $('#sendpopup').removeAttr('data-toggle');
+
+        		
 
    		 }
 

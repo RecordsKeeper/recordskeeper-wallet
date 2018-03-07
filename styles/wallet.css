@@ -64,10 +64,11 @@ span.xrk.in {
 label#modalshowaddr {
     color: #3f4453;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 600;
     width: 100%;
     overflow-x: scroll;
     cursor: pointer;
+    margin-bottom: 15px;
 }
 .optionalrecdata{
   font-size: 13px;
@@ -672,7 +673,9 @@ if it's not present, don't show loader */
 .tabs-inner {
   padding-bottom: 20px !important;
 }
-
+#logo {
+     left: 0px; 
+}
 
 
 
@@ -697,6 +700,9 @@ if it's not present, don't show loader */
     }
     .showaddr{
       font-size: 11px;
+    }
+    .sendform {
+    width: 100%;
     }
    
 
@@ -726,6 +732,11 @@ if it's not present, don't show loader */
 
 }
 @media only screen and (max-width : 458px){
+
+    #logo img {
+     width: 100%; 
+    margin-top: 7px;
+    }
     
     .loginputcontainer{
             width: 380px;
@@ -735,9 +746,7 @@ if it's not present, don't show loader */
     right: 0;
     top: 50px;
     }
-    #togglecontlabel{
-        color: black;
-    }
+   
      #nav {
        right: 20px;
     margin-top: 50px;
