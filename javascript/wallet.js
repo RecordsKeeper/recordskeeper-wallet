@@ -19,9 +19,11 @@ $( document ).ready(function() { // document ready function starts here, so you 
            var newAddressCount = 1; // set the newAddressCounter to 1
 
       
-
+            
 
             showAddress();
+
+            clearModalInputs();
 
             // checkRecAddressFilled();
 
@@ -519,15 +521,22 @@ function filterTable() {
 
 
 
-
 var count = $('#tableone').children('tr').length;
 console.log(count);
 
 
 
-$('#myModal2').on('hidden.bs.modal', function () {
-    $('#sendUSD').val('');
-})
+// $('#myModal2').on('hidden.bs.modal', function () {
+//     $('#sendUSD').val('');
+// })
+
+function clearModalInputs(){
+            $('#myModal2').on('hidden.bs.modal', function () {
+                $('#sendUSD').val('');
+            });
+}
+
+
 
 
 
