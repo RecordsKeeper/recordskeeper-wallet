@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	$("#myModal2").on("hidden.bs.modal", function () {
    
-		 $(".modal-body").empty();
+		 // $(".modal-body").empty();
 	});
 
 	 checkRecAddressFilled();
