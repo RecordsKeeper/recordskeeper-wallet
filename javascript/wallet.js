@@ -79,6 +79,7 @@ $( document ).ready(function() { // document ready function starts here, so you 
 }); //document ready function ends here 
     $("#createkeypairsbtn").click(function(){
         createkeypairs(net);
+         
        
         
     });
@@ -92,7 +93,7 @@ function createkeypairs(net){
     success:function(Response) {
         var x = Response;
         x = JSON.parse(x);
-    //  x = x.result;
+         //  x = x.result;
         
         CONSOLE_DEBUG && console.log('result in json format :', x);
         
@@ -123,35 +124,39 @@ function createkeypairs(net){
           dlAnchorElem.click();
 
          
-         (function () {
-            var textFile = null,
-              makeTextFile = function (text) {
-                var data = new Blob([text], {type: 'text/plain'});
+                 (function () {
+                    var textFile = null,
+                      makeTextFile = function (text) {
+                        var data = new Blob([text], {type: 'text/plain'});
 
-                // If we are replacing a previously generated file we need to
-                // manually revoke the object URL to avoid memory leaks.
-                if (textFile !== null) {
-                  window.URL.revokeObjectURL(textFile);
-                }
+                        // If we are replacing a previously generated file we need to
+                        // manually revoke the object URL to avoid memory leaks.
+                        if (textFile !== null) {
+                          window.URL.revokeObjectURL(textFile);
+                        }
 
-                textFile = window.URL.createObjectURL(data);
+                        textFile = window.URL.createObjectURL(data);
 
-                return textFile;
-              };
+                        return textFile;
+                      };
 
- 
-              var create = document.getElementById('create'),
-                textbox = document.getElementById(privkey1);
+         
+                      var create = document.getElementById('create'),
+                        textbox = document.getElementById(privkey1);
 
 
-                var link = document.getElementById('downloadlink');
-                link.href = makeTextFile('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_privatekey"'+":"+'"'+privkey1+'"'+'}');
-                link.style.display = 'block';
- 
-        })();
+                        var link = document.getElementById('downloadlink');
+                        link.href = makeTextFile('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_privatekey"'+":"+'"'+privkey1+'"'+'}');
+                        link.style.display = 'block';
+         
+                })();
+
+                // importAddress(net);
+      }
+  });
+
 }
-     });
-}
+
 function importAddress(netw) {
     var local =netw;
     var a = pubaddr;
@@ -252,50 +257,50 @@ function listaddresstransactions(){
             console.log(x, "list transaction result");
              for(var i= 0; i < x.result.length; i++) {
                 if (x.result[i].balance.amount >= 0){
-var date = new Date((x.result[i].time)*1000);
-var date1 = new Date();
-var diff = date1 - date;
-diff = diff/1000;
- diff = diff/60;
- diff = diff/60;
- var hours = Math.floor(diff % 24);  
- var days = Math.floor(diff/24);
-console.log(days);
-console.log(hours);
-console.log(x.result);
-if (local == "TestNetwork"){
-var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
-}
-else{
-   var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
-}
-var str2 = x.result[i].txid;
-var str3 = str1.concat(str2);
-console.log(str3);
-               $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
-            }
-            else {
                 var date = new Date((x.result[i].time)*1000);
                 var date1 = new Date();
-var diff = date1 - date;
-var diff = date1 - date;
-diff = diff/1000;
- diff = diff/60;
- diff = diff/60;
- var hours = Math.floor(diff % 24);  
- var days = Math.floor(diff/24);
-console.log(days);
-console.log(hours);
-console.log(x.result)
-if (local == "TestNetwork"){
-var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
-}
-else{
-   var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
-}
-var str2 = x.result[i].txid;
-var str3 = str1.concat(str2);
-console.log(str3);
+                var diff = date1 - date;
+                diff = diff/1000;
+                 diff = diff/60;
+                 diff = diff/60;
+                 var hours = Math.floor(diff % 24);  
+                 var days = Math.floor(diff/24);
+                console.log(days);
+                console.log(hours);
+                console.log(x.result);
+                if (local == "TestNetwork"){
+                var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
+                }
+                else{
+                   var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
+                }
+                var str2 = x.result[i].txid;
+                var str3 = str1.concat(str2);
+                console.log(str3);
+                               $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                            }
+                            else {
+                                var date = new Date((x.result[i].time)*1000);
+                                var date1 = new Date();
+                var diff = date1 - date;
+                var diff = date1 - date;
+                diff = diff/1000;
+                 diff = diff/60;
+                 diff = diff/60;
+                 var hours = Math.floor(diff % 24);  
+                 var days = Math.floor(diff/24);
+                console.log(days);
+                console.log(hours);
+                console.log(x.result)
+                if (local == "TestNetwork"){
+                var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
+                }
+                else{
+                   var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
+                }
+                var str2 = x.result[i].txid;
+                var str3 = str1.concat(str2);
+                console.log(str3);
                $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
             }
             // add a table row here
@@ -508,6 +513,8 @@ function filterTable() {
 
 
 
+var count = $('#tableone').children('tr').length;
+console.log(count);
 
 
 
@@ -515,30 +522,7 @@ function filterTable() {
 
 
 
-function checkRecAddressFilled() {
-  var inputVal = document.getElementById("sendRecipientaddress");
-    if (inputVal.value == "") {
-        $('#sendRecipientaddress').css('border', '1px solid red');
-        $('#sendpopup').removeAttr('data-toggle');
 
-    }
-    else{
-        $('#sendRecipientaddress').css('border', '1px solid green');
-        $("#sendpopup").attr("data-toggle", "modal");
-    }
-}
-
-function checkAmountFilled() {
-  var inputVal = document.getElementById("sendBTC");
-    if (inputVal.value == "") {
-        $('#sendBTC').css('border', '1px solid red');
-         $('#sendpopup').removeAttr('data-toggle');
-    }
-    else{
-        $('#sendBTC').css('border', '1px solid green');
-        $("#sendpopup").attr("data-toggle", "modal");
-    }
-}
 
 
 

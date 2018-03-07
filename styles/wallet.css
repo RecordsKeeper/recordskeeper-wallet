@@ -28,6 +28,10 @@
 .qrcody{
 
 }
+
+.hidden {
+    display: block !important;
+}
 span.xrk.out {
     background: #ce5454;
     color: white;
@@ -61,12 +65,20 @@ label#modalshowaddr {
     color: #3f4453;
     font-size: 13px;
     font-weight: 400;
+    width: 100%;
+    overflow-x: scroll;
+    cursor: pointer;
 }
 .optionalrecdata{
   font-size: 13px;
     font-weight: 600;
     padding-top: 5px;
 }
+h2.before-list-inline{
+      text-align: left;
+    width: 99% !important;
+}
+
 .hrcolor{
   border-top: 1px solid #da83cb;
 }
@@ -652,6 +664,18 @@ if it's not present, don't show loader */
 .width-a.hidden {
     display: none;
 }
+
+#sendRecipientaddress, #sendBTC{
+  border: 1px solid #a4aaba ;
+}
+
+
+
+
+
+
+
+
 /*some media queries here */
 
 @media only screen and (max-width: 900px){
@@ -679,7 +703,17 @@ if it's not present, don't show loader */
     z-index: 2;
     margin-top: 40px;
   }
+.sendform {
+    width: 100%;
+}
 
+.senderaddr {
+    color: #3f4453 !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    width: 100%;
+    overflow-x: scroll;
+}
 
 
 }
