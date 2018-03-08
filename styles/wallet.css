@@ -81,7 +81,9 @@ button.close.errorclose {
   color: #af4747;
   font-size: 14px;
 }
-
+.privatemodalcontainer{
+  position: relative;
+}
 label#modalshowaddr {
     color: #3f4453;
     font-size: 13px;

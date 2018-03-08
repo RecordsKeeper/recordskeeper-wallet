@@ -349,31 +349,41 @@ function listaddresstransactions(){
                 var date1 = new Date();
                 var diff = date1 - date;
                 diff = diff/1000;
+                var seconds = Math.floor(diff % 60);
                  diff = diff/60;
+                 var minutes = Math.floor(diff % 60);
                  diff = diff/60;
                  var hours = Math.floor(diff % 24);  
                  var days = Math.floor(diff/24);
-                console.log(days);
-                console.log(hours);
-                console.log(x.result);
-                if (local == "TestNetwork"){
-                var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
-                }
-                else{
-                   var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
-                }
-                var str2 = x.result[i].txid;
-                var str3 = str1.concat(str2);
-                console.log(str3);
-                               $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
-                            }
-                            else {
-                                var date = new Date((x.result[i].time)*1000);
-                                var date1 = new Date();
+                 console.log(days);
+                 console.log(hours);
+                 console.log(x.result);
+                        if (local == "TestNetwork"){
+                        var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
+                        }
+                        else{
+                           var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
+                        }
+                        var str2 = x.result[i].txid;
+                        var str3 = str1.concat(str2);
+                        console.log(str3);
+
+                        if(hours != 0 && days != 0){
+                              $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                         }
+                         else{
+                             $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+minutes+"<span class='xrk'> minutes </span>"+seconds+"<span class='xrk'> seconds </span></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                         }
+                 }
+                else {
+                var date = new Date((x.result[i].time)*1000);
+                var date1 = new Date();
                 var diff = date1 - date;
                 var diff = date1 - date;
                 diff = diff/1000;
+                var seconds = Math.floor(diff % 60);
                  diff = diff/60;
+                 var minutes = Math.floor(diff % 60);
                  diff = diff/60;
                  var hours = Math.floor(diff % 24);  
                  var days = Math.floor(diff/24);
@@ -389,7 +399,12 @@ function listaddresstransactions(){
                 var str2 = x.result[i].txid;
                 var str3 = str1.concat(str2);
                 console.log(str3);
-               $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                if(hours != 0 && days != 0){
+                    $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours </span></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                 }
+                 else{
+                     $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td>"+minutes+"<span class='xrk'> minutes </span>"+seconds+"<span class='xrk'> seconds </span></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                 }
             }
             // add a table row here
             }

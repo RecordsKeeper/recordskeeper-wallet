@@ -349,7 +349,7 @@
       </div>
       <div class="modal-body standfont">
       		
-        	<p>
+        	<p class="privatemodalcontainer">
 				<label for="fab" id="modalshowaddr">Enter the private key for XRK address : </label>
 				<input type="password" id="sendUSD" name="fab">
 				<span class="suffix">key</span>
