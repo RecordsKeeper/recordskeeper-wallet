@@ -698,7 +698,7 @@ table { }
 	.form-a input { padding-right: 50px; }
 	.form-a .suffix { width: 41px; }
 	
-#root .tablet-hide, #root .mobile-only, .tabs-a > div > .hidden, .list-inline input,  #root .tabs-a .tabs-inner/*.toggle*/ { position: relative; left: 0; top: 0; }
+#root .tablet-hide, #root .mobile-only, .tabs-a > div > .hidden, .list-inline input,  #root .tabs-a .tabs-inner/*.toggle*/ { position: relative; left: 0; top: 0; width: 100%; }
 #root .tablet-only, #root .mobile-hide, .tabs-a > ul, .tabs-a .tabs-inner, .list-inline form a.toggle { position: absolute; left: -3000em; top: -3000em; bottom: inherit; right: inherit; }
 }
 @media only screen and (max-width: 37.5em) { /* 600 */

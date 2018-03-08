@@ -104,6 +104,17 @@ function createkeypairs(net){
         var x = Response;
         x = JSON.parse(x);
          //  x = x.result;
+         var y = x.error;
+         if(y != null){
+             swal({
+                     title:'Something went wrong! <br> Please try again!!!',
+                     type: 'error',
+                     confirmButtonClass: "btn-danger",
+                      confirmButtonText: "OK!",
+                     timer: 15000
+             });
+         }
+         else{
         
         CONSOLE_DEBUG && console.log('result in json format :', x);
         
@@ -163,6 +174,7 @@ function createkeypairs(net){
 
                 // importAddress(net);
       }
+    }
   });
 
 }
@@ -177,11 +189,25 @@ function importAddress(netw) {
         success:function(Response) {
             var x = Response;
             x = JSON.parse(x);
+
+            var y = x.error;
+           console.log("value here : ",y);
+           if (y != null){
+                swal({
+                   title:'Invalid Address!',
+                   type: 'error',
+                   confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Close!",
+                   timer: 15000
+                });
+           }
+           else{
         //  x = x.result;
             CONSOLE_DEBUG && console.log('importaddress result :', x);
             window.location.href = "home.php";
         }
         
+      }  
     });
 }
 function getaddressbalances() {
