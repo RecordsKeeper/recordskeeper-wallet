@@ -1,15 +1,15 @@
 $(document).ready(function(){
 
-	$("#myModal2").on("hidden.bs.modal", function () {
-   
-		 // $(".modal-body").empty();
-	});
+			$("#myModal2").on("hidden.bs.modal", function () {   // this function is for when modal box closes what should be done.
+		   
+				 // $(".modal-body").empty();
+			});
 
-	 		checkRecAddressFilled();
+	 		checkRecAddressFilled();  //function to validate address
 
-            checkAmountFilled();
+            checkAmountFilled();		//function to check Amount
 
-            $("#transactid").click(function(){
+            $("#transactid").click(function(){						
             		var xrkBalance = $('#liBalanceBTC').val();
             		CONSOLE_DEBUG && console.log( 'xrkBalance', xrkBalance);
 			     
