@@ -696,7 +696,9 @@ if it's not present, don't show loader */
 #logo {
     margin-left: 20px;
 }
-
+#sendt{
+  float: left;
+}
 
 
 

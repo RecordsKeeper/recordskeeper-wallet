@@ -115,34 +115,34 @@ function createkeypairs(net){
              });
          }
          else{
-        
-        CONSOLE_DEBUG && console.log('result in json format :', x);
-        
-        pubaddr = x.result[0].address;   //public address here 
-        
-        privkey1 = x.result[0].privkey;    // privkey here
-        
-        pubkey1    = x.result[0].pubkey;      // pubkey here
-        
-        CONSOLE_DEBUG && console.log('private key : ', privkey1);  
-        CONSOLE_DEBUG && console.log('public address :', pubaddr);
-        CONSOLE_DEBUG && console.log('public key :', pubkey1);
+              
+              CONSOLE_DEBUG && console.log('result in json format :', x);
+              
+              pubaddr = x.result[0].address;   //public address here 
+              
+              privkey1 = x.result[0].privkey;    // privkey here
+              
+              pubkey1    = x.result[0].pubkey;      // pubkey here
+              
+              CONSOLE_DEBUG && console.log('private key : ', privkey1);  
+              CONSOLE_DEBUG && console.log('public address :', pubaddr);
+              CONSOLE_DEBUG && console.log('public key :', pubkey1);
 
-       
-        
-        localStorage.setItem("pubaddr", pubaddr);
-        document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
-        document.getElementById('modalshowkey').innerHTML = 'Private Key : ' + privkey1;
-        
-         $("#registered_adr").val(pubaddr); //set the value to textbox automatically
-         $("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
+             
+              
+              localStorage.setItem("pubaddr", pubaddr);
+              document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
+              document.getElementById('modalshowkey').innerHTML = 'Private Key : ' + privkey1;
+              
+               $("#registered_adr").val(pubaddr); //set the value to textbox automatically
+               $("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
 
-          ///////////////
-         var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_privatekey"'+":"+'"'+privkey1+'"'+'}');
-          var dlAnchorElem = document.getElementById('downloadlink');
-          dlAnchorElem.setAttribute("href",     dataStr     );
-          dlAnchorElem.setAttribute("download", "Recordskeeper-wallet.json");
-          dlAnchorElem.click();
+                ///////////////
+               var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_privatekey"'+":"+'"'+privkey1+'"'+'}');
+                var dlAnchorElem = document.getElementById('downloadlink');
+                dlAnchorElem.setAttribute("href",     dataStr     );
+                dlAnchorElem.setAttribute("download", "Recordskeeper-wallet.json");
+                dlAnchorElem.click();
 
          
                  (function () {
@@ -173,7 +173,10 @@ function createkeypairs(net){
                 })();
 
                 // importAddress(net);
+
+                onCreateImportAddress(netw);
       }
+
     }
   });
 
@@ -210,6 +213,49 @@ function importAddress(netw) {
       }  
     });
 }
+
+// onCreateImportAddress function()
+// Params : netw
+// return : none 
+
+
+function onCreateImportAddress(netw) {
+    var local =netw;
+    var a = pubaddr;
+    $.ajax({
+       type: "POST",
+       url: 'importaddress.php',
+       data:({public: a, net: local}),
+        success:function(Response) {
+            var x = Response;
+            x = JSON.parse(x);
+
+            var y = x.error;
+           console.log("value here : ",y);
+           if (y != null){
+                swal({
+                   title:'Invalid Address!',
+                   type: 'error',
+                   confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Close!",
+                   timer: 15000
+                });
+           }
+           else{
+        //  x = x.result;
+            CONSOLE_DEBUG && console.log('onCreateimportaddress result :', x);
+            
+        }
+        
+      }  
+    });
+}
+
+
+
+
+
+
 function getaddressbalances() {
     var local =localStorage.getItem("network");;
     var a = localStorage.getItem("pubaddr");
@@ -451,8 +497,8 @@ function CopyToClipboard(){
         var d = toHex($('#hexdata').val());
         var e = $('#keydata').val();
         console.log(a, b, c, d);
-                createRawSendFrom(a, b, c, d, e);
-            });
+        createRawSendFrom(a, b, c, d, e);
+    });
 function createRawSendFrom(a, b, c, d, e) {
     var ca = localStorage.getItem("network");
     var aa = localStorage.getItem("pubaddr");;
@@ -466,13 +512,27 @@ function createRawSendFrom(a, b, c, d, e) {
        url: 'createrawsendfrom.php',
        data:{from: aa, key: ab, val: ac, net: ca, to: ad, amount: ae },
         success:function(Response) {
-            var x = Response;
-            x = JSON.parse(x);
-        //  x = x.result;
-         var globe = x.result;
-            CONSOLE_DEBUG && console.log('create raw send from:', globe);
-//            x.result[0].
-signrawtransaction(globe, af );
+             var x = Response;
+             x = JSON.parse(x);
+         //  x = x.result;
+
+            var y = x.error;
+           console.log(y);
+           if (y != null){
+              swal({
+                   title:'Data is too large for you current Address balance. <br> Kindly get more XRK or try with small data!',
+                   type: 'error',
+                   confirmButtonClass: "btn-danger",
+                    confirmButtonText: "OK!",
+                   timer: 15000
+             });
+           }
+           else{
+             var globe = x.result;
+             CONSOLE_DEBUG && console.log('create raw send from:', globe);
+
+             signrawtransaction(globe, af );
+           }
         }
     });
 }
@@ -487,11 +547,22 @@ function signrawtransaction(globe, af){
         success:function(Response) {
             var x = Response;
             x = JSON.parse(x);
-        //  x = x.result;
-        var globe = x.result.hex;
-            CONSOLE_DEBUG && console.log('sign raw:', globe);
-//            x.result[0].
-sendrawtransaction(globe);
+            var y = x.error;
+           if (y != null){
+              swal({
+                   title:'Private Key entered is Incorrect. Please try again!',
+                   type: 'error',
+                   confirmButtonClass: "btn-danger",
+                   confirmButtonText: "OK!",
+                   timer: 15000
+              });
+           }
+           else{
+             var globe = x.result.hex;
+             CONSOLE_DEBUG && console.log('sign raw:', globe);
+
+            sendrawtransaction(globe);
+           }
         }
     });
 }
