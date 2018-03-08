@@ -68,7 +68,9 @@
 		<div id="root">
 			<header id="top">
 				<p id="logo">
+					<a href="./">
 					<img src="images/logo.png">
+					</a>
 				</p>
 				<nav id="skip">
 					<ul>

@@ -22,9 +22,8 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 #root { overflow: hidden; position: relative; width: 100%; min-height: 100vh; padding: 61px 59px 0 79px; }
 	#top { position: fixed; left: 0; top: 0; right: 0; z-index: 9; height: 49px; background: #212739; }
 		#logo { position: absolute; left: 0; top: 0; bottom: 0;  margin: 0; }
-			#logo a { display: block; overflow: hidden; width: 100%; height: 100%; color: #fff; text-decoration: none; text-indent: -3000em; }
-			#root #logo a:before { content: "\e924"; margin-top: -16px; font-size: 28px; line-height: 28px; text-align: right; }
-			#root #logo a:before { background: -webkit-linear-gradient(#fff,#bababa); background: -o-linear-gradient(#fff,#bababa); background: -moz-linear-gradient(#fff,#bababa); background: linear-gradient(#fff,#bababa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+			
+			
 		#skip { position: fixed; top: 0; left: -10000px; }
 			#skip a:focus, #skip a:active { display: block; position: absolute; left: 10000px; top: 0; z-index: 10001; width: 200px; margin: 15px 0 0 15px; padding: 4px 8px; background: #333; color: #fff; font-weight: 500; font-size: 1.1em; text-align: center; text-decoration: none; }
 		#nav { position: absolute;  top: 0; right: 57px; bottom: 0; }

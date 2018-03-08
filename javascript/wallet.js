@@ -265,6 +265,12 @@ function listaddresstransactions(){
             var x = JSON.parse(body);
              var date = new Date();
             console.log(x, "list transaction result");
+            if(x.result.length == 0){
+              CONSOLE_DEBUG &&  console.log("no Transactions on this address.");
+              $('#notransaction').css("display", "block");
+              $('#tableone').css("display", "none");
+           }
+           else{
              for(var i= 0; i < x.result.length; i++) {
                 if (x.result[i].balance.amount >= 0){
                 var date = new Date((x.result[i].time)*1000);
@@ -315,6 +321,7 @@ function listaddresstransactions(){
             }
             // add a table row here
             }
+          }
              // add a table row here   
         }
     });

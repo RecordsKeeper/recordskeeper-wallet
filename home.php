@@ -62,7 +62,9 @@
 		<div id="root">
 			<header id="top">
 				<p id="logo">
+					<a href="./">
 					<img src="images/logo.png">
+					</a>
 				</p>
 				<nav id="skip">
 					<ul>
@@ -168,6 +170,9 @@
 			</ul>
 		</header>
 		<hr class="theme-color"></hr>
+		<div class="theme-color" id="notransaction">
+			<p class="errorcolor"> No Transaction yet.</p>
+		 </div>
 		<table class="table-a" id="tableone">
 			<tr>
 				<th>Transaction ID</th>
@@ -182,7 +187,7 @@
 	</div>
 	<div>
 		<h2>Public Address </h2>
-		<P class="pcolor">Address </P>
+		<!-- <P class="pcolor">Address </P> -->
         <P class="pcolor">Use this address to recieve payments.</P>
 		<div class="cols-a">
 			<div>
@@ -261,8 +266,8 @@
 			</p>
  -->
 			<p>
-				<label for="sendRecipientaddress">Enter Receipient Address </label>
-				<input type="text" id="sendRecipientaddress" name="sendRecipientaddress" placeholder="receipient address" onchange="checkRecAddressFilled();">
+				<label for="sendRecipientaddress">Enter Recipient Address </label>
+				<input type="text" id="sendRecipientaddress" name="sendRecipientaddress" placeholder="Recipient Address" onchange="checkRecAddressFilled();">
 				<span class="suffix"><i class="icon-qr"></i></span>
 		    </p>
 
@@ -287,16 +292,16 @@
 		<div class="optionaldiv">
 			
 			<p>
-				<label for="fad">Enter the key label for transaction</label>
+				<label for="fad">Enter the key label for Transaction</label>
 				<input type="text" name="sendd" value="" placeholder="Record Identifier Key" id="keydata">
 			</p>
 
 			<p>
-			<label for="fac">Enter the data to save</label>
+			<label for="fac">Enter the Data to save</label>
 			<input type="text" name="senddata" value="" placeholder="Optional Data" id="hexdata">
 			</p>
 		</div>
-		<button id="sendpopup" data-toggle="modal" data-target="#myModal2" id="sendTransSubmit">Submit</button>
+		<button id="sendpopup" data-toggle="modal"  id="sendTransSubmit">Submit</button>
 		
 		<p class="formerrorpara">
 			
@@ -353,6 +358,32 @@
       </div>
       <div class="modal-footer">
         <button id="sendt">SEND</button>
+        <button type="button" class="close errorclose" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+
+  </div>
+</div>     
+
+
+<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title errorcolor">Error !</h4>
+      </div>
+      <div class="modal-body standfont">
+      		
+        	<p class="errorcolor">
+				You Entered an invalid Recipient Address
+			</p>
+
+      </div>
+      <div class="modal-footer">
+        
         <button type="button" class="close errorclose" data-dismiss="modal">CLOSE</button>
       </div>
     </div>

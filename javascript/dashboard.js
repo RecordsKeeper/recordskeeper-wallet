@@ -120,26 +120,36 @@ function checkBoth(){
                           if( validateaddr == false){
 
                              CONSOLE_DEBUG && console.log('You Entered an invalid Recipient Address');
-                             $('#modalshowaddr').text('You Entered an invalid Recipient Address');
-                              $('#modalshowaddr').css("color", "#c13434");
-                              $('#sendUSD').css("display", "none");
-                              $('#sendt').css("display", "none");
-                               $('h4.modal-title').css("color", "#c13434");
-                              $('h4.modal-title').text('ERROR !');
-                           
+
+                             $('#myModal2').modal('hide');
+
+                              // $('#modalshowaddr').text('You Entered an invalid Recipient Address');
+                              // $('#modalshowaddr').css("color", "#c13434");
+                              // $('#sendUSD').css("display", "none");
+                              // $('#sendt').css("display", "none");
+                              //  $('h4.modal-title').css("color", "#c13434");
+                              // $('h4.modal-title').text('ERROR !');
+
+                              // $('#sendpopup').attr("data-target", "myModal3");
+
+                           $('#myModal1').modal('show');
 
 
 
                           }else{
 
+                          	  $('#myModal1').modal('hide');
+
                           	CONSOLE_DEBUG && console.log('You Entered valid Recipient Address');
-                          	 $('h4.modal-title').text('Authorize Transaction ');
-                          	 $('h4.modal-title').css("color", "#3f4453");
-                          	 $('#modalshowaddr').css("color", "#3f4453");
-                          	 $('#sendt').css("display", "block");
-                          	  $('#sendUSD').css("display", "block");
-                          	 $('#modalshowaddr').text('Public Address : '+ pubaddr);
-                          	 document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
+                          	 // $('h4.modal-title').text('Authorize Transaction ');
+                          	 // $('h4.modal-title').css("color", "#3f4453");
+                          	 // $('#modalshowaddr').css("color", "#3f4453");
+                          	 // $('#sendt').css("display", "block");
+                          	 //  $('#sendUSD').css("display", "block");
+                          	 // $('#modalshowaddr').text('Public Address : '+ pubaddr);
+                          	 // document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
+
+                          	 $('#myModal2').modal('show');
 
                           }
                          

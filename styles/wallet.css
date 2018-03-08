@@ -70,6 +70,15 @@ button.close.errorclose {
     text-transform: lowercase;
     -webkit-font-smoothing: unset;
 }
+#notransaction{
+  display: none;
+      font-size: 13px;
+    font-weight: 600;
+    color: #af4747;
+}
+.errorcolor{
+  color: #af4747;
+}
 
 label#modalshowaddr {
     color: #3f4453;
