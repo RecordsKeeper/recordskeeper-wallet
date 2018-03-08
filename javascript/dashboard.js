@@ -10,7 +10,14 @@ $(document).ready(function(){
             checkAmountFilled();
 
             $("#transactid").click(function(){
+            		var xrkBalance = $('#liBalanceBTC').val();
+            		CONSOLE_DEBUG && console.log( 'xrkBalance', xrkBalance);
 			       getaddressbalances(net);
+			       if(xrkBalance != '0 XRK'){
+			       	$('#tableone').css("display", "table");
+			       	$('#notransaction').css("display", "none");
+			       }
+
 			          
 			});
 
