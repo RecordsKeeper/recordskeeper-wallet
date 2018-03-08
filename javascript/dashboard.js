@@ -5,9 +5,14 @@ $(document).ready(function(){
 		 // $(".modal-body").empty();
 	});
 
-	 checkRecAddressFilled();
+	 		checkRecAddressFilled();
 
             checkAmountFilled();
+
+            $("#transactid").click(function(){
+			       getaddressbalances(net);
+			          
+			});
 
 
 });

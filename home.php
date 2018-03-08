@@ -100,7 +100,7 @@
 			<div > <p class="showaddr"></p> </div>
 			<div class="tabs-a">
 				<ul>
-					<li><a href="./">Transactions</a></li>
+					<li><a href="./" id="transactid">Transactions</a></li>
 					<li><a href="./">Receive</a></li>
 					<li><a href="./">Send</a></li>
 					<!-- <li><a href="./">Sign &amp; Verify</a></li> -->
