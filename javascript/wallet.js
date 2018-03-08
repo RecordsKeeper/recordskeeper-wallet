@@ -583,6 +583,17 @@ function sendrawtransaction(globe) {
         var x = Response;
         x = JSON.parse(x);
     //  x = x.result;
+    var y = x.error;
+          if (y != null){
+          swal({
+                  title:'invalid Transaction! ',
+                  type: 'error',
+                  confirmButtonClass: "btn-danger",
+                  confirmButtonText: "OK!",
+                  timer: 15000
+          });
+          }
+          else{
         CONSOLE_DEBUG && console.log('result in json format :', x);
         console.log("transaction id result : ", x.result);
 //        $('#txid').text(x.result);
@@ -592,9 +603,10 @@ function sendrawtransaction(globe) {
         swal({
                     title:'Your transction has been processed.',
                    
-                    html: '<a href="'+aurl+'" target="_blank"> <b>Check Transaction status here:</b> '+x.result+'</a>',
+                    html: '<a href="'+aurl+'" target="_blank"> <b>Check Transaction status here:</b><br> '+x.result+'</a>',
                     type: 'success',
                     showConfirmButton: false,
+
                     timer: 15000
             });
 
@@ -603,7 +615,7 @@ function sendrawtransaction(globe) {
         $("#sendBTC").val('');
         $("#hexdata").val('');
         $("#keydata").val('');
-        
+       } 
     }
 });
 }

@@ -700,7 +700,14 @@ if it's not present, don't show loader */
   float: left;
 }
 
-
+.btn-danger {
+    color: #fff !important;
+    background-color: #d9534f !important;
+    border-color: #d43f3a !important;
+}
+.flright{
+  float: right !important;
+}
 
 /*some media queries here */
 

@@ -351,7 +351,7 @@
       		
         	<p>
 				<label for="fab" id="modalshowaddr">Enter the private key for XRK address : </label>
-				<input type="text" id="sendUSD" name="fab">
+				<input type="password" id="sendUSD" name="fab">
 				<span class="suffix">key</span>
 			</p>
 
