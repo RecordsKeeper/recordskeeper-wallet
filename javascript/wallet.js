@@ -586,7 +586,7 @@ function sendrawtransaction(globe) {
     var y = x.error;
           if (y != null){
           swal({
-                  title:'invalid Transaction! ',
+                  title:'Invalid Transaction! ',
                   type: 'error',
                   confirmButtonClass: "btn-danger",
                   confirmButtonText: "OK!",

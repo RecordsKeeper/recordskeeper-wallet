@@ -12,9 +12,17 @@ $(document).ready(function(){
             $("#transactid").click(function(){
             		var xrkBalance = $('#liBalanceBTC').val();
             		CONSOLE_DEBUG && console.log( 'xrkBalance', xrkBalance);
-			       getaddressbalances(net);
+			     
 			       if(xrkBalance != '0 XRK'){
+
+			       	 if($("#tableone").length > 0){
+			       	 	$("#tableone").empty();
+			       	 	 getaddressbalances(net);
+			       	 }
+
+			       	 
 			       	$('#tableone').css("display", "table");
+
 			       	$('#notransaction').css("display", "none");
 			       }
 
@@ -142,7 +150,7 @@ function checkBoth(){
                          
                           if( validateaddr == false){
 
-                             CONSOLE_DEBUG && console.log('You Entered an invalid Recipient Address');
+                             CONSOLE_DEBUG && console.log('You Entered an Invalid Recipient Address');
 
                              $('#myModal2').modal('hide');
 
@@ -215,20 +223,10 @@ function checkBoth(){
                          
                           if( validateaddr == false){
 
-                             CONSOLE_DEBUG && console.log('You Entered an invalid Recipient Address');
+                             CONSOLE_DEBUG && console.log('You Entered an Invalid Recipient Address');
 
                              $('#myModal2').modal('hide');
-
-                              // $('#modalshowaddr').text('You Entered an invalid Recipient Address');
-                              // $('#modalshowaddr').css("color", "#c13434");
-                              // $('#sendUSD').css("display", "none");
-                              // $('#sendt').css("display", "none");
-                              //  $('h4.modal-title').css("color", "#c13434");
-                              // $('h4.modal-title').text('ERROR !');
-
-                              // $('#sendpopup').attr("data-target", "myModal3");
-
-                           $('#myModal1').modal('show');
+                         	  $('#myModal1').modal('show');
 
 
 
@@ -237,13 +235,7 @@ function checkBoth(){
                           	  $('#myModal1').modal('hide');
 
                           	CONSOLE_DEBUG && console.log('You Entered valid Recipient Address');
-                          	 // $('h4.modal-title').text('Authorize Transaction ');
-                          	 // $('h4.modal-title').css("color", "#3f4453");
-                          	 // $('#modalshowaddr').css("color", "#3f4453");
-                          	 // $('#sendt').css("display", "block");
-                          	 //  $('#sendUSD').css("display", "block");
-                          	 // $('#modalshowaddr').text('Public Address : '+ pubaddr);
-                          	 // document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
+                         
 
                           	 $('#myModal2').modal('show');
 

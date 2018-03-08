@@ -79,6 +79,7 @@ button.close.errorclose {
 }
 .errorcolor{
   color: #af4747;
+  font-size: 14px;
 }
 
 label#modalshowaddr {

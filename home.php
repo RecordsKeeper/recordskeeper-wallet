@@ -97,7 +97,7 @@
 		
 		
 		<article id="content">
-			<div > <p class="showaddr"></p> </div>
+			<div class="container"> <p class="showaddr"></p> </div>
 			<div class="tabs-a">
 				<ul>
 					<li><a href="./" id="transactid">Transactions</a></li>
