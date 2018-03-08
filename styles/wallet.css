@@ -70,6 +70,7 @@ button.close.errorclose {
     text-transform: lowercase;
     -webkit-font-smoothing: unset;
 }
+
 #notransaction{
   display: none;
       font-size: 13px;
@@ -693,9 +694,8 @@ if it's not present, don't show loader */
   padding-bottom: 20px !important;
 }
 #logo {
-     left: 0px; 
+    margin-left: 20px;
 }
-
 
 
 
@@ -756,6 +756,11 @@ if it's not present, don't show loader */
      width: 100%; 
     margin-top: 7px;
     }
+
+    #logo{
+      width: 275px;
+    margin: 0 auto;
+}
     
     .loginputcontainer{
             width: 380px;
@@ -768,7 +773,7 @@ if it's not present, don't show loader */
    
      #nav {
        right: 20px;
-    margin-top: 50px;
+    margin-top: 10px;
     background: #54b2ce;
     position: initial;
     text-align: right;
@@ -784,7 +789,7 @@ if it's not present, don't show loader */
     margin-left: 36px;
 }
 
-
+#nav > ul {  padding: 0px 0 0; margin-right: 22px; }
 
 
 }

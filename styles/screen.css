@@ -21,13 +21,13 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 /*! Layout --------- */
 #root { overflow: hidden; position: relative; width: 100%; min-height: 100vh; padding: 61px 59px 0 79px; }
 	#top { position: fixed; left: 0; top: 0; right: 0; z-index: 9; height: 49px; background: #212739; }
-		#logo { position: absolute; left: 0; top: 0; bottom: 0;  margin: 0; }
+		/*#logo { position: absolute; left: 0; top: 0; bottom: 0;  margin: 0; }*/
 			
 			
 		#skip { position: fixed; top: 0; left: -10000px; }
 			#skip a:focus, #skip a:active { display: block; position: absolute; left: 10000px; top: 0; z-index: 10001; width: 200px; margin: 15px 0 0 15px; padding: 4px 8px; background: #333; color: #fff; font-weight: 500; font-size: 1.1em; text-align: center; text-decoration: none; }
 		#nav { position: absolute;  top: 0; right: 57px; bottom: 0; }
-			#nav > ul { float: right; list-style: none; margin: 0; padding: 9px 0 0; }
+			#nav > ul { float: right; list-style: none; margin: 0; padding: 9px 0 0; margin-right: 22px; }
 				#nav > ul > li { position: relative; float: left; margin: 0 35px 0 0; padding: 0 0 14px; font-size: 1.4em; }
 					#nav > ul > li > a { display: block; position: relative; z-index: 2; color: #a4aaba; line-height: 31px; }
 					#nav > ul > li > a i { display: block; float: left; margin: 0 8px 0 0; font-size: 19px; line-height: 31px; }
@@ -51,7 +51,7 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 				#nav > ul > li > ul li.a { padding: 22px 28px 25px; font-size: 13px; text-align: center; }
 					#nav > ul > li > ul li.a a { padding: 5px; border-radius: 15px; border: 1px dashed #a4aaba; color: #a4aaba; }
 					#root #nav > ul > li > ul li.a a:after { content: "\e904"; left: 12px; width: auto; color: #a118b9; font-size: 8px; }
-			#nav > ul:first-child { float: left; }
+			/*#nav > ul:first-child { float: left; }*/
 				#nav > ul:first-child > li { font-size: 1.6em; }
 				#nav > ul:first-child > li:before { content: ""; display: block; position: absolute; left: 0; top: 13px; width: 8px; height: 8px; border-radius: 8px; background: #3bdbd2; }
 				#nav > ul:first-child > li > a { padding-left: 16px; }
