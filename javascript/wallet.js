@@ -9,6 +9,7 @@ var privkey1;
 var  pubaddr;
 var pubkey1;
 var net = localStorage.getItem("network");
+var Bal ;
  
 $( document ).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
          
@@ -268,6 +269,8 @@ function getaddressbalances() {
             x = JSON.parse(x);
         //  x = x.result;
             CONSOLE_DEBUG && console.log('getaddressbalance result :', x);
+
+            Bal = x.result[0].qty;
             
             $("#liBalanceBTC").text(x.result[0].qty+" XRK"); 
             listaddresstransactions();
@@ -558,7 +561,10 @@ function CopyToClipboard(){
         console.log(a, b, c, d);
         createRawSendFrom(a, b, c, d, e);
     });
-function createRawSendFrom(a, b, c, d, e) {
+
+   
+
+    function createRawSendFrom(a, b, c, d, e) {
     var ca = localStorage.getItem("network");
     var aa = localStorage.getItem("pubaddr");;
     var ab = e;
@@ -574,7 +580,7 @@ function createRawSendFrom(a, b, c, d, e) {
              var x = Response;
              x = JSON.parse(x);
          //  x = x.result;
-
+            $('#myModal2').modal('hide');
             var y = x.error;
            console.log(y);
            if (y != null){

@@ -102,13 +102,15 @@ button.close.errorclose {
 .red-tooltip + .tooltip > .tooltip-inner {background-color: #f00;}
 
 label#modalshowaddr {
-    color: #3f4453;
+        color: #3f4453;
     font-size: 13px;
     font-weight: 600;
     width: 100%;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     cursor: pointer;
     margin-bottom: 15px;
+    word-wrap: break-word;
+    
 }
 .optionalrecdata{
   font-size: 13px;

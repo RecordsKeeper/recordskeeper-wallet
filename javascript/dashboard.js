@@ -33,7 +33,29 @@ $(document).ready(function(){
 });
 
 $("#sendpopup").click(function(){
-	checkBoth();
+
+	var sendamount = $('#sendBTC').val();
+    if(Bal <  sendamount){
+
+
+    	 $('#myModal2').modal('hide');
+    		
+         swal({
+                   title:'Insufficient Funds ! ',
+                   type: 'error',
+                   confirmButtonClass: "btn-danger",
+                    confirmButtonText: "OK!",
+                   timer: 15000
+             });
+
+
+    }
+    else{
+    	checkBoth();
+    }
+	
+
+
 
 });
 
