@@ -28,6 +28,20 @@
 .qrcody{
 
 }
+#modalshowkey{
+  word-wrap: break-word;
+}
+i.fas.fa-dot-circle.themecolor.maright10 {
+    margin-right: 10px;
+}
+#downloadlink{
+  font-size: 15px;
+}
+#createKeyCloseBtn{
+  background: #22283a;
+    color: white;
+    border: none;
+}
 
 .hidden {
     display: block !important;

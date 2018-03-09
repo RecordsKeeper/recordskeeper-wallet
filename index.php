@@ -157,7 +157,7 @@
 <!--         <button id="create">Create file</button> <a download="Privkey.txt" id="downloadlink" >Download</a>-->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
       </div>
     </div>
 

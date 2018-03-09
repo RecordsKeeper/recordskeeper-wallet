@@ -16,7 +16,7 @@ $(document).ready(function(){
 			       if(xrkBalance != '0 XRK'){
 
 			       	 if($("#tableone").length > 0){
-			       	 	$("#tableone").empty();
+			       	 	$("#tableone").find("tr:gt(0)").remove();
 			       	 	 getaddressbalances(net);
 			       	 }
 
