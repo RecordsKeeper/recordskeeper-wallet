@@ -175,7 +175,7 @@ function createkeypairs(net){
                $("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
 
                 ///////////////
-               var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_privatekey"'+":"+'"'+privkey1+'"'+'}');
+               var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
                 var dlAnchorElem = document.getElementById('downloadlink');
                 dlAnchorElem.setAttribute("href",     dataStr     );
 
@@ -214,7 +214,7 @@ function createkeypairs(net){
 
 
                         var link = document.getElementById('downloadlink');
-                        link.href = makeTextFile('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_privatekey"'+":"+'"'+privkey1+'"'+'}');
+                        link.href = makeTextFile('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
                         link.style.display = 'block';
          
                 })();
