@@ -758,6 +758,16 @@ if it's not present, don't show loader */
     #top > .menu{
         display: none;
     }
+      #footer {
+    /* position: absolute; */
+    z-index: 1;
+    padding: 0 0 0 20px;
+    bottom: -50px;
+    font-size: 12px;
+    margin-top: 50px;
+}
+
+
 }
 
 

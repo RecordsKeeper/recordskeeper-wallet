@@ -107,10 +107,11 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 	#content { position: relative; z-index: 2; }
 		#content > *:last-child { margin-bottom: 18px; }
         #footer {
-        position: absolute;
-        z-index: 1;
-        padding: 0 0 0 20px;
-        bottom: 0%;
+         z-index: 1;
+    padding: 0 0 0 20px;
+    bottom: -50px;
+    font-size: 12px;
+    margin-top: 140px;
         }
 		#footer ul { overflow: hidden; list-style: none; margin-right: -20px; padding: 0; }
 			#footer ul li { position: relative; float: left; margin: 0 16px 0 0; }
