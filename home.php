@@ -86,7 +86,7 @@
     					    <label class="tgl-btn" for="cb1"></label>
 						</div>
 						<span >
-							<label id="togglecontlabel">TestNetwork</label>
+							<label id="togglecontlabel">MainNetwork</label>
 						</span>
 						 
 					
@@ -97,7 +97,15 @@
 		
 		
 		<article id="content">
-			<div class="container"> <p class="showaddr"></p> </div>
+			<div class="container">
+			   <p class="text-right walletpngcont">
+			   		<img src="images/wallet.png" class="walletpng">
+			   		<p class="text-right">
+			   			<a href="./"><span class="walletSpan">Create / Import Wallet</span></a>
+			   		</p>
+			   </p> 
+			   <p class="showaddr"></p> 
+			</div>
 			<div class="tabs-a">
 				<ul>
 					<li><a href="./" id="transactid">Transactions</a></li>
@@ -116,36 +124,7 @@
 								</ul>
 								
 							</li>
-<!--
-							<li>
-								<span>Income</span>
-								<ul>
-									<li id="liIncomeBTC">8.1966585 XRK</li>
-									<li id="liIncomeUSD">$ 65,789.63</li>
-								</ul>
-								
-							</li>
--->
-<!--
-							<li>
-								<span>Expenses</span>
-								<ul>
-									<li id="liExpensesBTC">6.1966585 XRK</li>
-									<li id="liExpensesUSD">$ 41396.11</li>
-								</ul>
-								
-							</li>
--->
-<!--
-							<li>
-								<span>Rate</span>
-								<ul>
-									<li>1.00 XRK</li>
-									<li id="liCurrentBTCRate">$ 5,572.36</li>
-								</ul>
-								
-							</li>
--->
+
 						</ul>
 		<header class="double">
 
@@ -153,18 +132,7 @@
 			<h2>Transactions History</h2>
 
 			<ul class="list-inline">
-<!--
-				<li class="a"><span id="currentdate"> </span><a href="./"><i class="icon-filter"></i> Filters</a></li>
-				<li>
-					<form action="./" method="post">
-						<p>
-							<label for="lia">Search</label>
-							<input type="text" id="lia" name="lia" required  onkeyup="filterTable()">
-							<button type="submit">Submit</button>
-						</p>
-					</form>
-				</li>
--->
+
 				<li><a ><i class="icon-csv" id="export"></i> <span class="hidden">Download CSV</span></a></li>
 				
 			</ul>

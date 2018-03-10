@@ -81,25 +81,18 @@
 				</nav>
 				<nav id="nav">
 					<ul>
-						<!-- <li class="sub"><a accesskey="1" href="./">Tosh-2 <span>(Switch Device)</span></a> <em>(1)</em>
-						<ul>
-							<li><a href="./">Toshendra</a></li>
-							<li class="active"><a href="./">Tosh-2</a></li>
-							<li class="a"><a href="./">Add Device</a></li>
-						</ul> -->
+						
 						<div id="togglecont">
 							<input class="tgl tgl-light" id="cb1" type="checkbox"/>
     					    <label class="tgl-btn" for="cb1"></label>
 						</div>
 						<span >
-							<label id="togglecontlabel">TestNetwork</label>
-						</span>
-						
+							<label id="togglecontlabel">Mainnet</label>
+						</span>		
 					
-				</ul>
-				
-			</nav>
-		</header>
+				   </ul>
+			   </nav>
+		    </header>
 		
 		
 		<article id="content">

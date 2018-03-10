@@ -10,7 +10,10 @@ var  pubaddr;
 var pubkey1;
 var net = localStorage.getItem("network");
 var Bal ;
- 
+pubaddr =localStorage.getItem("pubaddr");
+var mainNetAddr;
+var testNetAddr;
+
 $( document ).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
          
            // Animate loader off screen
@@ -19,7 +22,7 @@ $( document ).ready(function() { // document ready function starts here, so you 
           
            var newAddressCount = 1; // set the newAddressCounter to 1
 
-      
+            
             
 
             showAddress();
@@ -30,22 +33,51 @@ $( document ).ready(function() { // document ready function starts here, so you 
 
             // checkAmountFilled();
 
+          
+
             recieve();
             if(net == "MainNetwork"){
                   $('#top').css('background', '#22283a');
                   $('#top').css('color', '#ffffff');
                   $('.tgl-light').prop('checked', true);
-                 
+
+                  
+
+                   
                    $('#togglecontlabel').text('Main Network');
+                   $('nav#nav').css('background', '#22283a');
+
+                   $('#walletloginbtn').click(function(){
+
+                          mainNetAddr = $('#registered_adr').val() ;
+                          localStorage.setItem("mainNetAddr", mainNetAddr);
+                   });
+
+                      mainNetAddr = localStorage.getItem("mainNetAddr");
+                     $('#registered_adr').val(mainNetAddr);
             }
            else if(net == "TestNetwork"){
 
                 $('#top').css('background', '#54b2ce');
                 $('#togglecontlabel').text('Test Network');
+                $('button').addClass('testnetColor');
+                $('nav#nav').css('background', 'rgb(84, 178, 206)');
+
+                $('#walletloginbtn').click(function(){
+
+                          testNetAddr = $('#registered_adr').val() ;
+                          localStorage.setItem("testNetAddr", testNetAddr);
+                   });
+                 testNetAddr = localStorage.getItem("testNetAddr");
+                     $('#registered_adr').val(testNetAddr);
            }
            else{
-               net == "TestNetwork";
-               localStorage.setItem("network", "TestNetwork");
+               net == "MainNetwork";
+               localStorage.setItem("network", "MainNetwork");
+               mainNetAddr = $('#registered_adr').val() ;
+
+
+               mainNetAddr = localStorage.setItem("mainNetAddr", mainNetAddr);
            }
 //            generateQRcode();
            //listwallettransactions(); // call listwallettransactions() here which is mentioned down below
@@ -182,6 +214,8 @@ function createkeypairs(net){
   });
 
 }
+
+
 
 function importAddress(netw) {
     var local =netw;
@@ -339,6 +373,8 @@ function listaddresstransactions(){
        data:({public: a, net: local}),
         success: function(body){
             var x = JSON.parse(body);
+           
+
              var date = new Date();
             console.log(x, "list transaction result");
             if(x.result.length == 0){
@@ -526,16 +562,22 @@ var  newAddressCount = 0;
                 $('#top').css('background', '#54b2ce');
                  $('#togglecontlabel').text('Test Network');
                  window.location.href = "index.php";
+                 $('button').addClass('testnetColor');
+                  $('nav#nav').css('background', 'rgb(84, 178, 206)');
               
             }
             else
             {
                 net = "main";
                localStorage.setItem("network","MainNetwork");
-                
+
+             
+                  $('#registered_adr').val(pubaddr);
+
                  $('#top').css('background', '#22283a');
                   $('#top').css('color', '#ffffff');
-                 
+                   $('nav#nav').css('background', '#22283a');
+              
                    $('#togglecontlabel').text('Main Network');
                    window.location.href = "index.php";
             }

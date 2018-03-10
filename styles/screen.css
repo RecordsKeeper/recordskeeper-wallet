@@ -110,7 +110,7 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
         position: absolute;
         z-index: 1;
         padding: 0 0 0 20px;
-        bottom: 2%;
+        bottom: 0%;
         }
 		#footer ul { overflow: hidden; list-style: none; margin-right: -20px; padding: 0; }
 			#footer ul li { position: relative; float: left; margin: 0 16px 0 0; }
