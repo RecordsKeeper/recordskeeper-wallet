@@ -22,6 +22,9 @@
     width: 30%;
     float: left;
 }
+.mtop34{
+  margin-top: 9px;
+}
 button.close.testnetColor {
     background: none !important;
 }
@@ -32,8 +35,10 @@ button.close.testnetColor {
       background: #339ab9 !important;
 }
 
-.walletpng{
-  width: 50px;
+.walletpng {
+    width: 25px;
+    float: right;
+    margin-right: 10px;
 }
 .walletpngcont{
   margin-bottom: 0px;

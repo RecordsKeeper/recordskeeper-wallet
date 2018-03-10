@@ -98,13 +98,26 @@
 		
 		<article id="content">
 			<div class="container">
-			   <p class="text-right walletpngcont">
+			   <!-- <p class="text-right walletpngcont">
 			   		<img src="images/wallet.png" class="walletpng">
 			   		<p class="text-right">
 			   			<a href="./"><span class="walletSpan">Create / Import Wallet</span></a>
 			   		</p>
-			   </p> 
-			   <p class="showaddr"></p> 
+			   		 
+			   </p>  -->
+			   <div class="row">
+			   		<div class="col-md-12 col-sm-12"><span class="showaddr mtop34"></span><span><a href="./">
+				   				<img src="images/wallet.png" class="walletpng" data-toggle="tooltip" title="Create / Import Wallet">
+				   			</a></span> </div>
+			   		<div class="col-md-1 col-sm-12">
+			   			<p class="text-right walletpngcont">
+			   				
+				   		<p class="text-right">
+				   			<!-- <a href="./"><span class="walletSpan">Create / Import Wallet</span></a> -->
+				   		</p>
+			   		</div>
+			   </div>
+			  
 			</div>
 			<div class="tabs-a">
 				<ul>
