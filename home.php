@@ -307,7 +307,7 @@
 
 <footer id="footer">
 <ul>
-<li>Copyright RecordsKeeper @<span class="date">2018</span></li>
+<li>&copy; RecordsKeeper @<span class="date">2018</span></li>
 <li><a href="./" target="_blank">Terms</a></li>
 <li><a href="./" target="_blank">Privacy Policy</a></li>
 <li><a href="http://explorer.recordskeeper.co/" target="_blank">Mainnet Explorer</a></li>
