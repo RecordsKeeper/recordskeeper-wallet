@@ -74,10 +74,14 @@ $( document ).ready(function() { // document ready function starts here, so you 
            else{
                net == "MainNetwork";
                localStorage.setItem("network", "MainNetwork");
-               mainNetAddr = $('#registered_adr').val() ;
+              $('#walletloginbtn').click(function(){
 
+                          mainNetAddr = $('#registered_adr').val() ;
+                          localStorage.setItem("mainNetAddr", mainNetAddr);
+                   });
 
-               mainNetAddr = localStorage.setItem("mainNetAddr", mainNetAddr);
+                      mainNetAddr = localStorage.getItem("mainNetAddr");
+                     $('#registered_adr').val(mainNetAddr);
            }
 //            generateQRcode();
            //listwallettransactions(); // call listwallettransactions() here which is mentioned down below
