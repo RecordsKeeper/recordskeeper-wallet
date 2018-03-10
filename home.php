@@ -325,7 +325,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close " id="cancelBtn" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Authorize Transaction</h4>
       </div>
       <div class="modal-body standfont">
@@ -339,7 +339,7 @@
       </div>
       <div class="modal-footer">
         <button id="sendt">SEND</button>
-        <button type="button" class="close errorclose"  data-dismiss="modal">CLOSE</button>
+        <button type="button" class="close errorclose "  data-dismiss="modal">CANCEL</button>
       </div>
     </div>
 

@@ -25,7 +25,7 @@
 .mtop34{
   margin-top: 9px;
 }
-button.close.testnetColor {
+#cancelBtn {
     background: none !important;
 }
 /*#hexdata{

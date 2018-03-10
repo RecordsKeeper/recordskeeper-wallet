@@ -726,7 +726,9 @@ function sendrawtransaction(globe) {
                    
                     html: '<a href="'+aurl+'" target="_blank"> <b>Check Transaction status here:</b><br> '+x.result+'</a>',
                     type: 'success',
-                    showConfirmButton: false,
+                    showConfirmButton: true,
+                    confirmButtonClass: "btn-success",
+                     confirmButtonText: "OK!",
 
                     timer: 15000
             });
