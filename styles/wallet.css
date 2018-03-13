@@ -28,6 +28,9 @@
 #cancelBtn {
     background: none !important;
 }
+button.close.testnetColor {
+    background: white !important;
+}
 /*#hexdata{
   width: 85%;
 }*/
