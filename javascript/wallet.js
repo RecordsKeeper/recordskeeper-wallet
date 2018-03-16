@@ -355,10 +355,11 @@ function listaddresstransactions(){
        data:({public: a, net: local}),
         success: function(body){
             var x = JSON.parse(body);
-           
+          
 
              var date = new Date();
             console.log(x, "list transaction result");
+
             if(x.result.length == 0){
               CONSOLE_DEBUG &&  console.log("no Transactions on this address.");
               $('#notransaction').css("display", "block");
@@ -441,7 +442,7 @@ function listaddresstransactions(){
                 var str2 = x.result[i].txid;
                 var str3 = str1.concat(str2);
                 console.log(str3);
-                
+
                 if(days > 0){
                     if(hours > 0){
                         $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");

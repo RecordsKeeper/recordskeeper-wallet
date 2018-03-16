@@ -8,6 +8,8 @@ $(document).ready(function(){
       				 // $(".modal-body").empty();
       		   });
 
+             // $('#tableone').DataTable();
+
            console.log("net", net);
 
 	 		        checkRecAddressFilled();  //function to validate address

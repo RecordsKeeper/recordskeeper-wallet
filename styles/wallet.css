@@ -105,7 +105,9 @@ button.close.errorclose {
     text-transform: lowercase;
     -webkit-font-smoothing: unset;
 }
-
+select#maxRows {
+    width: 200px;
+}
 #notransaction{
   display: none;
       font-size: 13px;
