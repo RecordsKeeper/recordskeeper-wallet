@@ -1,13 +1,18 @@
+// var net = localStorage.getItem("network");
+
+
 $(document).ready(function(){
 
-			$("#myModal2").on("hidden.bs.modal", function () {   // this function is for when modal box closes what should be done.
-		   
-				 // $(".modal-body").empty();
-			});
+      			$("#myModal2").on("hidden.bs.modal", function () {   // this function is for when modal box closes what should be done.
+      		   
+      				 // $(".modal-body").empty();
+      		   });
 
-	 		checkRecAddressFilled();  //function to validate address
+           console.log("net", net);
 
-            checkAmountFilled();		//function to check Amount
+	 		        checkRecAddressFilled();  //function to validate address
+
+              checkAmountFilled();		//function to check Amount
 
             $("#transactid").click(function(){						
             		var xrkBalance = $('#liBalanceBTC').val();
@@ -31,6 +36,9 @@ $(document).ready(function(){
 
 
 });
+
+
+
 
 $("#sendpopup").click(function(){
 
@@ -59,11 +67,11 @@ $("#sendpopup").click(function(){
 
 });
 
-var  pubaddr = localStorage.getItem("pubaddr");
+  var  pubaddr = localStorage.getItem("pubaddr");
 
-var keyData = document.getElementById("keydata");
+  var keyData = document.getElementById("keydata");
 
-var hexData = document.getElementById("hexdata");
+  var hexData = document.getElementById("hexdata");
 
  var inputVal = document.getElementById("sendRecipientaddress");
 
@@ -156,7 +164,7 @@ function checkBoth(){
                     $.ajax({
                      type: "POST",
                      url: 'validateaddress.php',
-                     data:{net:netw, senderAddress: senderAddress},
+                     data:{net:net, senderAddress: senderAddress},
                      success:function(Response) {
                          var x = Response;
                          x = JSON.parse(x);
@@ -229,7 +237,7 @@ function checkBoth(){
                     $.ajax({
                      type: "POST",
                      url: 'validateaddress.php',
-                     data:{net:netw, senderAddress: senderAddress},
+                     data:{net:net, senderAddress: senderAddress},
                      success:function(Response) {
                          var x = Response;
                          x = JSON.parse(x);
@@ -278,3 +286,7 @@ function checkBoth(){
 		
 
 	}	
+
+
+
+

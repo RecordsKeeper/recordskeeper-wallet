@@ -98,7 +98,7 @@ span.xrk.in {
 button.close.errorclose {
     text-shadow: none;
     color: white;
-    background: black;
+    background: black !important;
     opacity: 9;
     font-size: 16px;
     padding: 8px;

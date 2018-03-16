@@ -1,9 +1,5 @@
-    /////////////////////////////
-   // Recordskeeper Wallet JS //
-  // Adarsha Jha             //
- // Toshblocks innovations  //
-/////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 var CONSOLE_DEBUG = true;
 var privkey1;
 var  pubaddr;
@@ -14,41 +10,29 @@ pubaddr =localStorage.getItem("pubaddr");
 var mainNetAddr;
 var testNetAddr;
 
+
+
+
 $( document ).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
          
            // Animate loader off screen
-           $(".se-pre-con").fadeOut("slow");  // fadeout the preloader
-           var Newwalletflag = 1; // SET the Newwalletflag to 1
-          
-           var newAddressCount = 1; // set the newAddressCounter to 1
 
-            
-            
+           $(".se-pre-con").fadeOut("slow");           // fadeout the preloader
+           var Newwalletflag = 1;                     //  SET the Newwalletflag to 1     
+           var newAddressCount = 1;                  //   set the newAddressCounter to 1
 
             showAddress();
 
             clearModalInputs();
-
-            // checkRecAddressFilled();
-
-            // checkAmountFilled();
-
-          
 
             recieve();
             if(net == "MainNetwork"){
                   $('#top').css('background', '#22283a');
                   $('#top').css('color', '#ffffff');
                   $('.tgl-light').prop('checked', true);
-
-                  
-
-                   
-                   $('#togglecontlabel').text('Main Network');
-                   $('nav#nav').css('background', '#22283a');
-
-                   $('#walletloginbtn').click(function(){
-
+                  $('#togglecontlabel').text('Main Network');
+                  $('nav#nav').css('background', '#22283a');
+                  $('#walletloginbtn').click(function(){
                           mainNetAddr = $('#registered_adr').val() ;
                           localStorage.setItem("mainNetAddr", mainNetAddr);
                    });
@@ -62,7 +46,6 @@ $( document ).ready(function() { // document ready function starts here, so you 
                 $('#togglecontlabel').text('Test Network');
                 $('button').addClass('testnetColor');
                 $('nav#nav').css('background', 'rgb(84, 178, 206)');
-
                 $('#walletloginbtn').click(function(){
 
                           testNetAddr = $('#registered_adr').val() ;
@@ -74,23 +57,16 @@ $( document ).ready(function() { // document ready function starts here, so you 
            else{
                net == "MainNetwork";
                localStorage.setItem("network", "MainNetwork");
-              $('#walletloginbtn').click(function(){
+               $('#walletloginbtn').click(function(){
 
                           mainNetAddr = $('#registered_adr').val() ;
                           localStorage.setItem("mainNetAddr", mainNetAddr);
-                   });
+                });
 
-                      mainNetAddr = localStorage.getItem("mainNetAddr");
-                     $('#registered_adr').val(mainNetAddr);
+                mainNetAddr = localStorage.getItem("mainNetAddr");
+                $('#registered_adr').val(mainNetAddr);
            }
-//            generateQRcode();
-           //listwallettransactions(); // call listwallettransactions() here which is mentioned down below
-          // converTableToCSV(); // call converTableTOCSV function here when the DOM is ready.
-           //onClickToCopy(); //click to copy ClipBoard and show a small tooltip notification
-          // onClickEye();  // on click eye selects the address and generates the correct qrcode
-           //generateAddress();
-          // sendTransaction(); // send Transaction function 
-           
+
             
            networkToggle(); // Network Toggle function
            
@@ -99,7 +75,7 @@ $( document ).ready(function() { // document ready function starts here, so you 
            }
 
          $("#walletloginbtn").click(function(){
-            var netw = net;
+           var netw = net;
            pubaddr = $("#registered_adr").val();
            localStorage.setItem("pubaddr", pubaddr);
            net = localStorage.getItem("network");
@@ -111,26 +87,24 @@ $( document ).ready(function() { // document ready function starts here, so you 
 
             } else{
 
-
                 importAddress(net);
+    
+            }     
+         });
+        
+         
+});     //document ready function ends here 
 
-
-                
-                
-                
-            }
-            
+        $("#createkeypairsbtn").click(function(){
+            createkeypairs(net);     
         });
-        
-         
-}); //document ready function ends here 
-    $("#createkeypairsbtn").click(function(){
-        createkeypairs(net);
-         
-       
-        
-    });
-// 
+
+
+
+// createkeypair function() that creates key pairs 
+// Params : net 
+// Return : 
+
 function createkeypairs(net){
     var netw = net;
   $.ajax({
@@ -165,8 +139,6 @@ function createkeypairs(net){
               CONSOLE_DEBUG && console.log('public address :', pubaddr);
               CONSOLE_DEBUG && console.log('public key :', pubkey1);
 
-             
-              
               localStorage.setItem("pubaddr", pubaddr);
               document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
               document.getElementById('modalshowkey').innerHTML = 'Private Key : ' + privkey1;
@@ -174,12 +146,10 @@ function createkeypairs(net){
                $("#registered_adr").val(pubaddr); //set the value to textbox automatically
                $("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
 
-                ///////////////
+   
                var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
                 var dlAnchorElem = document.getElementById('downloadlink');
                 dlAnchorElem.setAttribute("href",     dataStr     );
-
-
 
                  if(net == "MainNetwork"){
                      dlAnchorElem.setAttribute("download", "Recordskeeper-wallet.json");
@@ -189,9 +159,7 @@ function createkeypairs(net){
                    dlAnchorElem.setAttribute("download", "Recordskeeper-test-wallet.json");
                      dlAnchorElem.click();
                  }
-               
-
-         
+                  
                  (function () {
                     var textFile = null,
                       makeTextFile = function (text) {
@@ -473,6 +441,7 @@ function listaddresstransactions(){
                 var str2 = x.result[i].txid;
                 var str3 = str1.concat(str2);
                 console.log(str3);
+                
                 if(days > 0){
                     if(hours > 0){
                         $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
