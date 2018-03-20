@@ -359,6 +359,7 @@ function listaddresstransactions(){
 
              var date = new Date();
             console.log(x, "list transaction result");
+            x.result = x.result.reverse();
 
             if(x.result.length == 0){
               CONSOLE_DEBUG &&  console.log("no Transactions on this address.");
