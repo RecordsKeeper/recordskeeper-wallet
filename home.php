@@ -270,6 +270,9 @@
 				<input type="number" id="sendBTC" name="sendBTC" placeholder="XRK Amount" onchange="checkAmountFilled();">
 				<span class="suffix">XRK</span>
 			</p>
+			<p class="approxFee ">
+				Approximate Fee : 
+			</p>
 
 		</div>
 		<div class="row">
@@ -347,6 +350,9 @@
 				<label for="fab" id="modalshowaddr">Enter the private key for XRK address : </label>
 				<input type="password" id="sendUSD" name="fab">
 				<span class="suffix">key</span>
+			</p>
+			<p class="approxFee themefee">
+				
 			</p>
 
       </div>

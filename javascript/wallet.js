@@ -211,7 +211,7 @@ function importAddress(netw) {
             x = JSON.parse(x);
 
             var y = x.error;
-           console.log("value here : ",y);
+           CONSOLE_DEBUG && console.log("value here : ",y);
            if (y != null){
                 swal({
                    title:'Invalid Address!',
@@ -248,7 +248,7 @@ function onCreateImportAddress(netw) {
             x = JSON.parse(x);
 
             var y = x.error;
-           console.log("value here : ",y);
+           CONSOLE_DEBUG && console.log("value here : ",y);
            if (y != null){
                 swal({
                    title:'Invalid Address!',
@@ -358,7 +358,7 @@ function listaddresstransactions(){
           
 
              var date = new Date();
-            console.log(x, "list transaction result");
+            CONSOLE_DEBUG && console.log(x, "list transaction result");
             x.result = x.result.reverse();
 
             if(x.result.length == 0){
@@ -379,9 +379,9 @@ function listaddresstransactions(){
                  diff = diff/60;
                  var hours = Math.floor(diff % 24);  
                  var days = Math.floor(diff/24);
-                console.log(days);
-                console.log(hours);
-                console.log(x.result);
+                CONSOLE_DEBUG && console.log(days);
+                CONSOLE_DEBUG && console.log(hours);
+                CONSOLE_DEBUG && console.log(x.result);
                 if (local == "TestNetwork"){
                 var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
                 }
@@ -390,7 +390,7 @@ function listaddresstransactions(){
                 }
                 var str2 = x.result[i].txid;
                 var str3 = str1.concat(str2);
-                console.log(str3);
+              CONSOLE_DEBUG &&  console.log(str3);
                 if(days > 0){
                     if(hours > 0){
                         $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
@@ -431,9 +431,9 @@ function listaddresstransactions(){
                  diff = diff/60;
                  var hours = Math.floor(diff % 24);  
                  var days = Math.floor(diff/24);
-                console.log(days);
-                console.log(hours);
-                console.log(x.result)
+                CONSOLE_DEBUG && console.log(days);
+                CONSOLE_DEBUG && console.log(hours);
+                CONSOLE_DEBUG && console.log(x.result)
                 if (local == "TestNetwork"){
                 var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
                 }
@@ -442,7 +442,7 @@ function listaddresstransactions(){
                 }
                 var str2 = x.result[i].txid;
                 var str3 = str1.concat(str2);
-                console.log(str3);
+              CONSOLE_DEBUG &&  console.log(str3);
 
                 if(days > 0){
                     if(hours > 0){
@@ -580,12 +580,12 @@ function CopyToClipboard(){
 }
     $('#sendt').click(function(){
         var a = $('#sendBTC').val();
-        console.log(a);
+        CONSOLE_DEBUG &&  console.log(a);
         var b = $('#sendRecipientaddress').val();
         var c = $('#sendUSD').val();
         var d = toHex($('#hexdata').val());
         var e = $('#keydata').val();
-        console.log(a, b, c, d);
+        CONSOLE_DEBUG && console.log(a, b, c, d);
         createRawSendFrom(a, b, c, d, e);
     });
 
@@ -609,7 +609,7 @@ function CopyToClipboard(){
          //  x = x.result;
             $('#myModal2').modal('hide');
             var y = x.error;
-           console.log(y);
+           CONSOLE_DEBUG && console.log(y);
            if (y != null){
               swal({
                    title:'Data is too large for you current Address balance. <br> Kindly get more XRK or try with small data!',
@@ -687,9 +687,9 @@ function sendrawtransaction(globe) {
           }
           else{
         CONSOLE_DEBUG && console.log('result in json format :', x);
-        console.log("transaction id result : ", x.result);
+        CONSOLE_DEBUG && console.log("transaction id result : ", x.result);
 //        $('#txid').text(x.result);
-        console.log ("txurl", txUrl+x.result);
+         CONSOLE_DEBUG && console.log ("txurl", txUrl+x.result);
         var aurl = txUrl+x.result;
 
         swal({
@@ -740,7 +740,7 @@ function filterTable() {
 
 
 var count = $('#tableone').children('tr').length;
-console.log(count);
+CONSOLE_DEBUG && console.log(count);
 
 
 

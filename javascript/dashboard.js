@@ -1,5 +1,11 @@
 // var net = localStorage.getItem("network");
 
+var approxFee ;
+var totalSize ; 
+var fixedSize ;
+var hexlength;
+var keylength;
+
 
 $(document).ready(function(){
 
@@ -10,7 +16,7 @@ $(document).ready(function(){
 
              // $('#tableone').DataTable();
 
-           console.log("net", net);
+           CONSOLE_DEBUG && console.log("net", net);
 
 	 		        checkRecAddressFilled();  //function to validate address
 
@@ -43,6 +49,12 @@ $(document).ready(function(){
 
 
 $("#sendpopup").click(function(){
+ keylength = $('#keydata').val();
+  keylength = keylength.length;
+  CONSOLE_DEBUG && console.log("keylength is :", keylength, " bytes");
+  hexlength = $('#hexdata').val();
+  hexlength = hexlength.length;
+  CONSOLE_DEBUG && console.log("hexlength is :", hexlength, " bytes");
 
 	var sendamount = $('#sendBTC').val();
     if(Bal <  sendamount){
@@ -72,12 +84,14 @@ $("#sendpopup").click(function(){
   var  pubaddr = localStorage.getItem("pubaddr");
 
   var keyData = document.getElementById("keydata");
+  
 
   var hexData = document.getElementById("hexdata");
 
- var inputVal = document.getElementById("sendRecipientaddress");
 
- var inputVal1 = document.getElementById("sendBTC");
+  var inputVal = document.getElementById("sendRecipientaddress");
+
+  var inputVal1 = document.getElementById("sendBTC");
 
 function checkRecAddressFilled() {
  
@@ -153,11 +167,24 @@ function checkBoth(){
 		}
 
 		if (inputVal.value != "" && inputVal1.value != "" &&  keyData.value != ""  &&  hexData.value != "") {
+
+
+
+
+
 			
 				$('#hexdata').css('border', '1px solid green');
 				$('#keydata').css('border', '1px solid green');
 
 				var netw = net;
+
+        fixedSize = 263;
+        totalSize = fixedSize + hexlength + keylength ; 
+
+        approxFee  = (totalSize/1000)*0.1;
+
+
+         $('.approxFee').text('Approximate Fee : '+ approxFee+' XRK');
 
                 var senderAddress = $('#sendRecipientaddress').val();
 
@@ -228,7 +255,8 @@ function checkBoth(){
 		}
 		if (inputVal.value != "" && inputVal1.value != "" &&  keyData.value == ""  &&  hexData.value == "") {
 				
-
+        approxFee = 0.0224; 
+        $('.approxFee').text('Approximate Fee : '+approxFee+' XRK');
 
 				var netw = net;
 
