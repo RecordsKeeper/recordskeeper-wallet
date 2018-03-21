@@ -23,6 +23,10 @@ $( document ).ready(function() { // document ready function starts here, so you 
 
             showAddress();
 
+           
+
+           
+
             clearModalInputs();
 
             recieve();
@@ -57,6 +61,7 @@ $( document ).ready(function() { // document ready function starts here, so you 
            else{
                net == "MainNetwork";
                localStorage.setItem("network", "MainNetwork");
+                $('#cb1').prop('checked', true);
                $('#walletloginbtn').click(function(){
 
                           mainNetAddr = $('#registered_adr').val() ;
@@ -94,6 +99,18 @@ $( document ).ready(function() { // document ready function starts here, so you 
         
          
 });     //document ready function ends here 
+
+
+    
+      
+
+
+
+
+
+
+
+
 
         $("#createkeypairsbtn").click(function(){
             createkeypairs(net);     

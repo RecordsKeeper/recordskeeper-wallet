@@ -461,7 +461,7 @@ crossorigin="anonymous"></script>
 			 if (totalRows > maxRows){						// if tr total rows gt max rows option
 			 	var pagenum = Math.ceil(totalRows/maxRows);	// ceil total(rows/maxrows) to get ..  
 			 												//	numbers of pages 
-			 	for (var i = 1; i <= pagenum ;){			// for each page append pagination li 
+			 	for (var i = 1; i < pagenum ;){			// for each page append pagination li 
 			 	$('.pagination').append('<li data-page="'+i+'">\
 								      <span>'+ i++ +'<span class="sr-only">(current)</span></span>\
 								    </li>').show();
@@ -500,11 +500,6 @@ crossorigin="anonymous"></script>
 
 
 
-
-//  Developed By Yasser Mas 
-// yasser.mas2@gmail.com
-
-	
 
 
 </script>
