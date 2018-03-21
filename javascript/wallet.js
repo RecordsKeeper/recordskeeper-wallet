@@ -1,6 +1,6 @@
 
 
-var CONSOLE_DEBUG = true;
+var CONSOLE_DEBUG = false;
 var privkey1;
 var  pubaddr;
 var pubkey1;
