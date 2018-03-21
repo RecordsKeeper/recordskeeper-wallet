@@ -178,7 +178,7 @@ function checkBoth(){
 
 				var netw = net;
 
-        fixedSize = 263;
+        fixedSize = 328 + 39 ;
         totalSize = fixedSize + hexlength + keylength ; 
 
         approxFee  = (totalSize/1000)*0.1;
@@ -255,7 +255,8 @@ function checkBoth(){
 		}
 		if (inputVal.value != "" && inputVal1.value != "" &&  keyData.value == ""  &&  hexData.value == "") {
 				
-        approxFee = 0.0224; 
+        approxFee = 0.0328; 
+
         $('.approxFee').text('Approximate Fee : '+approxFee+' XRK');
 
 				var netw = net;

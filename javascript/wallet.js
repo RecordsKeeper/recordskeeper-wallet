@@ -612,7 +612,8 @@ function CopyToClipboard(){
            CONSOLE_DEBUG && console.log(y);
            if (y != null){
               swal({
-                   title:'Data is too large for you current Address balance. <br> Kindly get more XRK or try with small data!',
+                   title:'Insufficient XRK Tokens',
+                   html : '<p>you dont have enough XRK tokens. If you are recording data in this transaction, try with smaller data </p>' ,
                    type: 'error',
                    confirmButtonClass: "btn-danger",
                     confirmButtonText: "OK!",
