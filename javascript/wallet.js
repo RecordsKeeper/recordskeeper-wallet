@@ -1,6 +1,6 @@
 
 
-var CONSOLE_DEBUG = true;
+var CONSOLE_DEBUG = false;
 var privkey1;
 var  pubaddr;
 var pubkey1;
@@ -78,23 +78,23 @@ jQuery( document ).ready(function() { // document ready function starts here, so
              document.getElementById("currentdate").innerHTML = Date();
            }
 
-         jQuery("#walletloginbtn").click(function(){
-           var netw = net;
-           pubaddr = jQuery("#registered_adr").val();
-           localStorage.setItem("pubaddr", pubaddr);
-           net = localStorage.getItem("network");
-           
-           CONSOLE_DEBUG && console.log("wallet address " , pubaddr);
-            if(pubaddr == '' ){
-              
-               jQuery("#registered_adr").css("border", "1px solid red");
+           jQuery("#walletloginbtn").click(function(){
+             var netw = net;
+             pubaddr = jQuery("#registered_adr").val();
+             localStorage.setItem("pubaddr", pubaddr);
+             net = localStorage.getItem("network");
+             
+             CONSOLE_DEBUG && console.log("wallet address " , pubaddr);
+              if(pubaddr == '' ){
+                
+                 jQuery("#registered_adr").css("border", "1px solid red");
 
-            } else{
+              } else{
 
-                importAddress(net);
-    
-            }     
-         });
+                  importAddress(net);
+      
+              }     
+           });
         
          
 });     //document ready function ends here 
@@ -111,9 +111,9 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
 
 
-        jQuery("#createkeypairsbtn").click(function(){
-            createkeypairs(net);     
-        });
+jQuery("#createkeypairsbtn").click(function(){
+    createkeypairs(net);     
+});
 
 
 
@@ -122,98 +122,101 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 // Return : 
 
 function createkeypairs(net){
+
     var netw = net;
-  jQuery.ajax({
-    type: "POST",
-    url: 'createkeypairs.php',
-    data:{net: netw},
-    success:function(Response) {
-        var x = Response;
-        x = JSON.parse(x);
-         //  x = x.result;
-         var y = x.error;
-         if(y != null){
-             swal({
-                     title:'Something went wrong! <br> Please try again!!!',
-                     type: 'error',
-                     confirmButtonClass: "btn-danger",
-                      confirmButtonText: "OK!",
-                     timer: 15000
-             });
-         }
-         else{
-              
-              CONSOLE_DEBUG && console.log('result in json format :', x);
-              
-              pubaddr = x.result[0].address;   //public address here 
-              
-              privkey1 = x.result[0].privkey;    // privkey here
-              
-              pubkey1    = x.result[0].pubkey;      // pubkey here
-              
-              CONSOLE_DEBUG && console.log('private key : ', privkey1);  
-              CONSOLE_DEBUG && console.log('public address :', pubaddr);
-              CONSOLE_DEBUG && console.log('public key :', pubkey1);
+    jQuery.ajax({
+      type: "POST",
+      url: 'createkeypairs.php',
+      data:{net: netw},
+      success:function(Response) {
+          var x = Response;
+          x = JSON.parse(x);
+           //  x = x.result;
+           var y = x.error;
+           if(y != null){
+               swal({
+                       title:'Something went wrong! <br> Please try again!!!',
+                       type: 'error',
+                       confirmButtonClass: "btn-danger",
+                        confirmButtonText: "OK!",
+                       timer: 15000
+               });
+           }
+           else{
+                
+                CONSOLE_DEBUG && console.log('result in json format :', x);
+                
+                pubaddr = x.result[0].address;   //public address here 
+                
+                privkey1 = x.result[0].privkey;    // privkey here
+                
+                pubkey1    = x.result[0].pubkey;      // pubkey here
+                
+                CONSOLE_DEBUG && console.log('private key : ', privkey1);  
+                CONSOLE_DEBUG && console.log('public address :', pubaddr);
+                CONSOLE_DEBUG && console.log('public key :', pubkey1);
 
-              localStorage.setItem("pubaddr", pubaddr);
-              document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
-              document.getElementById('modalshowkey').innerHTML = 'Private Key : ' + privkey1;
-              
-               jQuery("#registered_adr").val(pubaddr); //set the value to textbox automatically
-               jQuery("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
+                localStorage.setItem("pubaddr", pubaddr);
+                document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
+                document.getElementById('modalshowkey').innerHTML = 'Private Key : ' + privkey1;
+                
+                 jQuery("#registered_adr").val(pubaddr); //set the value to textbox automatically
+                 jQuery("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
 
-   
-               var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
-                var dlAnchorElem = document.getElementById('downloadlink');
-                dlAnchorElem.setAttribute("href",     dataStr     );
+     
+                 var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
+                  var dlAnchorElem = document.getElementById('downloadlink');
+                  dlAnchorElem.setAttribute("href",     dataStr     );
 
-                 if(net == "MainNetwork"){
-                     dlAnchorElem.setAttribute("download", "Recordskeeper-wallet.json");
-                     dlAnchorElem.click();
-                 }else if (net == "TestNetwork"){
+                   if(net == "MainNetwork"){
+                       dlAnchorElem.setAttribute("download", "Recordskeeper-wallet.json");
+                       dlAnchorElem.click();
+                   }else if (net == "TestNetwork"){
 
-                   dlAnchorElem.setAttribute("download", "Recordskeeper-test-wallet.json");
-                     dlAnchorElem.click();
-                 }
-                  
-                 (function () {
-                    var textFile = null,
-                      makeTextFile = function (text) {
-                        var data = new Blob([text], {type: 'text/plain'});
+                     dlAnchorElem.setAttribute("download", "Recordskeeper-test-wallet.json");
+                       dlAnchorElem.click();
+                   }
+                    
+                   (function () {
+                      var textFile = null,
+                        makeTextFile = function (text) {
+                          var data = new Blob([text], {type: 'text/plain'});
 
-                        // If we are replacing a previously generated file we need to
-                        // manually revoke the object URL to avoid memory leaks.
-                        if (textFile !== null) {
-                          window.URL.revokeObjectURL(textFile);
-                        }
+                          // If we are replacing a previously generated file we need to
+                          // manually revoke the object URL to avoid memory leaks.
+                          if (textFile !== null) {
+                            window.URL.revokeObjectURL(textFile);
+                          }
 
-                        textFile = window.URL.createObjectURL(data);
+                          textFile = window.URL.createObjectURL(data);
 
-                        return textFile;
-                      };
+                          return textFile;
+                        };
 
-         
-                      var create = document.getElementById('create'),
-                        textbox = document.getElementById(privkey1);
+           
+                        var create = document.getElementById('create'),
+                          textbox = document.getElementById(privkey1);
 
 
-                        var link = document.getElementById('downloadlink');
-                        link.href = makeTextFile('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
-                        link.style.display = 'block';
-         
-                })();
+                          var link = document.getElementById('downloadlink');
+                          link.href = makeTextFile('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
+                          link.style.display = 'block';
+           
+                  })();
 
-                // importAddress(net);
+                  // importAddress(net);
 
-                onCreateImportAddress(netw);
+                  onCreateImportAddress(netw);
+        }
+
       }
-
-    }
-  });
+    });
 
 }
 
-
+  // importAddress function imports the address generated after createkeypairs 
+ //  Params : net 
+//   Return :
 
 function importAddress(netw) {
     var local =netw;
@@ -227,22 +230,21 @@ function importAddress(netw) {
             x = JSON.parse(x);
 
             var y = x.error;
-           CONSOLE_DEBUG && console.log("value here : ",y);
-           if (y != null){
-                swal({
-                   title:'Invalid Address!',
-                   type: 'error',
-                   confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Close!",
-                   timer: 15000
-                });
-           }
-           else{
-        //  x = x.result;
-            CONSOLE_DEBUG && console.log('importaddress result :', x);
-            window.location.href = "home.php";
-        }
-        
+            CONSOLE_DEBUG && console.log("value here : ",y);
+             if (y != null){
+                  swal({
+                     title:'Invalid Address!',
+                     type: 'error',
+                     confirmButtonClass: "btn-danger",
+                      confirmButtonText: "Close!",
+                     timer: 15000
+                  });
+             }
+            else{
+          //  x = x.result;
+              CONSOLE_DEBUG && console.log('importaddress result :', x);
+              window.location.href = "home.php";
+            } 
       }  
     });
 }
@@ -309,6 +311,8 @@ function getaddressbalances() {
         }                
     });
 }
+
+
 
 
 /*
@@ -442,7 +446,7 @@ function listaddresstransactions(){
                 }
                          }
                 else {
-                  
+
                 var date = new Date((x.result[i].time)*1000);
                 var date1 = new Date();
                 var diff = date1 - date;

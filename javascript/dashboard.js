@@ -325,6 +325,81 @@ function checkBoth(){
 
 	}	
 
+//  do the work after everything was loaded (DOM, media elements) 
+//  params : null 
+//  return : NULL
+
+  window.onload = function () {
+  getaddressbalances(); //load the first address on page load.
+
+  
+
+
+
+  }
+
+ // on click of export button download all list transactions into csv format
+ // table2csv js library is used here which has a function table2csv
+ // Name of the file can be changed by going to the libray in the javascript folder
+ // so let's put this code inside a function called convertTableToCSV
+
+  
+        
+          //getPagination('.table-class');
+          //getPagination('table');
+      /*          PAGINATION 
+      - on change max rows select options fade out all rows gt option value mx = 5
+      - append pagination list as per numbers of rows / max rows option (20row/5= 4pages )
+      - each pagination li on click -> fade out all tr gt max rows * li num and (5*pagenum 2 = 10 rows)
+      - fade out all tr lt max rows * li num - max rows ((5*pagenum 2 = 10) - 5)
+      - fade in all tr between (maxRows*PageNum) and (maxRows*pageNum)- MaxRows 
+      */
+     
+  function getPagination (table){
+      
+        jQuery('.pagination').html('');           // reset pagination 
+        var trnum = 0 ;                 // reset tr counter 
+        var maxRows =  20 ;   // get Max Rows from select option
+        var totalRows = jQuery(table+' tbody tr').length;   // numbers of rows 
+       jQuery(table+' tr:gt(0)').each(function(){     // each TR in  table and not the header
+        trnum++;                  // Start Counter 
+        if (trnum > maxRows ){            // if tr number gt maxRows
+          
+          jQuery(this).hide();              // fade it out 
+        }if (trnum <= maxRows ){jQuery(this).show();}// else fade in Important in case if it ..
+       });                      //  was fade out to fade it in 
+       if (totalRows > maxRows){            // if tr total rows gt max rows option
+        var pagenum = Math.ceil(totalRows/maxRows); // ceil total(rows/maxrows) to get ..  
+                              //  numbers of pages 
+        for (var i = 1; i <= pagenum ;){      // for each page append pagination li 
+        jQuery('.pagination').append('<li data-page="'+i+'">\
+                      <span>'+ i++ +'<span class="sr-only">(current)</span></span>\
+                    </li>').show();
+        }                     // end for i 
+      }                         // end if row count > max rows
+      jQuery('.pagination li:first-child').addClass('active'); // add active class to the first li 
+      jQuery('.pagination li').on('click',function(e){    // on click each page
+       
+          e.preventDefault();
+
+        var pageNum = jQuery(this).attr('data-page'); // get it's number
+        var trIndex = 0 ;             // reset tr counter
+        jQuery('.pagination li').removeClass('active'); // remove active class from all li 
+        jQuery(this).addClass('active');          // add active class to the clicked 
+         jQuery(table+' tr:gt(0)').each(function(){   // each tr in table not the header
+          trIndex++;                // tr index counter 
+          // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+          if (trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+            jQuery(this).hide();    
+          }else {jQuery(this).show();}        //else fade in 
+         });                    // end of for each tr in table
+          });                   // end of on click pagination list
+    
+                        // end of on select change 
+     
+                
+                // END OF PAGINATION 
+  } 
 
 
 
