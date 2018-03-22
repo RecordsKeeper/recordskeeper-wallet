@@ -7,14 +7,17 @@ var hexlength;
 var keylength;
 
 
-$(document).ready(function(){
+jQuery(document).ready(function(){
 
-      			$("#myModal2").on("hidden.bs.modal", function () {   // this function is for when modal box closes what should be done.
+
+
+
+      			jQuery("#myModal2").on("hidden.bs.modal", function () {   // this function is for when modal box closes what should be done.
       		   
-      				 // $(".modal-body").empty();
+      				 // jQuery(".modal-body").empty();
       		   });
 
-             // $('#tableone').DataTable();
+             // jQuery('#tableone').DataTable();
 
            CONSOLE_DEBUG && console.log("net", net);
 
@@ -22,21 +25,25 @@ $(document).ready(function(){
 
               checkAmountFilled();		//function to check Amount
 
-            $("#transactid").click(function(){						
-            		var xrkBalance = $('#liBalanceBTC').val();
+            jQuery("#transactid").click(function(){						
+            		var xrkBalance = jQuery('#liBalanceBTC').val();
             		CONSOLE_DEBUG && console.log( 'xrkBalance', xrkBalance);
+
 			     
 			       if(xrkBalance != '0 XRK'){
 
-			       	 if($("#tableone").length > 0){
-			       	 	$("#tableone").find("tr:gt(0)").remove();
+			       	 if(jQuery("#tableone").length > 0){
+			       	 	jQuery("#tableone").find("tr:gt(0)").remove();
 			       	 	 getaddressbalances(net);
 			       	 }
 
 			       	 
-			       	$('#tableone').css("display", "table");
+			       	jQuery('#tableone').css("display", "table");
 
-			       	$('#notransaction').css("display", "none");
+
+			       	jQuery('#notransaction').css("display", "none");
+
+              getPagination('#tableone');
 			       }
 
 			          
@@ -48,19 +55,19 @@ $(document).ready(function(){
 
 
 
-$("#sendpopup").click(function(){
- keylength = $('#keydata').val();
+jQuery("#sendpopup").click(function(){
+ keylength = jQuery('#keydata').val();
   keylength = keylength.length;
   CONSOLE_DEBUG && console.log("keylength is :", keylength, " bytes");
-  hexlength = $('#hexdata').val();
+  hexlength = jQuery('#hexdata').val();
   hexlength = hexlength.length;
   CONSOLE_DEBUG && console.log("hexlength is :", hexlength, " bytes");
 
-	var sendamount = $('#sendBTC').val();
+	var sendamount = jQuery('#sendBTC').val();
     if(Bal <  sendamount){
 
 
-    	 $('#myModal2').modal('hide');
+    	 jQuery('#myModal2').modal('hide');
     		
          swal({
                    title:'Insufficient Funds ! ',
@@ -97,12 +104,12 @@ function checkRecAddressFilled() {
  
     if (inputVal.value == "") {
         
-        $('#sendpopup').removeAttr('data-toggle');
+        jQuery('#sendpopup').removeAttr('data-toggle');
 
     }
     else{
-        $('#sendRecipientaddress').css('border', '1px solid green');
-         // $("#sendpopup").attr("data-toggle", "modal");
+        jQuery('#sendRecipientaddress').css('border', '1px solid green');
+         // jQuery("#sendpopup").attr("data-toggle", "modal");
        
     }
 }
@@ -112,11 +119,11 @@ function checkAmountFilled() {
     if (inputVal1.value == "") {
         
 
-         $('#sendpopup').removeAttr('data-toggle');
+         jQuery('#sendpopup').removeAttr('data-toggle');
     }
     else{
-        $('#sendBTC').css('border', '1px solid green');
-        // $("#sendpopup").attr("data-toggle", "modal");
+        jQuery('#sendBTC').css('border', '1px solid green');
+        // jQuery("#sendpopup").attr("data-toggle", "modal");
     }
 }
 
@@ -126,43 +133,43 @@ function checkBoth(){
 
 		if (inputVal.value == "") {
 
-        		$('#sendRecipientaddress').css('border', '1px solid red');
+        		jQuery('#sendRecipientaddress').css('border', '1px solid red');
 
 
 
    		 }
 
 		if (inputVal1.value == "") {
-         $('#sendBTC').css('border', '1px solid red');
+         jQuery('#sendBTC').css('border', '1px solid red');
 
-         $('#sendpopup').removeAttr('data-toggle');
+         jQuery('#sendpopup').removeAttr('data-toggle');
          return false;
     	} 
     	
 
 		if (inputVal.value == "" && inputVal1.value == "" ) {
-		 $('#sendRecipientaddress').css('border', '1px solid red');
-		 $('#sendBTC').css('border', '1px solid red');
-		 $("#sendpopup").removeAttr('data-toggle');
+		 jQuery('#sendRecipientaddress').css('border', '1px solid red');
+		 jQuery('#sendBTC').css('border', '1px solid red');
+		 jQuery("#sendpopup").removeAttr('data-toggle');
 		
 		}
 
 		if (inputVal.value != "" && inputVal1.value == "" ) {
-		 // $('#sendRecipientaddress').css('border', '1px solid red');
-		 $('#sendBTC').css('border', '1px solid red');
-		 $("#sendpopup").removeAttr('data-toggle');
+		 // jQuery('#sendRecipientaddress').css('border', '1px solid red');
+		 jQuery('#sendBTC').css('border', '1px solid red');
+		 jQuery("#sendpopup").removeAttr('data-toggle');
 		
 		}
 		if (inputVal.value == "" && inputVal1.value != "" ) {
-		 $('#sendRecipientaddress').css('border', '1px solid red');
-		 // $('#sendBTC').css('border', '1px solid red');
-		 $("#sendpopup").removeAttr('data-toggle');
+		 jQuery('#sendRecipientaddress').css('border', '1px solid red');
+		 // jQuery('#sendBTC').css('border', '1px solid red');
+		 jQuery("#sendpopup").removeAttr('data-toggle');
 		
 		}
 		if (inputVal.value != "" && inputVal1.value != "" &&  keyData.value != ""  ) {
-		 $('#hexdata').css('border', '1px solid red');
-		 // $('#sendBTC').css('border', '1px solid red');
-		 $("#sendpopup").removeAttr('data-toggle');
+		 jQuery('#hexdata').css('border', '1px solid red');
+		 // jQuery('#sendBTC').css('border', '1px solid red');
+		 jQuery("#sendpopup").removeAttr('data-toggle');
 		
 		}
 
@@ -173,8 +180,8 @@ function checkBoth(){
 
 
 			
-				$('#hexdata').css('border', '1px solid green');
-				$('#keydata').css('border', '1px solid green');
+				jQuery('#hexdata').css('border', '1px solid green');
+				jQuery('#keydata').css('border', '1px solid green');
 
 				var netw = net;
 
@@ -184,13 +191,13 @@ function checkBoth(){
         approxFee  = (totalSize/1000)*0.1;
 
 
-         $('.approxFee').text('Approximate Fee : '+ approxFee+' XRK');
+         jQuery('.approxFee').text('Approximate Fee : '+ approxFee+' XRK');
 
-                var senderAddress = $('#sendRecipientaddress').val();
+                var senderAddress = jQuery('#sendRecipientaddress').val();
 
-                   $('#sendpopup').removeAttr('data-toggle');
+                   jQuery('#sendpopup').removeAttr('data-toggle');
 
-                    $.ajax({
+                    jQuery.ajax({
                      type: "POST",
                      url: 'validateaddress.php',
                      data:{net:net, senderAddress: senderAddress},
@@ -211,35 +218,35 @@ function checkBoth(){
 
                              CONSOLE_DEBUG && console.log('You Entered an Invalid Recipient Address');
 
-                             $('#myModal2').modal('hide');
+                             jQuery('#myModal2').modal('hide');
 
-                              // $('#modalshowaddr').text('You Entered an invalid Recipient Address');
-                              // $('#modalshowaddr').css("color", "#c13434");
-                              // $('#sendUSD').css("display", "none");
-                              // $('#sendt').css("display", "none");
-                              //  $('h4.modal-title').css("color", "#c13434");
-                              // $('h4.modal-title').text('ERROR !');
+                              // jQuery('#modalshowaddr').text('You Entered an invalid Recipient Address');
+                              // jQuery('#modalshowaddr').css("color", "#c13434");
+                              // jQuery('#sendUSD').css("display", "none");
+                              // jQuery('#sendt').css("display", "none");
+                              //  jQuery('h4.modal-title').css("color", "#c13434");
+                              // jQuery('h4.modal-title').text('ERROR !');
 
-                              // $('#sendpopup').attr("data-target", "myModal3");
+                              // jQuery('#sendpopup').attr("data-target", "myModal3");
 
-                           $('#myModal1').modal('show');
+                           jQuery('#myModal1').modal('show');
 
 
 
                           }else{
 
-                          	  $('#myModal1').modal('hide');
+                          	  jQuery('#myModal1').modal('hide');
 
                           	CONSOLE_DEBUG && console.log('You Entered valid Recipient Address');
-                          	 // $('h4.modal-title').text('Authorize Transaction ');
-                          	 // $('h4.modal-title').css("color", "#3f4453");
-                          	 // $('#modalshowaddr').css("color", "#3f4453");
-                          	 // $('#sendt').css("display", "block");
-                          	 //  $('#sendUSD').css("display", "block");
-                          	 // $('#modalshowaddr').text('Public Address : '+ pubaddr);
+                          	 // jQuery('h4.modal-title').text('Authorize Transaction ');
+                          	 // jQuery('h4.modal-title').css("color", "#3f4453");
+                          	 // jQuery('#modalshowaddr').css("color", "#3f4453");
+                          	 // jQuery('#sendt').css("display", "block");
+                          	 //  jQuery('#sendUSD').css("display", "block");
+                          	 // jQuery('#modalshowaddr').text('Public Address : '+ pubaddr);
                           	 // document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
 
-                          	 $('#myModal2').modal('show');
+                          	 jQuery('#myModal2').modal('show');
 
                           }
                          
@@ -250,22 +257,22 @@ function checkBoth(){
                        }
                    });
 
-			 $("#sendpopup").attr("data-toggle", "modal");
+			 jQuery("#sendpopup").attr("data-toggle", "modal");
 		
 		}
 		if (inputVal.value != "" && inputVal1.value != "" &&  keyData.value == ""  &&  hexData.value == "") {
 				
         approxFee = 0.0328; 
 
-        $('.approxFee').text('Approximate Fee : '+approxFee+' XRK');
+        jQuery('.approxFee').text('Approximate Fee : '+approxFee+' XRK');
 
 				var netw = net;
 
-                var senderAddress = $('#sendRecipientaddress').val();
+                var senderAddress = jQuery('#sendRecipientaddress').val();
 
-                   $('#sendpopup').removeAttr('data-toggle');
+                   jQuery('#sendpopup').removeAttr('data-toggle');
 
-                    $.ajax({
+                    jQuery.ajax({
                      type: "POST",
                      url: 'validateaddress.php',
                      data:{net:net, senderAddress: senderAddress},
@@ -286,19 +293,19 @@ function checkBoth(){
 
                              CONSOLE_DEBUG && console.log('You Entered an Invalid Recipient Address');
 
-                             $('#myModal2').modal('hide');
-                         	  $('#myModal1').modal('show');
+                             jQuery('#myModal2').modal('hide');
+                         	  jQuery('#myModal1').modal('show');
 
 
 
                           }else{
 
-                          	  $('#myModal1').modal('hide');
+                          	  jQuery('#myModal1').modal('hide');
 
                           	CONSOLE_DEBUG && console.log('You Entered valid Recipient Address');
                          
 
-                          	 $('#myModal2').modal('show');
+                          	 jQuery('#myModal2').modal('show');
 
                           }
                          
@@ -309,7 +316,7 @@ function checkBoth(){
                        }
                    });
 
-			 $("#sendpopup").attr("data-toggle", "modal");
+			 jQuery("#sendpopup").attr("data-toggle", "modal");
 		
 		}
 		

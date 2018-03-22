@@ -4,7 +4,20 @@
     color: #3f4452;
 }
 
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #a11ab9;
+    cursor: default;
+    background-color: #23293a;
+    font-weight: 800;
+    border-color: #d2d7dd;
 
+}
+
+.pagination{
+   cursor: pointer;
+   /*font-size: 13px;*/
+}
 .walletcont{
      width: 100%;
     float: left;
@@ -74,6 +87,17 @@ i.fas.fa-dot-circle.themecolor.maright10 {
 .hidden {
     display: block !important;
 }
+.pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #23293a;
+    text-decoration: none;
+    background-color: #ecf1f6;
+    border: 1px solid #ddd;
+}
 span.xrk.out {
     background: #ce5454;
     color: white;
@@ -89,7 +113,7 @@ span.xrk.out {
     text-transform: uppercase;
 }
 span.xrk.in {
-    background: green;
+    background: #31b731c4 ;
    color: white;
     padding: 5px;
     border-radius: 5px;
@@ -760,6 +784,18 @@ if it's not present, don't show loader */
 .flright{
   float: right !important;
 }
+
+#footer{
+  font-size: 10px;
+}
+th{
+      padding-left: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 13px;
+    padding: 10px;
+}
+
 
 /*some media queries here */
 

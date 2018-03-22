@@ -20,7 +20,7 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\"method\":\"listaddresstransactions\",\"params\":[\"$pubkey\"],\"count\":5,\"skip\":0,\"verbose\":false,\"id\":1,\"chain_name\":\"$chain\"}",
+  CURLOPT_POSTFIELDS => "{\"method\":\"listaddresstransactions\",\"params\":[\"$pubkey\", 100 ],\"chain_name\":\"$chain\"}",
   CURLOPT_HTTPHEADER => array(
     "Cache-Control: no-cache",
     "Content-Type: application/json",

@@ -429,7 +429,7 @@ table { display: table; width: 100%; border-collapse: collapse; border-spacing: 
 	th { padding-top: 0; padding-bottom: 0; border-width: 0; color: #7f91a3; font-weight: 700; }
 		tr > *:first-child { padding-left: 0; }
 		tr > *:last-child { padding-right: 0; }
-	td a { color: #467988; }
+	td a { color: #7f90a3; }
 	table .link-btn a { white-space: nowrap; }
 	table i.icon-eye { display: inline-block; position: relative; top: 2px; font-size: 19px; line-height: 1px; }
 

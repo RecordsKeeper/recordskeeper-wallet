@@ -1,6 +1,6 @@
 
 
-var CONSOLE_DEBUG = false;
+var CONSOLE_DEBUG = true;
 var privkey1;
 var  pubaddr;
 var pubkey1;
@@ -13,63 +13,62 @@ var testNetAddr;
 
 
 
-$( document ).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
+jQuery( document ).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
          
            // Animate loader off screen
 
-           $(".se-pre-con").fadeOut("slow");           // fadeout the preloader
+           jQuery(".se-pre-con").fadeOut("slow");           // fadeout the preloader
            var Newwalletflag = 1;                     //  SET the Newwalletflag to 1     
            var newAddressCount = 1;                  //   set the newAddressCounter to 1
 
             showAddress();
 
-           
-
+             // getPagination('#tableone');
            
 
             clearModalInputs();
 
             recieve();
             if(net == "MainNetwork"){
-                  $('#top').css('background', '#22283a');
-                  $('#top').css('color', '#ffffff');
-                  $('.tgl-light').prop('checked', true);
-                  $('#togglecontlabel').text('Main Network');
-                  $('nav#nav').css('background', '#22283a');
-                  $('#walletloginbtn').click(function(){
-                          mainNetAddr = $('#registered_adr').val() ;
+                  jQuery('#top').css('background', '#22283a');
+                  jQuery('#top').css('color', '#ffffff');
+                  jQuery('.tgl-light').prop('checked', true);
+                  jQuery('#togglecontlabel').text('Main Network');
+                  jQuery('nav#nav').css('background', '#22283a');
+                  jQuery('#walletloginbtn').click(function(){
+                          mainNetAddr = jQuery('#registered_adr').val() ;
                           localStorage.setItem("mainNetAddr", mainNetAddr);
                    });
 
                       mainNetAddr = localStorage.getItem("mainNetAddr");
-                     $('#registered_adr').val(mainNetAddr);
+                     jQuery('#registered_adr').val(mainNetAddr);
             }
            else if(net == "TestNetwork"){
 
-                $('#top').css('background', '#54b2ce');
-                $('#togglecontlabel').text('Test Network');
-                $('button').addClass('testnetColor');
-                $('nav#nav').css('background', 'rgb(84, 178, 206)');
-                $('#walletloginbtn').click(function(){
+                jQuery('#top').css('background', '#54b2ce');
+                jQuery('#togglecontlabel').text('Test Network');
+                jQuery('button').addClass('testnetColor');
+                jQuery('nav#nav').css('background', 'rgb(84, 178, 206)');
+                jQuery('#walletloginbtn').click(function(){
 
-                          testNetAddr = $('#registered_adr').val() ;
+                          testNetAddr = jQuery('#registered_adr').val() ;
                           localStorage.setItem("testNetAddr", testNetAddr);
                    });
                  testNetAddr = localStorage.getItem("testNetAddr");
-                     $('#registered_adr').val(testNetAddr);
+                     jQuery('#registered_adr').val(testNetAddr);
            }
            else{
                net == "MainNetwork";
                localStorage.setItem("network", "MainNetwork");
-                $('#cb1').prop('checked', true);
-               $('#walletloginbtn').click(function(){
+                jQuery('#cb1').prop('checked', true);
+               jQuery('#walletloginbtn').click(function(){
 
-                          mainNetAddr = $('#registered_adr').val() ;
+                          mainNetAddr = jQuery('#registered_adr').val() ;
                           localStorage.setItem("mainNetAddr", mainNetAddr);
                 });
 
                 mainNetAddr = localStorage.getItem("mainNetAddr");
-                $('#registered_adr').val(mainNetAddr);
+                jQuery('#registered_adr').val(mainNetAddr);
            }
 
             
@@ -79,16 +78,16 @@ $( document ).ready(function() { // document ready function starts here, so you 
              document.getElementById("currentdate").innerHTML = Date();
            }
 
-         $("#walletloginbtn").click(function(){
+         jQuery("#walletloginbtn").click(function(){
            var netw = net;
-           pubaddr = $("#registered_adr").val();
+           pubaddr = jQuery("#registered_adr").val();
            localStorage.setItem("pubaddr", pubaddr);
            net = localStorage.getItem("network");
            
            CONSOLE_DEBUG && console.log("wallet address " , pubaddr);
             if(pubaddr == '' ){
               
-               $("#registered_adr").css("border", "1px solid red");
+               jQuery("#registered_adr").css("border", "1px solid red");
 
             } else{
 
@@ -112,7 +111,7 @@ $( document ).ready(function() { // document ready function starts here, so you 
 
 
 
-        $("#createkeypairsbtn").click(function(){
+        jQuery("#createkeypairsbtn").click(function(){
             createkeypairs(net);     
         });
 
@@ -124,7 +123,7 @@ $( document ).ready(function() { // document ready function starts here, so you 
 
 function createkeypairs(net){
     var netw = net;
-  $.ajax({
+  jQuery.ajax({
     type: "POST",
     url: 'createkeypairs.php',
     data:{net: netw},
@@ -160,8 +159,8 @@ function createkeypairs(net){
               document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
               document.getElementById('modalshowkey').innerHTML = 'Private Key : ' + privkey1;
               
-               $("#registered_adr").val(pubaddr); //set the value to textbox automatically
-               $("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
+               jQuery("#registered_adr").val(pubaddr); //set the value to textbox automatically
+               jQuery("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
 
    
                var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
@@ -219,7 +218,7 @@ function createkeypairs(net){
 function importAddress(netw) {
     var local =netw;
     var a = pubaddr;
-    $.ajax({
+    jQuery.ajax({
        type: "POST",
        url: 'importaddress.php',
        data:({public: a, net: local}),
@@ -256,7 +255,7 @@ function importAddress(netw) {
 function onCreateImportAddress(netw) {
     var local =netw;
     var a = pubaddr;
-    $.ajax({
+    jQuery.ajax({
        type: "POST",
        url: 'importaddress.php',
        data:({public: a, net: local}),
@@ -293,7 +292,7 @@ function onCreateImportAddress(netw) {
 function getaddressbalances() {
     var local =localStorage.getItem("network");;
     var a = localStorage.getItem("pubaddr");
-    $.ajax({
+    jQuery.ajax({
        type: "POST",
        url: 'getaddressbalances.php',
        data:({public: a, net: local}),
@@ -305,7 +304,7 @@ function getaddressbalances() {
 
             Bal = x.result[0].qty;
             
-            $("#liBalanceBTC").text(x.result[0].qty+" XRK"); 
+            jQuery("#liBalanceBTC").text(x.result[0].qty+" XRK"); 
             listaddresstransactions();
         }                
     });
@@ -317,11 +316,11 @@ onClickEye : This function changes the qr code as per the corresponding addresse
 params : null 
 */
 function onClickEye(){
-           $(document).on("click", ".icon-eye", function(e){
-                     $('tr').css("background-color", "");
-                     $(this).parent().parent().parent().css( "background-color", "#ecf1f6" ).delay( 800 );
-                     var id = $(this).attr("id").substr(7).trim();
-                     var childAddressesValue = $('#childAddresses'+id).html();// get the value in #childAddresses
+           jQuery(document).on("click", ".icon-eye", function(e){
+                     jQuery('tr').css("background-color", "");
+                     jQuery(this).parent().parent().parent().css( "background-color", "#ecf1f6" ).delay( 800 );
+                     var id = jQuery(this).attr("id").substr(7).trim();
+                     var childAddressesValue = jQuery('#childAddresses'+id).html();// get the value in #childAddresses
                      console.log(childAddressesValue, "childAddressesValue");
                      jQuery("#divQrCode").empty();//empty the div first
                      jQuery("#divQrCode").qrcode({ 
@@ -336,9 +335,9 @@ onClickToCopy : This function copies the corresponding addresses when clicked on
 params : null 
 */
 function onClickToCopy(){
-    $(document).on("click", ".clickToCopy", function(){
-                    $(this).parent().append("<div class='notify'>copied</div>").delay(3000);
-                    var id = $(this).attr("id").substr(11).trim();
+    jQuery(document).on("click", ".clickToCopy", function(){
+                    jQuery(this).parent().append("<div class='notify'>copied</div>").delay(3000);
+                    var id = jQuery(this).attr("id").substr(11).trim();
                     copyToClipBoard(id);
                     
                     
@@ -353,20 +352,24 @@ copyToClipBoard : It Copies the html of element childAddresses
 
 
 function copyToClipBoard(id) {
-    var $temp = $("<input>");
-    $("body").append($temp);
-    $temp.val($('#childAddresses'+id).text()).select();
+    var jQuerytemp = jQuery("<input>");
+    jQuery("body").append(jQuerytemp);
+    jQuerytemp.val(jQuery('#childAddresses'+id).text()).select();
     document.execCommand("copy");
-    $temp.remove();
+    jQuerytemp.remove();
 }
 
 
 
 
 function listaddresstransactions(){
+
+     
+
+
     var local =localStorage.getItem("network");
     var a = localStorage.getItem("pubaddr");
-    $.ajax({
+    jQuery.ajax({
        type: "POST",
        url: 'listaddresstransactions.php',
        data:({public: a, net: local}),
@@ -378,10 +381,11 @@ function listaddresstransactions(){
             CONSOLE_DEBUG && console.log(x, "list transaction result");
             x.result = x.result.reverse();
 
+
             if(x.result.length == 0){
               CONSOLE_DEBUG &&  console.log("no Transactions on this address.");
-              $('#notransaction').css("display", "block");
-              $('#tableone').css("display", "none");
+              jQuery('#notransaction').css("display", "block");
+              jQuery('#tableone').css("display", "none");
            }
          else{
              for(var i= 0; i < x.result.length; i++) {
@@ -399,6 +403,7 @@ function listaddresstransactions(){
                 CONSOLE_DEBUG && console.log(days);
                 CONSOLE_DEBUG && console.log(hours);
                 CONSOLE_DEBUG && console.log(x.result);
+                getPagination('#tableone');
                 if (local == "TestNetwork"){
                 var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
                 }
@@ -410,35 +415,36 @@ function listaddresstransactions(){
               CONSOLE_DEBUG &&  console.log(str3);
                 if(days > 0){
                     if(hours > 0){
-                        $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                        jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
                     }
                    else{
-                       $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days </span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                       jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days </span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
                    }            
                 }
                 else if(hours > 0){
                     if(minutes > 0){
-                         $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+hours+"<span class='xrk'> hours </span>"+minutes+"<span class='xrk'> minutes ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                         jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+hours+"<span class='xrk'> hours </span>"+minutes+"<span class='xrk'> minutes ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
                     }
                    else{
-                        $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+hours+"<span class='xrk'> hours </span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                        jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+hours+"<span class='xrk'> hours </span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
                    } 
                 }
                 else if(minutes > 0){
                     if(seconds > 0){
-                         $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+minutes+"<span class='xrk'> minutes </span>"+seconds+"<span class='xrk'> seconds ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                         jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+minutes+"<span class='xrk'> minutes </span>"+seconds+"<span class='xrk'> seconds ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
                     }
                    else{
-                        $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+minutes+"<span class='xrk'> minutes ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                        jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+minutes+"<span class='xrk'> minutes ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
                    } 
                 }
                 else{
-                    $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+seconds+"<span class='xrk'> seconds ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
+                    jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+seconds+"<span class='xrk'> seconds ago</span></a></td><td>"+x.result[i].balance['amount']+"<span class='xrk'> XRK</span> <span class='xrk in'> in </span></td></tr>");
                 }
                          }
-                            else {
-                                var date = new Date((x.result[i].time)*1000);
-                                var date1 = new Date();
+                else {
+                  
+                var date = new Date((x.result[i].time)*1000);
+                var date1 = new Date();
                 var diff = date1 - date;
                 var diff = date1 - date;
                 diff = diff/1000;
@@ -463,33 +469,33 @@ function listaddresstransactions(){
 
                 if(days > 0){
                     if(hours > 0){
-                        $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                        jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days </span>"+hours+"<span class='xrk'> hours ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
             }
                    else{
-                       $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                       jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+days+"<span class='xrk'> days ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
             }       
                 }
                 else if(hours > 0){
                     if(minutes > 0){
-                        $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+hours+"<span class='xrk'> hours </span>"+minutes+"<span class='xrk'> minutes ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                        jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+hours+"<span class='xrk'> hours </span>"+minutes+"<span class='xrk'> minutes ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
             }
                    else{
-                       $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+hours+"<span class='xrk'> hours </span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                       jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+hours+"<span class='xrk'> hours </span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
             }
                    } 
                 
                 else if(minutes > 0){
                     if(seconds > 0){
-                         $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+minutes+"<span class='xrk'> minutes </span>"+seconds+"<span class='xrk'> seconds ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                         jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+minutes+"<span class='xrk'> minutes </span>"+seconds+"<span class='xrk'> seconds ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
             }
             
                    else{
-                        $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+minutes+"<span class='xrk'> minutes ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                        jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+minutes+"<span class='xrk'> minutes ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
             }
                             }  
                 
             else{
-                $('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+seconds+"<span class='xrk'> seconds ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
+                jQuery('.table-a').append("<tr>  <td id='childAddresses'><a href="+str3+" target='_blank'>"+x.result[i].txid+"</a></td><td><a  data-toggle='tooltip' title='"+date+"'>"+seconds+"<span class='xrk'> seconds ago</span></a></td><td>"+Math.abs(x.result[i].balance['amount'])+ "<span class='xrk'> XRK</span><span class='xrk out'> Out </span></td></tr>");
             }
                             }
             // add a table row here
@@ -497,12 +503,16 @@ function listaddresstransactions(){
         }
         }
     });
+
+
+      
+
 }
 
 function showAddress(){
   var address = localStorage.getItem("pubaddr");
-  $('.showaddr').append("XRK Address : ", address);
-  $('#modalshowaddr').append(address);
+  jQuery('.showaddr').append("XRK Address : ", address);
+  jQuery('#modalshowaddr').append(address);
 }
 
 // code to generate qr code 
@@ -518,7 +528,7 @@ function generateQRcode(){
 }
     
 function recieve(){
-    $('.table-b').append("<tr> <td id='childAddresses'>"+localStorage.getItem("pubaddr")+"</td></tr>");
+    jQuery('.table-b').append("<tr> <td id='childAddresses'>"+localStorage.getItem("pubaddr")+"</td></tr>");
 }
 // 
 // 
@@ -539,11 +549,11 @@ function validateForm(e) {
     var BTCvalue = document.forms["myForm"]["sendBTC"].value;
     var AddressRec = document.forms["myForm"]["sendRecipientaddress"].value;
     if (BTCvalue == "") {
-        $('.formerrorpara').fadeIn('slow').text('Enter the amount !! ');
+        jQuery('.formerrorpara').fadeIn('slow').text('Enter the amount !! ');
         return false;
     }
     if (AddressRec == "") {
-         $('.formerrorpara').fadeIn('slow').text('Enter the Reciepient Address !! ');
+         jQuery('.formerrorpara').fadeIn('slow').text('Enter the Reciepient Address !! ');
         return false;
     }
     if(BTCvalue != 0 && AddressRec != 0) {
@@ -557,15 +567,15 @@ var  newAddressCount = 0;
 // Return : NULL 
     
     function ToggleNetwork(){
-        if($('#cb1').is(':checked'))
+        if(jQuery('#cb1').is(':checked'))
             {
              net = "test";
                localStorage.setItem("network", "TestNetwork");
-                $('#top').css('background', '#54b2ce');
-                 $('#togglecontlabel').text('Test Network');
+                jQuery('#top').css('background', '#54b2ce');
+                 jQuery('#togglecontlabel').text('Test Network');
                  window.location.href = "index.php";
-                 $('button').addClass('testnetColor');
-                  $('nav#nav').css('background', 'rgb(84, 178, 206)');
+                 jQuery('button').addClass('testnetColor');
+                  jQuery('nav#nav').css('background', 'rgb(84, 178, 206)');
               
             }
             else
@@ -574,34 +584,34 @@ var  newAddressCount = 0;
                localStorage.setItem("network","MainNetwork");
 
              
-                  $('#registered_adr').val(pubaddr);
+                  jQuery('#registered_adr').val(pubaddr);
 
-                 $('#top').css('background', '#22283a');
-                  $('#top').css('color', '#ffffff');
-                   $('nav#nav').css('background', '#22283a');
+                 jQuery('#top').css('background', '#22283a');
+                  jQuery('#top').css('color', '#ffffff');
+                   jQuery('nav#nav').css('background', '#22283a');
               
-                   $('#togglecontlabel').text('Main Network');
+                   jQuery('#togglecontlabel').text('Main Network');
                    window.location.href = "index.php";
             }
     }
 function converTableToCSV(){
-    $("#export").click(function(){
-        $("#table-a").table2csv('output', {appendTo: '#out'});
-        $("#table-a").table2csv();
+    jQuery("#export").click(function(){
+        jQuery("#table-a").table2csv('output', {appendTo: '#out'});
+        jQuery("#table-a").table2csv();
     });     
 }
 function CopyToClipboard(){
-    $('#clickToCopy1').on("click", function(){
+    jQuery('#clickToCopy1').on("click", function(){
         alert('Click to copy!');
     });
 }
-    $('#sendt').click(function(){
-        var a = $('#sendBTC').val();
+    jQuery('#sendt').click(function(){
+        var a = jQuery('#sendBTC').val();
         CONSOLE_DEBUG &&  console.log(a);
-        var b = $('#sendRecipientaddress').val();
-        var c = $('#sendUSD').val();
-        var d = toHex($('#hexdata').val());
-        var e = $('#keydata').val();
+        var b = jQuery('#sendRecipientaddress').val();
+        var c = jQuery('#sendUSD').val();
+        var d = toHex(jQuery('#hexdata').val());
+        var e = jQuery('#keydata').val();
         CONSOLE_DEBUG && console.log(a, b, c, d);
         createRawSendFrom(a, b, c, d, e);
     });
@@ -616,7 +626,7 @@ function CopyToClipboard(){
     var ad = b;
     var ae = a;
     var af = c;
-    $.ajax({
+    jQuery.ajax({
        type: "POST",
        url: 'createrawsendfrom.php',
        data:{from: aa, key: ab, val: ac, net: ca, to: ad, amount: ae },
@@ -624,7 +634,7 @@ function CopyToClipboard(){
              var x = Response;
              x = JSON.parse(x);
          //  x = x.result;
-            $('#myModal2').modal('hide');
+            jQuery('#myModal2').modal('hide');
             var y = x.error;
            CONSOLE_DEBUG && console.log(y);
            if (y != null){
@@ -650,7 +660,7 @@ function signrawtransaction(globe, af){
      var aa = af;
     var ab = globe;
   var ca = localStorage.getItem("network");
-    $.ajax({
+    jQuery.ajax({
        type: "POST",
        url: 'signrawtransaction.php',
        data:{from: globe, key: aa, net: ca},
@@ -685,7 +695,7 @@ function sendrawtransaction(globe) {
     }else if(ca == "MainNetwork"){
         txUrl = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
     }
-    $.ajax({
+    jQuery.ajax({
     type: "POST",
     url: 'sendrawtransaction.php',
     data:({tx_hex: ab, net: ca}),
@@ -706,7 +716,7 @@ function sendrawtransaction(globe) {
           else{
         CONSOLE_DEBUG && console.log('result in json format :', x);
         CONSOLE_DEBUG && console.log("transaction id result : ", x.result);
-//        $('#txid').text(x.result);
+//        jQuery('#txid').text(x.result);
          CONSOLE_DEBUG && console.log ("txurl", txUrl+x.result);
         var aurl = txUrl+x.result;
 
@@ -722,17 +732,17 @@ function sendrawtransaction(globe) {
                     timer: 15000
             });
 
-        $("#sendt").val('');
-        $("#sendRecipientaddress").val('');
-        $("#sendBTC").val('');
-        $("#hexdata").val('');
-        $("#keydata").val('');
+        jQuery("#sendt").val('');
+        jQuery("#sendRecipientaddress").val('');
+        jQuery("#sendBTC").val('');
+        jQuery("#hexdata").val('');
+        jQuery("#keydata").val('');
        } 
     }
 });
 }
 function networkToggle(){
-  $('.tgl-btn').click(function(){
+  jQuery('.tgl-btn').click(function(){
         ToggleNetwork();
     });
 }
@@ -757,18 +767,18 @@ function filterTable() {
 
 
 
-var count = $('#tableone').children('tr').length;
+var count = jQuery('#tableone').children('tr').length;
 CONSOLE_DEBUG && console.log(count);
 
 
 
-// $('#myModal2').on('hidden.bs.modal', function () {
-//     $('#sendUSD').val('');
+// jQuery('#myModal2').on('hidden.bs.modal', function () {
+//     jQuery('#sendUSD').val('');
 // })
 
 function clearModalInputs(){
-            $('#myModal2').on('hidden.bs.modal', function () {
-                $('#sendUSD').val('');
+            jQuery('#myModal2').on('hidden.bs.modal', function () {
+                jQuery('#sendUSD').val('');
             });
 }
 
