@@ -391,7 +391,7 @@
 <script src="javascript/scripts.js"></script>
 <script src="javascript/custom.js"></script>
 <script src="javascript/mobile.js"></script>
-<script src="http://tablesorter.com/addons/pager/jquery.tablesorter.pager.js"></script>
+
 <script src="javascript/table2CSV.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
