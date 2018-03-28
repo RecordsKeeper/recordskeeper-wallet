@@ -314,7 +314,7 @@
 
 <footer id="footer">
 <ul>
-<li>&copy; RecordsKeeper @<span class="date">2018</span></li>
+<li>© 2016-2018<span class="date">  RecordsKeeper. All rights Reserved</span></li>
 <li><a href="./" target="_blank">Terms</a></li>
 <li><a href="./" target="_blank">Privacy Policy</a></li>
 <li><a href="http://explorer.recordskeeper.co/" target="_blank">Mainnet Explorer</a></li>
