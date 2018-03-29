@@ -319,7 +319,7 @@
 		<li><a href="./" target="_blank">Privacy Policy</a></li>
 		<li><a href="http://explorer.recordskeeper.co/" target="_blank">Mainnet Explorer</a></li>
 		<li><a href="http://test-explorer.recordskeeper.co/" target="_blank">Testnet Explorer</a></li>
-		<li><a href="http://wallet.recordskeeper.co/" target="_blank">Wallet</a></li>
+	
 		<li><a href="http://faucet.recordskeeper.co/" target="_blank">Faucet</a></li>
 		<li><a href="http://stats.recordskeeper.co/" target="_blank">Blockchain Statistics</a></li>
 		<li><a href="http://miner.recordskeeper.co/" target="_blank">Miner Statistics</a></li>
