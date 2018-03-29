@@ -325,6 +325,8 @@
 		<li><a href="http://miner.recordskeeper.co/" target="_blank">Miner Statistics</a></li>
 		<li><a href="http://airdrop.recordskeeper.co/" target="_blank">Airdrop</a></li>
 		<li><a href="http://demo.recordskeeper.co/" target="_blank">Demo</a></li>
+	    <li><a href="https://docs.recordskeeper.co/" target="_blank">Docs</a></li>
+
 
 </ul>
 </footer>
