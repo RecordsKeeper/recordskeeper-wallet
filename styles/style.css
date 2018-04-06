@@ -1,0 +1,82 @@
+
+.label
+{
+    font-size: 10pt;
+    font-weight: bold;
+    font-family: Arial;
+
+}
+body{
+  background: blue;
+}
+.contents
+{    
+    border: 2px solid green ;
+    background-color: black;
+
+
+
+    color: red;
+    padding: 5px;
+ 
+   height: 50px;
+    width: 300px;
+   
+}
+.name
+{
+    color: #18B5F0;
+}
+.left
+{
+  
+    width: 100%;
+    height: 50px;
+    background: blue;
+    
+   
+}
+.right
+{
+    margin-left: 60px;
+    line-height:50px;
+}
+.clear
+{
+    clear: both;
+}
+#printwalletcont {
+    padding: 10px;
+    background: white;
+   
+  }
+  
+   #printWallet {
+    float: right;
+      margin-top: -30px;
+  }
+  .walletcontent{
+    clear: both;
+    padding:20px;
+  
+  }
+  .walletheader{
+        background: #23293a;
+      padding: 15px;
+  }
+  .walletheader img{
+    width: 100%;
+  }
+  #qrcode {
+    width:40%;
+    margin: 10px;
+    float: left;
+      
+  }
+  #qrcode2 {
+    width:40%;
+    margin: 10px;
+    float: right;
+      
+  }
+
