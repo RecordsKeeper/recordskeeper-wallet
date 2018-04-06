@@ -13,7 +13,37 @@
     border-color: #d2d7dd;
 
 }
+#modalshowaddress, #modalshowkey {
+  display: none;
+}
 
+
+
+#printWallet {
+  float: right;
+    margin-top: -18px;
+    border: none;
+   font-size: 15px;
+}
+.walletcontent{
+  padding:20px;
+}
+.walletheader{
+      
+    padding: 15px;
+}
+.walletheader img{
+  width: 100%;
+}
+#qrcode {
+  width:160px;
+    
+}
+#printwalletcont{
+  padding: 10px;
+  background: white;
+  /*display: none;*/
+}
 .pagination{
    cursor: pointer;
    /*font-size: 13px;*/
@@ -932,3 +962,4 @@ input#authorize{
             width: 380px;
     }
 }
+

@@ -23,6 +23,8 @@
 		<link rel="stylesheet" media="print" href="styles/print.css">
 		<link rel="icon" type="image/x-icon" href="images/fav.png">
 		<link rel="stylesheet" media="screen" href="styles/wallet.css">
+				<link rel="stylesheet" media="screen" href="styles/wallet.css">
+
 		<!-- link for table to css cdn here  -->
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/css/tableexport.css">
 		<meta property="og:title" content="">
@@ -36,32 +38,7 @@
 
 
 		</style>
-		<script type='application/ld+json'>
-			{
-				"@context": "http://schema.org/",
-				"@type": "Organization",
-				"url": "",
-				"name": "Vault0x",
-				"legalName": "Vault0x",
-				"description": "",
-				"logo": "",
-				"image": "",
-				"author": "psdHTML.me",
-				"contactPoint": {
-					"@type": "ContactPoint",
-					"contactType": "Customer service",
-					"telephone": ""
-				},
-				"address": {
-					"@type": "PostalAddress",
-					"streetAddress": "",
-					"addressLocality": "",
-					"addressRegion": "",
-					"postalCode": "",
-					"addressCountry": ""
-				}
-			}
-		</script>
+		
 	</head>
 	<body>
 		<div class="se-pre-con"></div>
@@ -134,8 +111,6 @@
 
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -146,19 +121,44 @@
           Please download your private key and save it at a safe place, you will need it for your trasactions.
           </p>
         <p id="modalshowaddress">
-<!--          <input type="text" value="" name="modalshowaddress" id="modalshowaddress">-->
+
         </p>
         <p id ="modalshowkey">
           
         </p>
+        <div id="printwalletcont">
+        	<div class="walletheader">
+        		<img src="images/logo.png" id="printimg">
+        	</div>
+        	<div class="row walletcontent">
+        		<div class="col-md-6">
+	        		<div id="qrcode"></div>
+	        	</div>
+	        	<div class="col-md-6">
+	        		<div id="qrcode2"></div>
+
+	        	</div>
+        	</div>
+        	<div class="row walletcontent">
+	        	 	<p id="modalboxaddress" class="modc">
+			
+			        </p>
+			        <p id ="modalboxkey" class="modc">
+			          
+			        </p>
+	        </div>
+ 	
+        </div>	
+
+
+
            <a download="Recordskeeper-wallet-key.json" id="downloadlink" download>Download</a>
-<!--         <button id="create">Create file</button> <a download="Privkey.txt" id="downloadlink" >Download</a>-->
+         <a id="printWallet" value="Print" class="noprint"  >Print Wallet</a> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
       </div>
     </div>
-
   </div>
 </div>     
 <!-- all the script here to make the page load faster -->
@@ -168,6 +168,8 @@
 <script src="javascript/scripts.js"></script>
 <script src="javascript/custom.js"></script>
 <script src="javascript/mobile.js"></script>
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
 <script src="javascript/table2CSV.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.all.min.js"></script>
@@ -184,7 +186,6 @@ crossorigin="anonymous"></script>
 <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/js/tableexport.js"></script>
-
 </body>
 </html>
 

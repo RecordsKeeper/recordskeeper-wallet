@@ -17,7 +17,10 @@ ul, ol, dl, p, figure, table, pre, h1, h2, h3, h4, h5, h6, legend { margin-botto
 
 article, aside, div, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; margin-bottom: 2em; }
 	
-	
+	#printWallet {
+  float: right;
+    margin-top: -30px;
+}
 /*! Layout --------- */
 #top { margin: 0 0 1em; padding: 0 0 0.5em; border-bottom: 1px solid #ccc; }
 	#logo { margin: 0 0 .5em; }

@@ -24,6 +24,9 @@ jQuery( document ).ready(function() { // document ready function starts here, so
             showAddress();
 
              // getPagination('#tableone');
+
+            
+
            
 
             clearModalInputs();
@@ -42,6 +45,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
                       mainNetAddr = localStorage.getItem("mainNetAddr");
                      jQuery('#registered_adr').val(mainNetAddr);
+                     $("#printimg").attr("src","images/mainnet.png");
+                     $('walletheader').css('background', '#22283a');
             }
            else if(net == "TestNetwork"){
 
@@ -56,6 +61,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                    });
                  testNetAddr = localStorage.getItem("testNetAddr");
                      jQuery('#registered_adr').val(testNetAddr);
+                      $("#printimg").attr("src","images/testnet.png");
+                       $('walletheader').css('background', 'rgb(84, 178, 206)');
            }
            else{
                net == "MainNetwork";
@@ -69,6 +76,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
                 mainNetAddr = localStorage.getItem("mainNetAddr");
                 jQuery('#registered_adr').val(mainNetAddr);
+                 $("#printimg").attr("src","images/mainnet.png");
+                 $('walletheader').css('background', '#22283a');
            }
 
             
@@ -95,6 +104,21 @@ jQuery( document ).ready(function() { // document ready function starts here, so
       
               }     
            });
+
+          
+
+
+// $("#text").
+//   on("blur", function () {
+//     makeCode();
+//   }).
+//   on("keydown", function (e) {
+//     if (e.keyCode == 13) {
+//       makeCode();
+//     }
+//   });
+
+
         
          
 });     //document ready function ends here 
@@ -112,6 +136,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
 
 jQuery("#createkeypairsbtn").click(function(){
+
+
     createkeypairs(net);     
 });
 
@@ -159,11 +185,78 @@ function createkeypairs(net){
                 localStorage.setItem("pubaddr", pubaddr);
                 document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
                 document.getElementById('modalshowkey').innerHTML = 'Private Key : ' + privkey1;
+                 document.getElementById('modalboxaddress').innerHTML = 'Public Address : '+ pubaddr;
+                document.getElementById('modalboxkey').innerHTML = 'Private Key : ' + privkey1;
+
                 
                  jQuery("#registered_adr").val(pubaddr); //set the value to textbox automatically
                  jQuery("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
 
-     
+                  var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
+                    width : 100,
+                    height : 100
+                  });
+                  var qrcode = new QRCode(document.getElementById("qrcode"), {
+                    width : 100,
+                    height : 100
+                  });
+                  function makeCode () {    
+                    var elText = pubaddr;
+                    var elprive = privkey1;
+                   
+                    
+                    qrcode.makeCode(elText);
+                     
+                  }
+                  makeCode();
+                  function makeCode1 () {    
+                    var elText = pubaddr;
+                    var elprive = privkey1;
+                   
+                    
+                    qrcode2.makeCode(elprive);
+                     
+                  }
+                  makeCode1();
+
+               
+        
+            $("#printWallet").click(function () {
+
+                $("#printwalletcont").show();
+                
+                var contents = $("#printwalletcont").html();
+                var frame1 = $('<iframe />');
+                frame1[0].name = "frame1";
+                // frame1.css({ "position": "absolute", "top": "-1000000px" });
+                $("body").append(frame1);
+                var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
+                frameDoc.document.open();
+                //Create a new HTML document.
+                frameDoc.document.write('<html><head><title>Print Wallet</title>');
+                frameDoc.document.write('</head><body>');
+                //Append the external CSS file.
+                frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
+                //Append the DIV contents.
+                frameDoc.document.write(contents);
+                frameDoc.document.write('</body></html>');
+                frameDoc.document.close();
+                setTimeout(function () {
+                    window.frames["frame1"].focus();
+                    window.frames["frame1"].print();
+                    frame1.remove();
+                }, 500);
+            });
+       
+
+                     
+
+
+          
+
+          
+      
+
                  var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
                   var dlAnchorElem = document.getElementById('downloadlink');
                   dlAnchorElem.setAttribute("href",     dataStr     );
@@ -785,8 +878,6 @@ function clearModalInputs(){
                 jQuery('#sendUSD').val('');
             });
 }
-
-
 
 
 
