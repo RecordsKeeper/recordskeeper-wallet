@@ -132,10 +132,18 @@
         	</div>
         	<div class="row walletcontent">
         		<div class="col-md-6">
-	        		<div id="qrcode"></div>
+	        		<div id="qrcode">
+	        			<p class="qrlabel">
+	        				Public Address
+	        			</p>
+	        		</div>
 	        	</div>
 	        	<div class="col-md-6">
-	        		<div id="qrcode2"></div>
+	        		<div id="qrcode2">
+	        			<p class="qrlabel">
+	        				Private Key
+	        			</p>
+	        		</div>
 
 	        	</div>
         	</div>
@@ -160,7 +168,9 @@
       </div>
     </div>
   </div>
-</div>     
+</div>   
+
+  
 <!-- all the script here to make the page load faster -->
 
 

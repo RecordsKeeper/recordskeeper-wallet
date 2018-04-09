@@ -202,12 +202,12 @@ function createkeypairs(net){
                  jQuery("#reg_priv_key").val(privkey1);  //set the value to textbox automatically
 
                   var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
-                    width : 100,
-                    height : 100
+                    width : 300,
+                    height : 300
                   });
                   var qrcode = new QRCode(document.getElementById("qrcode"), {
-                    width : 100,
-                    height : 100
+                    width : 300,
+                    height : 300
                   });
                   function makeCode () {    // qr code generater function for address
                     var elText = pubaddr;
@@ -244,7 +244,7 @@ function createkeypairs(net){
                 var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
                 frameDoc.document.open();
                 //Create a new HTML document.
-                frameDoc.document.write('<html><head><title>Print Wallet</title>');
+                frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape;}</style>');
                 frameDoc.document.write('</head><body>');
                 //Append the external CSS file.
                 frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
