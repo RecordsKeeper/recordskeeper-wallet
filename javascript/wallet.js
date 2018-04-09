@@ -137,6 +137,15 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
 jQuery("#createkeypairsbtn").click(function(){
 
+    // if ($("#qrcode").contains(img) ; )
+  if ($('#qrcode').length) {
+    $('#qrcode img').remove();
+    $('#qrcode2 img').remove();
+  } 
+  else {
+    CONSOLE_DEBUG && console ('Oops! qr code broke');
+  }
+    // if( )
 
     createkeypairs(net);     
 });
@@ -200,24 +209,26 @@ function createkeypairs(net){
                     width : 100,
                     height : 100
                   });
-                  function makeCode () {    
+                  function makeCode () {    // qr code generater function for address
                     var elText = pubaddr;
-                    var elprive = privkey1;
+                    var elprive = privkey1;     //pass  value of address stored in elpriv
                    
                     
                     qrcode.makeCode(elText);
                      
                   }
-                  makeCode();
-                  function makeCode1 () {    
-                    var elText = pubaddr;
+                  makeCode();                 // call the function here 
+
+
+                  function makeCode1 () {    // qr code generater function for privkey
+                    var elText = pubaddr;   
                     var elprive = privkey1;
                    
                     
-                    qrcode2.makeCode(elprive);
+                    qrcode2.makeCode(elprive);    //pass  value of privkey stored in elpriv
                      
                   }
-                  makeCode1();
+                  makeCode1();                    // call the function
 
                
         
