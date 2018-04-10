@@ -37,9 +37,9 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
              // getPagination('#tableone');
 
-            $(".modal").on("hidden.bs.modal", function(){
-                $(".restorebefore").css("display", "block");
-                $(".restoreappend").remove();
+            jQuery(".modal").on("hidden.bs.modal", function(){
+                jQuery(".restorebefore").css("display", "block");
+                jQuery(".restoreappend").remove();
                 jQuery("#firststand").css("display", "block");
                 jQuery(".createappend").remove();
                 jQuery("#modaladdrcont").empty();
@@ -816,8 +816,8 @@ jQuery("#restoreWalletBtn").click(function(){
 
 
      
-        $("#restoremodBody").on("hidden.bs.modal", function(){
-                $("#restoremodBody").html(" ");
+        jQuery("#restoremodBody").on("hidden.bs.modal", function(){
+                jQuery("#restoremodBody").html(" ");
             });
 
 
@@ -830,16 +830,18 @@ jQuery("#restoreWalletBtn").click(function(){
 
 function createXrkHDWallet(){
 
+
+
   var netw = net;
 
   jQuery("#createXRKhd").click(function(){
 
-      var passwordValue = $("#firstpass").val();
+      var passwordValue = jQuery("#firstpass").val();
 
 
-      $("#qrcode").children().remove();
+      jQuery("#qrcode").children().remove();
 
-            $("#qrcode2").children().remove();
+            jQuery("#qrcode2").children().remove();
 
       
 
@@ -950,16 +952,16 @@ function createXrkHDWallet(){
 
 
              
-              $("#printWallet").click(function() {
+              jQuery("#printWallet").click(function() {
 
-                $("#printwalletcont").show();
+                jQuery("#printwalletcont").show();
                 
-                var contents = $("#modaladdrcont").html();
-                var contents2 = $("#qrcodecontainer").html();
-                var frame1 = $('<iframe />');
+                var contents = jQuery("#modaladdrcont").html();
+                var contents2 = jQuery("#qrcodecontainer").html();
+                var frame1 = jQuery('<iframe />');
                 frame1[0].name = "frame1";
                 // frame1.css({ "position": "absolute", "top": "-1000000px" });
-                $("body").append(frame1);
+                jQuery("body").append(frame1);
                 var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
                 frameDoc.document.open();
                 //Create a new HTML document.
@@ -1057,9 +1059,9 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
             CONSOLE_DEBUG && console.log("xrkWallet privateKey :", xrkWallet.privateKey);
             var privatekey = xrkWallet.privateKey;
 
-            $(".restorebefore").css("display", "none");
+            jQuery(".restorebefore").css("display", "none");
 
-            $("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : "+xrkWallet.address +"</p><p class='publicad'>Private Key : "+ privatekey+"</p> </div> ")
+            jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : "+xrkWallet.address +"</p><p class='publicad'>Private Key : "+ privatekey+"</p> </div> ")
 
 
         return xrkWallet;
