@@ -139,13 +139,16 @@ i.fas.fa-dot-circle.themecolor.maright10 {
 }
 #downloadlink{
   font-size: 15px;
+  display: none !important;
 }
 #createKeyCloseBtn{
   background: #22283a;
     color: white;
     border: none;
 }
-
+#seedcontainer {
+    padding: 15px;
+}
 .hidden {
     display: block !important;
 }

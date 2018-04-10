@@ -40,6 +40,11 @@ jQuery( document ).ready(function() { // document ready function starts here, so
             $(".modal").on("hidden.bs.modal", function(){
                 $(".restorebefore").css("display", "block");
                 $(".restoreappend").remove();
+                jQuery("#firststand").css("display", "block");
+                jQuery(".createappend").remove();
+                jQuery("#modaladdrcont").empty();
+                jQuery(".addrcl").remove();
+                jQuery("#qrcodecontainer").css("display", "none");
 
             });
             
@@ -172,20 +177,20 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
 
 
-jQuery("#createkeypairsbtn").click(function(){
+// jQuery("#createkeypairsbtn").click(function(){
 
-    // if (jQuery("#qrcode").contains(img) ; )
-  if (jQuery('#qrcode').length) {
-    jQuery('#qrcode img').remove();
-    jQuery('#qrcode2 img').remove();
-  } 
-  else {
-    CONSOLE_DEBUG && console.log ('Oops! qr code broke');
-  }
-    // if( )
+//     // if (jQuery("#qrcode").contains(img) ; )
+//   if (jQuery('#qrcode').length) {
+//     jQuery('#qrcode img').remove();
+//     jQuery('#qrcode2 img').remove();
+//   } 
+//   else {
+//     CONSOLE_DEBUG && console.log ('Oops! qr code broke');
+//   }
+//     // if( )
 
-    createkeypairs(net);     
-});
+//     createkeypairs(net);     
+// });
 
 
 
@@ -805,8 +810,9 @@ jQuery("#restoreWalletBtn").click(function(){
 
   CONSOLE_DEBUG && console.log ("seedCode", seedCode);
 
+  var restorepass = jQuery("#restorepass").val();
  
-    restoreBip39XRKWallet(seedCode, password, address_pubkeyhash_version, address_checksum_value, private_key_version);
+    restoreBip39XRKWallet(seedCode, restorepass, address_pubkeyhash_version, address_checksum_value, private_key_version);
 
 
      
@@ -829,26 +835,35 @@ function createXrkHDWallet(){
   jQuery("#createXRKhd").click(function(){
 
       var passwordValue = $("#firstpass").val();
+
+
+      $("#qrcode").children().remove();
+
+            $("#qrcode2").children().remove();
+
       
 
      jQuery("#qrcodecontainer").css("display", "block");
 
-     
+     jQuery("#firststand").css("display", "none");
+
+
       generateBip39XRKWallet(passwordValue, wordListLang, entropyLength, 
         address_pubkeyhash_version, address_checksum_value,
         private_key_version);
 
-                document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
+                // document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
 
                 jQuery('#registered_adr').val(pubaddr);
-                document.getElementById('modalshowkey').innerHTML = 'Private Key : ' + privkey1;
+                
 
 
                 jQuery('modalboxaddress').text('Public Address : '+ pubaddr);
                 jQuery('modalboxkey').text('Private Key : ' + privkey1);
 
+                jQuery("#registered_adr").text(pubaddr);
 
-                 var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+'}');
+                  var dataStr = "data:text/json;charset=utf-8," + ('{'+'"xrk_address"'+":"+'"'+pubaddr+'"'+","+'"xrk_private_key"'+":"+'"'+privkey1+'"'+","+'"xrk_seed"'+":"+'"'+seed+'"'+'}');
                   var dlAnchorElem = document.getElementById('downloadlink');
                   dlAnchorElem.setAttribute("href",     dataStr     );
 
@@ -885,16 +900,17 @@ function createXrkHDWallet(){
 
                   // importAddress(net);
 
-
-                jQuery(".modal-body.standfont").children().empty();
-    jQuery(".modal-body.standfont").append("<div class = 'createappend'><p class='themecolor'><i class='fas fa-dot-circle themecolor maright10'></i>Your wallet has been created.<br>Please download your private key and save it at a safe place, you will need it for your trasactions.</p><p class = 'seedlabel'>Seed Phrase (24 words, order is important) </p> <p id ='seed' > "+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'></div></div>" );
+                  jQuery(".standfont").empty();
+                  // jQuery("#firststand").css("display", "none");
+                
+    jQuery("#seedcontainer").append("<div class = 'createappend'><p class='themecolor'><i class='fas fa-dot-circle themecolor maright10'></i>Your wallet has been created.<br>Please download your private key and save it at a safe place, you will need it for your trasactions.</p><p class = 'seedlabel'>Seed Phrase (24 words, order is important.Please write  it down or print it somewhere.) </p> <p id ='seed' > "+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'></div></div>" );
 
 
 
 
                   onCreateImportAddress(netw);
 
-            
+            // document.getElementById('seed').innerHTML =  seed ;
            
                  var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
                     width : 200,
@@ -906,6 +922,7 @@ function createXrkHDWallet(){
                   });
 
                   function makeCode () {    // qr code generater function for address
+
                     var elText = pubaddr;
                     var elprive = privkey1;     //pass  value of address stored in elpriv
                    
@@ -928,8 +945,8 @@ function createXrkHDWallet(){
 
 
                    jQuery("#modaladdrcont").append("<div> <p class='addrcl'>Public Address : "+pubaddr+"</p><p class ='addrcl'>Private Key : "+privkey1+"</p></div>");
-                  document.getElementById('modalboxaddress').innerHTML = 'Public Address : '+ pubaddr;
-                  document.getElementById('modalboxkey').innerHTML = 'Private key : '+ privkey1;
+                  // document.getElementById('modalboxaddress').innerHTML = 'Public Address : '+ pubaddr;
+                  // document.getElementById('modalboxkey').innerHTML = 'Private key : '+ privkey1;
 
 
              
