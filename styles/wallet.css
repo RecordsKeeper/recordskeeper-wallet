@@ -69,7 +69,7 @@ textarea {
 }
 #qrcode {
   /*width:160px;*/
-    
+    padding-top: 10px;
 }
 #printwalletcont{
   padding: 10px;
@@ -426,6 +426,21 @@ p#seed {
     background: #eae8e8;
     border-radius: 4px;
     font-weight: 600;
+        margin-bottom: -10px;
+}
+.seedlabel{
+      margin-bottom: 7px;
+    font-size: 13px;
+}
+
+.modc{ display: none; }
+
+#modaladdrcont{
+  padding: 20px;
+  margin-top: -10px ;
+}
+.printcontainer{
+      padding: 20px;
 }
 .modal-content{
   font-weight: 600;

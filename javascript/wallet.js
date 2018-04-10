@@ -868,7 +868,7 @@ function createXrkHDWallet(){
 
 
                 jQuery(".modal-body.standfont").children().remove();
-    jQuery(".modal-body.standfont").append("<p class='themecolor'><i class='fas fa-dot-circle themecolor maright10'></i>Your wallet has been created.<br>Please download your private key and save it at a safe place, you will need it for your trasactions.</p><p id ='seed' class='modc'>"+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'><p id='modalboxaddress' class='modc'></p><p id ='modalboxkey' class='modc'></p></div>" );
+    jQuery(".modal-body.standfont").append("<p class='themecolor'><i class='fas fa-dot-circle themecolor maright10'></i>Your wallet has been created.<br>Please download your private key and save it at a safe place, you will need it for your trasactions.</p><p class = 'seedlabel'>Seed Phrase (24 words, order is important) </p> <p id ='seed' > "+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'></div>" );
 
 
 
@@ -907,7 +907,7 @@ function createXrkHDWallet(){
                   makeCode1();                    // call the function  
 
 
-                   jQuery("#modaladdrcont").append(" <p> </p><p class='addrcl'>Public Address : "+pubaddr+"</p><p class ='addrcl'>Private Key : "+privkey1+"</p>");
+                   jQuery("#modaladdrcont").append("<div> <p class='addrcl'>Public Address : "+pubaddr+"</p><p class ='addrcl'>Private Key : "+privkey1+"</p></div>");
                   document.getElementById('modalboxaddress').innerHTML = 'Public Address : '+ pubaddr;
                   document.getElementById('modalboxkey').innerHTML = 'Private key : '+ privkey1;
 
@@ -917,7 +917,7 @@ function createXrkHDWallet(){
 
                 $("#printwalletcont").show();
                 
-                // var contents = $("#printwalletcont").html();
+                var contents = $("#modaladdrcont").html();
                 var contents2 = $("#qrcodecontainer").html();
                 var frame1 = $('<iframe />');
                 frame1[0].name = "frame1";
@@ -926,13 +926,15 @@ function createXrkHDWallet(){
                 var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
                 frameDoc.document.open();
                 //Create a new HTML document.
-                frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape;  }#printimg{ width : 100%; }</style>');
+                frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; } .addrcl{width : 100% ; clear : both;} .modc{display : none} </style>');
                 frameDoc.document.write('</head><body>');
                 //Append the external CSS file.
                 frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
                 //Append the DIV contents.
-                // frameDoc.document.write(contents);
+                
                 frameDoc.document.write(contents2);
+                 frameDoc.document.write(contents);
+
                 frameDoc.document.write('</body></html>');
                 frameDoc.document.close();
                 setTimeout(function () {

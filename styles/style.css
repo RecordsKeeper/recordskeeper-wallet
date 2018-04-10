@@ -76,6 +76,8 @@ body{
   div#modaladdrcont {
     border: none;
     padding: 20px;
+    clear: both;
+    display: block;
 }
 
   #print{

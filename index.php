@@ -203,10 +203,16 @@
         <img src='images/testnet.png' id='printimg'>
        <div class='col-md-6'><div id='qrcode'><p class='qrlabel'>Public Address</p></div></div><div class='col-md-6'><div id='qrcode2'><p class='qrlabel'>Private Key</p></div></div></div>
        <div class=''>
-         <div class='col-md-12' id="modaladdrcont">
+         <div class='' id="modaladdrcont">
            <p id='modalboxaddress' class='modc'></p>
            <p id ='modalboxkey' class='modc'></p>
-            <a id='printWallet' value='Print' class='noprint'  >Print Wallet</a>
+
+         </div>
+         <div >
+           <div class="col-md-12 printcontainer">
+           
+                <a id='printWallet' value='Print' class='noprint'  >Print Wallet</a>
+           </div>
          </div>
 
        </div>
