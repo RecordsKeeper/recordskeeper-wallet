@@ -37,8 +37,12 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
              // getPagination('#tableone');
 
-            
+            $(".modal").on("hidden.bs.modal", function(){
+                $(".restorebefore").css("display", "block");
+                $(".restoreappend").remove();
 
+            });
+            
            
 
             clearModalInputs();
@@ -796,11 +800,22 @@ function restoreWallet(){
 
 
 jQuery("#restoreWalletBtn").click(function(){
+
   var seedCode = jQuery("#seedTextArea").val();
+
   CONSOLE_DEBUG && console.log ("seedCode", seedCode);
 
  
     restoreBip39XRKWallet(seedCode, password, address_pubkeyhash_version, address_checksum_value, private_key_version);
+
+
+     
+        $("#restoremodBody").on("hidden.bs.modal", function(){
+                $("#restoremodBody").html(" ");
+            });
+
+
+
 });
 
 }
@@ -813,9 +828,13 @@ function createXrkHDWallet(){
 
   jQuery("#createXRKhd").click(function(){
 
+      var passwordValue = $("#firstpass").val();
+      
+
      jQuery("#qrcodecontainer").css("display", "block");
 
-      generateBip39XRKWallet(password, wordListLang, entropyLength, 
+     
+      generateBip39XRKWallet(passwordValue, wordListLang, entropyLength, 
         address_pubkeyhash_version, address_checksum_value,
         private_key_version);
 
@@ -867,8 +886,8 @@ function createXrkHDWallet(){
                   // importAddress(net);
 
 
-                jQuery(".modal-body.standfont").children().remove();
-    jQuery(".modal-body.standfont").append("<p class='themecolor'><i class='fas fa-dot-circle themecolor maright10'></i>Your wallet has been created.<br>Please download your private key and save it at a safe place, you will need it for your trasactions.</p><p class = 'seedlabel'>Seed Phrase (24 words, order is important) </p> <p id ='seed' > "+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'></div>" );
+                jQuery(".modal-body.standfont").children().empty();
+    jQuery(".modal-body.standfont").append("<div class = 'createappend'><p class='themecolor'><i class='fas fa-dot-circle themecolor maright10'></i>Your wallet has been created.<br>Please download your private key and save it at a safe place, you will need it for your trasactions.</p><p class = 'seedlabel'>Seed Phrase (24 words, order is important) </p> <p id ='seed' > "+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'></div></div>" );
 
 
 
@@ -877,7 +896,7 @@ function createXrkHDWallet(){
 
             
            
-                   var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
+                 var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
                     width : 200,
                     height : 200
                   });
@@ -885,6 +904,7 @@ function createXrkHDWallet(){
                     width : 200,
                     height : 200
                   });
+
                   function makeCode () {    // qr code generater function for address
                     var elText = pubaddr;
                     var elprive = privkey1;     //pass  value of address stored in elpriv
@@ -946,7 +966,7 @@ function createXrkHDWallet(){
              
     
              
-            
+       
 
            
           
@@ -1018,6 +1038,11 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
         CONSOLE_DEBUG && console.log("xrkWallet success : ", xrkWallet.status);
           CONSOLE_DEBUG && console.log("xrkWallet address :", xrkWallet.address);
             CONSOLE_DEBUG && console.log("xrkWallet privateKey :", xrkWallet.privateKey);
+            var privatekey = xrkWallet.privateKey;
+
+            $(".restorebefore").css("display", "none");
+
+            $("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : "+xrkWallet.address +"</p><p class='publicad'>Private Key : "+ privatekey+"</p> </div> ")
 
 
         return xrkWallet;
@@ -1025,6 +1050,9 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
         if ( xrkWallet.status != success ){
           jQuery("#restoreErrorP").html("not successful !")
         }
+
+
+
     }
 
 

@@ -23,7 +23,7 @@
 		<link rel="stylesheet" media="print" href="styles/print.css">
 		<link rel="icon" type="image/x-icon" href="images/fav.png">
 		<link rel="stylesheet" media="screen" href="styles/wallet.css">
-				<link rel="stylesheet" media="screen" href="styles/wallet.css">
+				
 
 		<!-- link for table to css cdn here  -->
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/css/tableexport.css">
@@ -179,25 +179,24 @@
         <h4 class="modal-title">Recordskeeper Wallet</h4>
       </div>
       <div class="modal-body standfont">
-        <p class="themecolor"><i class="fas fa-dot-circle themecolor maright10"></i>Welcome to recordskeeper wallet<br>
-          To ensure better security of your wallet you may enter a password.
-        </p>
-        <div class="row">
-        	<div class="col-md-6">
-        		<input type="password" name="firstpass" class="mb20" placeholder="password (OPTIONAL)">
-        	</div>
-        	<div class="col-md-6">
-        		 <input type="password" name="firstpass" class="mb20" placeholder="confirm password">
-        	</div>
-        	<div class="colmd-12">
-        		
-        				 <button type="submit" class="createwalletBtn margintop30" id="createXRKhd" >Create XRK Wallet</button>
-        		
-        		
-        	</div>
-         
-        </div>
-        
+           <div id="fistmodbod">
+                 <p class="themecolor">
+                    <i class="fas fa-dot-circle themecolor maright10"></i>
+                      Welcome to recordskeeper wallet<br>
+                      To ensure better security of your wallet you may enter a password.
+                 </p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input type="password" name="firstpass" class="mb20" placeholder="password (OPTIONAL)" id="firstpass">
+                    </div>
+                    <div class="col-md-6">
+                       <input type="password" name="firstpass" class="mb20" placeholder="confirm password" id="confpass">
+                    </div>
+                    <div class="colmd-12">
+                           <button type="submit" class="createwalletBtn margintop30" id="createXRKhd" >Create XRK Wallet</button> 
+                    </div>
+                  </div>
+           </div>
       </div>
        <div class='row walletcontent' id="qrcodecontainer" >
         <img src='images/testnet.png' id='printimg'>
@@ -210,7 +209,7 @@
          </div>
          <div >
            <div class="col-md-12 printcontainer">
-           
+
                 <a id='printWallet' value='Print' class='noprint'  >Print Wallet</a>
            </div>
          </div>
@@ -232,30 +231,31 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Recordskeeper Wallet</h4>
       </div>
-      <div class="modal-body standfont">
-      	<span class="seedlabel">Seed (24 words, order is important):</span>
+      <div class="modal-body" id="restoremodBody">
+      	<div class="restorebefore">
+            <span class="seedlabel">Seed (24 words, order is important):</span>
         <!-- <p class="themecolor seedpara">
-        	shop agent robust meadow limit object spin gorilla alert friend tackle wine castle casual space win clay brass tobacco degree good ridge major document
+          shop agent robust meadow limit object spin gorilla alert friend tackle wine castle casual space win clay brass tobacco degree good ridge major document
         </p> -->
         <div class="textareaCont">
-        	  <textarea rows="15" cols="100" id="seedTextArea" value=""></textarea>
-        	  <i class="far fa-copy copytoClip copyseedicon"  onclick="copySeedPhrase();" ></i>
+            <textarea rows="15" cols="100" id="seedTextArea" value=""></textarea>
+           
         </div>
       
 
         <div class="row">
-        	<div class="col-md-12">
-        		<input type="password" name="firstpass" class="mb20" placeholder="password">
-        	</div>
-        	
-        	<div class="colmd-12">
-        		
-        				 <button type="submit" class="createwalletBtn margintop30" id="restoreWalletBtn">Restore XRK Wallet</button>
-        		      <p id="restoreErrorP"></p>
-        		
-        	</div>
+          <div class="col-md-12">
+            <input type="password" name="firstpass" class="mb20" placeholder="password">
+          </div>
+          
+          <div class="colmd-12">
+            
+                 <button type="submit" class="createwalletBtn margintop30" id="restoreWalletBtn">Restore XRK Wallet</button>
+                  <p id="restoreErrorP"></p>
+            
+          </div>
         </div>
-        
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>

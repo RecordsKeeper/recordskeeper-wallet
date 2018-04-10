@@ -67,7 +67,7 @@ textarea {
 .walletheader img{
   width: 100%;
 }
-#qrcode {
+#qrcode, #qrcode2 {
   /*width:160px;*/
     padding-top: 10px;
 }
