@@ -77,7 +77,8 @@
                 <div class="loginContainer">
                     <div class="row">
                         <p>If you're a new user please click on the create XRK wallet button.</p>
-                        <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn" data-toggle="modal" data-target="#myModal">Create XRK Wallet</button>
+                        <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal1">Create XRK Wallet</button>
+                         <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal2">Restore XRK Wallet</button>
                     </div>
                     <div class="row margintop30">
                         <p>If you already have XRK wallet, please enter your wallet address here. </p>
@@ -116,7 +117,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Recordskeeper Wallet</h4>
       </div>
-      <div class="modal-body standfont">
+      <div class="modal-body standfont" id="printdiv">
         <p class="themecolor"><i class="fas fa-dot-circle themecolor maright10"></i>Your wallet has been created.<br>
           Please download your private key and save it at a safe place, you will need it for your trasactions.
           </p>
@@ -128,20 +129,20 @@
         </p>
         <div id="printwalletcont">
         	<div class="walletheader">
-        		<img src="images/logo.png" id="printimg">
+        		<img src="images/logo.png" >
         	</div>
-        	<div class="row walletcontent">
+        	<div class="row walletcontent"  >
         		<div class="col-md-6">
 	        		<div id="qrcode">
 	        			<p class="qrlabel">
-	        				Public Address
+	        				
 	        			</p>
 	        		</div>
 	        	</div>
 	        	<div class="col-md-6">
 	        		<div id="qrcode2">
 	        			<p class="qrlabel">
-	        				Private Key
+	        			
 	        			</p>
 	        		</div>
 
@@ -170,7 +171,92 @@
   </div>
 </div>   
 
-  
+<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Recordskeeper Wallet</h4>
+      </div>
+      <div class="modal-body standfont">
+        <p class="themecolor"><i class="fas fa-dot-circle themecolor maright10"></i>Welcome to recordskeeper wallet<br>
+          To ensure better security of your wallet you may enter a password.
+        </p>
+        <div class="row">
+        	<div class="col-md-6">
+        		<input type="password" name="firstpass" class="mb20" placeholder="password (OPTIONAL)">
+        	</div>
+        	<div class="col-md-6">
+        		 <input type="password" name="firstpass" class="mb20" placeholder="confirm password">
+        	</div>
+        	<div class="colmd-12">
+        		
+        				 <button type="submit" class="createwalletBtn margintop30" id="createXRKhd" >Create XRK Wallet</button>
+        		
+        		
+        	</div>
+         
+        </div>
+        
+      </div>
+       <div class='row walletcontent' id="qrcodecontainer" >
+        <img src='images/testnet.png' id='printimg'>
+       <div class='col-md-6'><div id='qrcode'><p class='qrlabel'>Public Address</p></div></div><div class='col-md-6'><div id='qrcode2'><p class='qrlabel'>Private Key</p></div></div></div>
+       <div class=''>
+         <div class='col-md-12' id="modaladdrcont">
+           <p id='modalboxaddress' class='modc'></p>
+           <p id ='modalboxkey' class='modc'></p>
+            <a id='printWallet' value='Print' class='noprint'  >Print Wallet</a>
+         </div>
+
+       </div>
+       
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div> 
+
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Recordskeeper Wallet</h4>
+      </div>
+      <div class="modal-body standfont">
+      	<span class="seedlabel">Seed (24 words, order is important):</span>
+        <!-- <p class="themecolor seedpara">
+        	shop agent robust meadow limit object spin gorilla alert friend tackle wine castle casual space win clay brass tobacco degree good ridge major document
+        </p> -->
+        <div class="textareaCont">
+        	  <textarea rows="15" cols="100" id="seedTextArea" value=""></textarea>
+        	  <i class="far fa-copy copytoClip copyseedicon"  onclick="copySeedPhrase();" ></i>
+        </div>
+      
+
+        <div class="row">
+        	<div class="col-md-12">
+        		<input type="password" name="firstpass" class="mb20" placeholder="password">
+        	</div>
+        	
+        	<div class="colmd-12">
+        		
+        				 <button type="submit" class="createwalletBtn margintop30" id="restoreWalletBtn">Restore XRK Wallet</button>
+        		      <p id="restoreErrorP"></p>
+        		
+        	</div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>    
 <!-- all the script here to make the page load faster -->
 
 
@@ -186,10 +272,8 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 crossorigin="anonymous"></script>
-<script src="javascript/bitcore-lib/bitcore-lib.min.js"></script>
-<script src="javascript/bitcore-mnemonic/bitcore-mnemonic.min.js"></script>
-<script src="javascript/bitcore-explorers/bitcore-explorers.min.js"></script>
-<!-- <script src="javascript/app.js"></script> -->
+<script src="javascript/bitcore-lib/bitcore-lib.js"></script>
+<script src="javascript/bitcore-mnemonic/bitcore-mnemonic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 <script src="javascript/wallet.js"></script>
 

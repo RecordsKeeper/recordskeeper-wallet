@@ -13,6 +13,26 @@
     border-color: #d2d7dd;
 
 }
+textarea {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 0px;
+    font-weight: 600;
+}
+.seedlabel{
+  font-weight: 600;
+
+}
+.copytoClip{
+      position: absolute;
+    bottom: 4px;
+    font-size: 22px;
+    z-index: 9;
+    right: 7px;
+}
+.textareaCont{
+  position: relative;
+}
 #modalshowaddress, #modalshowkey {
   display: none;
 }
@@ -20,7 +40,16 @@
   font-weight: 600;
     font-size: 12px;
 }
-
+.mb20{
+      margin-bottom: 20px;
+}
+.seedpara{
+      font-size: 16px;
+    font-weight: 600;
+    background: #e2e2e2;
+    padding: 11px;
+    border-radius: 4px;
+}
 
 #printWallet {
   float: right;
@@ -385,7 +414,22 @@ span.xrk {
     margin-left: 2%;
     padding: 25px;
 }
-
+#secondmodal{
+  display: none;
+}
+#qrcodecontainer{
+  display: none;
+}
+p#seed {
+    font-size: 15px;
+    padding: 15px;
+    background: #eae8e8;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.modal-content{
+  font-weight: 600;
+}
 .already{
       margin: 0 0 20px;
     color: #3f4454;
