@@ -75,12 +75,12 @@
             <div class="row">
                 <div class="loginContainer">
                     <div class="row">
-                        <p>If you're a new user please click on the create XRK wallet button.</p>
+                        <p class="font14">If you're a new user please click on the create XRK wallet button.</p>
                         <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal1">Create XRK Wallet</button>
                         <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal2">Restore XRK Wallet</button>
                     </div>
                     <div class="row margintop30">
-                        <p>If you already have XRK wallet, please enter your wallet address here. </p>
+                        <p class="font14">If you already have XRK wallet, please enter your wallet address here. </p>
                         <input type="text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your XRK wallet address" value="">
                         <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
                     </div>
@@ -117,7 +117,7 @@
                     <h4 class="modal-title">Recordskeeper Wallet</h4>
                 </div>
                 <div class="modal-body standfont" id="printdiv">
-                    <p class="themecolor"><i class="fas fa-dot-circle themecolor maright10"></i>Your wallet has been created.<br> Please download your private key and save it at a safe place, you will need it for your trasactions.
+                    <p class="themecolor" ><i class="fas fa-dot-circle themecolor maright10"></i>Your wallet has been created.<br> Please download your private key and save it at a safe place, you will need it for your trasactions.
                     </p>
                     <p id="modalshowaddress">
 
@@ -159,7 +159,7 @@
 
 
 
-                    <a download="Recordskeeper-wallet-key.json" id="downloadlink" download>Download</a>
+                    <a download="RecordsKeeper-wallet-key.json" id="downloadlink" download>Download</a>
                     <a id="printWallet" value="Print" class="noprint">Print Wallet</a>
                 </div>
                 <div class="modal-footer">
@@ -174,21 +174,24 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title ">Recordskeeper Wallet</h4>
+                    <h4 class="modal-title ">RecordsKeeper Wallet</h4>
                     <span class="standfont"></span>
                 </div>
                 <div class="modal-body " id="firststand">
 
                     <div id="fistmodbod">
-                        <p class="themecolor">
-                            <i class="fas fa-dot-circle themecolor maright10"></i> Welcome to recordskeeper wallet<br> To ensure better security of your wallet you may enter a password.
+                        <p class="themecolor regular margbot5 font14" id="createWalTitle">
+                            <i class="fas fa-dot-circle themecolor maright10"></i> Welcome to recordsKeeper wallet
                         </p>
-                        <div class="row">
+                        <p class="themecolor regular margbot5 font14">
+                             To ensure better security of your wallet you may enter a password.
+                        </p>
+                        <div class="row margtop40">
                             <div class="col-md-6">
-                                <input type="password" name="firstpass" class="mb20" placeholder="password (OPTIONAL)" id="firstpass">
+                                <input type="password" name="firstpass" class="mb20" placeholder="Password (optional)" id="firstpass">
                             </div>
                             <div class="col-md-6">
-                                <input type="password" name="firstpass" class="mb20" placeholder="confirm password" id="confpass">
+                                <input type="password" name="firstpass" class="mb20" placeholder="Confirm Password" id="confpass">
                             </div>
                             <div class="colmd-12">
                                 <button type="submit" class="createwalletBtn margintop30" id="createXRKhd">Create XRK Wallet</button>
@@ -231,7 +234,7 @@
                         </div>
                     </div>
                 </div>
-                 <a download="Recordskeeper-wallet-key.json" id="downloadlink" download>Download</a>
+                 <a download="RecordsKeeper-wallet-key.json" id="downloadlink" download>Download</a>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
                 </div>
@@ -244,14 +247,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Recordskeeper Wallet</h4>
+                    <h4 class="modal-title" id="restoretitle">Restore XRK Wallet</h4>
 
                 </div>
                 <p id="congrats">Congratulations !! your wallet has been restored.</p>
-                <div class="modal-body" id="restoremodBody">
+                <div class="modal-body " id="restoremodBody">
                     <form id="restoreform">
                       <div class="restorebefore">
-                          <span class="seedlabel">Seed (24 words, order is important. Please write it or print it ):</span>
+                          <span class="seedlabel">Seed (24 words, order is important.):</span>
                          
                           <div class="textareaCont">
                               <textarea rows="15" cols="100" id="seedTextArea" value="" required="required"></textarea>
@@ -273,7 +276,7 @@
                           </div>
                       </div>
                        <div class='row walletcontent' id="qrcodecontainer2">
-                          <img src='images/testnet.png' id='printimg'>
+                          <img src='images/testnet.png' id='printimg2'>
                           <div class='col-md-6'>
                               
                               <div id='qrcode3'>

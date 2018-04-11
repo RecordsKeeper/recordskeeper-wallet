@@ -29,12 +29,12 @@
       padding: 15px;
   }
 i.fas.fa-print {
-       font-size: 22px;
+       font-size: 20px;
     margin-left: 10px;
-    float: right;
+    /*float: right;*/
     margin-right: 2px;
     margin-bottom: 10px;
-    color: #23283b;
+    color: #7f90a3;
     cursor: pointer;
 }
 
@@ -55,7 +55,13 @@ textarea {
 }
 .seedlabel{
   font-weight: 600;
+    line-height: 21px;
 
+}
+.green {
+      color: green;
+    font-weight: 600;
+  color: green;
 }
 .copytoClip{
       position: absolute;
@@ -73,6 +79,8 @@ textarea {
 .qrlabel{
   font-weight: 600;
     font-size: 12px;
+    width: 75% ;
+    text-align: center;
 }
 .mb20{
       margin-bottom: 20px;
@@ -84,12 +92,27 @@ textarea {
     padding: 11px;
     border-radius: 4px;
 }
-
+.regular{
+  font-weight: 400 !important;
+}
+.font14{
+  font-size: 14px !important;
+}
+.margtop40 {
+    margin-top: 40px;
+}
+.margbot5{
+margin-bottom: 5px;
+}
+.margtop50{
+  margin-top: 50px;
+}
 #printWallet {
   float: right;
-    margin-top: -18px;
+    margin-top: 0px;
     border: none;
    font-size: 15px;
+   display: none;
 }
 .walletcontent{
   padding:20px;
@@ -459,17 +482,20 @@ span.xrk {
   display: none;
 }
 p#seed {
-    font-size: 15px;
+    font-size: 16px;
     padding: 15px;
-    background: #eae8e8;
+    background: #469c45e0;
     border-radius: 4px;
     font-weight: 600;
-        margin-bottom: -10px;
+    color: white;
+    margin-bottom: -10px;
 }
 .seedlabel{
-      margin-bottom: 7px;
+      margin-bottom: 20px;
     font-size: 13px;
 }
+#printimg, #printimg2{ display: none; }
+
 
 .modc{ display: none; }
 

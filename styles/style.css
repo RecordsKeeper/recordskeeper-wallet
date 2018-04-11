@@ -95,4 +95,26 @@ body{
     float: right;
       
   }
+p#seed {
+    font-size: 15px;
+    padding: 15px;
+    background: #eae8e8;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-bottom: -10px;
+    -webkit-print-color-adjust: exact; 
+}
+
+  @media print {
+p#seed {
+    font-size: 15px;
+    padding: 15px;
+    background: #eae8e8;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-bottom: -10px;
+    -webkit-print-color-adjust: exact; 
+}
+
+}
 

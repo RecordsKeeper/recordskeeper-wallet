@@ -12,6 +12,7 @@ $(".modal").on("hidden.bs.modal", function(){
                 $("#qrcode2").children().remove();
                 $("#qrcode3").children().remove();
                 $("#qrcode4").children().remove();
+                jQuery("#printWallet").css("display", "none");
 
 
             });

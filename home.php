@@ -295,7 +295,7 @@
 			</p>
 
 		</div>
-		<button id="sendpopup" data-toggle="modal"  id="sendTransSubmit">Submit</button>
+		<button id="sendpopup" data-toggle="modal"  id="sendTransSubmit">Send Transaction</button>
 		
 		<p class="formerrorpara"></p>
 		<div id ="txid"></div>
