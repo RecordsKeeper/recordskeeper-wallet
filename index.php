@@ -258,7 +258,7 @@
                          
                           <div class="textareaCont">
                               <textarea rows="15" cols="100" id="seedTextArea" value="" required="required"></textarea>
-
+                              <p id="restoreErrorP">Please Enter a Valid Seed Phrase</p>
                           </div>
 
 
@@ -270,7 +270,7 @@
                               <div class="colmd-12">
 
                                   <button type="submit" class="createwalletBtn margintop30" id="restoreWalletBtn">Restore XRK Wallet</button>
-                                  <p id="restoreErrorP"></p>
+                                  
 
                               </div>
                           </div>

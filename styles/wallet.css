@@ -37,7 +37,10 @@ i.fas.fa-print {
     color: #7f90a3;
     cursor: pointer;
 }
-
+p#restoreErrorP {
+    color: red;
+    display: none;
+}
 
 
 textarea {

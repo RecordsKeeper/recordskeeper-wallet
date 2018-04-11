@@ -63,7 +63,13 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                   jQuery('nav#nav').css('background', '#22283a');
                   jQuery('#walletloginbtn').click(function(){
                           mainNetAddr = jQuery('#registered_adr').val() ;
+
+                          pubaddr = mainNetAddr ;
+
                           localStorage.setItem("mainNetAddr", mainNetAddr);
+                         
+                         
+
                    });
 
                       mainNetAddr = localStorage.getItem("mainNetAddr");
@@ -89,6 +95,9 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                 jQuery('#walletloginbtn').click(function(){
 
                           testNetAddr = jQuery('#registered_adr').val() ;
+
+                          pubaddr = testNetAddr ;
+
                           localStorage.setItem("testNetAddr", testNetAddr);
                    });
                  testNetAddr = localStorage.getItem("testNetAddr");
@@ -113,6 +122,7 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                jQuery('#walletloginbtn').click(function(){
 
                           mainNetAddr = jQuery('#registered_adr').val() ;
+                          pubaddr = mainNetAddr ;
                           localStorage.setItem("mainNetAddr", mainNetAddr);
                 });
 
@@ -134,6 +144,11 @@ jQuery( document ).ready(function() { // document ready function starts here, so
            jQuery("#walletloginbtn").click(function(){
              var netw = net;
              pubaddr = jQuery("#registered_adr").val();
+
+             CONSOLE_DEBUG && console.log(pubaddr);
+               localStorage.setItem("pubaddr", pubaddr);
+
+
              
              net = localStorage.getItem("network");
              
@@ -160,6 +175,7 @@ jQuery( "#restoreform" ).submit(function( event ) {
   event.preventDefault();
 
   restoreWallet();
+
 
 });
 
@@ -806,40 +822,118 @@ function copySeedPhrase() {
 function restoreWallet(){
 
 
-jQuery("#restoreWalletBtn").click(function(){
+  jQuery("#restoreWalletBtn").click(function(){
 
-  var seedCode = jQuery("#seedTextArea").val();
+       if($("#qrcode3").children.length)
 
-  jQuery("#congrats").css("display", "block");
-  jQuery("#qrcodecontainer2").css("display", "block");
-
-  // jQuery("#restoretitle").text("Restore XRK Wallet")
-
-  if ( jQuery('#qrcode3').children().length > 0 ) {
-
-     jQuery('#qrcode3').children().remove();
-      jQuery('#qrcode4').children().remove();
-      jQuery(".restoreappend").remove();
-
-    }
-
-   
-
-  CONSOLE_DEBUG && console.log ("seedCode", seedCode);
-
-  var restorepass = jQuery("#restorepass").val();
- 
-    restoreBip39XRKWallet(seedCode, restorepass, address_pubkeyhash_version, address_checksum_value, private_key_version);
-
-
-     
-        jQuery("#restoremodBody").on("hidden.bs.modal", function(){
-                jQuery("#restoremodBody").html(" ");
-            });
+        var seedCode = jQuery("#seedTextArea").val();
 
 
 
-});
+       
+
+        CONSOLE_DEBUG && console.log ("seedCode", seedCode);
+
+        var restorepass = jQuery("#restorepass").val();
+
+        var restoreResult = restoreBip39XRKWallet(seedCode, restorepass, address_pubkeyhash_version, address_checksum_value, private_key_version);
+
+
+
+        CONSOLE_DEBUG && console.log(restoreResult);
+        CONSOLE_DEBUG && console.log("restoreResult.status", restoreResult.status);
+        CONSOLE_DEBUG && console.log("restoreResult.address", restoreResult.address);
+        CONSOLE_DEBUG && console.log("restoreResult.privatekey", restoreResult.privateKey);
+
+       if(restoreResult.status == 'success'){
+
+          $("#restoreErrorP").css("display", "none");
+
+          jQuery("#congrats").css("display", "block");
+          jQuery("#qrcodecontainer2").css("display", "block");
+
+          // jQuery("#restoretitle").text("Restore XRK Wallet")
+
+          if ( jQuery('#qrcode3').children().length > 0 ) {
+
+          jQuery('#qrcode3').children().remove();
+          jQuery('#qrcode4').children().remove();
+          jQuery(".restoreappend").remove();
+
+          }
+
+
+
+          var privatekey = restoreResult.privateKey;
+
+          jQuery(".restorebefore").css("display", "none");
+
+
+
+          jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : "+restoreResult.address +"</p><p class='publicad'>Private Key : "+ privatekey+"</p> </div> ");
+
+
+          // document.getElementById('seed').innerHTML =  seed ;
+
+          var qrcode3 = new QRCode(document.getElementById("qrcode3"), {
+          width : 200,
+          height : 200
+          });
+          var qrcode5 = new QRCode(document.getElementById("qrcode4"), {
+          width : 200,
+          height : 200
+          });
+
+
+          function makeCode () {    // qr code generater function for address
+
+          var elText = restoreResult.address;
+          var elprive = restoreResult.privateKey;     //pass  value of address stored in elpriv
+
+
+          qrcode3.makeCode(elText);
+
+          }
+
+          makeCode();                 // call the function here 
+
+
+          function makeCode2 () {    // qr code generater function for privkey
+          var elText = restoreResult.address;   
+          var elprive = restoreResult.privateKey;
+
+
+          qrcode5.makeCode(elprive);    //pass  value of privkey stored in elpriv
+
+          }
+
+          makeCode2();                    // call the function  
+
+          jQuery("#qrcodecontainer2").css("display", "block");
+          jQuery("#congrats").css("display", "block");
+
+
+
+          jQuery("#modaladdrcont").append("<div> <p class='addrcl'>Public Address : "+restoreResult.address+"</p><p class ='addrcl'>Private Key : "+restoreResult.privateKey+"</p></div>");
+
+
+
+
+
+
+
+          jQuery("#restoremodBody").on("hidden.bs.modal", function(){
+          jQuery("#restoremodBody").html(" ");
+          });
+
+       }
+       else{
+
+        $("#restoreErrorP").css("display", "block");
+       }
+
+
+  });
 
 }
 
@@ -1102,14 +1196,18 @@ function generateBip39XRKWallet(password, wordListLang, entropyLength,
 
 function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_version= '0041bb05', 
         address_checksum_value = '07cb53da', private_key_version = '80fbe117') {
-
-        if(!Mnemonic.isValid(codeStr)) 
+        
+        try {
+            if(!Mnemonic.isValid(codeStr)) 
+                return {"status": "error", "message": "Seed/mnemonic list is not valid."} ;
+        }
+        catch (e) {
             return {"status": "error", "message": "Seed/mnemonic list is not valid."} ;
+        }
 
         var code = new Mnemonic(codeStr);
 
         var xprivKey = code.toHDPrivateKey(password); // using a passphrase
-
         var masterPrivateKey = xprivKey.privateKey.toString();
 
         xrkPublicAddress = createXRKAddressFromPrivateKey(masterPrivateKey, address_pubkeyhash_version, address_checksum_value);
@@ -1117,64 +1215,7 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
 
         var xrkWallet = { "status": "success", "address": xrkPublicAddress, "privateKey": xrkPrivateKey};
 
-        CONSOLE_DEBUG && console.log("xrkWallet success : ", xrkWallet.status);
-          CONSOLE_DEBUG && console.log("xrkWallet address :", xrkWallet.address);
-            CONSOLE_DEBUG && console.log("xrkWallet privateKey :", xrkWallet.privateKey);
-            var privatekey = xrkWallet.privateKey;
-
-            jQuery(".restorebefore").css("display", "none");
-
-            jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : "+xrkWallet.address +"</p><p class='publicad'>Private Key : "+ privatekey+"</p> </div> ");
-
-
-             // document.getElementById('seed').innerHTML =  seed ;
-           
-                 var qrcode3 = new QRCode(document.getElementById("qrcode3"), {
-                    width : 200,
-                    height : 200
-                  });
-                  var qrcode5 = new QRCode(document.getElementById("qrcode4"), {
-                    width : 200,
-                    height : 200
-                  });
-
-
-                  function makeCode () {    // qr code generater function for address
-
-                    var elText = xrkWallet.address;
-                    var elprive = xrkWallet.privateKey;     //pass  value of address stored in elpriv
-                   
-                    
-                    qrcode3.makeCode(elText);
-                     
-                  }
-
-                  makeCode();                 // call the function here 
-
-
-                  function makeCode2 () {    // qr code generater function for privkey
-                    var elText = xrkWallet.address;   
-                    var elprive = xrkWallet.privateKey;
-                   
-                    
-                    qrcode5.makeCode(elprive);    //pass  value of privkey stored in elpriv
-                     
-                  }
-
-                  makeCode2();                    // call the function  
-
-
-                   jQuery("#modaladdrcont").append("<div> <p class='addrcl'>Public Address : "+xrkWallet.address+"</p><p class ='addrcl'>Private Key : "+xrkWallet.privateKey+"</p></div>");
-
-
         return xrkWallet;
-
-        if ( xrkWallet.status != success ){
-         CONSOLE_DEBUG && console.log("error");
-        }
-
-
-
     }
 
 
