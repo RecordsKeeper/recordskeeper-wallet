@@ -23,6 +23,7 @@ wordListLang = 'ENGLISH';
 entropyLength = 256;
 password = ''; 
 var seed ;
+var MnemonicsArray ;
 
 
 jQuery( document ).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
@@ -37,16 +38,6 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
              // getPagination('#tableone');
 
-            jQuery(".modal").on("hidden.bs.modal", function(){
-                jQuery(".restorebefore").css("display", "block");
-                jQuery(".restoreappend").remove();
-                jQuery("#firststand").css("display", "block");
-                jQuery(".createappend").remove();
-                jQuery("#modaladdrcont").empty();
-                jQuery(".addrcl").remove();
-                jQuery("#qrcodecontainer").css("display", "none");
-
-            });
             
            
 
@@ -816,8 +807,8 @@ jQuery("#restoreWalletBtn").click(function(){
 
 
      
-        jQuery("#restoremodBody").on("hidden.bs.modal", function(){
-                jQuery("#restoremodBody").html(" ");
+        $("#restoremodBody").on("hidden.bs.modal", function(){
+                $("#restoremodBody").html(" ");
             });
 
 
@@ -836,12 +827,17 @@ function createXrkHDWallet(){
 
   jQuery("#createXRKhd").click(function(){
 
-      var passwordValue = jQuery("#firstpass").val();
+      var passwordValue = $("#firstpass").val();
 
+       
 
-      jQuery("#qrcode").children().remove();
+      CONSOLE_DEBUG && console.log(MnemonicsArray);
 
-            jQuery("#qrcode2").children().remove();
+     
+
+      $("#qrcode").children().remove();
+
+            $("#qrcode2").children().remove();
 
       
 
@@ -952,16 +948,16 @@ function createXrkHDWallet(){
 
 
              
-              jQuery("#printWallet").click(function() {
+              $("#printWallet").click(function() {
 
-                jQuery("#printwalletcont").show();
+                $("#printwalletcont").show();
                 
-                var contents = jQuery("#modaladdrcont").html();
-                var contents2 = jQuery("#qrcodecontainer").html();
-                var frame1 = jQuery('<iframe />');
+                var contents = $("#modaladdrcont").html();
+                var contents2 = $("#qrcodecontainer").html();
+                var frame1 = $('<iframe />');
                 frame1[0].name = "frame1";
                 // frame1.css({ "position": "absolute", "top": "-1000000px" });
-                jQuery("body").append(frame1);
+                $("body").append(frame1);
                 var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
                 frameDoc.document.open();
                 //Create a new HTML document.
@@ -1059,9 +1055,9 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
             CONSOLE_DEBUG && console.log("xrkWallet privateKey :", xrkWallet.privateKey);
             var privatekey = xrkWallet.privateKey;
 
-            jQuery(".restorebefore").css("display", "none");
+            $(".restorebefore").css("display", "none");
 
-            jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : "+xrkWallet.address +"</p><p class='publicad'>Private Key : "+ privatekey+"</p> </div> ")
+            $("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : "+xrkWallet.address +"</p><p class='publicad'>Private Key : "+ privatekey+"</p> </div> ")
 
 
         return xrkWallet;

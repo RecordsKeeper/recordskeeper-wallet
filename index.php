@@ -283,6 +283,20 @@
     <script src="javascript/scripts.js"></script>
     <script src="javascript/custom.js"></script>
     <script src="javascript/mobile.js"></script>
+    <script src="javascript/index.js"></script>
+     <script src="javascript/tagsly.js"></script>
+   <!--  <script>
+      $(function() {
+        $('#tags').tagsly({
+          suggestions: function(input, cb) {
+            cb(['jQuery', 'Html', 'CSS', 'JavaScript']);
+          },
+          placeholder: 'Enter tags!',
+          maxItems: 5
+        });
+      });
+    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
     <script src="javascript/table2CSV.js"></script>
