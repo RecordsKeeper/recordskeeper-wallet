@@ -813,8 +813,17 @@ jQuery("#restoreWalletBtn").click(function(){
   jQuery("#congrats").css("display", "block");
   jQuery("#qrcodecontainer2").css("display", "block");
 
-  jQuery("#restoretitle").text("Restore XRK Wallet")
+  // jQuery("#restoretitle").text("Restore XRK Wallet")
 
+  if ( jQuery('#qrcode3').children().length > 0 ) {
+
+     jQuery('#qrcode3').children().remove();
+      jQuery('#qrcode4').children().remove();
+      jQuery(".restoreappend").remove();
+
+    }
+
+   
 
   CONSOLE_DEBUG && console.log ("seedCode", seedCode);
 
@@ -1161,7 +1170,7 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
         return xrkWallet;
 
         if ( xrkWallet.status != success ){
-          jQuery("#restoreErrorP").html("not successful !")
+         CONSOLE_DEBUG && console.log("error");
         }
 
 

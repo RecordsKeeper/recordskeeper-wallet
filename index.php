@@ -181,7 +181,7 @@
 
                     <div id="fistmodbod">
                         <p class="themecolor regular margbot5 font14" id="createWalTitle">
-                            <i class="fas fa-dot-circle themecolor maright10"></i> Welcome to recordsKeeper wallet
+                            <i class="fas fa-dot-circle themecolor maright10"></i> Welcome to RecordsKeeper wallet
                         </p>
                         <p class="themecolor regular margbot5 font14">
                              To ensure better security of your wallet you may enter a password.
@@ -247,7 +247,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="restoretitle">Restore XRK Wallet</h4>
+                    <h4 class="modal-title" id="restoretitle">Restore RecordsKeeper Wallet</h4>
 
                 </div>
                 <p id="congrats">Congratulations !! your wallet has been restored.</p>
@@ -264,7 +264,7 @@
 
                           <div class="row">
                               <div class="col-md-12">
-                                  <input type="password" name="firstpass" class="mb20" placeholder="password" id="restorepass">
+                                  <input type="password" name="firstpass" class="mb20" placeholder="Password" id="restorepass">
                               </div>
 
                               <div class="colmd-12">
@@ -278,15 +278,15 @@
                        <div class='row walletcontent' id="qrcodecontainer2">
                           <img src='images/testnet.png' id='printimg2'>
                           <div class='col-md-6'>
-                              
+                                <p class='qrlabel'>Public Address</p>
                               <div id='qrcode3'>
-                                  <p class='qrlabel'>Public Address</p>
+                                  
                               </div>
                           </div>
                           <div class='col-md-6'>
-
-                              <div id='qrcode4'>
                                   <p class='qrlabel'>Private Key</p>
+                              <div id='qrcode4'>
+                                  
                               </div>
                           </div>
                       </div>
