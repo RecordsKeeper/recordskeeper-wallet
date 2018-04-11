@@ -60,6 +60,12 @@ body{
     padding:20px;
   
   }
+  #congrats{
+    display: none;
+    color: green;
+  }
+
+  #qrcodecontainer2{display: none;}
   .walletheader{
         background: #23293a;
       padding: 15px;

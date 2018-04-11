@@ -13,11 +13,45 @@
     border-color: #d2d7dd;
 
 }
+#congrats{
+    display: none;
+    padding: 15px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    color: green;
+
+    font-size: 14px;
+  }
+
+  #qrcodecontainer2{display: none;}
+  .walletheader{
+        background: #23293a;
+      padding: 15px;
+  }
+i.fas.fa-print {
+       font-size: 22px;
+    margin-left: 10px;
+    float: right;
+    margin-right: 2px;
+    margin-bottom: 10px;
+    color: #23283b;
+    cursor: pointer;
+}
+
+
+
 textarea {
     margin-bottom: 20px;
     margin-top: 10px;
     padding: 0px;
     font-weight: 600;
+        margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 0px;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 3px;
+    color: #7f90a3;
 }
 .seedlabel{
   font-weight: 600;
@@ -59,6 +93,7 @@ textarea {
 }
 .walletcontent{
   padding:20px;
+  padding-top: 0px;
 }
 .walletheader{
       

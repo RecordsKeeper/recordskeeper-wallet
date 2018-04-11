@@ -245,30 +245,49 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Recordskeeper Wallet</h4>
+
                 </div>
+                <p id="congrats">Congratulations !! your wallet has been restored.</p>
                 <div class="modal-body" id="restoremodBody">
-                    <div class="restorebefore">
-                        <span class="seedlabel">Seed (24 words, order is important. Please write it or print it ):</span>
-                       
-                        <div class="textareaCont">
-                            <textarea rows="15" cols="100" id="seedTextArea" value=""></textarea>
+                    <form id="restoreform">
+                      <div class="restorebefore">
+                          <span class="seedlabel">Seed (24 words, order is important. Please write it or print it ):</span>
+                         
+                          <div class="textareaCont">
+                              <textarea rows="15" cols="100" id="seedTextArea" value="" required="required"></textarea>
 
-                        </div>
+                          </div>
 
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type="password" name="firstpass" class="mb20" placeholder="password" id="restorepass">
-                            </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <input type="password" name="firstpass" class="mb20" placeholder="password" id="restorepass">
+                              </div>
 
-                            <div class="colmd-12">
+                              <div class="colmd-12">
 
-                                <button type="submit" class="createwalletBtn margintop30" id="restoreWalletBtn">Restore XRK Wallet</button>
-                                <p id="restoreErrorP"></p>
+                                  <button type="submit" class="createwalletBtn margintop30" id="restoreWalletBtn">Restore XRK Wallet</button>
+                                  <p id="restoreErrorP"></p>
 
-                            </div>
-                        </div>
-                    </div>
+                              </div>
+                          </div>
+                      </div>
+                       <div class='row walletcontent' id="qrcodecontainer2">
+                          <img src='images/testnet.png' id='printimg'>
+                          <div class='col-md-6'>
+                              
+                              <div id='qrcode3'>
+                                  <p class='qrlabel'>Public Address</p>
+                              </div>
+                          </div>
+                          <div class='col-md-6'>
+
+                              <div id='qrcode4'>
+                                  <p class='qrlabel'>Private Key</p>
+                              </div>
+                          </div>
+                      </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>

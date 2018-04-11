@@ -146,11 +146,17 @@ jQuery( document ).ready(function() { // document ready function starts here, so
            });
 
 
-          restoreWallet();
+          
 
           createXrkHDWallet();
             
+$( "#restoreform" ).submit(function( event ) {
 
+  event.preventDefault();
+
+  restoreWallet();
+
+});
 
 
          
@@ -799,6 +805,10 @@ jQuery("#restoreWalletBtn").click(function(){
 
   var seedCode = jQuery("#seedTextArea").val();
 
+  jQuery("#congrats").css("display", "block");
+  jQuery("#qrcodecontainer2").css("display", "block");
+
+
   CONSOLE_DEBUG && console.log ("seedCode", seedCode);
 
   var restorepass = jQuery("#restorepass").val();
@@ -901,7 +911,7 @@ function createXrkHDWallet(){
                   jQuery(".standfont").empty();
                   // jQuery("#firststand").css("display", "none");
                 
-    jQuery("#seedcontainer").append("<div class = 'createappend'><p class='themecolor'><i class='fas fa-dot-circle themecolor maright10'></i>Your wallet has been created.<br>Please download your private key and save it at a safe place, you will need it for your trasactions.</p><p class = 'seedlabel'>Seed Phrase (24 words, order is important.Please write  it down or print it somewhere.) </p> <p id ='seed' > "+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'></div></div>" );
+    jQuery("#seedcontainer").append("<div class = 'createappend'><p class='themecolor'><i class='fas fa-dot-circle themecolor maright10'></i>Your wallet has been created.<br>Please download your private key and save it at a safe place, you will need it for your trasactions.</p><p class = 'seedlabel'>Seed Phrase (24 words, order is important.Please write  it down or print it. <i class='fas fa-print' id='seedprint'></i>) </p> <p id ='seed' > "+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'></div></div>" );
 
 
 
@@ -946,7 +956,34 @@ function createXrkHDWallet(){
                   // document.getElementById('modalboxaddress').innerHTML = 'Public Address : '+ pubaddr;
                   // document.getElementById('modalboxkey').innerHTML = 'Private key : '+ privkey1;
 
+                  $("#seedprint").on("click", function(){
+                        var contents = $("#seed").html();
+                        var contents2 = $(".seedlabel").html();
+                        var frame1 = $('<iframe />');
+                        frame1[0].name = "frame1";
+                        // frame1.css({ "position": "absolute", "top": "-1000000px" });
+                        $("body").append(frame1);
+                        var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
+                        frameDoc.document.open();
+                        //Create a new HTML document.
+                        frameDoc.document.write('<html><head><title>Print Wallet</title><style> .seedlabel{ width : 100%; } #seed{width: 100%; clear:both;} </style>');
+                        frameDoc.document.write('</head><body>');
+                        //Append the external CSS file.
+                        frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
+                        //Append the DIV contents.
+                        
+                        // frameDoc.document.write(contents2);
+                        frameDoc.document.write('<p>seedphrase (24 words, order is important.)</p>');
+                         frameDoc.document.write(contents);
 
+                        frameDoc.document.write('</body></html>');
+                        frameDoc.document.close();
+                        setTimeout(function () {
+                            window.frames["frame1"].focus();
+                            window.frames["frame1"].print();
+                            frame1.remove();
+                        }, 1500);
+                  });
              
               $("#printWallet").click(function() {
 
@@ -1057,7 +1094,47 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
 
             $(".restorebefore").css("display", "none");
 
-            $("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : "+xrkWallet.address +"</p><p class='publicad'>Private Key : "+ privatekey+"</p> </div> ")
+            $("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : "+xrkWallet.address +"</p><p class='publicad'>Private Key : "+ privatekey+"</p> </div> ");
+
+
+             // document.getElementById('seed').innerHTML =  seed ;
+           
+                 var qrcode3 = new QRCode(document.getElementById("qrcode3"), {
+                    width : 200,
+                    height : 200
+                  });
+                  var qrcode5 = new QRCode(document.getElementById("qrcode4"), {
+                    width : 200,
+                    height : 200
+                  });
+
+
+                  function makeCode () {    // qr code generater function for address
+
+                    var elText = xrkWallet.address;
+                    var elprive = xrkWallet.privateKey;     //pass  value of address stored in elpriv
+                   
+                    
+                    qrcode3.makeCode(elText);
+                     
+                  }
+
+                  makeCode();                 // call the function here 
+
+
+                  function makeCode2 () {    // qr code generater function for privkey
+                    var elText = xrkWallet.address;   
+                    var elprive = xrkWallet.privateKey;
+                   
+                    
+                    qrcode5.makeCode(elprive);    //pass  value of privkey stored in elpriv
+                     
+                  }
+
+                  makeCode2();                    // call the function  
+
+
+                   jQuery("#modaladdrcont").append("<div> <p class='addrcl'>Public Address : "+xrkWallet.address+"</p><p class ='addrcl'>Private Key : "+xrkWallet.privateKey+"</p></div>");
 
 
         return xrkWallet;
