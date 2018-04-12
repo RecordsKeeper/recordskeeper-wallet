@@ -180,13 +180,11 @@
                 <div class="modal-body " id="firststand">
 
                     <div id="fistmodbod">
-                        <p class="themecolor regular margbot5 font14" id="createWalTitle">
-                            <i class="fas fa-dot-circle themecolor maright10"></i> Welcome to RecordsKeeper wallet
+                       
+                        <p class="themecolor regular   font14">
+                             You may create XRK wallet without any password but it is highly recommended that you provide a password for additional security of your wallet.
                         </p>
-                        <p class="themecolor regular margbot5 font14">
-                             To ensure better security of your wallet you may enter a password.
-                        </p>
-                        <div class="row margtop40">
+                        <div class="row">
                             <div class="col-md-6">
                                 <input type="password" name="firstpass" class="mb20" placeholder="Password (optional)" id="firstpass" value="">
                             </div>
@@ -282,18 +280,18 @@
                           </div>
                       </div>
                        <div class='row walletcontent' id="qrcodecontainer2">
-                          <img src='images/testnet.png' id='printimg2'>
-                          <div class='col-md-6'>
+                          <img id='printimg3' src='' >
+                          <div class='col-md-6 code3' >
                                 <p class='qrlabel'>Public Address</p>
-                              <div id='qrcode3'>
-                                  
-                              </div>
+                                <div id='qrcode3'>
+                                    
+                                </div>
                           </div>
-                          <div class='col-md-6'>
+                          <div class='col-md-6 code4'>
                                   <p class='qrlabel'>Private Key</p>
-                              <div id='qrcode4'>
-                                  
-                              </div>
+                                  <div id='qrcode4'>
+                                      
+                                  </div>
                           </div>
                       </div>
                     </form>

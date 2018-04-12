@@ -76,6 +76,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                      jQuery('#registered_adr').val(mainNetAddr);
                      jQuery("#printimg").attr("src","images/mainnet.png");
                      jQuery("#printimg2").attr("src","images/mainnet.png");
+                     jQuery("#printimg3").attr("src","images/mainnet.png");
+                    
                      jQuery('walletheader').css('background', '#22283a');
             }
            else if(net == "TestNetwork"){
@@ -104,6 +106,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                      jQuery('#registered_adr').val(testNetAddr);
                       jQuery("#printimg").attr("src","images/testnet.png");
                       jQuery("#printimg2").attr("src","images/testnet.png");
+                      jQuery("#printimg3").attr("src","images/testnet.png");
+
 
                        jQuery('walletheader').css('background', 'rgb(84, 178, 206)');
            }
@@ -130,6 +134,7 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                 jQuery('#registered_adr').val(mainNetAddr);
                  jQuery("#printimg").attr("src","images/mainnet.png");
                  jQuery("#printimg2").attr("src","images/mainnet.png");
+                 jQuery("#printimg3").attr("src","images/mainnet.png");
 
                  jQuery('walletheader').css('background', '#22283a');
            }
@@ -849,6 +854,8 @@ function restoreWallet(){
 
 
 
+
+
        
 
         CONSOLE_DEBUG && console.log ("seedCode", seedCode);
@@ -948,7 +955,7 @@ function restoreWallet(){
 
            jQuery("#printWallet2").click(function() {
 
-                    jQuery("#printwalletcont").show();
+                    // jQuery("#printwalletcont").show();
                     // var congrat = jQuery("#congrats").html();
                     var contents = jQuery(".restoreappend").html();
                     var contents2 = jQuery("#qrcodecontainer2").html();
@@ -959,10 +966,14 @@ function restoreWallet(){
                     var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
                     frameDoc.document.open();
                     //Create a new HTML document.
-                    frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;}#printimg2{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; img{width:550px !important} </style>');
+
+                    frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer2{ margin-bottom : 150 px; width : 100%; } #printimg{ width : 100%;}#modaladdrcont{display: none !important ;  margin-top:20px; } .modc{display : none} #printimg3{ width : 100 % ; }  .code4{ position : absolute ; top : 75px; right : 380px; }   </style> ');
+                     
                     frameDoc.document.write('</head><body>');
+
+                     frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
                     //Append the external CSS file.
-                    frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
+                  
                     //Append the DIV contents.
 
                     // frameDoc.document.write(congrat);
@@ -1155,7 +1166,7 @@ function createXrkHDWallet(){
                             
                             frameDoc.document.write(imghead);
 
-                            frameDoc.document.write("<div id = 'seedprintcont'><img src = 'images/seedimg.jpeg' id='seedprintim'> </div>");
+                            frameDoc.document.write("<div id = 'seedprintcont'> </div>");
 
                              frameDoc.document.write("<p id = 'seedpl'>seedphrase (24 words, order is important.)</p>");
 
