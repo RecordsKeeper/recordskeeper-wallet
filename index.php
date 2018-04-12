@@ -188,10 +188,10 @@
                         </p>
                         <div class="row margtop40">
                             <div class="col-md-6">
-                                <input type="password" name="firstpass" class="mb20" placeholder="Password (optional)" id="firstpass">
+                                <input type="password" name="firstpass" class="mb20" placeholder="Password (optional)" id="firstpass" value="">
                             </div>
                             <div class="col-md-6">
-                                <input type="password" name="firstpass" class="mb20" placeholder="Confirm Password" id="confpass">
+                                <input type="password" name="firstpass" class="mb20" placeholder="Confirm Password" id="confpass" value="" >
                             </div>
                             <div class="colmd-12">
                                 <button type="submit" class="createwalletBtn margintop30" id="createXRKhd">Create XRK Wallet</button>
@@ -257,6 +257,7 @@
                           <span class="seedlabel">Seed (24 words, order is important.):</span>
                          
                           <div class="textareaCont">
+                              <label> Enter 24 Seed words in correct order to restore your wallet</label>
                               <textarea rows="15" cols="100" id="seedTextArea" value="" required="required"></textarea>
                               <p id="restoreErrorP">Please Enter a Valid Seed Phrase</p>
                           </div>
@@ -264,6 +265,7 @@
 
                           <div class="row">
                               <div class="col-md-12">
+                                  <label>Please enter exactly same password below only If you have set password while creating wallet you are trying to restore. Any password entered will restore a valid XRK wallet which may be different than your actual wallet. Make sure your password is correct.</label>
                                   <input type="password" name="firstpass" class="mb20" placeholder="Password" id="restorepass">
                               </div>
 
@@ -318,7 +320,7 @@
         });
       });
     </script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script> -->
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
     <script src="javascript/table2CSV.js"></script>

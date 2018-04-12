@@ -161,6 +161,7 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
                   importAddress(net);
 
+
       
               }     
            });
@@ -180,6 +181,17 @@ jQuery( "#restoreform" ).submit(function( event ) {
 });
 
 
+$('.modal').on('hidden.bs.modal', function (e) {
+  $(this)
+    .find("input,textarea,select")
+       .val('')
+       .end()
+    .find("input[type=checkbox], input[type=radio]")
+       .prop("checked", "")
+       .end();
+
+       $("#confpass").css("border", "1px solid #a4aaba");
+})
          
 });     //document ready function ends here 
 

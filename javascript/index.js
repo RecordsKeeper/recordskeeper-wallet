@@ -28,13 +28,14 @@ $(".modal").on("hidden.bs.modal", function(){
   //       });
     
             
-             $( "#seedTextArea" ).autocomplete({
-        source: MnemonicsArray
-    });
+            
 
 
-             $('#mymodal2').on('hidden', function() {
+             $('.modal').on('hidden', function() {
     $(':input', this).val('');
+    $("#seedTextArea").val('');
+    $("#firstpass").val('');
+
   });
 
 
