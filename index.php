@@ -174,7 +174,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title ">RecordsKeeper Wallet</h4>
+                    <h4 class="modal-title ">Create RecordsKeeper Wallet</h4>
                     <span class="standfont"></span>
                 </div>
                 <div class="modal-body " id="firststand">
@@ -254,10 +254,10 @@
                 <div class="modal-body " id="restoremodBody">
                     <form id="restoreform">
                       <div class="restorebefore">
-                          <span class="seedlabel">Seed (24 words, order is important.):</span>
+                         
                          
                           <div class="textareaCont">
-                              <label> Enter 24 Seed words in correct order to restore your wallet</label>
+                              <label class="labelrestore"> Enter 24 Seed words in correct order to restore your wallet</label>
                               <textarea rows="15" cols="100" id="seedTextArea" value="" required="required"></textarea>
                               <p id="restoreErrorP">Please Enter a Valid Seed Phrase</p>
                           </div>
@@ -265,7 +265,7 @@
 
                           <div class="row">
                               <div class="col-md-12">
-                                  <label>Please enter exactly same password below only If you have set password while creating wallet you are trying to restore. Any password entered will restore a valid XRK wallet which may be different than your actual wallet. Make sure your password is correct.</label>
+                                  <label class="labelrestore">Please enter exactly same password below only If you have set password while creating wallet you are trying to restore. Any password entered will restore a valid XRK wallet which may be different than your actual wallet. Make sure your password is correct.</label>
                                   <input type="password" name="firstpass" class="mb20" placeholder="Password" id="restorepass">
                               </div>
 
@@ -295,6 +295,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
+                    
                     <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
                 </div>
             </div>

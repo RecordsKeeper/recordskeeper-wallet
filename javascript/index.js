@@ -18,15 +18,6 @@ $(".modal").on("hidden.bs.modal", function(){
             });
 
 			MnemonicsArray = Mnemonic.Words.ENGLISH;
-
-	 // $('#seedTextArea').tagsly({
-  //         suggestions: function(input, cb) {
-  //           cb(MnemonicsArray);
-  //         },
-  //         placeholder: 'Enter tags!',
-  //         maxItems: 5
-  //       });
-    
             
             
 

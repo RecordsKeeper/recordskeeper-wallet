@@ -191,6 +191,8 @@ $('.modal').on('hidden.bs.modal', function (e) {
        .end();
 
        $("#confpass").css("border", "1px solid #a4aaba");
+       $("#congrats").css("display", "none");
+       
 })
          
 });     //document ready function ends here 
@@ -1076,6 +1078,7 @@ function createXrkHDWallet(){
                         qrcode.makeCode(elText);
                          
                       }
+                      
                       makeCode();                 // call the function here 
 
 
@@ -1140,7 +1143,7 @@ function createXrkHDWallet(){
                     var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
                     frameDoc.document.open();
                     //Create a new HTML document.
-                    frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; } .addrcl{width : 100% ; clear : both;} .modc{display : none} </style>');
+                    frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; #qrcode img{width:550px !important} </style>');
                     frameDoc.document.write('</head><body>');
                     //Append the external CSS file.
                     frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
