@@ -178,6 +178,8 @@ jQuery( "#restoreform" ).submit(function( event ) {
   restoreWallet();
 
 
+
+
 });
 
 
@@ -838,6 +840,9 @@ function restoreWallet(){
 
   jQuery("#restoreWalletBtn").click(function(){
 
+
+        jQuery("#printWallet2").css("display", "block");
+
        if($("#qrcode3").children.length)
 
         var seedCode = jQuery("#seedTextArea").val();
@@ -940,6 +945,40 @@ function restoreWallet(){
           jQuery("#restoremodBody").html(" ");
           });
 
+
+           jQuery("#printWallet2").click(function() {
+
+                    jQuery("#printwalletcont").show();
+                    // var congrat = jQuery("#congrats").html();
+                    var contents = jQuery(".restoreappend").html();
+                    var contents2 = jQuery("#qrcodecontainer2").html();
+                    var frame1 = jQuery('<iframe />');
+                    frame1[0].name = "frame1";
+                    // frame1.css({ "position": "absolute", "top": "-1000000px" });
+                    jQuery("body").append(frame1);
+                    var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
+                    frameDoc.document.open();
+                    //Create a new HTML document.
+                    frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;}#printimg2{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; img{width:550px !important} </style>');
+                    frameDoc.document.write('</head><body>');
+                    //Append the external CSS file.
+                    frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
+                    //Append the DIV contents.
+
+                    // frameDoc.document.write(congrat);
+                    
+                    frameDoc.document.write(contents2);
+                     frameDoc.document.write(contents);
+
+                    frameDoc.document.write('</body></html>');
+                    frameDoc.document.close();
+                    setTimeout(function () {
+                        window.frames["frame1"].focus();
+                        window.frames["frame1"].print();
+                        frame1.remove();
+                    }, 1500);
+                });  
+ 
        }
        else{
 
@@ -1051,7 +1090,7 @@ function createXrkHDWallet(){
                       jQuery(".standfont").empty();
                       // jQuery("#firststand").css("display", "none");
                     
-                    jQuery("#seedcontainer").append("<div class = 'createappend'><p class='themecolor font14 regular'><span class = 'green'>Your XRK wallet has been created successfully.</span><br><br>Please securely store your wallet file (RecordsKeeper-wallet.json) to access your wallet at later stage. You only need public address to view XRK balance or transactions. Private key should never be shared or disclosed to anyone and is only required to publish records/transactions or while sending XRK tokens to others.</p><p class = 'seedlabel regular font14'> Alternatively,  you can write down seed phrase (24 words) in same order as displayed below to restore your wallet completely. If you have entered a password while creating this wallet, please make sure you enter it as well while restoring the wallet. This is recommended way to backup your wallet. <i class='fas fa-print' id='seedprint'></i>) </p> <p id ='seed' > "+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'></div></div>" );
+                    jQuery("#seedcontainer").append("<div class = 'createappend'><p class='themecolor font14 regular'><span class = 'green'>Your XRK wallet has been created successfully.</span><br><br>Please securely store your wallet file (RecordsKeeper-wallet.json) to access your wallet at later stage. You only need public address to view XRK balance or transactions. Private key should never be shared or disclosed to anyone and is only required to publish records/transactions or while sending XRK tokens to others.</p><p class = 'seedlabel regular font14'> Alternatively,  you can write down seed phrase (24 words) in same order as displayed below to restore your wallet completely. If you have entered a password while creating this wallet, please make sure you enter it as well while restoring the wallet. This is recommended way to backup your wallet. <i class='fas fa-print' id='seedprint'></i>) </p><div class='seedcont'> <img id = 'printimg2'src=''>  </div><p id ='seed' > "+seed+"</p><p id='modalshowaddress'>"+pubaddr+"</p><p id ='modalshowkey'>"+privkey1+"</p></div></div><div class='col-md-12'></div></div>" );
 
 
 
@@ -1078,7 +1117,7 @@ function createXrkHDWallet(){
                         qrcode.makeCode(elText);
                          
                       }
-                      
+
                       makeCode();                 // call the function here 
 
 
@@ -1098,6 +1137,7 @@ function createXrkHDWallet(){
                       // document.getElementById('modalboxkey').innerHTML = 'Private key : '+ privkey1;
 
                       jQuery("#seedprint").on("click", function(){
+                            var imghead = jQuery(".seedcont").html();
                             var contents = jQuery("#seed").html();
                             var contents2 = jQuery(".seedlabel").html();
                             var frame1 = jQuery('<iframe />');
@@ -1107,13 +1147,14 @@ function createXrkHDWallet(){
                             var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
                             frameDoc.document.open();
                             //Create a new HTML document.
-                            frameDoc.document.write('<html><head><title>Print Wallet</title><style> .seedlabel{ width : 100%; } #seed{width: 100%; clear:both;}p#seed { font-size: 15px; padding: 15px; background: #eae8e8; border-radius: 4px; font-weight: 600;margin-bottom: -10px;-webkit-print-color-adjust: exact; position:absolute ; top : 15px; } #seedprintcont{ position : relative ; width : 100%;} #seedprintim{ position: relative ; } #seedpl{ position : absolute; top :10px; left:20px; } #contenpl{ position : absolute; top :50px; left:20px; word-wrap:break-word; width :70%; } </style>');
+                            frameDoc.document.write('<html><head><title>Print Wallet</title><style> .seedlabel{ width : 100%; } #seed{width: 100%; clear:both;}p#seed { font-size: 15px; padding: 15px; background: #eae8e8; border-radius: 4px; font-weight: 600;margin-bottom: -10px;-webkit-print-color-adjust: exact; position:absolute ; top : 15px; } #seedprintcont{ position : relative ; width : 100%;} #seedprintim{ position: relative ; } #seedpl{ position : absolute; top :100px; left:20px; } #contenpl{ position : absolute; top :140px; left:20px; word-wrap:break-word; width :70%; } #printimg2{display: block !important ; width : 81.8% !important ;} </style>');
                             frameDoc.document.write('</head><body>');
                             //Append the external CSS file.
                             frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
                             //Append the DIV contents.
                             
-                            // frameDoc.document.write(contents2);
+                            frameDoc.document.write(imghead);
+
                             frameDoc.document.write("<div id = 'seedprintcont'><img src = 'images/seedimg.jpeg' id='seedprintim'> </div>");
 
                              frameDoc.document.write("<p id = 'seedpl'>seedphrase (24 words, order is important.)</p>");
@@ -1143,7 +1184,7 @@ function createXrkHDWallet(){
                     var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
                     frameDoc.document.open();
                     //Create a new HTML document.
-                    frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; #qrcode img{width:550px !important} </style>');
+                    frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; img{width:550px !important} </style>');
                     frameDoc.document.write('</head><body>');
                     //Append the external CSS file.
                     frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');

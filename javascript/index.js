@@ -13,6 +13,7 @@ $(".modal").on("hidden.bs.modal", function(){
                 $("#qrcode3").children().remove();
                 $("#qrcode4").children().remove();
                 jQuery("#printWallet").css("display", "none");
+                $("#printWallet2").css("display", "none");
 
 
             });
@@ -22,12 +23,12 @@ $(".modal").on("hidden.bs.modal", function(){
             
 
 
-             $('.modal').on('hidden', function() {
-    $(':input', this).val('');
-    $("#seedTextArea").val('');
-    $("#firstpass").val('');
-
-  });
+			$('.modal').on('hidden', function() {
+				$(':input', this).val('');
+				$("#seedTextArea").val('');
+				$("#firstpass").val('');
+				$("#printWallet2").css("display", "none");
+			});
 
 
 });

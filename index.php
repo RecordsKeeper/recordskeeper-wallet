@@ -196,16 +196,20 @@
                             <div class="colmd-12">
                                 <button type="submit" class="createwalletBtn margintop30" id="createXRKhd">Create XRK Wallet</button>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     
                 </div>
+                 <div class="seedcont"> <img id="printimg2" src="">  </div>
                 <div id="seedcontainer">
                       
                 </div>
                <!--  <p class="seedcontainer" id="seed">
                     
                 </p> -->
+               
+
+
                 <div class='row walletcontent' id="qrcodecontainer">
                     <img src='images/testnet.png' id='printimg'>
                     <div class='col-md-6'>
@@ -294,8 +298,14 @@
                       </div>
                     </form>
                 </div>
+
+
                 <div class="modal-footer">
+                    <div class="col-md-12 margbot10">
+                      <a id='printWallet2' value='Print' class='noprint'>Print Wallet</a>
+                    </div>
                     
+
                     <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
                 </div>
             </div>

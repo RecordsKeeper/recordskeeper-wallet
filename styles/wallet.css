@@ -60,6 +60,10 @@ textarea {
     padding: 3px;
     color: #7f90a3;
 }
+
+#divseedimg{
+  display: none;
+}
 .seedlabel{
   font-weight: 600;
     line-height: 21px;
@@ -114,7 +118,14 @@ margin-bottom: 5px;
 .margtop50{
   margin-top: 50px;
 }
-#printWallet {
+.margbot10{
+  margin-bottom: 10px;
+}
+#printWallet2 {
+    font-size: 15px;
+    display: none;
+}
+#printWallet{
   float: right;
     margin-top: 0px;
     border: none;
