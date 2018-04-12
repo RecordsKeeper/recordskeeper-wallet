@@ -178,7 +178,7 @@
 	<div>
 		<h2>Public Address </h2>
 		<!-- <P class="pcolor">Address </P> -->
-        <P class="pcolor">Use this address to recieve payments.</P>
+        <P class="pcolor">Use this address to receive payments.</P>
 		<div class="cols-a">
 			<div>
 				<table class="table-b">

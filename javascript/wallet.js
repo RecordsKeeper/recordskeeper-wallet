@@ -967,7 +967,7 @@ function restoreWallet(){
                     frameDoc.document.open();
                     //Create a new HTML document.
 
-                    frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer2{ margin-bottom : 150 px; width : 100%; } #printimg{ width : 100%;}#modaladdrcont{display: none !important ;  margin-top:20px; } .modc{display : none} #printimg3{ width : 100 % ; }  .code4{ position : absolute ; top : 75px; right : 380px; }   </style> ');
+                    frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer2{ margin-bottom : 150 px; width : 100%; } #printimg{ width : 100%;}#modaladdrcont{display: none !important ;  margin-top:20px; } .modc{display : none} #printimg3{ width : 100 % ; }  .code4{ position : absolute ; top : 75px; right : 40%; }   </style> ');
                      
                     frameDoc.document.write('</head><body>');
 
