@@ -7,7 +7,7 @@ buffer = bitcore.util.buffer;
 
 
 
-var CONSOLE_DEBUG = true;
+var CONSOLE_DEBUG = false;
 var privkey1;
 var  pubaddr;
 var pubkey1;
@@ -843,7 +843,7 @@ function copySeedPhrase() {
 function restoreWallet(){
 
 
-  jQuery("#restoreWalletBtn").click(function(){
+  // jQuery("#restoreWalletBtn").click(function(){
 
 
         jQuery("#printWallet2").css("display", "block");
@@ -997,7 +997,7 @@ function restoreWallet(){
        }
 
 
-  });
+  // });
 
 }
 
