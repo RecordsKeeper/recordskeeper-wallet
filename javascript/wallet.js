@@ -7,7 +7,7 @@ buffer = bitcore.util.buffer;
 
 
 
-var CONSOLE_DEBUG = false;
+var CONSOLE_DEBUG = true;
 var privkey1;
 var  pubaddr;
 var pubkey1;
@@ -38,7 +38,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
              // getPagination('#tableone');
 
-            
+            $(".tag-ctn").css("width", "100% !important");
+
            
 
             clearModalInputs();
@@ -199,8 +200,11 @@ $('.modal').on('hidden.bs.modal', function (e) {
 
        $("#confpass").css("border", "1px solid #a4aaba");
        $("#congrats").css("display", "none");
-       
-})
+       $(".token").remove();
+       $("#restoreErrorP").css("display", "none");
+});
+
+
          
 });     //document ready function ends here 
 
@@ -850,7 +854,9 @@ function restoreWallet(){
 
        if($("#qrcode3").children.length)
 
-        var seedCode = jQuery("#seedTextArea").val();
+        var seedCode = jQuery("#seedTextArea").val().replace(/,/g, "").trim();
+
+        // seedCode = jQuery("#seedTextArea").val().replace(/,/g, "");
 
 
 
@@ -1410,6 +1416,29 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
 
 
 
+
+
+
+        $(document).ready(function() {
+            var jsonData = [];
+            var fruits = Mnemonic.Words.ENGLISH;
+        
+            myFunction();
+         
+         });
+
+
+$("#seedTextArea").click(function(){
+
+  myFunction();
+
+});
+function myFunction() {
+    var str = $(".token-label").text();
+          CONSOLE_DEBUG && console.log(str);
+    var res = str.split(" ");
+              CONSOLE_DEBUG && console.log(res);
+}
 
 
 
