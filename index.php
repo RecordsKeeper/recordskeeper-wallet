@@ -21,11 +21,30 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-
+    <link rel="stylesheet" media="screen" href="styles/textext.core.css">
+    <link rel="stylesheet" type="text/css" href="styles/textext.plugin.autocomplete.css">
     <link rel="stylesheet" media="screen" href="styles/screen.css">
     <link rel="stylesheet" media="print" href="styles/print.css">
     <link rel="icon" type="image/x-icon" href="images/fav.png">
     <link rel="stylesheet" media="screen" href="styles/wallet.css">
+    <link rel="stylesheet" media="screen" href="styles/bootstrap-tokenfield.css">
+    <link rel="stylesheet" media="screen" href="styles/textext.plugin.autocomplete.css">
+    <link rel="stylesheet" media="screen" href="styles/tokenfield-typeahead.css">
+     <!-- jQuery UI CSS -->
+    <link href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
+    <!-- Bootstrap styling for Typeahead -->
+    <link href="styles/tokenfield-typeahead.css" type="text/css" rel="stylesheet">
+    <!-- Tokenfield CSS -->
+    <link href="styles/bootstrap-tokenfield.css" type="text/css" rel="stylesheet">
+    <!-- Docs CSS -->
+    <link href="styles/pygments-manni.css" type="text/css" rel="stylesheet">
+    <link href="styles/docs.css" type="text/css" rel="stylesheet">
+ 
+  
+
+
+
+    
 
 
     <!-- link for table to css cdn here  -->
@@ -43,6 +62,9 @@
 
 <body>
     <div class="se-pre-con"></div>
+    <!-- <div id="loader">
+      <img src="images/spin.gif">
+    </div> -->
     <div id="root">
         <header id="top">
             <p id="logo">
@@ -87,8 +109,6 @@
                 </div>
             </div>
         </article>
-
-
 
         <footer id="footer">
             <ul>
@@ -260,7 +280,9 @@
                          
                           <div class="textareaCont">
                               <label class="labelrestore"> Enter 24 Seed words in correct order to restore your wallet</label>
-                              <textarea rows="15" cols="100" id="seedTextArea" value="" required="required"></textarea>
+                              <textarea rows="15" cols="100" class="form-control" id="seedTextArea" value="" required="required" style="width: 100% !important"></textarea>
+                             
+
                               <p id="restoreErrorP">Please Enter a Valid Seed Phrase</p>
                           </div>
 
@@ -307,28 +329,36 @@
                     <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
                 </div>
             </div>
+
+
         </div>
+
     </div>
+
     <!-- all the script here to make the page load faster -->
 
 
     <script src="javascript/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js"></script> -->
+    <script src="javascript/bootstrap-tokenfield.min.js"></script>
+         
+
     <script src="javascript/scripts.js"></script>
     <script src="javascript/custom.js"></script>
     <script src="javascript/mobile.js"></script>
     <script src="javascript/index.js"></script>
-     <script src="javascript/tagsly.js"></script>
-   <!--  <script>
-      $(function() {
-        $('#tags').tagsly({
-          suggestions: function(input, cb) {
-            cb(['jQuery', 'Html', 'CSS', 'JavaScript']);
-          },
-          placeholder: 'Enter tags!',
-          maxItems: 5
-        });
-      });
-    </script> -->
+    
+    <script type="text/javascript" src="javascript/typeahead.bundle.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="javascript/typeahead.bundle.js" charset="UTF-8"></script>
+
+    <script type="text/javascript" src="javascript/docs.js" charset="UTF-8"></script>
+
+    <script>
+
+
+
+    </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script> -->
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 

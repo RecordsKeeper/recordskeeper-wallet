@@ -18,9 +18,11 @@ $(".modal").on("hidden.bs.modal", function(){
 
             });
 
-			MnemonicsArray = Mnemonic.Words.ENGLISH;
-            
-            
+			  MnemonicsArray = Mnemonic.Words.ENGLISH;
+                
+          
+     
+           
 
 
 			$('.modal').on('hidden', function() {
@@ -32,3 +34,4 @@ $(".modal").on("hidden.bs.modal", function(){
 
 
 });
+

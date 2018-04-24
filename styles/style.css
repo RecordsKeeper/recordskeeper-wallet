@@ -23,6 +23,9 @@ body{
     width: 300px;
    
 }
+#tag-sel-ctn-0{
+  min-height: 90px;
+}
 .name
 {
     color: #18B5F0;
