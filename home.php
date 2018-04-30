@@ -25,7 +25,7 @@
 		<link rel="stylesheet" media="screen" href="styles/wallet.css">
 		<!-- link for table to css cdn here  -->
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/css/tableexport.css">
-
+		
 		<meta property="og:title" content="">
 		<meta property="og:type" content="website">
 		<meta property="og:description" content=".">
@@ -66,7 +66,7 @@
 			<header id="top">
 				<p id="logo">
 					<a href="./">
-					<img src="images/logo.png">
+					<img src="images/logo.svg">
 					</a>
 				</p>
 				<nav id="skip">
@@ -89,7 +89,7 @@
     					    <label class="tgl-btn" for="cb1"></label>
 						</div>
 						<span >
-							<label id="togglecontlabel">MainNetwork</label>
+							<label id="togglecontlabel">Main Network</label>
 						</span>
 						 
 					

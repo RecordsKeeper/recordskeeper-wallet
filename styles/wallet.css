@@ -407,7 +407,7 @@ span.xrk {
     margin-top: 50px;
     box-shadow: 0 3px 4px rgba(24,59,101,.37);
     text-align: center;
-    margin-bottom: 10%;
+    margin-bottom: 4%;
 }
 
 .ExistingsideDiv, .ExistingPassDiv{
@@ -674,8 +674,9 @@ if it's not present, don't show loader */
     /* visibility: hidden; */
 }
 #logo img{
-      /*width: 275px;*/
-    margin-top: 11px;
+    width: 275px;
+    margin-top: 12px;
+    margin-left: 1px;
 }
 
 

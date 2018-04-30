@@ -69,7 +69,7 @@
         <header id="top">
             <p id="logo">
                 <a href="./">
-                  <img src="images/logo.png">
+                  <img src="images/logo.svg">
                 </a>
             </p>
             <nav id="skip">

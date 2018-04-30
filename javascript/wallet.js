@@ -38,7 +38,7 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
              // getPagination('#tableone');
 
-            $(".tag-ctn").css("width", "100% !important");
+            jQuery(".tag-ctn").css("width", "100% !important");
 
            
 
@@ -189,8 +189,8 @@ jQuery( "#restoreform" ).submit(function( event ) {
 });
 
 
-$('.modal').on('hidden.bs.modal', function (e) {
-  $(this)
+jQuery('.modal').on('hidden.bs.modal', function (e) {
+  jQuery(this)
     .find("input,textarea,select")
        .val('')
        .end()
@@ -198,10 +198,10 @@ $('.modal').on('hidden.bs.modal', function (e) {
        .prop("checked", "")
        .end();
 
-       $("#confpass").css("border", "1px solid #a4aaba");
-       $("#congrats").css("display", "none");
-       $(".token").remove();
-       $("#restoreErrorP").css("display", "none");
+       jQuery("#confpass").css("border", "1px solid #a4aaba");
+       jQuery("#congrats").css("display", "none");
+       jQuery(".token").remove();
+       jQuery("#restoreErrorP").css("display", "none");
 });
 
 
@@ -852,7 +852,7 @@ function restoreWallet(){
 
         jQuery("#printWallet2").css("display", "block");
 
-       if($("#qrcode3").children.length)
+       if(jQuery("#qrcode3").children.length)
 
         var seedCode = jQuery("#seedTextArea").val().replace(/,/g, "").trim();
 
@@ -879,7 +879,7 @@ function restoreWallet(){
 
        if(restoreResult.status == 'success'){
 
-          $("#restoreErrorP").css("display", "none");
+          jQuery("#restoreErrorP").css("display", "none");
 
           jQuery("#congrats").css("display", "block");
           jQuery("#qrcodecontainer2").css("display", "block");
@@ -999,7 +999,7 @@ function restoreWallet(){
        }
        else{
 
-        $("#restoreErrorP").css("display", "block");
+        jQuery("#restoreErrorP").css("display", "block");
        }
 
 
@@ -1419,7 +1419,7 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
 
 
 
-        $(document).ready(function() {
+        jQuery(document).ready(function() {
             var jsonData = [];
             var fruits = Mnemonic.Words.ENGLISH;
         
@@ -1428,13 +1428,13 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
          });
 
 
-$("#seedTextArea").click(function(){
+jQuery("#seedTextArea").click(function(){
 
   myFunction();
 
 });
 function myFunction() {
-    var str = $(".token-label").text();
+    var str = jQuery(".token-label").text();
           CONSOLE_DEBUG && console.log(str);
     var res = str.split(" ");
               CONSOLE_DEBUG && console.log(res);
