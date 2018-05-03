@@ -13,6 +13,7 @@
     border-color: #d2d7dd;
 
 }
+.zeroamount{ display: none !important; }
 #congrats{
     display: none;
     padding: 15px;
@@ -1372,21 +1373,6 @@ input#authorize{
 
 
 
-html {
-  min-height: 100%;
-  position: relative;
-}
-  body {
-    margin-bottom: $height-footer;
-  }
-  #footer {
-    bottom: 20px;
-    width: 100%;
-    position: absolute;
-    /*height: $height-footer;*/
-    /*background-color: #f5f5f5;*/
-    
-  }
 
 
 
