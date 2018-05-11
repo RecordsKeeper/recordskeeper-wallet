@@ -58,14 +58,15 @@
     <style type="text/css">
     </style>
 
+
 </head>
 
 <body>
+
     <div class="se-pre-con"></div>
-    <!-- <div id="loader">
-      <img src="images/spin.gif">
-    </div> -->
+
     <div id="root">
+
         <header id="top">
             <p id="logo">
                 <a href="./">
@@ -90,6 +91,7 @@
                     </span>
                 </ul>
             </nav>
+
         </header>
 
 
@@ -98,6 +100,7 @@
                 <div class="loginContainer">
                     <div class="row">
                         <p class="font14">If you're a new user please click on the create XRK wallet button.</p>
+                        <button type="submit" class="createwalletBtn margintop30" id="createmultisig" data-toggle="modal" data-target="#myModal3">Create Multisig Wallet</button>
                         <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal1">Create XRK Wallet</button>
                         <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal2">Restore XRK Wallet</button>
                     </div>
@@ -105,6 +108,8 @@
                         <p class="font14">If you already have XRK wallet, please enter your wallet address here. </p>
                         <input type="text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your XRK wallet address" value="">
                         <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
+
+                         <input type="checkbox" name="checkbox1" value=""> is it a multisig wallet 
                     </div>
                 </div>
             </div>
@@ -335,6 +340,56 @@
 
     </div>
 
+
+    <div id="myModal3" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="restoretitle">Restore RecordsKeeper Multisig Wallet</h4>
+
+                </div>
+                <!-- <p id="congrats">Congratulations !! your wallet has been restored.</p> -->
+                <div class="modal-body " id="restoremodBody">
+                    <form id="restoremultiform"  name="restoremultiform" >
+                      <div class="mainro">
+                        <div class="row firstrow">
+                            <div class="col-md-2 pad10 fonts12 ">
+                                Public Key 1 : 
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" name="publickey1" placeholder="public key1"  id="publickey1" value="" required="required">
+                            </div>
+                        </div>
+                       
+                       
+                      </div>
+                        <div class="addmoreCont">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                       <div class="row margintop30">
+
+                             <button type="submit" class="createwalletBtn " id="createmultisigwal">Create  Multisig Wallet</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="modal-footer">
+                    <div class="col-md-12 margbot10">
+                      <a id='printWallet2' value='Print' class='noprint'>Print Wallet</a>
+                    </div>
+                    
+
+                    <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
     <!-- all the script here to make the page load faster -->
 
 
@@ -370,10 +425,16 @@
     <script src="javascript/bitcore-mnemonic/bitcore-mnemonic.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
     <script src="javascript/wallet.js"></script>
-
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/js/tableexport.js"></script>
+
+     <script>
+
+           
+
+</script>
 </body>
 
 </html>

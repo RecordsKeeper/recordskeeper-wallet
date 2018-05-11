@@ -44,6 +44,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
             clearModalInputs();
 
+            addMoreRows();
+
             recieve();
             if(net == "MainNetwork"){
 
@@ -142,6 +144,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
             
            networkToggle(); // Network Toggle function
+
+           // createMultisigWallet();
            
            if(document.getElementById("currentdate") != null){
              document.getElementById("currentdate").innerHTML = Date();
@@ -585,6 +589,7 @@ function generateQRcode(){
         });
 }
     
+    
 function recieve(){
     jQuery('.table-b').append("<tr> <td id='childAddresses'>"+localStorage.getItem("pubaddr")+"</td></tr>");
 }
@@ -722,6 +727,8 @@ function CopyToClipboard(){
         }
     });
 }
+
+
 function signrawtransaction(globe, af){
      var aa = af;
     var ab = globe;
@@ -752,6 +759,8 @@ function signrawtransaction(globe, af){
         }
     });
 }
+
+
 function sendrawtransaction(globe) {
     var ab = globe;
     var txUrl;
@@ -1030,6 +1039,19 @@ function restoreWallet(){
   // });
 
 }
+
+
+
+// function createMultisigWallet(){
+
+//   jQuery("button#createmultisigwal").click(function(){
+   
+   
+
+
+//   });
+// }
+
 
 
 
@@ -1466,4 +1488,89 @@ function myFunction() {
 
 
 
+ // Wait for the DOM to be ready
+            jQuery(function() {
+             // Initialize form validation on the registration form.
+             // It has the name attribute "registration"
+             jQuery("form[name='restoremultiform']").validate({
+               // Specify validation rules
+               rules: {
+                 // The key name on the left side is the name attribute
+                 // of an input field. Validation rules are defined
+                 // on the right side
+               
+                 publickey1: "required",
+                 publickey2: "required",
+                 publickey3: "required",
+                 publickey4: "required",
+                 publickey5: "required"
+                
+
+               },
+               // Specify validation error messages
+               messages: {
+                 multiaddress1: "Please enter a valid  address"
+               },
+               // Make sure the form is submitted to the destination defined
+               // in the "action" attribute of the form when valid
+               submitHandler: function(form) {
+                        // alert("done");
+                         var multiaddr1 = jQuery("#address1").val();
+                          var multiaddr2 = jQuery("#address2").val();
+                          var multiaddr3 = jQuery("#address3").val();
+                          var multiaddr4 = jQuery("#address4").val();
+                          var multiaddr5 = jQuery("#address5").val();
+
+                          CONSOLE_DEBUG && console.log(multiaddr1);
+                          CONSOLE_DEBUG && console.log(multiaddr2);
+                          CONSOLE_DEBUG && console.log(multiaddr3);
+                          CONSOLE_DEBUG && console.log(multiaddr4);
+                          CONSOLE_DEBUG && console.log(multiaddr5);
+                          jQuery.ajax({
+                             type: "POST",
+                             url: 'createmultisig.php',
+                             data:({adr1: multiaddr1, adr2: multiaddr2, adr3: multiaddr3, adr4: multiaddr4, adr5: multiaddr5, net: net}),
+                              success:function(Response) {
+                                  var x = Response;
+                                  // x = JSON.parse(x);
+                              //  x = x.result;
+                                  CONSOLE_DEBUG && console.log('response:', x);
+
+                                
+                              }                
+                          });
+
+                       
+               }
+             });
+            });
+
+function addMoreRows(){
+
+
+
+    jQuery(".fas").click(function(){
+
+    
+
+      incrementCount();
+
+      jQuery(".mainro").append("<div class='row'><div class='col-md-2 pad10 fonts12 '>Public Key"+count+"  : </div><div class='col-md-10'><input type='text' name='publickey"+count+"' placeholder='public key"+count+"'  id='publickey"+count+"' value='' required='required'></div></div>");
+
+
+
+
+    });
+}
+
+// if the count variable is undefined, set its value to zero
+ 
+  // function to increment value of count variable
+ function incrementCount() {
+
+    count++;
+
+    CONSOLE_DEBUG && console.log(count);
+  }
+var count = 1 ;
 // Globally declare values of port and url
