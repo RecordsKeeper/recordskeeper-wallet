@@ -40,6 +40,7 @@
     <link href="styles/pygments-manni.css" type="text/css" rel="stylesheet">
     <link href="styles/docs.css" type="text/css" rel="stylesheet">
  
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
   
 
 
@@ -107,9 +108,19 @@
                     <div class="row margintop30">
                         <p class="font14">If you already have XRK wallet, please enter your wallet address here. </p>
                         <input type="text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your XRK wallet address" value="">
+                            <div class="pretty p-svg p-curve">
+                                <input type="checkbox" class="checkboxmulti" />
+                                <div class="state p-success">
+                                    <!-- svg path -->
+                                    <svg class="svg svg-icon" viewBox="0 0 20 20">
+                                        <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                    </svg>
+                                    <label>Is it a Multisig Wallet</label>
+                                </div>
+                            </div>
                         <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
 
-                         <input type="checkbox" name="checkbox1" value=""> is it a multisig wallet 
+
                     </div>
                 </div>
             </div>

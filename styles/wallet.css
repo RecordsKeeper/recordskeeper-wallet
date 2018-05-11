@@ -1399,7 +1399,12 @@ div#restoremodBody {
 .fonts12{
   font-size: 12px;
 }
-
+.multicheck{
+  width: 10px !important;
+  height: 10px !important;
+  color: black !important; 
+  border: 1px solid black !important;
+}
 
 .addmoreCont{
       z-index: 2;
@@ -1410,6 +1415,16 @@ div#restoremodBody {
     cursor: pointer;
 }
 
+.pretty {
+    position: relative;
+    display: inline-block;
+    margin-right: 1em;
+    white-space: nowrap;
+    float: left;
+    line-height: 1;
+    margin-top: 41px;
+    margin-left: 62px;
+}
 
 
 

@@ -24,7 +24,7 @@ entropyLength = 256;
 password = ''; 
 var seed ;
 var MnemonicsArray ;
-
+var ismultiSig  ;
 
 jQuery( document ).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
          
@@ -35,6 +35,7 @@ jQuery( document ).ready(function() { // document ready function starts here, so
            var newAddressCount = 1;                  //   set the newAddressCounter to 1
 
             showAddress();
+
 
              // getPagination('#tableone');
 
@@ -65,6 +66,9 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                   jQuery('#togglecontlabel').text('Main Network');
                   jQuery('nav#nav').css('background', '#22283a');
                   jQuery('#walletloginbtn').click(function(){
+
+                                       valueChanged();
+
                           mainNetAddr = jQuery('#registered_adr').val() ;
 
                           pubaddr = mainNetAddr ;
@@ -1551,7 +1555,7 @@ function addMoreRows(){
 
     jQuery(".fas").click(function(){
 
-    
+     
 
       incrementCount();
 
@@ -1573,4 +1577,21 @@ function addMoreRows(){
     CONSOLE_DEBUG && console.log(count);
   }
 var count = 1 ;
+
+
+
+function valueChanged()
+{
+    if($('.checkboxmulti').is(":checked"))   {
+        // alert("hello");
+
+        ismultiSig = 1 ;
+        localStorage.setItem("ismultiSig", ismultiSig);
+      }
+
+    else {
+        ismultiSig = 0 ;
+        localStorage.setItem("ismultiSig", ismultiSig);
+      }
+}
 // Globally declare values of port and url

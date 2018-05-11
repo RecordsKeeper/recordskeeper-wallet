@@ -357,7 +357,7 @@ fieldset, hr { border-width: 0; }
 			input[type="search"], input[type="number"], input[type="date"], input[type="time"] { -moz-appearance: textfield; -webkit-appearance: textfield; appearance: textfield; }
 				input::-webkit-search-decoration, input::-webkit-search-cancel-button, input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input::-webkit-clear-button, input::-webkit-calendar-picker-indicator { display: none; -webkit-appearance: none; visibility: hidden !important; height: auto; margin: 0; }
 				input::-o-outer-spin-button, input::-o-inner-spin-button { -o-appearance: none; margin: 0; }		
-			input[type="checkbox"], input[type="radio"] { height: auto; padding: 0; border: 0; background: none; line-height: 1; }
+			/*input[type="checkbox"], input[type="radio"] { height: auto; padding: 0; border: 0; background: none; line-height: 1; }*/
 			input[type="color"] { padding: 0; cursor: pointer; }
 			input[type="date"] { display: -webkit-inline-flex; }
 		textarea { overflow: auto; vertical-align: top; resize: vertical; }
