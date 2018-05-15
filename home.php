@@ -121,7 +121,7 @@
 					<li><a href="./" id="transactid">Transactions</a></li>
 					<li><a href="./">Receive</a></li>
 					<li><a href="./">Send</a></li>
-					<!-- <li><a href="./">Sign &amp; Verify</a></li> -->
+					<li class="multisend"><a href="./">Send</a></li>
 				</ul>
 				<div>
 					<div>
@@ -242,19 +242,11 @@
 		</div>
 	</div> -->
 	<div  name="myForm" method="post" class="sendform" id="pfform">
-		<!-- <h2 class="showaddr">Send Payments</h2> -->
 		<p class="showaddr fnone senderaddr">
 				Sender's
 		</p>
 		<div class="">
 			
-<!-- 
-			<p>
-				<label for="fab">Enter the private key</label>
-				<input type="text" id="sendUSD" name="fab">
-				<span class="suffix">key</span>
-			</p>
- -->
 			<p>
 				<label for="sendRecipientaddress">Enter Recipient Address </label>
 				<input type="text" id="sendRecipientaddress" name="sendRecipientaddress" placeholder="Recipient Address" onchange="checkRecAddressFilled();">
@@ -304,6 +296,35 @@
 			  <button type="submit" id="sendTransactionBtn" ><i class="icon-check"></i> Send</button>
 			</p>
 		</div>
+	</div>
+	<div  name="multiForm" method="post" class="sendform" id="multiForm">
+		<p class="showaddr fnone senderaddr">
+				Sender's
+		</p>
+		<div class="">
+			
+			<p>
+				<label for="sendRecipientaddress">Enter Recipient Address </label>
+				<input type="text" id="sendRecipientaddressmulti" name="sendRecipientaddressmulti" placeholder="Recipient Address" onchange="checkRecAddressFilled();">
+				<span class="suffix"><i class="icon-qr"></i></span>
+		    </p>
+
+		    <p>
+				<label for="faa">Enter XRK Amount</label>
+				<input type="number" id="sendBTC" name="sendBTC" placeholder="XRK Amount" onchange="checkAmountFilled();">
+				<span class="suffix">XRK</span>
+			</p>
+			<p class="approxFee ">
+				Approximate Fee : 
+			</p>
+
+		</div>
+		
+		<button id="sendmultitran" data-toggle="modal" data-target="#myModalmulti" >Send Transaction</button>
+		
+		<p class="formerrorpara"></p>
+		<div id ="txid"></div>
+		
 	</div>
 	
 </div>
@@ -387,7 +408,33 @@
   </div>
 </div>     
 
+<div id="myModalmulti" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title ">Send Multisig Transaction !</h4>
+      </div>
+      <div class="modal-body standfont">
+      		
+        	<p class="privatemodalcontainer">
+				<label for="fab" id="modalshowaddr">Enter the private key for XRK address : 12XknhsaS8BHSn2RWbKMHRKRRTyt8fr6Nyzudg</label>
+				<input type="password" id="sendmulti" name="fab">
+				<span class="suffix">key</span>
+			</p>
+			<p class="approxFee themefee">Approximate Fee : 0.0328 XRK</p>
+
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="close errorclose" id="" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 <!-- all the script here to make the page load faster -->
 
 
@@ -415,6 +462,9 @@
 
 <script type="text/javascript">
 
+$(document).ready(function(){
+	
+});
 
 
 

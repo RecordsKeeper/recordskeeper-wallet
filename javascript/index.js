@@ -14,6 +14,13 @@ $(".modal").on("hidden.bs.modal", function(){
                 $("#qrcode4").children().remove();
                 jQuery("#printWallet").css("display", "none");
                 $("#printWallet2").css("display", "none");
+                $(".errorContP").css("display", "none");
+                $(".errorsignP").css("display", "none");
+                $("#restoremultiform").css("display", "block");
+                $(".multisigCont").css("display", "none");
+                                $('#restoremultiform')[0].reset();
+                $( "#qrcode5" ).find( "img" ).remove();
+
 
 
             });
@@ -30,6 +37,10 @@ $(".modal").on("hidden.bs.modal", function(){
 				$("#seedTextArea").val('');
 				$("#firstpass").val('');
 				$("#printWallet2").css("display", "none");
+                $("#restoremultiform").trigger("reset");
+                $('#restoremultiform')[0].reset();
+                $("#errorsignP").css("display", "none");
+
 			});
 
 

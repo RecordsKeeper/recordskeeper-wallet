@@ -7,6 +7,7 @@ buffer = bitcore.util.buffer;
 
 
 
+
 var CONSOLE_DEBUG = true;
 var privkey1;
 var  pubaddr;
@@ -25,7 +26,12 @@ password = '';
 var seed ;
 var MnemonicsArray ;
 var ismultiSig  ;
-
+var homeMultisig = localStorage.getItem("ismultiSig");
+var publicKeyHex ;
+var publicKeys ;
+var count = 2 ;
+var numItems ;
+var requiredSignatures ;
 jQuery( document ).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
          
            // Animate loader off screen
@@ -36,6 +42,17 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
             showAddress();
 
+          
+              CONSOLE_DEBUG && console.log ("homeMultisig", homeMultisig);
+
+              if (homeMultisig = 1){
+             
+              jQuery(".multisend").css("display", "none");
+              }
+              else {
+
+                jQuery(".multisend").css("display", "block");
+              }
 
              // getPagination('#tableone');
 
@@ -115,6 +132,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                       jQuery("#printimg2").attr("src","images/testnet.png");
                       jQuery("#printimg3").attr("src","images/testnet.png");
 
+                       valueChanged();
+
 
                        jQuery('walletheader').css('background', 'rgb(84, 178, 206)');
            }
@@ -144,6 +163,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                  jQuery("#printimg3").attr("src","images/mainnet.png");
 
                  jQuery('walletheader').css('background', '#22283a');
+
+                  valueChanged();
            }
 
             
@@ -846,8 +867,8 @@ function filterTable() {
 
 
 
-var count = jQuery('#tableone').children('tr').length;
-CONSOLE_DEBUG && console.log(count);
+// var count = jQuery('#tableone').children('tr').length;
+// CONSOLE_DEBUG && console.log(count);
 
 
 
@@ -1045,16 +1066,151 @@ function restoreWallet(){
 }
 
 
+// Wait for the DOM to be ready
+jQuery(function() {
+// Initialize form validation on the registration form.
+// It has the name attribute "registration"
+jQuery("form[name='restoremultiform']").validate({
+// Specify validation rules
+rules: {
+// The key name on the left side is the name attribute
+// of an input field. Validation rules are defined
+// on the right side
 
-// function createMultisigWallet(){
 
-//   jQuery("button#createmultisigwal").click(function(){
-   
-   
+},
+// Specify validation error messages
+messages: {
+email: "Please enter a valid email address"
+},
+// Make sure the form is submitted to the destination defined
+// in the "action" attribute of the form when valid
+submitHandler: function(form) {
+    
+    numItems = $('.multirow').length;
+    CONSOLE_DEBUG && console.log("numItems", numItems);
+
+    requiredSignatures = jQuery("#n").val();
+
+    createMultisigWallet();
+}
+});
+});    
 
 
-//   });
-// }
+function createMultisigWallet(e){
+
+  
+  if ( numItems >=  requiredSignatures){
+
+          jQuery(".errorsignP").fadeOut();
+
+
+        var multiFormValues =  jQuery("#restoremultiform").serialize().split("&");
+        console.log(multiFormValues);
+        var obj={};
+        var a ;
+        for(var key in multiFormValues)
+        {
+          console.log(multiFormValues[key]);
+          obj[multiFormValues[key].split("=")[0]] = multiFormValues[key].split("=")[1];
+        }
+
+        console.log(obj);
+        // obj = JSON.parse(json);
+        var values = Object.keys(obj).map(function (key) { return obj[key]; });
+        publicKeys = values ;
+        publicKeys.pop();
+        console.log( "public keys", publicKeys);
+
+
+
+        // requiredSignatures = 1 ;
+
+          // var address =  new bitcore.Address(publicKeys, 1);
+
+        //         var publicKeys = [
+        //  '03f08f1873d25f52d99f84e6826010677a3f7a53a06ea5e15b6b821ef73a55b28b',
+        //  '034cf002fd2a1090cead9b479ce984539676f1ffe29489b7a772dfb5ce176f80f6',
+        //  '03df356ca76b934b49c89d04582e5f4a44e971d93ab0636328825883c59fa49cf6'
+        // ];
+
+        // requiredSignatures = 2;
+
+        try{
+
+              var address =  new bitcore.Address.createMultisig(publicKeys, parseInt(requiredSignatures), bitcore.Networks.test);    
+            // var address = new bitcore.Address(publicKeys,  bitcore.Networks.test, requiredSignatures);
+
+            jQuery(".errorContP").fadeOut();
+            jQuery(".multisigCont").fadeIn();
+
+            CONSOLE_DEBUG && console.log ("bitcore address : ", address);
+
+
+            address = address.toString();
+
+
+
+            CONSOLE_DEBUG && console.log ("bitcore address : ", address);
+
+          
+
+             
+
+           
+
+
+            jQuery("#restoremultiform").fadeOut();
+            jQuery("#multiaddress").text(address);
+
+             var qrcode5 = new QRCode(document.getElementById("qrcode5"), {
+                        width : 300,
+                        height : 300
+                      });
+
+                      function makeCode5 () {    // qr code generater function for address
+
+                        var elText = pubaddr;
+                        var elprive = privkey1;     //pass  value of address stored in elpriv
+                       
+                        
+                        qrcode5.makeCode(elText);
+                         
+                      }
+
+               makeCode5();  
+
+
+
+        }
+        catch(e){
+
+            CONSOLE_DEBUG && console.log(e);
+            // e.preventDefault();
+            jQuery(".errorContP").fadeIn();
+
+        }
+        
+
+  }
+ else{
+    // e.preventDefault();
+  CONSOLE_DEBUG && console.log ("numItems", numItems);
+  
+  jQuery(".errorsignP").fadeIn();
+ }
+
+
+ 
+
+  
+
+  
+
+
+
+}
 
 
 
@@ -1102,7 +1258,7 @@ function createXrkHDWallet(){
                  jQuery("#firststand").css("display", "none");
 
 
-                generateBip39XRKWallet(passwordValue, wordListLang, entropyLength, 
+                  generateBip39XRKWallet(passwordValue, wordListLang, entropyLength, 
                   address_pubkeyhash_version, address_checksum_value,
                   private_key_version);
 
@@ -1349,7 +1505,8 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
         var privateKeyHex = new bitcore.PrivateKey(masterPrivateKey);
 
         // step 2: Get public key from private key
-        var publicKeyHex = privateKeyHex.publicKey; 
+         publicKeyHex = privateKeyHex.publicKey;
+        console.log("public key hex is: " + publicKeyHex);
         var publicKeyBuffer = publicKeyHex.toBuffer();
 
         // step 3: Calculate sha256 hash of the public key
@@ -1492,62 +1649,7 @@ function myFunction() {
 
 
 
- // Wait for the DOM to be ready
-            jQuery(function() {
-             // Initialize form validation on the registration form.
-             // It has the name attribute "registration"
-             jQuery("form[name='restoremultiform']").validate({
-               // Specify validation rules
-               rules: {
-                 // The key name on the left side is the name attribute
-                 // of an input field. Validation rules are defined
-                 // on the right side
-               
-                 publickey1: "required",
-                 publickey2: "required",
-                 publickey3: "required",
-                 publickey4: "required",
-                 publickey5: "required"
-                
-
-               },
-               // Specify validation error messages
-               messages: {
-                 multiaddress1: "Please enter a valid  address"
-               },
-               // Make sure the form is submitted to the destination defined
-               // in the "action" attribute of the form when valid
-               submitHandler: function(form) {
-                        // alert("done");
-                         var multiaddr1 = jQuery("#address1").val();
-                          var multiaddr2 = jQuery("#address2").val();
-                          var multiaddr3 = jQuery("#address3").val();
-                          var multiaddr4 = jQuery("#address4").val();
-                          var multiaddr5 = jQuery("#address5").val();
-
-                          CONSOLE_DEBUG && console.log(multiaddr1);
-                          CONSOLE_DEBUG && console.log(multiaddr2);
-                          CONSOLE_DEBUG && console.log(multiaddr3);
-                          CONSOLE_DEBUG && console.log(multiaddr4);
-                          CONSOLE_DEBUG && console.log(multiaddr5);
-                          jQuery.ajax({
-                             type: "POST",
-                             url: 'createmultisig.php',
-                             data:({adr1: multiaddr1, adr2: multiaddr2, adr3: multiaddr3, adr4: multiaddr4, adr5: multiaddr5, net: net}),
-                              success:function(Response) {
-                                  var x = Response;
-                                  // x = JSON.parse(x);
-                              //  x = x.result;
-                                  CONSOLE_DEBUG && console.log('response:', x);
-
-                                
-                              }                
-                          });
-
-                       
-               }
-             });
-            });
+ 
 
 function addMoreRows(){
 
@@ -1559,7 +1661,7 @@ function addMoreRows(){
 
       incrementCount();
 
-      jQuery(".mainro").append("<div class='row'><div class='col-md-2 pad10 fonts12 '>Public Key"+count+"  : </div><div class='col-md-10'><input type='text' name='publickey"+count+"' placeholder='public key"+count+"'  id='publickey"+count+"' value='' required='required'></div></div>");
+      jQuery(".mainro").append("<div class=' multirow'><div class='col-md-2 pad10 fonts12 '>Public Key "+count+"  : </div><div class='col-md-10'><input type='text' name='publickey"+count+"' placeholder='Enter Public Key "+count+"'  id='publickey"+count+"' value='' required='required'></div></div>");
 
 
 
@@ -1574,9 +1676,8 @@ function addMoreRows(){
 
     count++;
 
-    CONSOLE_DEBUG && console.log(count);
+    CONSOLE_DEBUG && console.log("count", count);
   }
-var count = 1 ;
 
 
 
@@ -1587,6 +1688,7 @@ function valueChanged()
 
         ismultiSig = 1 ;
         localStorage.setItem("ismultiSig", ismultiSig);
+         
       }
 
     else {

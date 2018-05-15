@@ -4,6 +4,38 @@
     color: #3f4452;
 }
 
+.positionCont{
+  position: relative;
+}
+.or{
+      margin: auto;
+    position: absolute;
+    top: 46%;
+    left: -20px;
+    bottom: 0;
+    right: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+.multisend{
+  /*display: none;*/
+}
+
+.multisigCont{
+  display: none;
+      text-align: center;
+}
+.multilabel{
+      margin-top: 20px;
+    font-size: 12px;
+}
+
+.errorContP, .errorsignP {
+  padding: 20px;
+  color: #e06f6f ;
+  display: none;
+  text-align: center;
+}
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #a11ab9;
@@ -12,6 +44,63 @@
     font-weight: 800;
     border-color: #d2d7dd;
 
+}
+#qrcode5 img{
+  margin: auto !important;
+}
+
+#multiaddress {
+    margin-top: 20px;
+}
+
+.crmultiwa{
+      float: right !important;
+    margin-right: 20px !important;
+        /*float: none !important;*/
+    margin: 0 auto;
+    overflow: hidden;
+    float: left;
+    min-width: 80px;
+    padding: 7.5px 27px;
+    box-shadow: 0 2px 4px rgba(11,31,79,.5);
+    border-radius: 4px;
+    border: 0;
+    background: #22283a;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.pretty.p-svg .state .svg {
+    position: absolute;
+    font-size: 1em;
+    width: calc(1em + 5px) !important;
+    height: calc(1.5em + 2px) !important;
+    left: 0;
+    z-index: 1;
+    text-align: center;
+    line-height: normal;
+    top: calc((0% - (100% - 1em)) - 8%);
+    border: 1px solid transparent;
+    opacity: 0;
+}
+button#walletloginbtn {
+    float: right !important;
+    margin-right: 60px;
+}
+
+.pretty .state label {
+    position: initial;
+    display: inline-block;
+    font-weight: 400;
+    margin: 0;
+    text-indent: 1.5em;
+    min-width: calc(1em + 2px);
+    font-size: 12px;
+    margin-left: 3px;
+}
+.ptop10{
+      padding-top: 10px !important;
 }
 .zeroamount{ display: none !important; }
 #congrats{
@@ -1405,7 +1494,13 @@ div#restoremodBody {
   color: black !important; 
   border: 1px solid black !important;
 }
+.reqsignlabel{
+  font-size: 12px;
+    font-weight: 700;
+}
 
+
+.red{color: red}
 .addmoreCont{
       z-index: 2;
     width: 20px;
@@ -1413,8 +1508,11 @@ div#restoremodBody {
     font-size: 20px;
     color: #23293a;
     cursor: pointer;
+    font-size: 25px;
 }
-
+i.fas.fa-plus-circle {
+    margin-top: 20px;
+}
 .pretty {
     position: relative;
     display: inline-block;
