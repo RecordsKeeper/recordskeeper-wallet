@@ -45,14 +45,20 @@ jQuery( document ).ready(function() { // document ready function starts here, so
           
               CONSOLE_DEBUG && console.log ("homeMultisig", homeMultisig);
 
-              if (homeMultisig = 1){
-             
-              jQuery(".multisend").css("display", "none");
-              }
-              else {
+              homeMultisig = localStorage.getItem("ismultiSig");
 
+              var tin = localStorage.getItem("ismultiSig");
+              CONSOLE_DEBUG && console.log("tin", tin);
+
+              if( tin = 0 ){
+                jQuery(".normalsend").css("display", "block");
+                jQuery(".multisend").css("display", "none");
+              }
+              else{
+                jQuery(".normalsend").css("display", "none");
                 jQuery(".multisend").css("display", "block");
               }
+
 
              // getPagination('#tableone');
 
@@ -125,6 +131,8 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                           pubaddr = testNetAddr ;
 
                           localStorage.setItem("testNetAddr", testNetAddr);
+
+                          valueChanged();
                    });
                  testNetAddr = localStorage.getItem("testNetAddr");
                      jQuery('#registered_adr').val(testNetAddr);
@@ -132,7 +140,7 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                       jQuery("#printimg2").attr("src","images/testnet.png");
                       jQuery("#printimg3").attr("src","images/testnet.png");
 
-                       valueChanged();
+                       
 
 
                        jQuery('walletheader').css('background', 'rgb(84, 178, 206)');
@@ -154,6 +162,7 @@ jQuery( document ).ready(function() { // document ready function starts here, so
                           mainNetAddr = jQuery('#registered_adr').val() ;
                           pubaddr = mainNetAddr ;
                           localStorage.setItem("mainNetAddr", mainNetAddr);
+                           valueChanged();
                 });
 
                 mainNetAddr = localStorage.getItem("mainNetAddr");
@@ -164,7 +173,7 @@ jQuery( document ).ready(function() { // document ready function starts here, so
 
                  jQuery('walletheader').css('background', '#22283a');
 
-                  valueChanged();
+                 
            }
 
             
@@ -1087,7 +1096,7 @@ email: "Please enter a valid email address"
 // in the "action" attribute of the form when valid
 submitHandler: function(form) {
     
-    numItems = $('.multirow').length;
+    numItems = jQuery('.multirow').length;
     CONSOLE_DEBUG && console.log("numItems", numItems);
 
     requiredSignatures = jQuery("#n").val();
@@ -1139,7 +1148,15 @@ function createMultisigWallet(e){
 
         try{
 
-              var address =  new bitcore.Address.createMultisig(publicKeys, parseInt(requiredSignatures), bitcore.Networks.test);    
+               if(net == "MainNetwork"){
+               var address =  new bitcore.Address.createMultisig(publicKeys, parseInt(requiredSignatures), bitcore.Networks.live);    
+
+               }
+               else if ( net == "TestNetwork"){
+                  var address =  new bitcore.Address.createMultisig(publicKeys, parseInt(requiredSignatures), bitcore.Networks.test);    
+
+               }
+
             // var address = new bitcore.Address(publicKeys,  bitcore.Networks.test, requiredSignatures);
 
             jQuery(".errorContP").fadeOut();
@@ -1150,6 +1167,8 @@ function createMultisigWallet(e){
 
             address = address.toString();
 
+            address = pubaddr ;
+
 
 
             CONSOLE_DEBUG && console.log ("bitcore address : ", address);
@@ -1157,12 +1176,13 @@ function createMultisigWallet(e){
           
 
              
-
+            importAddress(net);
            
 
 
             jQuery("#restoremultiform").fadeOut();
             jQuery("#multiaddress").text(address);
+            jQuery("#registered_adr").val(address);
 
              var qrcode5 = new QRCode(document.getElementById("qrcode5"), {
                         width : 300,
@@ -1171,7 +1191,7 @@ function createMultisigWallet(e){
 
                       function makeCode5 () {    // qr code generater function for address
 
-                        var elText = pubaddr;
+                        var elText = address;
                         var elprive = privkey1;     //pass  value of address stored in elpriv
                        
                         
@@ -1181,7 +1201,7 @@ function createMultisigWallet(e){
 
                makeCode5();  
 
-
+               
 
         }
         catch(e){
@@ -1683,7 +1703,7 @@ function addMoreRows(){
 
 function valueChanged()
 {
-    if($('.checkboxmulti').is(":checked"))   {
+    if(jQuery('.checkboxmulti').is(":checked"))   {
         // alert("hello");
 
         ismultiSig = 1 ;

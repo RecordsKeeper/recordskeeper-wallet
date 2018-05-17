@@ -120,7 +120,7 @@
 				<ul>
 					<li><a href="./" id="transactid">Transactions</a></li>
 					<li><a href="./">Receive</a></li>
-					<li><a href="./">Send</a></li>
+					<li class="normalsend"><a href="./" class="normalsend">Send</a></li>
 					<li class="multisend"><a href="./">Send</a></li>
 				</ul>
 				<div>
@@ -455,6 +455,7 @@
 <script src="javascript/wallet.js"></script>
 <script src="javascript/dashboard.js"></script>
 
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.all.min.js"></script>

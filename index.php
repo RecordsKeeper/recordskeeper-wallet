@@ -425,7 +425,7 @@
 
                                     </p>
                                 </div>
-                            <p class="multilabel">Multisig address :  <span>mqoVVmrnVSS1AVR1qoFsrLuDXcphcLWjXr</span> </p>
+                            <p class="multilabel">Multisig address :  <span id="multiaddress">mqoVVmrnVSS1AVR1qoFsrLuDXcphcLWjXr</span> </p>
                            
                         </div>
                     </div>
