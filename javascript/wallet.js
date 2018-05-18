@@ -29,6 +29,10 @@ var publicKeys;
 var count = 2;
 var numItems;
 var requiredSignatures;
+
+var utxo = []; 
+
+
 jQuery(document).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
 
     // Animate loader off screen
@@ -39,6 +43,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
     showAddress();
 
+    sendMultitransaction();
 
     CONSOLE_DEBUG && console.log("homeMultisig", homeMultisig);
 
@@ -46,6 +51,8 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
     var tin = localStorage.getItem("ismultiSig");
     CONSOLE_DEBUG && console.log("tin", tin);
+
+    
 
     if (tin == 0) {
 
@@ -1103,7 +1110,7 @@ function createMultisigWallet(e) {
         }
 
         console.log(obj);
-        // obj = JSON.parse(json);
+
         var values = Object.keys(obj).map(function(key) {
             return obj[key];
         });
@@ -1116,6 +1123,7 @@ function createMultisigWallet(e) {
           CONSOLE_DEBUG && console.log("public keys : ",publicKeys[i]);
            importAddress(net, publicKeys[i]);
         }
+
 
 
         try {
@@ -1131,6 +1139,7 @@ function createMultisigWallet(e) {
             // var address = new bitcore.Address(publicKeys,  bitcore.Networks.test, requiredSignatures);
 
             jQuery(".errorContP").fadeOut();
+
             jQuery(".multisigCont").fadeIn();
 
             CONSOLE_DEBUG && console.log("bitcore address : ", address);
@@ -1172,6 +1181,9 @@ function createMultisigWallet(e) {
 
             makeCode5();
 
+            
+
+
 
 
         } catch (e) {
@@ -1190,12 +1202,77 @@ function createMultisigWallet(e) {
         jQuery(".errorsignP").fadeIn();
     }
 
-
-
-
 }
 
 
+
+
+
+
+function sendMultitransaction(){
+
+  jQuery("#sendmultitran").click(function(){
+
+      var utxo =  getUTXO();
+      console.log(utxo);
+      var multisigAmount = 1;
+      var multisigRecipient = "mpC8A8Fob9ADZQA7iLrctKtwzyWTx118Q9";
+      var multisigPrivateKey = "cSjDj1je1Vv2vgV2ikqrjiMKTMbWcQ1RtSDf5YMtTi1CFPWKCf9g";
+       var multiSigTx = new bitcore.Transaction().from(utxo)
+        .to(multisigRecipient, multisigAmount) 
+        .change(pubaddr)
+        .sign(multisigPrivateKey);
+
+        CONSOLE_DEBUG && console.log(" multiSigTx",  multiSigTx);
+
+        var serialized = multiSigTx.toObject();
+        CONSOLE_DEBUG && console.log(" serialized",  serialized);
+
+        var assert =  multiSigTx.isFullySigned();
+        CONSOLE_DEBUG && console.log(" assert",  assert);
+
+
+  });
+}
+
+
+
+
+function getUTXO(){
+
+            jQuery.ajax({
+                type: "POST",
+                url: 'utxo.php',
+                data: {
+                    net : net ,
+                    pubaddr : pubaddr
+                },
+              
+                success: function(Response) {
+                    var x = Response;
+                    x = JSON.parse(x);
+                    CONSOLE_DEBUG && console.log("geturxo", x);
+                     
+
+                    for ( var i = 0; i < x.result.length ; i++ ){
+
+
+
+                       var res  = x.result[i].txid;
+                       
+                       utxo.push(res);
+                      
+                    }
+
+                    CONSOLE_DEBUG && console.log("utxo", utxo);
+                   
+
+                    
+                }
+            });
+
+             return utxo;
+}
 
 
 function createXrkHDWallet() {
@@ -1685,6 +1762,14 @@ function valueChanged() {
     }
 }
 // Globally declare values of port and url
+
+
+
+
+
+
+
+
 
 
 

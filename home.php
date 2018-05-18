@@ -320,7 +320,7 @@
 
 		</div>
 		
-		<button id="sendmultitran" data-toggle="modal" data-target="#myModalmulti" >Send Transaction</button>
+		<button id="sendmultitran"  >Send Transaction</button>
 		
 		<p class="formerrorpara"></p>
 		<div id ="txid"></div>
