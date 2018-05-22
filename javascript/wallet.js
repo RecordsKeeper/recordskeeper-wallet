@@ -5,7 +5,7 @@ buffer = bitcore.util.buffer;
 
 
 
-var CONSOLE_DEBUG = true;
+var CONSOLE_DEBUG = false;
 var privkey1;
 var pubaddr;
 var pubkey1;
@@ -1197,6 +1197,8 @@ function sendMultitransaction() {
                 decodeMultisigTransaction() ;
 
                 listaddresses();
+
+                signMultisigTransaction();
             }
 
           });
@@ -1237,6 +1239,8 @@ function decodeMultisigTransaction(){
                 CONSOLE_DEBUG && console.log("decodetransaction vin0 Vout : ", decodeMultisigVout);
 
                 getRawTransactionMultisig() ; // call getrawtransactionmultisig function here 
+
+
 
             }
 
@@ -1306,7 +1310,31 @@ function listaddresses(){
 
 
 
+function signMultisigTransaction(){
 
+    jQuery.ajax({
+            type: "POST",
+            url: 'signmultitransaction.php',
+           
+            data: {
+                net: net,
+                pubaddr: pubaddr,
+                
+            },
+
+            success: function(Response) {
+               
+               var signmultiTransactionRes = Response ; 
+
+               signmultiTransactionRes = JSON.parse(signmultiTransactionRes);
+
+               CONSOLE_DEBUG && console.log("signmultiTransactionRes", signmultiTransactionRes);
+
+            }
+
+     });
+
+}
 
 
 function createXrkHDWallet() {
