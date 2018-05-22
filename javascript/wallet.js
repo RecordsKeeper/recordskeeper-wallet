@@ -35,7 +35,9 @@ var utxo = [];
 var PublicKeyString;
 var multisigAmount ;
 var globalpublickeyhex;
-
+var sendRecipientaddressmulti ;
+var multisigtransactionHex ;
+var decodeMultisigVout;
 
 jQuery(document).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
 
@@ -1174,40 +1176,30 @@ function sendMultitransaction() {
     jQuery("#sendmultitran").click(function() {
 
          multisigAmount = jQuery("#multisigAmount").val();
+         sendRecipientaddressmulti = jQuery("#sendRecipientaddressmulti").val();
 
         jQuery.ajax({
-        type: "POST",
-        url: 'createmultisigtransaction.php',
-       
-        data: {
-            net: net,
-            pubaddr: pubaddr,
-            amount : amount
-        },
+            type: "POST",
+            url: 'createmultisigtransaction.php',
+           
+            data: {
+                net: net,
+                pubaddr: pubaddr,
+                amount : multisigAmount
+            },
 
+            success: function(Response) {
+                var x = Response;
+                x = JSON.parse(x);
+                CONSOLE_DEBUG && console.log("multisigtransaction hex : ", x);
+                multisigtransactionHex = x ;
 
-        success: function(Response) {
-            var x = Response;
-            x = JSON.parse(x);
-            CONSOLE_DEBUG && console.log("geturxo", x);
+                decodeMultisigTransaction() ;
 
-
-            for (var i = 0; i < x.result.length; i++) {
-
-
-
-                var res = x.result[i].txid;
-
-                utxo.push(res);
-                // CONSOLE_DEBUG && console.log("utxo value here : ", utxo );
-
+                listaddresses();
             }
 
-
-
-        }
-
-    });
+          });
 
 
       
@@ -1220,47 +1212,101 @@ function sendMultitransaction() {
 
 
 
-
-function getUTXO() {
+function decodeMultisigTransaction(){
 
     jQuery.ajax({
-        type: "POST",
-        url: 'utxo.php',
-        async: false,
-        data: {
-            net: net,
-            pubaddr: pubaddr
-        },
+            type: "POST",
+            url: 'decodetransaction.php',
+           
+            data: {
+                net: net,
+                pubaddr: pubaddr,
+                multisigtransactionHex : multisigtransactionHex
+            },
 
+            success: function(Response) {
+                var decodeMultisigResponse = Response;
 
-        success: function(Response) {
-            var x = Response;
-            x = JSON.parse(x);
-            CONSOLE_DEBUG && console.log("geturxo", x);
+                var decodeMultisigResponse = JSON.parse(decodeMultisigResponse);
+                CONSOLE_DEBUG && console.log("decodetransaction hex : ", decodeMultisigResponse);
 
+                decodeMultisigVinTxid = decodeMultisigResponse.result.vin[0].txid;
+                CONSOLE_DEBUG && console.log("decodetransaction vin0 txid : ", decodeMultisigVinTxid);
 
-            for (var i = 0; i < x.result.length; i++) {
+                decodeMultisigVout = decodeMultisigResponse.result.vin[0].vout;
+                CONSOLE_DEBUG && console.log("decodetransaction vin0 Vout : ", decodeMultisigVout);
 
-
-
-                var res = x.result[i].txid;
-
-                utxo.push(res);
-                // CONSOLE_DEBUG && console.log("utxo value here : ", utxo );
+                getRawTransactionMultisig() ; // call getrawtransactionmultisig function here 
 
             }
 
+          });
 
 
-        }
+} 
 
-    });
 
-    CONSOLE_DEBUG && console.log("utxo value here : ", utxo);
 
-    return utxo;
+function getRawTransactionMultisig(){
+
+    jQuery.ajax({
+            type: "POST",
+            url: 'getrawtransactionmultisig.php',
+           
+            data: {
+                net: net,
+                pubaddr: pubaddr,
+                decodeMultisigVinTxid : decodeMultisigVinTxid,
+                decodeMultisigVout : decodeMultisigVout
+            },
+
+            success: function(Response) {
+               
+               var getRawTransactionResp = Response;
+
+                var getRawTransactionResp = JSON.parse(getRawTransactionResp);
+                CONSOLE_DEBUG && console.log("getRawTransactionResp hex : ", getRawTransactionResp);
+
+                getRawTransactionResp = getRawTransactionResp.result.vout[decodeMultisigVout].scriptPubKey.hex;
+
+                CONSOLE_DEBUG && console.log("getRawTransactionResp hex : ", getRawTransactionResp);
+            }
+
+          });
 
 }
+
+
+function listaddresses(){
+
+        jQuery.ajax({
+            type: "POST",
+            url: 'listaddresses.php',
+           
+            data: {
+                net: net,
+                pubaddr: pubaddr,
+                
+            },
+
+            success: function(Response) {
+               
+               var listaddressesResponse = Response ;
+               listaddressesResponse = JSON.parse(listaddressesResponse);
+                CONSOLE_DEBUG && console.log("listaddresses Response : ", listaddressesResponse);
+
+                var redeemScript = listaddressesResponse.result[0].hex;
+                CONSOLE_DEBUG && console.log("redeemScript Response : ", redeemScript);
+
+            }
+
+          });
+
+}
+
+
+
+
 
 
 function createXrkHDWallet() {
