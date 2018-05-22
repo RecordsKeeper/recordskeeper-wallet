@@ -43,8 +43,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
     showAddress();
 
-    sendMultitransaction();
-
+   
     CONSOLE_DEBUG && console.log("homeMultisig", homeMultisig);
 
     homeMultisig = localStorage.getItem("ismultiSig");
@@ -75,6 +74,9 @@ jQuery(document).ready(function() { // document ready function starts here, so y
     addMoreRows();
 
     recieve();
+
+     sendMultitransaction();
+
     if (net == "MainNetwork") {
 
         address_pubkeyhash_version = '0041bb05';
@@ -223,10 +225,6 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         event.preventDefault();
 
         restoreWallet();
-
-
-
-
     });
 
 
@@ -249,29 +247,6 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
 }); //document ready function ends here 
 
-
-
-
-// jQuery("#createkeypairsbtn").click(function(){
-
-//     // if (jQuery("#qrcode").contains(img) ; )
-//   if (jQuery('#qrcode').length) {
-//     jQuery('#qrcode img').remove();
-//     jQuery('#qrcode2 img').remove();
-//   } 
-//   else {
-//     CONSOLE_DEBUG && console.log ('Oops! qr code broke');
-//   }
-//     // if( )
-
-//     createkeypairs(net);     
-// });
-
-
-
-// createkeypair function() that creates key pairs 
-// Params : net 
-// Return : 
 
 
 
@@ -1104,6 +1079,7 @@ function createMultisigWallet(e) {
         console.log(multiFormValues);
         var obj = {};
         var a;
+
         for (var key in multiFormValues) {
             console.log(multiFormValues[key]);
             obj[multiFormValues[key].split("=")[0]] = multiFormValues[key].split("=")[1];
@@ -1125,7 +1101,7 @@ function createMultisigWallet(e) {
         }
 
 
-
+      
         try {
 
             if (net == "MainNetwork") {
@@ -1181,11 +1157,6 @@ function createMultisigWallet(e) {
 
             makeCode5();
 
-            
-
-
-
-
         } catch (e) {
 
             CONSOLE_DEBUG && console.log(e);
@@ -1213,12 +1184,23 @@ function sendMultitransaction(){
 
   jQuery("#sendmultitran").click(function(){
 
-      var utxo =  getUTXO();
-      console.log(utxo);
+
+      // var utx1 =  getUTXO();
+      var utx1 =  {
+         "txid" : "2cc521f6192b454f914dbf222f9ed4ec661ae5361a09caf48c36cfa7780eae6d",
+         "vout" : 0,
+         "address" : "muZoKpLYwemUqCRHRCnaSgcK8n2EuaAjHy",
+         "scriptPubKey" : "76a9149a1b857b1ab67bd2e120c4f66ed270e4a4fce21e88ac",
+         "amount" : 5
+        };
+      console.log(utx1);
+
       var multisigAmount = 1;
+      var pubkeys = ['03490aabe5e766768b815387141e5a6fddab8eae3d84bcc175b557426946dfdb0c', '02939bed4c1b8234af738c4ef04f03897cba80d126513958841cd3e08f7a35f05e'];
       var multisigRecipient = "mpC8A8Fob9ADZQA7iLrctKtwzyWTx118Q9";
       var multisigPrivateKey = "cSjDj1je1Vv2vgV2ikqrjiMKTMbWcQ1RtSDf5YMtTi1CFPWKCf9g";
-       var multiSigTx = new bitcore.Transaction().from(utxo)
+       var multiSigTx = new bitcore.Transaction()
+        .from(utx1, pubkeys)
         .to(multisigRecipient, multisigAmount) 
         .change(pubaddr)
         .sign(multisigPrivateKey);
@@ -1228,8 +1210,17 @@ function sendMultitransaction(){
         var serialized = multiSigTx.toObject();
         CONSOLE_DEBUG && console.log(" serialized",  serialized);
 
+         var multiSigTx2 = new bitcore.Transaction(serialized)
+         .sign("cN788c94GKF87L2u3wVoqoamKDJZ4jmks7hC2bC1UbHdrbXGGj6A");
+
+          CONSOLE_DEBUG && console.log(" multiSigTx value here : ",  multiSigTx2);
+
         var assert =  multiSigTx.isFullySigned();
-        CONSOLE_DEBUG && console.log(" assert",  assert);
+        CONSOLE_DEBUG && console.log(" assert value here : ",  assert);
+
+
+
+
 
 
   });
@@ -1243,10 +1234,12 @@ function getUTXO(){
             jQuery.ajax({
                 type: "POST",
                 url: 'utxo.php',
+                async : false,
                 data: {
                     net : net ,
                     pubaddr : pubaddr
                 },
+
               
                 success: function(Response) {
                     var x = Response;
@@ -1261,17 +1254,20 @@ function getUTXO(){
                        var res  = x.result[i].txid;
                        
                        utxo.push(res);
-                      
+                 // CONSOLE_DEBUG && console.log("utxo value here : ", utxo );
+
                     }
 
-                    CONSOLE_DEBUG && console.log("utxo", utxo);
                    
-
-                    
+                      
                 }
-            });
 
-             return utxo;
+            });
+          
+          CONSOLE_DEBUG && console.log("utxo value here : ", utxo );
+
+          return utxo;
+            
 }
 
 

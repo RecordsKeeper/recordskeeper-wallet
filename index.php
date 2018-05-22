@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, target-densitydpi=device-dpi">
     <meta name="author" content="http://psdhtml.me">
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link rel="stylesheet" media="screen" href="styles/textext.core.css">
