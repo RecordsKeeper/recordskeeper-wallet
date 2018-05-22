@@ -24,13 +24,17 @@ var seed;
 var MnemonicsArray;
 var ismultiSig;
 var homeMultisig = localStorage.getItem("ismultiSig");
+var publicKeyHex1;
 var publicKeyHex;
 var publicKeys;
 var count = 2;
 var numItems;
 var requiredSignatures;
-
-var utxo = []; 
+var multiSigAddress;
+var utxo = [];
+var PublicKeyString;
+var multisigAmount ;
+var globalpublickeyhex;
 
 
 jQuery(document).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
@@ -43,7 +47,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
     showAddress();
 
-   
+
     CONSOLE_DEBUG && console.log("homeMultisig", homeMultisig);
 
     homeMultisig = localStorage.getItem("ismultiSig");
@@ -51,7 +55,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
     var tin = localStorage.getItem("ismultiSig");
     CONSOLE_DEBUG && console.log("tin", tin);
 
-    
+
 
     if (tin == 0) {
 
@@ -75,7 +79,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
     recieve();
 
-     sendMultitransaction();
+    sendMultitransaction();
 
     if (net == "MainNetwork") {
 
@@ -281,15 +285,15 @@ function importAddress(netw, pubaddr) {
             } else {
                 //  x = x.result;
                 CONSOLE_DEBUG && console.log('importaddress result :', x);
-               // reloadPage();
+                // reloadPage();
             }
         }
     });
 }
 
 
-function reloadPage(){
-   window.location.href = "home.php";
+function reloadPage() {
+    window.location.href = "home.php";
 }
 
 
@@ -873,16 +877,11 @@ function filterTable() {
 
 
 
-
-
-
 function clearModalInputs() {
     jQuery('#myModal2').on('hidden.bs.modal', function() {
         jQuery('#sendUSD').val('');
     });
 }
-
-
 
 
 
@@ -902,7 +901,6 @@ function copySeedPhrase() {
     /* Alert the copied text */
     CONSOLE_DEBUG && console("Copied the text: " + copyText.value);
 }
-
 
 
 
@@ -1066,7 +1064,6 @@ function restoreWallet() {
 
 
 
-
 function createMultisigWallet(e) {
 
 
@@ -1094,51 +1091,45 @@ function createMultisigWallet(e) {
         publicKeys.pop();
         console.log("public keys", publicKeys);
 
-        for(var  i = 0 ; i < publicKeys.length ; i++ ) {
+        for (var i = 0; i < publicKeys.length; i++) {
 
-          CONSOLE_DEBUG && console.log("public keys : ",publicKeys[i]);
-           importAddress(net, publicKeys[i]);
+            CONSOLE_DEBUG && console.log("public keys : ", publicKeys[i]);
+            importAddress(net, publicKeys[i]);
         }
 
 
-      
+
         try {
 
             if (net == "MainNetwork") {
-                var address = new bitcore.Address.createMultisig(publicKeys, parseInt(requiredSignatures), bitcore.Networks.live);
+
+                var address = AddMultisig();
 
             } else if (net == "TestNetwork") {
-                var address = new bitcore.Address.createMultisig(publicKeys, parseInt(requiredSignatures), bitcore.Networks.test);
 
+                var address = AddMultisig();
             }
 
             // var address = new bitcore.Address(publicKeys,  bitcore.Networks.test, requiredSignatures);
+
+            jQuery("#restoremultiform").fadeOut();
 
             jQuery(".errorContP").fadeOut();
 
             jQuery(".multisigCont").fadeIn();
 
-            CONSOLE_DEBUG && console.log("bitcore address : ", address);
 
 
-            address = address.toString();
-
-            address = pubaddr;
-
-
-
-            CONSOLE_DEBUG && console.log("bitcore address : ", address);
-
-
-            localStorage.setItem("pubaddr", address);
+            pubaddr = multiSigAddress ;
+            localStorage.setItem("pubaddr", multiSigAddress);
 
             importAddress(net, pubaddr);
 
 
 
             jQuery("#restoremultiform").fadeOut();
-            jQuery("#multiaddress").text(address);
-            jQuery("#registered_adr").val(address);
+            jQuery("#multiaddress").text(pubaddr);
+            jQuery("#registered_adr").val(pubaddr);
 
             var qrcode5 = new QRCode(document.getElementById("qrcode5"), {
                 width: 300,
@@ -1147,7 +1138,7 @@ function createMultisigWallet(e) {
 
             function makeCode5() { // qr code generater function for address
 
-                var elText = address;
+                var elText = pubaddr;
                 var elprive = privkey1; //pass  value of address stored in elpriv
 
 
@@ -1178,96 +1169,97 @@ function createMultisigWallet(e) {
 
 
 
+function sendMultitransaction() {
+
+    jQuery("#sendmultitran").click(function() {
+
+         multisigAmount = jQuery("#multisigAmount").val();
+
+        jQuery.ajax({
+        type: "POST",
+        url: 'createmultisigtransaction.php',
+       
+        data: {
+            net: net,
+            pubaddr: pubaddr,
+            amount : amount
+        },
 
 
-function sendMultitransaction(){
+        success: function(Response) {
+            var x = Response;
+            x = JSON.parse(x);
+            CONSOLE_DEBUG && console.log("geturxo", x);
 
-  jQuery("#sendmultitran").click(function(){
 
-
-      // var utx1 =  getUTXO();
-      var utx1 =  {
-         "txid" : "2cc521f6192b454f914dbf222f9ed4ec661ae5361a09caf48c36cfa7780eae6d",
-         "vout" : 0,
-         "address" : "muZoKpLYwemUqCRHRCnaSgcK8n2EuaAjHy",
-         "scriptPubKey" : "76a9149a1b857b1ab67bd2e120c4f66ed270e4a4fce21e88ac",
-         "amount" : 5
-        };
-      console.log(utx1);
-
-      var multisigAmount = 1;
-      var pubkeys = ['03490aabe5e766768b815387141e5a6fddab8eae3d84bcc175b557426946dfdb0c', '02939bed4c1b8234af738c4ef04f03897cba80d126513958841cd3e08f7a35f05e'];
-      var multisigRecipient = "mpC8A8Fob9ADZQA7iLrctKtwzyWTx118Q9";
-      var multisigPrivateKey = "cSjDj1je1Vv2vgV2ikqrjiMKTMbWcQ1RtSDf5YMtTi1CFPWKCf9g";
-       var multiSigTx = new bitcore.Transaction()
-        .from(utx1, pubkeys)
-        .to(multisigRecipient, multisigAmount) 
-        .change(pubaddr)
-        .sign(multisigPrivateKey);
-
-        CONSOLE_DEBUG && console.log(" multiSigTx",  multiSigTx);
-
-        var serialized = multiSigTx.toObject();
-        CONSOLE_DEBUG && console.log(" serialized",  serialized);
-
-         var multiSigTx2 = new bitcore.Transaction(serialized)
-         .sign("cN788c94GKF87L2u3wVoqoamKDJZ4jmks7hC2bC1UbHdrbXGGj6A");
-
-          CONSOLE_DEBUG && console.log(" multiSigTx value here : ",  multiSigTx2);
-
-        var assert =  multiSigTx.isFullySigned();
-        CONSOLE_DEBUG && console.log(" assert value here : ",  assert);
+            for (var i = 0; i < x.result.length; i++) {
 
 
 
+                var res = x.result[i].txid;
+
+                utxo.push(res);
+                // CONSOLE_DEBUG && console.log("utxo value here : ", utxo );
+
+            }
 
 
 
-  });
+        }
+
+    });
+
+
+      
+
+
+
+
+    });
 }
 
 
 
 
-function getUTXO(){
+function getUTXO() {
 
-            jQuery.ajax({
-                type: "POST",
-                url: 'utxo.php',
-                async : false,
-                data: {
-                    net : net ,
-                    pubaddr : pubaddr
-                },
-
-              
-                success: function(Response) {
-                    var x = Response;
-                    x = JSON.parse(x);
-                    CONSOLE_DEBUG && console.log("geturxo", x);
-                     
-
-                    for ( var i = 0; i < x.result.length ; i++ ){
+    jQuery.ajax({
+        type: "POST",
+        url: 'utxo.php',
+        async: false,
+        data: {
+            net: net,
+            pubaddr: pubaddr
+        },
 
 
+        success: function(Response) {
+            var x = Response;
+            x = JSON.parse(x);
+            CONSOLE_DEBUG && console.log("geturxo", x);
 
-                       var res  = x.result[i].txid;
-                       
-                       utxo.push(res);
-                 // CONSOLE_DEBUG && console.log("utxo value here : ", utxo );
 
-                    }
+            for (var i = 0; i < x.result.length; i++) {
 
-                   
-                      
-                }
 
-            });
-          
-          CONSOLE_DEBUG && console.log("utxo value here : ", utxo );
 
-          return utxo;
-            
+                var res = x.result[i].txid;
+
+                utxo.push(res);
+                // CONSOLE_DEBUG && console.log("utxo value here : ", utxo );
+
+            }
+
+
+
+        }
+
+    });
+
+    CONSOLE_DEBUG && console.log("utxo value here : ", utxo);
+
+    return utxo;
+
 }
 
 
@@ -1314,22 +1306,22 @@ function createXrkHDWallet() {
         jQuery("#firststand").css("display", "none");
 
 
-        generateBip39XRKWallet(passwordValue, wordListLang, entropyLength,
-            address_pubkeyhash_version, address_checksum_value,
-            private_key_version);
+        generateBip39XRKWallet(passwordValue, wordListLang, entropyLength, address_pubkeyhash_version, address_checksum_value, private_key_version);
 
 
         jQuery('#registered_adr').val(pubaddr);
 
-
+        CONSOLE_DEBUG && console.log("PublicKeyString value here : ",PublicKeyString);
 
         jQuery('modalboxaddress').text('Public Address : ' + pubaddr);
         jQuery('modalboxkey').text('Private Key : ' + privkey1);
 
         jQuery("#registered_adr").text(pubaddr);
 
-        var dataStr = "data:text/json;charset=utf-8," + ('{' + '"xrk_address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk_private_key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk_seed"' + ":" + '"' + seed + '"' + '}');
+        var dataStr = "data:text/json;charset=utf-8," + ('{' + '"xrk_address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk_private_key"' + ":" + '"' + privkey1 + '' + "," + '"PublicKeyString"' + ":" + '"' + PublicKeyString + '"' + "," + '"xrk_seed"' + ":" + '"' + seed + '"' + '}');
+
         var dlAnchorElem = document.getElementById('downloadlink');
+
         dlAnchorElem.setAttribute("href", dataStr);
 
         if (net == "MainNetwork") {
@@ -1359,11 +1351,13 @@ function createXrkHDWallet() {
                     return textFile;
                 };
 
-                  var create = document.getElementById('create'),
-                  textbox = document.getElementById(privkey1);
-                  var link = document.getElementById('downloadlink');
-                  link.href = makeTextFile('{' + '"xrk_address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk_private_key"' + ":" + '"' + privkey1 + '"' + '}');
-                  link.style.display = 'block';
+            var create = document.getElementById('create'),
+                textbox = document.getElementById(privkey1);
+            var link = document.getElementById('downloadlink');
+
+            link.href = makeTextFile('{' + '"xrk_address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk_private_key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk_PublicKey"' + ":" + '"' + PublicKeyString + '"}');
+            
+            link.style.display = 'block';
         })();
 
 
@@ -1500,10 +1494,16 @@ function generateBip39XRKWallet(password, wordListLang, entropyLength,
     xrkPublicAddress = createXRKAddressFromPrivateKey(masterPrivateKey, address_pubkeyhash_version, address_checksum_value);
     xrkPrivateKey = createXRKPrivateKeyFromPrivateKey(masterPrivateKey, private_key_version, address_checksum_value);
 
+    CONSOLE_DEBUG && console.log("final publickey hex pkh1: ", PublicKeyString);
+    // var pkh = bitcore.PublicKey.fromString(PublicKeyString);
+    // CONSOLE_DEBUG && console.log("final publickey hex pkh: ", pkh);
+
+
     var xrkWallet = {
         "status": "success",
         "address": xrkPublicAddress,
         "privateKey": xrkPrivateKey,
+        "publicKey": PublicKeyString,
         "seed": code.toString()
     };
 
@@ -1560,10 +1560,26 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
     var xrkWallet = {
         "status": "success",
         "address": xrkPublicAddress,
-        "privateKey": xrkPrivateKey
+        "privateKey": publicKeyHex
     };
 
     return xrkWallet;
+}
+
+
+// this functions creates XRK Public Key from master private key
+function createXRKPublicKeyFromPrivateKey(masterPrivateKey, address_pubkeyhash_version, address_checksum_value) {
+
+    // step 1: Get raw private key
+    var privateKeyHex = new bitcore.PrivateKey(masterPrivateKey);
+
+    // step 2: Get public key from private key
+    publicKeyHex1 = privateKeyHex.publicKey;
+
+    CONSOLE_DEBUG && console.log("public key hex is adarsha: " + publicKeyHex1);
+
+    return publicKeyHex1.toString();
+
 }
 
 
@@ -1575,8 +1591,9 @@ function createXRKAddressFromPrivateKey(masterPrivateKey, address_pubkeyhash_ver
 
     // step 2: Get public key from private key
     publicKeyHex = privateKeyHex.publicKey;
-    console.log("public key hex is: " + publicKeyHex);
+
     var publicKeyBuffer = publicKeyHex.toBuffer();
+
 
     // step 3: Calculate sha256 hash of the public key
     var publicKeySHA256Hash = new bitcore.crypto.Hash.sha256(publicKeyBuffer);
@@ -1618,6 +1635,17 @@ function createXRKAddressFromPrivateKey(masterPrivateKey, address_pubkeyhash_ver
     // step 11: Apply bitcoin base58 encoding to above result
     var xrkPublicAddress = bitcore.encoding.Base58.encode(xrkPublicBinaryAddress);
 
+
+    console.log("public key hex is: " + publicKeyHex);
+
+    // convert publicKeyString to toString 
+
+    PublicKeyString = publicKeyHex.toString();
+
+    console.log("PublicKeyString key hex is: " + PublicKeyString);
+
+
+    console.log("public address is : " + xrkPublicAddress);
 
 
 
@@ -1761,13 +1789,35 @@ function valueChanged() {
 
 
 
+function AddMultisig() {
+
+    jQuery.ajax({
+        type: "POST",
+        url: 'multisig.php',
+        data: ({
+            publicKeys: publicKeys,
+            net: net,
+            requiredSignatures: requiredSignatures
+
+        }),
+        async: false,
+        success: function(Response) {
+            var x = Response;
+            var y = JSON.parse(x);
+            multiSigAddress = y.result;
+
+            CONSOLE_DEBUG && console.log("addmultisig value here : ", multiSigAddress);
+
+            localStorage.setItem("pubaddr", multiSigAddress);
 
 
 
 
+        }
+    });
 
-
-
+    return multiSigAddress;
+}
 
 
 

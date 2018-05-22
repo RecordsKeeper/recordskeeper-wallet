@@ -311,7 +311,7 @@
 
 		    <p>
 				<label for="faa">Enter XRK Amount</label>
-				<input type="number" id="sendBTC" name="sendBTC" placeholder="XRK Amount" onchange="checkAmountFilled();">
+				<input type="number" id="multisigAmount" name="multisigAmount" placeholder="XRK Amount" >
 				<span class="suffix">XRK</span>
 			</p>
 			<p class="approxFee ">
