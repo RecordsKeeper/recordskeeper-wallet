@@ -28,10 +28,10 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{\"method\":\"signrawtransaction\",\"params\":[\"$multisigtransactionHex\", [{\"txid\":\"$decodeMultisigVinTxid\",\"vout\":$decodeMultisigVout,\"scriptPubKey\":\"$getRawTransactionResp\", \"redeemScript\": \"$redeemScript\"}], [\"$sendmultisigvalue\"]],\"id\":1,\"chain_name\":\"$chain\"}\n",
   CURLOPT_HTTPHEADER => array(
-    "Authorization: Basic cmtycGM6M1c0aHByUUx3c2h4N2RpamhTQlkzZjJvZk40Y2RqYmhlQ2VSMVZGN3p4Y3A=",
+    
     "Cache-Control: no-cache",
     "Content-Type: application/json",
-    "Postman-Token: 7e19115f-dbf2-9844-ebf4-d80cd3152248"
+    
   ),
 ));
 

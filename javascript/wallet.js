@@ -1370,15 +1370,35 @@ function signMultisigTransaction(){
 
                    CONSOLE_DEBUG && console.log("signmultiTransactionRes", signmultiTransactionHex);
 
+                   
+
+                    var URLBase = "http://localhost:8888/wallet/recordskeeper-wallet/signer.php?multisig=";
+                    var TrailingFixedData = signmultiTransactionHex;
+
+                    finalURL = URLBase +  TrailingFixedData + "&redeemScript="+redeemScript+"&txid="+decodeMultisigVinTxid+"&vout="+decodeMultisigVout+"&getRawTransactionResp="+getRawTransactionResp;
+
+
                    jQuery(".signtransUrl").css("display", "block");
-                   jQuery(".signurl").text(signmultiTransactionHex);
-                   const query = new URLSearchParams(window.location.search);
-                    query.append("enabled", "true");
+                   jQuery(".signurl").text(finalURL);
+                   jQuery(".asignhref").attr("href", finalURL);
+
+
+                    
+
 
 
                }else {
 
-                 alert("transaction successful ! ");
+                  multisigsendhex = signmultiTransactionRes.result.hex;
+
+                 sendmultisig();
+                 swal({
+                    title: 'Transaction Successful !',
+                    type: 'success',
+                    confirmButtonClass: "btn-success",
+                    confirmButtonText: "Close!",
+                    timer: 15000
+                });
                }
 
                
@@ -1391,7 +1411,32 @@ function signMultisigTransaction(){
 }
 
 
+function sendmultisig(){
 
+
+    jQuery.ajax({
+            type: "POST",
+            url: 'sendmultisig.php',
+           
+            data: {
+                net: net,
+                multisigsendhex: multisigsendhex
+                
+            },
+
+            success: function(Response) {
+               
+               var multiSigResponse = Response ;
+               multiSigResponse = JSON.parse(multiSigResponse);
+               multiSigResponse = multiSigResponse.result ;
+               CONSOLE_DEBUG && console.log("sendmultisig Response : ", multiSigResponse);
+
+                
+
+            }
+
+          });
+}
 
 
 function createXrkHDWallet() {
@@ -1949,6 +1994,9 @@ function AddMultisig() {
 
     return multiSigAddress;
 }
+
+
+
 
 
 
