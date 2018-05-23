@@ -317,10 +317,13 @@
 			<p class="approxFee ">
 				Approximate Fee : 
 			</p>
-
+			<div class="signtransUrl">
+				<p>Share this url to other signers</p>
+				<p class="signurl"></p>
+			</div>
 		</div>
 		
-		<button id="sendmultitran"  >Send Transaction</button>
+		<button id="sendmultitran"  data-toggle="modal" data-target="#multisigModal">Send Transaction</button>
 		
 		<p class="formerrorpara"></p>
 		<div id ="txid"></div>
@@ -426,6 +429,37 @@
 			</p>
 			<p class="approxFee themefee">Approximate Fee : 0.0328 XRK</p>
 
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="close errorclose" id="" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="multisigModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title ">Send Multisig Transaction !</h4>
+      </div>
+      <div class="modal-body standfont">
+      		
+        	<p class="privatemodalcontainer">
+				<label for="fab" id="modalshowaddr">Enter the private key :</label>
+				<input type="password" id="sendmultisig" name="fab">
+				<span class="suffix">key</span>
+			</p>
+			<p class="approxFee themefee">Approximate Fee : 0.0328 XRK</p>
+
+
+			<button id="signmultitransaction" data-toggle="modal" data-target="#multisigModal" class="testnetColor">Sign Transaction</button>
       </div>
       <div class="modal-footer">
         

@@ -8,7 +8,7 @@ else {
 }
 $chain = $config['chain'];
 $curl = curl_init();
-//$pubaddr = $_POST['pubaddr'];
+$pubaddr = $_POST['pubaddr'];
 curl_setopt_array($curl, array(
    CURLOPT_PORT => $config['rk_port'],
   CURLOPT_URL => $config['rk_host'],
@@ -19,12 +19,12 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\"method\":\"listaddresses\",\"params\":[\"2N2J8LzTuofFNgQYxAs67riF94txo2fxFN8\", true],\"id\":1,\"chain_name\":\"$chain\"}\n",
+  CURLOPT_POSTFIELDS => "{\"method\":\"listaddresses\",\"params\":[\"$pubaddr\", true],\"id\":1,\"chain_name\":\"$chain\"}\n",
   CURLOPT_HTTPHEADER => array(
    
     "Cache-Control: no-cache",
     "Content-Type: application/json",
-    "Postman-Token: eedda9c9-4766-d66a-0fc2-5622f8f68c97"
+
   ),
 ));
 

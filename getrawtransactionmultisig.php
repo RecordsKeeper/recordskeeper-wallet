@@ -6,8 +6,13 @@ else {
   $config = include('config-mainnet.php');
 }
 $chain = $config['chain'];
+
+$decodeMultisigVinTxid = $_POST['decodeMultisigVinTxid'];
+
+
+
+
 $curl = curl_init();
-$pubkey = $_POST['public'];
 curl_setopt_array($curl, array(
    CURLOPT_PORT => $config['rk_port'],
   CURLOPT_URL => $config['rk_host'],
@@ -18,7 +23,7 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\"method\":\"getrawtransaction\",\"params\":[\"8afac573ab07dff964e585033c7184a2443d260e3c43de1027d134a40d889003\", 1],\"id\":1,\"chain_name\":\"$chain\"}\n",
+  CURLOPT_POSTFIELDS => "{\"method\":\"getrawtransaction\",\"params\":[\"$decodeMultisigVinTxid\", 1],\"id\":1,\"chain_name\":\"$chain\"}\n",
   CURLOPT_HTTPHEADER => array(
     
     "Cache-Control: no-cache",

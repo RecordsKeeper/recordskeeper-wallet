@@ -1526,3 +1526,25 @@ i.fas.fa-plus-circle {
 
 
 
+.signerdiv{
+      width: 60%;
+    margin: auto;
+    margin-top: 15%;
+}
+.signlabel{
+      font-size: 13px;
+    font-weight: 600;
+}
+
+.signtransUrl{
+  display: none;
+  color: red;
+      width: 82%;
+    overflow: hidden;
+
+}
+
+.signurl{
+      word-wrap: break-word;
+    width: 69%;
+}

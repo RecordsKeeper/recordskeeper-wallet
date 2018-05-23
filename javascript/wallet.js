@@ -5,7 +5,7 @@ buffer = bitcore.util.buffer;
 
 
 
-var CONSOLE_DEBUG = false;
+var CONSOLE_DEBUG = true;
 var privkey1;
 var pubaddr;
 var pubkey1;
@@ -231,6 +231,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         event.preventDefault();
 
         restoreWallet();
+
     });
 
 
@@ -249,7 +250,13 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         jQuery("#restoreErrorP").css("display", "none");
     });
 
+    jQuery("#signmultitransaction").click(function(){
 
+        sendmultisigvalue = jQuery("#sendmultisig").val();
+
+        signMultisigTransaction();
+
+    });
 
 }); //document ready function ends here 
 
@@ -1175,33 +1182,48 @@ function sendMultitransaction() {
 
     jQuery("#sendmultitran").click(function() {
 
+         jQuery("#multisigModal").fadeOut();
+
          multisigAmount = jQuery("#multisigAmount").val();
          sendRecipientaddressmulti = jQuery("#sendRecipientaddressmulti").val();
 
-        jQuery.ajax({
-            type: "POST",
-            url: 'createmultisigtransaction.php',
-           
-            data: {
-                net: net,
-                pubaddr: pubaddr,
-                amount : multisigAmount
-            },
+         if ( multisigAmount == '' && sendRecipientaddressmulti == ''){
 
-            success: function(Response) {
-                var x = Response;
-                x = JSON.parse(x);
-                CONSOLE_DEBUG && console.log("multisigtransaction hex : ", x);
-                multisigtransactionHex = x ;
+            alert("fill the data ");
 
-                decodeMultisigTransaction() ;
+         }
+         else if ( multisigAmount != '' && sendRecipientaddressmulti != ''){
 
-                listaddresses();
+            jQuery.ajax({
+                type: "POST",
+                url: 'createmultisigtransaction.php',
+               
+                data: {
+                    net: net,
+                    multisigAddress: pubaddr,
+                    amount : multisigAmount,
+                    sendRecipientaddressmulti : sendRecipientaddressmulti
+                },
 
-                signMultisigTransaction();
-            }
+                success: function(Response) {
+                    var x = Response;
+                    x = JSON.parse(x);
+                    // CONSOLE_DEBUG && console.log("multisigtransaction hex : ", x);
+                    multisigtransactionHex = x.result ;
 
-          });
+                    CONSOLE_DEBUG && console.log("multisigtransactionhex : ", multisigtransactionHex);
+
+
+                    decodeMultisigTransaction() ;
+
+                    listaddresses();
+
+                    
+                }
+            });
+
+         }
+        
 
 
       
@@ -1222,7 +1244,7 @@ function decodeMultisigTransaction(){
            
             data: {
                 net: net,
-                pubaddr: pubaddr,
+                
                 multisigtransactionHex : multisigtransactionHex
             },
 
@@ -1259,16 +1281,16 @@ function getRawTransactionMultisig(){
            
             data: {
                 net: net,
-                pubaddr: pubaddr,
-                decodeMultisigVinTxid : decodeMultisigVinTxid,
-                decodeMultisigVout : decodeMultisigVout
+  
+                decodeMultisigVinTxid : decodeMultisigVinTxid
+              
             },
 
             success: function(Response) {
                
-               var getRawTransactionResp = Response;
+                getRawTransactionResp = Response;
 
-                var getRawTransactionResp = JSON.parse(getRawTransactionResp);
+                getRawTransactionResp = JSON.parse(getRawTransactionResp);
                 CONSOLE_DEBUG && console.log("getRawTransactionResp hex : ", getRawTransactionResp);
 
                 getRawTransactionResp = getRawTransactionResp.result.vout[decodeMultisigVout].scriptPubKey.hex;
@@ -1299,7 +1321,7 @@ function listaddresses(){
                listaddressesResponse = JSON.parse(listaddressesResponse);
                 CONSOLE_DEBUG && console.log("listaddresses Response : ", listaddressesResponse);
 
-                var redeemScript = listaddressesResponse.result[0].hex;
+                redeemScript = listaddressesResponse.result[0].hex;
                 CONSOLE_DEBUG && console.log("redeemScript Response : ", redeemScript);
 
             }
@@ -1319,6 +1341,12 @@ function signMultisigTransaction(){
             data: {
                 net: net,
                 pubaddr: pubaddr,
+                 multisigtransactionHex : multisigtransactionHex,
+                 redeemScript : redeemScript,
+                 decodeMultisigVinTxid : decodeMultisigVinTxid,
+                 getRawTransactionResp : getRawTransactionResp,
+                 decodeMultisigVout : decodeMultisigVout,
+                 sendmultisigvalue : sendmultisigvalue
                 
             },
 
@@ -1328,13 +1356,42 @@ function signMultisigTransaction(){
 
                signmultiTransactionRes = JSON.parse(signmultiTransactionRes);
 
-               CONSOLE_DEBUG && console.log("signmultiTransactionRes", signmultiTransactionRes);
+                CONSOLE_DEBUG && console.log("signmultiTransactionRes", signmultiTransactionRes);
+
+               
+
+               signmultiTransactionComplete = signmultiTransactionRes.result.complete;
+               CONSOLE_DEBUG && console.log("signmultiTransactionComplete", signmultiTransactionComplete);
+
+
+               if ( signmultiTransactionComplete == false){
+
+                   signmultiTransactionHex = signmultiTransactionRes.result.hex;
+
+                   CONSOLE_DEBUG && console.log("signmultiTransactionRes", signmultiTransactionHex);
+
+                   jQuery(".signtransUrl").css("display", "block");
+                   jQuery(".signurl").text(signmultiTransactionHex);
+                   const query = new URLSearchParams(window.location.search);
+                    query.append("enabled", "true");
+
+
+               }else {
+
+                 alert("transaction successful ! ");
+               }
+
+               
+
 
             }
 
      });
 
 }
+
+
+
 
 
 function createXrkHDWallet() {
