@@ -5,7 +5,7 @@ buffer = bitcore.util.buffer;
 
 
 
-var CONSOLE_DEBUG = true;
+var CONSOLE_DEBUG = false;
 var privkey1;
 var pubaddr;
 var pubkey1;
@@ -1394,6 +1394,7 @@ function signMultisigTransaction(){
                  sendmultisig();
                  swal({
                     title: 'Transaction Successful !',
+
                     type: 'success',
                     confirmButtonClass: "btn-success",
                     confirmButtonText: "Close!",

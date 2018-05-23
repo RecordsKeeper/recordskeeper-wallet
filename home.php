@@ -60,6 +60,28 @@
 			}
 		</script>
 	</head>
+	<style type="text/css">
+			html {
+  height: 100%;
+}
+body {
+  min-height: 100% !important;
+  display: grid !important;
+  grid-template-rows: 1fr auto !important;
+}
+footer {
+  grid-row-start: 2 !important;
+  grid-row-end: 3 !important;
+}
+#signersend{
+	display: block !important  !important; 
+}
+#content {
+    position: relative;
+    z-index: 2;
+    min-height: 68vh;
+}
+		</style>
 	<body>
 		<div class="se-pre-con"></div>
 		<div id="root">
@@ -319,7 +341,11 @@
 			</p>
 			<div class="signtransUrl">
 				<p>Share this url to other signers</p>
-				<p class="signurl"></p>
+				<a href="" class="asignhref">
+					<p class="signurl">
+						
+					</p>
+				</a>
 			</div>
 		</div>
 		
