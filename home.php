@@ -340,9 +340,11 @@ footer {
 				Approximate Fee : 
 			</p>
 			<div class="signtransUrl">
-				<p>Share this url to other signers</p>
+
+				
 				<a href="" class="asignhref">
-					<p class="signurl">
+					
+				<p>Share this url to other signers to complete the transaction</p>	
 						
 					</p>
 				</a>

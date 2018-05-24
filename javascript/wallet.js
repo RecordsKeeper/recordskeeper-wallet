@@ -743,7 +743,7 @@ function createRawSendFrom(a, b, c, d, e) {
             var y = x.error;
             CONSOLE_DEBUG && console.log(y);
             if (y != null) {
-                swal({
+              swal ({
                     title: 'Insufficient XRK Tokens',
                     html: '<p>you dont have enough XRK tokens. If you are recording data in this transaction, try with smaller data </p>',
                     type: 'error',
