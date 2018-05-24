@@ -5,7 +5,7 @@ buffer = bitcore.util.buffer;
 
 
 
-var CONSOLE_DEBUG = false;
+var CONSOLE_DEBUG = true;
 var privkey1;
 var pubaddr;
 var pubkey1;
@@ -48,7 +48,9 @@ jQuery(document).ready(function() { // document ready function starts here, so y
     var newAddressCount = 1; //   set the newAddressCounter to 1
 
     showAddress();
+    
 
+    
 
     CONSOLE_DEBUG && console.log("homeMultisig", homeMultisig);
 
@@ -100,19 +102,22 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         jQuery('.tgl-light').prop('checked', true);
         jQuery('#togglecontlabel').text('Main Network');
         jQuery('nav#nav').css('background', '#22283a');
+
+       
         jQuery('#walletloginbtn').click(function() {
 
             valueChanged();
 
-            mainNetAddr = jQuery('#registered_adr').val();
+           
+                mainNetAddr = jQuery('#registered_adr').val();
 
-            pubaddr = mainNetAddr;
+                pubaddr = mainNetAddr;
 
-            localStorage.setItem("mainNetAddr", mainNetAddr);
-
-
+                localStorage.setItem("mainNetAddr", mainNetAddr);
+           
 
         });
+
 
         mainNetAddr = localStorage.getItem("mainNetAddr");
         jQuery('#registered_adr').val(mainNetAddr);
@@ -207,11 +212,24 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         net = localStorage.getItem("network");
 
         CONSOLE_DEBUG && console.log("wallet address ", pubaddr);
+        valueChanged();
         if (pubaddr == '') {
 
             jQuery("#registered_adr").css("border", "1px solid red");
 
-        } else {
+        } 
+        else if ( ismultiSig == 0 ){
+                listaddresses();
+                 
+                
+
+        }
+        else if( ismultiSig == 1 ){
+                listaddresses();
+                
+
+        }
+        else {
 
             importAddress(net, pubaddr);
             reloadPage();
@@ -225,6 +243,8 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
 
     createXrkHDWallet();
+
+    
 
     jQuery("#restoreform").submit(function(event) {
 
@@ -253,10 +273,32 @@ jQuery(document).ready(function() { // document ready function starts here, so y
     jQuery("#signmultitransaction").click(function(){
 
         sendmultisigvalue = jQuery("#sendmultisig").val();
-
         signMultisigTransaction();
 
+        if ( sendmultisigvalue == '' && signmultiTransactionRes.result == null){
+            jQuery('.modal-dialog').css("display", "none") ;
+            swal({
+                    icon: "error",
+                    title: 'Enter Private Key carefully !',
+                    html: '<p></p>',
+                    type: 'error',
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "OK!",
+                    timer: 15000
+                });
+
+
+         }
+
+        
+
+
     });
+
+
+
+
+
 
 }); //document ready function ends here 
 
@@ -1188,12 +1230,21 @@ function sendMultitransaction() {
          sendRecipientaddressmulti = jQuery("#sendRecipientaddressmulti").val();
 
          if ( multisigAmount == '' && sendRecipientaddressmulti == ''){
+            jQuery('.modal-dialog').css("display", "none") ;
+            swal({
+                    icon: "error",
+                    title: 'Enter Both fields carefully !',
+                    html: '<p></p>',
+                    type: 'error',
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "OK!",
+                    timer: 15000
+                });
 
-            alert("fill the data ");
 
          }
          else if ( multisigAmount != '' && sendRecipientaddressmulti != ''){
-
+            jQuery('.modal-dialog').css("display", "block") ;
             jQuery.ajax({
                 type: "POST",
                 url: 'createmultisigtransaction.php',
@@ -1311,7 +1362,8 @@ function listaddresses(){
            
             data: {
                 net: net,
-                pubaddr: pubaddr,
+                async : false,
+                pubaddr: pubaddr
                 
             },
 
@@ -1323,6 +1375,40 @@ function listaddresses(){
 
                 redeemScript = listaddressesResponse.result[0].hex;
                 CONSOLE_DEBUG && console.log("redeemScript Response : ", redeemScript);
+
+                multiSigval = listaddressesResponse.result[0].script;
+                CONSOLE_DEBUG && console.log("Multisig validity: ", multiSigval);
+
+
+
+                if ( multiSigval == undefined ){
+
+                        swal({
+                                    icon: "error",
+                                    title: 'This is not a multiSig Address !',
+                                    html: '<p></p>',
+                                    type: 'error',
+                                    confirmButtonClass: "btn-danger",
+                                    confirmButtonText: "OK!",
+                                    timer: 15000
+                            });
+                }
+                else if ( ismultiSig == 0  && multiSigval == "multisig" ){
+
+                        swal({
+                                    icon: "error",
+                                    title: 'Please check the checkbox because this is a multisig Address !',
+                                    html: '<p></p>',
+                                    type: 'error',
+                                    confirmButtonClass: "btn-danger",
+                                    confirmButtonText: "OK!",
+                                    timer: 15000
+                            });
+                }
+                else{
+                    importAddress(net, pubaddr);
+                    reloadPage();
+                }
 
             }
 
@@ -1956,6 +2042,7 @@ function valueChanged() {
 
         ismultiSig = 1;
         localStorage.setItem("ismultiSig", ismultiSig);
+        
 
     } else {
         ismultiSig = 0;
