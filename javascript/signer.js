@@ -14,8 +14,10 @@ jQuery(document).ready(function(){
 	
 
 });
-
+var  transactionID ;
 var CONSOLE_DEBUG = true ;
+var transactionUrl ;
+
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -91,7 +93,7 @@ function signMultisigTransaction(){
                				signmultiTransactionComplete = signmultiTransactionRes.result.complete;
                				CONSOLE_DEBUG && console.log("signmultiTransactionComplete", signmultiTransactionComplete);
                				 multisigsendhex = signmultiTransactionRes.result.hex;
-							 sendmultisig();
+							
 
 				               if ( signmultiTransactionComplete == false){
 
@@ -115,27 +117,24 @@ function signMultisigTransaction(){
 				               else {
 
 				                 
-
+                           // sendmultisig();
 							            
+                           sendmultisig();
 
 							             if(net == "TestNetwork" ){
 
-							             	transactionUrl = "https://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/" + transactionID ;
+							             	transactionUrl = "https://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/" ;
 							             }
 							             else{
 
-							             	transactionUrl = "https://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/" + transactionID ;
+							             	transactionUrl = "https://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/" ;
 							             }
 
 							             
-							             swal({
-							                title: 'Transaction Successful !',
-							                html: '<a href="' + transactionUrl + '" target="_blank"> <b>Check Transaction status here:</b><br> </a>',
-							                type: 'success',
-							                confirmButtonClass: "btn-success",
-							                confirmButtonText: "Close!",
-							                timer: 15000
-							            });
+							            
+
+
+                      
 				               }
                }
             }
@@ -146,14 +145,13 @@ function signMultisigTransaction(){
 
 function sendmultisig(){
 
-
     jQuery.ajax({
             type: "POST",
             url: 'sendmultisig.php',
            
             data: {
                 net: net,
-                async: false,
+                
                 multisigsendhex: multisigsendhex
                 
             },
@@ -162,7 +160,12 @@ function sendmultisig(){
                
                var multiSigResponse = Response ;
 
-               if( multiSigResponse.result == null  ){
+               multiSigResponse = JSON.parse(multiSigResponse);
+               multiSigResponse = multiSigResponse.result ;
+               CONSOLE_DEBUG && console.log("sendmultisig Response : ", multiSigResponse);
+               transactionID = multiSigResponse ;
+
+              if( multiSigResponse == null  ){
 
                		swal({
 	                	icon: "error",
@@ -175,26 +178,41 @@ function sendmultisig(){
                		 });
 
                }
-               multiSigResponse = JSON.parse(multiSigResponse);
-               multiSigResponse = multiSigResponse.result ;
-               CONSOLE_DEBUG && console.log("sendmultisig Response : ", multiSigResponse);
+               else{
+                 swal({
+                              title: 'Transaction Successful !',
+                              html: '<a href="' + transactionUrl + transactionID +'" target="_blank"> <b>Check Transaction status here:</b><br>'+ transactionID +'</a>',
+                              type: 'success',
+                              confirmButtonClass: "btn-success",
+                              confirmButtonText: "Close!",
+                              timer: 15000
+                          });
 
-                transactionID = multiSigResponse ;
+                 window.location.href = "http://wallet.recordskeeper.co/";
+               }
+               
+              
+              
+
+              
+              
 
             }
 
           });
 
+       
 
 }
 
 
+var returnsendmultisigValue ;
 
 
 
 
 
-var  transactionID ;
+
 
 
 

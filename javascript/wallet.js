@@ -1267,7 +1267,7 @@ function sendMultitransaction() {
 
                     decodeMultisigTransaction() ;
 
-                    listaddresses();
+                   listaddressesSendButton();
 
                     
                 }
@@ -1409,6 +1409,37 @@ function listaddresses(){
                     importAddress(net, pubaddr);
                     reloadPage();
                 }
+
+            }
+
+          });
+
+}
+
+
+function listaddressesSendButton(){
+
+        jQuery.ajax({
+            type: "POST",
+            url: 'listaddresses.php',
+           
+            data: {
+                net: net,
+                async : false,
+                pubaddr: pubaddr
+                
+            },
+
+            success: function(Response) {
+               
+               var listaddressesResponse = Response ;
+               listaddressesResponse = JSON.parse(listaddressesResponse);
+                CONSOLE_DEBUG && console.log("listaddresses Response : ", listaddressesResponse);
+
+                redeemScript = listaddressesResponse.result[0].hex;
+                CONSOLE_DEBUG && console.log("redeemScript Response : ", redeemScript);
+
+               
 
             }
 

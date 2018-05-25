@@ -23,12 +23,12 @@ curl_setopt_array($curl, array(
  CURLOPT_TIMEOUT => 30,
  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
  CURLOPT_CUSTOMREQUEST => "POST",
- CURLOPT_POSTFIELDS => "{\"method\":\"sendrawtransaction\",\"params\":[\"$multisigsendhex\"],\"id\":1,\"chain_name\":\"recordskeeper-test\"}",
+ CURLOPT_POSTFIELDS => "{\"method\":\"sendrawtransaction\",\"params\":[\"$multisigsendhex\"],\"id\":1,\"chain_name\":\"$chain\"}",
  CURLOPT_HTTPHEADER => array(
-   "Authorization: Basic cmtycGM6M1c0aHByUUx3c2h4N2RpamhTQlkzZjJvZk40Y2RqYmhlQ2VSMVZGN3p4Y3A=",
+
    "Cache-Control: no-cache",
-   "Content-Type: application/json",
-   "Postman-Token: 56ebfa2b-8a5b-172d-98bb-dc8e1ecb77cf"
+   "Content-Type: application/json"
+
  ),
 ));
 
