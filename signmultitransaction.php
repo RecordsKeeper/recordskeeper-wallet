@@ -8,7 +8,7 @@ else {
 }
 $chain = $config['chain'];
 $curl = curl_init();
-$pubaddr = $_POST['pubaddr'];
+// $pubaddr = $_POST['pubaddr'];
 $multisigtransactionHex = $_POST['multisigtransactionHex'];
 $redeemScript = $_POST['redeemScript'];
 $decodeMultisigVinTxid = $_POST['decodeMultisigVinTxid'];

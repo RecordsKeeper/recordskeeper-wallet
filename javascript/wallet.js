@@ -1498,7 +1498,7 @@ function signMultisigTransaction(){
            
             data: {
                 net: net,
-                pubaddr: pubaddr,
+                // pubaddr: pubaddr,
                  multisigtransactionHex : multisigtransactionHex,
                  redeemScript : redeemScript,
                  decodeMultisigVinTxid : decodeMultisigVinTxid,
