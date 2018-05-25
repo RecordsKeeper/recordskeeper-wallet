@@ -1370,8 +1370,29 @@ function listaddresses(){
             success: function(Response) {
                
                var listaddressesResponse = Response ;
+
+
+
                listaddressesResponse = JSON.parse(listaddressesResponse);
-                CONSOLE_DEBUG && console.log("listaddresses Response : ", listaddressesResponse);
+
+
+
+               
+
+               if(listaddressesResponse.error != null){
+                
+                swal({
+                                    icon: "error",
+                                    title: 'Invalid Address !',
+                                    html: '<p></p>',
+                                    type: 'error',
+                                    confirmButtonClass: "btn-danger",
+                                    confirmButtonText: "OK!",
+                                    timer: 15000
+                            });
+               }
+               else{
+                    CONSOLE_DEBUG && console.log("listaddresses Response : ", listaddressesResponse);
 
                 redeemScript = listaddressesResponse.result[0].hex;
                 CONSOLE_DEBUG && console.log("redeemScript Response : ", redeemScript);
@@ -1410,6 +1431,9 @@ function listaddresses(){
                     reloadPage();
                 }
 
+
+               }
+                
             }
 
           });
