@@ -1124,7 +1124,7 @@ function createMultisigWallet(e) {
 
 
         var multiFormValues = jQuery("#restoremultiform").serialize().split("&");
-        console.log(multiFormValues);
+        console.log("multiFormValues", multiFormValues);
         var obj = {};
         var a;
 
@@ -2086,6 +2086,8 @@ function valueChanged() {
 
 function AddMultisig() {
 
+    CONSOLE_DEBUG && console.log("publicKeys multisig", publicKeys);
+    publicKeys = JSON.stringify( publicKeys );
     jQuery.ajax({
         type: "POST",
         url: 'multisig.php',

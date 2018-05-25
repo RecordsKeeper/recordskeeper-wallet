@@ -188,7 +188,7 @@ function sendmultisig(){
                               timer: 15000
                           });
 
-                 window.location.href = "http://wallet.recordskeeper.co/";
+                 window.location.href = "http://wallet.recordskeeper.co/home.php";
                }
                
               
