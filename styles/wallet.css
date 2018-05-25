@@ -1127,6 +1127,11 @@ th{
     width: 100%;
     }
    
+    .signerdiv {
+    width: 100% !important;
+    margin: auto;
+    margin-top: 15%;
+    }
 
     #content {
     position: relative;
@@ -1163,7 +1168,11 @@ th{
     #logo{
       width: 275px;
     margin: 0 auto;
-}
+} .signerdiv {
+    width: 100%;
+    margin: auto;
+    margin-top: 15%;
+    }
     
     .loginputcontainer{
             width: 380px;
@@ -1221,6 +1230,11 @@ input#authorize{
     
     .loginputcontainer{
             width: 380px;
+    }
+     .signerdiv {
+    width: 100%;
+    margin: auto;
+    margin-top: 15%;
     }
 }
 
@@ -1523,9 +1537,24 @@ i.fas.fa-plus-circle {
     margin-top: 41px;
     margin-left: 62px;
 }
-
-
-
+.sharethisUrl{
+      font-size: 14px;
+    font-weight: 600;
+    color: #53b2ce;
+}
+.signershareUrl{
+  text-align: center;
+    /* width: 113%; */
+    font-weight: 600;
+    font-size: 13px;
+    color: #53b2ce;
+    margin-top: 20px;
+ 
+    margin-top: 30px;
+}
+.signurlCont{
+  margin:  auto;
+}
 .signerdiv{
       width: 60%;
     margin: auto;
@@ -1539,7 +1568,7 @@ i.fas.fa-plus-circle {
 .signtransUrl{
   display: none;
   color: red;
-      width: 82%;
+      width: 100%;
     overflow: hidden;
 
 }

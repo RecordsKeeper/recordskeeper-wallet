@@ -106,7 +106,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
        
         jQuery('#walletloginbtn').click(function() {
 
-            valueChanged();
+                  valueChanged();
 
            
                 mainNetAddr = jQuery('#registered_adr').val();
@@ -1401,35 +1401,52 @@ function listaddresses(){
                 CONSOLE_DEBUG && console.log("Multisig validity: ", multiSigval);
 
 
+                        if ( multiSigval == undefined && redeemScript == undefined && ismultiSig == 1 ){
 
-                if ( multiSigval == undefined ){
+                                swal({
+                                            icon: "error",
+                                            title: 'This is not a multiSig Address, please uncheck the checkbox !',
+                                            html: '<p></p>',
+                                            type: 'error',
+                                            confirmButtonClass: "btn-danger",
+                                            confirmButtonText: "OK!",
+                                            timer: 15000
+                                    });
+                        }
+                        else if ( multiSigval == undefined && redeemScript == undefined){
 
-                        swal({
-                                    icon: "error",
-                                    title: 'This is not a multiSig Address !',
-                                    html: '<p></p>',
-                                    type: 'error',
-                                    confirmButtonClass: "btn-danger",
-                                    confirmButtonText: "OK!",
-                                    timer: 15000
-                            });
-                }
-                else if ( ismultiSig == 0  && multiSigval == "multisig" ){
+                                importAddress(net, pubaddr);
+                            reloadPage();
+                        }
+                        
+                        else if ( multiSigval == undefined ){
 
-                        swal({
-                                    icon: "error",
-                                    title: 'Please check the checkbox because this is a multisig Address !',
-                                    html: '<p></p>',
-                                    type: 'error',
-                                    confirmButtonClass: "btn-danger",
-                                    confirmButtonText: "OK!",
-                                    timer: 15000
-                            });
-                }
-                else{
-                    importAddress(net, pubaddr);
-                    reloadPage();
-                }
+                                swal({
+                                            icon: "error",
+                                            title: 'This is not a multiSig Address !',
+                                            html: '<p></p>',
+                                            type: 'error',
+                                            confirmButtonClass: "btn-danger",
+                                            confirmButtonText: "OK!",
+                                            timer: 15000
+                                    });
+                        }
+                        else if ( ismultiSig == 0  && multiSigval == "multisig" ){
+
+                                swal({
+                                            icon: "error",
+                                            title: 'Please check the checkbox because this is a multisig Address !',
+                                            html: '<p></p>',
+                                            type: 'error',
+                                            confirmButtonClass: "btn-danger",
+                                            confirmButtonText: "OK!",
+                                            timer: 15000
+                                    });
+                        }
+                        else{
+                            importAddress(net, pubaddr);
+                            reloadPage();
+                        }
 
 
                }

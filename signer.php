@@ -145,11 +145,11 @@ footer {
 				</label>
 				<input type="password" name="signerprivkey" id="signerprivkey" value="" placeholder="Enter your private key">
 				 <button  class="createwalletBtn margintop30" id="signersend">Sign Transaction</button>
-				<div class="signtransUrl">
+				<div class="signtransUrl signurlCont">
 				
 				<a href="" class="asignhref">
 					
-				<p>Share this url to other signers to complete the transaction</p>	
+				<p class="signershareUrl">Click here and Share this url to other signers to complete the transaction</p>	
 					</p>
 				</a>
 			</div>

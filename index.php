@@ -58,7 +58,28 @@
     <meta property="og:image" content="">
     <style type="text/css">
     </style>
-
+    <style type="text/css">
+            html {
+  height: 100%;
+}
+body {
+  min-height: 100% !important;
+  display: grid !important;
+  grid-template-rows: 1fr auto !important;
+}
+footer {
+  grid-row-start: 2 !important;
+  grid-row-end: 3 !important;
+}
+#signersend{
+    display: block !important  !important; 
+}
+#content {
+    position: relative;
+    z-index: 2;
+    min-height: 68vh;
+}
+        </style>
 
 </head>
 

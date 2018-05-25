@@ -344,7 +344,7 @@ footer {
 				
 				<a href="" class="asignhref">
 					
-				<p>Share this url to other signers to complete the transaction</p>	
+				<p class="sharethisUrl">Click here and then Share the url to other signers to complete the transaction</p>	
 						
 					</p>
 				</a>
