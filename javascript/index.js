@@ -8,8 +8,8 @@ $(".modal").on("hidden.bs.modal", function(){
                 $(".addrcl").remove();
                 $("#qrcodecontainer").css("display", "none");
                 $("#qrcodecontainer2").css("display", "none");
-                $("#qrcode").children().remove();
-                $("#qrcode2").children().remove();
+                // $("#qrcode").children().remove();
+                // $("#qrcode2").children().remove();
                 $("#qrcode3").children().remove();
                 $("#qrcode4").children().remove();
                 jQuery("#printWallet").css("display", "none");

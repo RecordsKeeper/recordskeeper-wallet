@@ -1,22 +1,52 @@
 jQuery(document).ready(function(){
 
 
-	jQuery("#signersend").click(function(){
 
-		sendmultisigvalue = jQuery("#signerprivkey").val();
+        var getUrlParameter = function getUrlParameter(sParam) {
+              var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+              sURLVariables = sPageURL.split('&'),
+              sParameterName,
+              i;
 
-		
-        signMultisigTransaction();
+          for (i = 0; i < sURLVariables.length; i++) {
+              sParameterName = sURLVariables[i].split('=');
 
-	});
-	CONSOLE_DEBUG && console.log("net", net);
+              if (sParameterName[0] === sParam) {
+                  return sParameterName[1] === undefined ? true : sParameterName[1];
+              }
+          }
+      };
+      //CONSOLE_DEBUG && console.log("multisigHex", multisig);
+      var multisigtransactionHex = getUrlParameter('multisig');
+      CONSOLE_DEBUG && console.log("multisigHex", multisigtransactionHex);
+        jQuery("#signtxhex").text("Transaction Hex : "+ multisigtransactionHex);
 
-	
-  jQuery(document.body).on('click', '.swal2-confirm btn-success swal2-styled' ,function(){
-                      window.close();
-                 });
 
+    	jQuery("#signersend").click(function(){
 
+    		sendmultisigvalue = jQuery("#signerprivkey").val();
+
+    		
+            signMultisigTransaction();
+            
+
+    	});
+    	CONSOLE_DEBUG && console.log("net", net);
+
+    	
+      jQuery(".toggle-password").click(function() {
+
+       jQuery(this).toggleClass("fa-eye fa-eye-slash");
+       var input = jQuery(jQuery(this).attr("toggle"));
+       if (jQuery('#signerprivkey').attr("type") == "password") {
+         jQuery('#signerprivkey').attr("type", "text");
+       } else {
+         jQuery('#signerprivkey').attr("type", "password");
+       }
+      });
+      
+
+      
 
 });
 var  transactionID ;
@@ -38,6 +68,16 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
+  function changeToPassword(){
+    document.getElementById("signerprivkey").type = 'text';
+            jQuery("i.fas.fa-eye").addClass('fa-eye-slash');
+           jQuery("i.fas.fa-eye").removeClass('fa-eye');
+  }
+
+
+
+
+
 
 function signMultisigTransaction(){
 
@@ -58,6 +98,8 @@ function signMultisigTransaction(){
 
     	var multisigtransactionHex = getUrlParameter('multisig');
     	CONSOLE_DEBUG && console.log("multisigHex", multisigtransactionHex);
+
+      // jQuery("#signtxhex").text("Transaction Hex : "+ multisigtransactionHex);
 
     	var redeemScript = getUrlParameter('redeemScript');
     	CONSOLE_DEBUG && console.log("redeemScript", redeemScript);
@@ -130,9 +172,13 @@ function signMultisigTransaction(){
   				                    CONSOLE_DEBUG && console.log("finalURL", finalURL);
 
   				                   jQuery(".signtransUrl").css("display", "block");
+                             jQuery('#signerprivkey').val('');
+                               jQuery('#signersend').prop('disabled', true);
+                               jQuery('#signersend').removeClass('testnetColor');
+                               jQuery('#signersend').addClass('disabledbtn');
   				                   jQuery(".signurl").text(finalURL);
   				                   jQuery(".asignhref").attr("href", finalURL);
-                             
+                           
 
   	            				}
 

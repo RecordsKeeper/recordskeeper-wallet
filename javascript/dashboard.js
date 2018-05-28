@@ -403,3 +403,12 @@ function checkBoth(){
 
 
 
+  jQuery(".hideshareurl").click(function(){
+
+    jQuery(".signtransUrl").css("display", "none");
+    jQuery("#sendRecipientaddressmulti").val('');
+    jQuery("#multisigAmount").val('');
+
+  });
+
+

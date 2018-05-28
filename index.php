@@ -79,6 +79,7 @@ footer {
     z-index: 2;
     min-height: 68vh;
 }
+
         </style>
 
 </head>
@@ -409,7 +410,7 @@ footer {
                 <div class="modal-body " id="restoremodBody">
 
                 <p class="themecolor regular   font14">
-                             You can submit the public keys by filling the required no of public keys in the input box. You can add boxes by clicking on the add button to add public keys as per your requirement. In the “Required Signatures” dropdown list select the no. of required public addresses which must be required to sign the transaction with multisignature address.
+                             You can submit the public keys by filling the required no. of public keys in the input box. You can add any no of public keys by clicking on the "plus" button as per your requirement. In the “Required Signatures” dropdown list select the no. of required public addresses which must be passed to sign the transaction with multisignature address.
                 </p>
                     <form id="restoremultiform"  name="restoremultiform"   action="" >
                       <div class="mainro">
@@ -480,7 +481,8 @@ footer {
                 </div>
                 <div class="modal-footer">
                     <div class="col-md-12 margbot10">
-                      <a id='printWallet2' value='Print' class='noprint'>Print Wallet</a>
+                      <a download="RecordsKeeper-wallet-key.json" id="downloadlink" download>Download</a>
+                    <a id="printWallet2" value="Print" class="noprint">Print Wallet</a>
                     </div>
                     
 

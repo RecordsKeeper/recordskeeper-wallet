@@ -19,7 +19,7 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 
 
 /*! Layout --------- */
-#root { overflow: hidden; position: relative; width: 100%; min-height: 100vh; padding: 61px 59px 0 79px; }
+#root { overflow: hidden; position: relative;  min-height: 100vh; padding: 61px 59px 0 79px; }
 	#top { position: fixed; left: 0; top: 0; right: 0; z-index: 9; height: 49px; background: #212739; }
 		/*#logo { position: absolute; left: 0; top: 0; bottom: 0;  margin: 0; }*/
 			

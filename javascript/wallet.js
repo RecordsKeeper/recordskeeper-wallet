@@ -67,6 +67,9 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         jQuery(".multisend").css("display", "none");
     } else {
         jQuery(".normalsend").css("display", "none");
+        jQuery("#pfform").css("display", "none !important");
+         jQuery("#pfform").removeClass('hidden');
+         jQuery("#pfform").addClass('displaynone');
         jQuery(".multisend").css("display", "block");
     }
 
@@ -1228,6 +1231,85 @@ function createMultisigWallet(e) {
 
             makeCode5();
 
+            var dataStr = "data:text/json;charset=utf-8," + ('{' + '"xrk_multisig_wallet_address"' + ":" + '"' + pubaddr + '"}');
+
+                var dlAnchorElem = document.getElementById('downloadlink');
+
+                dlAnchorElem.setAttribute("href", dataStr);
+
+                if (net == "MainNetwork") {
+                    dlAnchorElem.setAttribute("download", "xrk_multisig_wallet-"+ pubaddr +".json");
+                    dlAnchorElem.click();
+                } else if (net == "TestNetwork") {
+
+                    dlAnchorElem.setAttribute("download", "xrk_test_multisig_wallet-"+ pubaddr +".json");
+                    dlAnchorElem.click();
+                }
+
+                (function() {
+                    var textFile = null,
+                        makeTextFile = function(text) {
+                            var data = new Blob([text], {
+                                type: 'text/plain'
+                            });
+
+                            // If we are replacing a previously generated file we need to
+                            // manually revoke the object URL to avoid memory leaks.
+                            if (textFile !== null) {
+                                window.URL.revokeObjectURL(textFile);
+                            }
+
+                            textFile = window.URL.createObjectURL(data);
+
+                            return textFile;
+                        };
+
+                    var create = document.getElementById('create');
+  
+                    var link = document.getElementById('downloadlink');
+
+                    link.href = makeTextFile('{' + '"xrk_multisig_wallet_address"' + ":" + '"' + pubaddr + '"}');
+                    
+                    link.style.display = 'block';
+                })();
+
+                 jQuery("#printWallet2").css("display", "block");
+                 jQuery("#modaladdrcont").append("<div> <p class='addrcl'>XRK Multisig Address : " + pubaddr +"</p></div>");
+
+        jQuery("#printWallet2").click(function() {
+
+            jQuery("#printwalletcont").show();
+
+            var contents = jQuery("#modaladdrcont").html();
+            var contents2 = jQuery(".multisigCont").html();
+            var frame1 = jQuery('<iframe />');
+            frame1[0].name = "frame1";
+            
+            jQuery("body").append(frame1);
+            var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
+            frameDoc.document.open();
+            //Create a new HTML document.
+            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; img{width:550px !important} </style>');
+            frameDoc.document.write('</head><body>');
+            //Append the external CSS file.
+            frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
+            //Append the DIV contents.
+
+            frameDoc.document.write(contents2);
+            frameDoc.document.write(contents);
+
+            frameDoc.document.write('</body></html>');
+            frameDoc.document.close();
+            setTimeout(function() {
+                window.frames["frame1"].focus();
+                window.frames["frame1"].print();
+                frame1.remove();
+            }, 1500);
+        });
+
+   
+
+
         } catch (e) {
 
             CONSOLE_DEBUG && console.log(e);
@@ -1546,9 +1628,22 @@ function signMultisigTransaction(){
                 CONSOLE_DEBUG && console.log("signmultiTransactionRes", signmultiTransactionRes);
 
                
+                if ( signmultiTransactionRes.result == null ){
 
+                    swal({
+                    icon: "error",
+                      title: 'Incorrect Private Key',
+                      html: '<p></p>',
+                      type: 'error',
+                      confirmButtonClass: "btn-danger",
+                      confirmButtonText: "OK!",
+                      timer: 15000
+                  });
+
+                  }
                signmultiTransactionComplete = signmultiTransactionRes.result.complete;
                CONSOLE_DEBUG && console.log("signmultiTransactionComplete", signmultiTransactionComplete);
+
 
 
                if ( signmultiTransactionComplete == false){
@@ -1663,9 +1758,11 @@ function createXrkHDWallet() {
 
 
 
-        jQuery("#qrcode").children().remove();
+        jQuery("#qrcode").find('img').remove();
 
-        jQuery("#qrcode2").children().remove();
+        jQuery("#qrcode2").find('img').remove();
+
+        jQuery("#qrcode6").find('img').remove();
 
         jQuery("#qrcodecontainer").css("display", "block");
 

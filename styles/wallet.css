@@ -1577,6 +1577,7 @@ i.fas.fa-plus-circle {
 .signlabel{
       font-size: 13px;
     font-weight: 600;
+
 }
 
 .signtransUrl{
@@ -1608,15 +1609,34 @@ i.fas.fa-minus-circle{
     margin-bottom: 5px;
 }
 
-
-
-@media (min-width: 768px)
-.modal-dialog {
-    width: 650px;
-    margin: 30px auto;
+.heading{
+   font-size: 18px;
+    color: #53b2ce;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+#signtxhex{
+      word-wrap: break-word;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.disabledbtn{
+  background: #339ab95c !important;
 }
 
+.displaynone{
+  display: none;
 }
-
-
+.eyecontainer{
+  position: relative;
+}
+i.fas.fa-eye, i.fas.fa-eye-slash{
+  position: absolute;
+    /* top: 0px; */
+    top: 7px;
+    right: 10px;
+    font-size: 23px;
+    z-index: 2;
+    cursor: pointer;
+}
 

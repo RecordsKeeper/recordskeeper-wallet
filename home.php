@@ -140,8 +140,8 @@ footer {
 			</div>
 			<div class="tabs-a">
 				<ul>
-					<li><a href="./" id="transactid">Transactions</a></li>
-					<li><a href="./">Receive</a></li>
+					<li><a href="./" id="transactid" class="hideshareurl">Transactions</a></li>
+					<li><a href="./" class="hideshareurl">Receive</a></li>
 					<li class="normalsend"><a href="./" class="normalsend">Send</a></li>
 					<li class="multisend"><a href="./">Send</a></li>
 				</ul>

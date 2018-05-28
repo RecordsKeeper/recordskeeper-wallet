@@ -25,6 +25,8 @@
 		<link rel="stylesheet" media="screen" href="styles/wallet.css">
 		<!-- link for table to css cdn here  -->
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/css/tableexport.css">
+		    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
 		
 		<meta property="og:title" content="">
 		<meta property="og:type" content="website">
@@ -73,7 +75,7 @@ footer {
   grid-row-end: 3 !important;
 }
 #signersend{
-	display: block !important  !important; 
+	display: block !important ; 
 }
 #content {
     position: relative;
@@ -134,27 +136,38 @@ footer {
 				   		</p>
 			   		</div>
 			   </div>
-			  
-			</div>
-			<div >
+			  	<div >
 				
 				<div class="signerdiv">
+					<div class="heading">
+					Sign this transaction hex using your private key
+					</div>
+					<div class="signlabel" id="signtxhex"> Transaction Hex :  </div>
+					<label class="signlabel">
+						Private Key : 
+					</label>
+					<div class="eyecontainer">
+						<input type="password" name="signerprivkey" id="signerprivkey" value="" placeholder="Enter your private key">
+						<i class="fas fa-eye toggle-password" ></i>
+					</div>
 					
-				<label class="signlabel">
-					Private Key : 
-				</label>
-				<input type="password" name="signerprivkey" id="signerprivkey" value="" placeholder="Enter your private key">
 
-				 <button  class="createwalletBtn margintop30" id="signersend">Sign Transaction</button>
+
+
+
+
+					 <button  class="createwalletBtn margintop30" id="signersend">Sign Transaction</button>
 				<div class="signtransUrl signurlCont">
 				
-				<a href="" class="asignhref">
-					
-				<p class="signershareUrl">Click here and Share this url to other signers to complete the transaction</p>	
-					</p>
-				</a>
+					<a href="" class="asignhref">
+						
+						<p class="signershareUrl">Click here and Share this url to other signers to complete the transaction
+						</p>		
+					</a>
+				</div>
 			</div>
 			</div>
+			
 
 	
 		</div>
