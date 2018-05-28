@@ -309,7 +309,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 //  Params : netw, pubaddr
 //   Return :
 
-function importAddress(netw, pubaddr) {
+function importAddress(netw, pubaddr, status) {
     var local = netw;
     var a = pubaddr;
     jQuery.ajax({
@@ -327,7 +327,7 @@ function importAddress(netw, pubaddr) {
             CONSOLE_DEBUG && console.log("value here : ", y);
             if (y != null) {
                 swal({
-                    title: 'Invalid Address!',
+                    title: 'Invalid ' + status + '!',
                     type: 'error',
                     confirmButtonClass: "btn-danger",
                     confirmButtonText: "Close!",
@@ -1145,12 +1145,8 @@ function createMultisigWallet(e) {
         for (var i = 0; i < publicKeys.length; i++) {
 
             CONSOLE_DEBUG && console.log("public keys : ", publicKeys[i]);
-            importAddress(net, publicKeys[i]);
+            importAddress(net, publicKeys[i], "Public Keys");
         }
-
-
-
-        try {
 
             if (net == "MainNetwork") {
 
@@ -1161,7 +1157,14 @@ function createMultisigWallet(e) {
                 var address = AddMultisig();
             }
 
+
+
+        try {
+
+            
+
             // var address = new bitcore.Address(publicKeys,  bitcore.Networks.test, requiredSignatures);
+
 
             jQuery("#restoremultiform").fadeOut();
 
@@ -1174,7 +1177,7 @@ function createMultisigWallet(e) {
             pubaddr = multiSigAddress ;
             localStorage.setItem("pubaddr", multiSigAddress);
 
-            importAddress(net, pubaddr);
+            importAddress(net, pubaddr, "Address");
 
 
 
@@ -1653,18 +1656,18 @@ function createXrkHDWallet() {
 
         jQuery("#registered_adr").text(pubaddr);
 
-        var dataStr = "data:text/json;charset=utf-8," + ('{' + '"xrk_address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk_private_key"' + ":" + '"' + privkey1 + '' + "," + '"PublicKeyString"' + ":" + '"' + PublicKeyString + '"' + "," + '"xrk_seed"' + ":" + '"' + seed + '"' + '}');
+        var dataStr = "data:text/json;charset=utf-8," + ('{' + '"xrk_wallet_address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk_wallet_private_key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk_wallet_public_key"' + ":" + '"' + PublicKeyString + '"' + "," + '"xrk_wallet_recovery_seed"' + ":" + '"' + seed + '"' + '}');
 
         var dlAnchorElem = document.getElementById('downloadlink');
 
         dlAnchorElem.setAttribute("href", dataStr);
 
         if (net == "MainNetwork") {
-            dlAnchorElem.setAttribute("download", "Recordskeeper-wallet.json");
+            dlAnchorElem.setAttribute("download", "rk-wallet-"+ pubaddr +".json");
             dlAnchorElem.click();
         } else if (net == "TestNetwork") {
 
-            dlAnchorElem.setAttribute("download", "Recordskeeper-test-wallet.json");
+            dlAnchorElem.setAttribute("download", "rk-test-wallet-"+ pubaddr +".json");
             dlAnchorElem.click();
         }
 
@@ -2142,11 +2145,39 @@ function AddMultisig() {
         success: function(Response) {
             var x = Response;
             var y = JSON.parse(x);
-            multiSigAddress = y.result;
 
-            CONSOLE_DEBUG && console.log("addmultisig value here : ", multiSigAddress);
+            // CONSOLE_DEBUG && console.log("error code", y.error['code']);
 
-            localStorage.setItem("pubaddr", multiSigAddress);
+            if( y.result == null ){
+                
+               jQuery('#myModal3').removeClass("in");
+               jQuery('#myModal3').removeClass("modal");
+                jQuery(".modal-backdrop").remove();
+                swal({
+                    title: 'Invalid Public Keys !',
+                    type: 'error',
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Close!",
+                    timer: 15000
+                });
+
+
+
+            }
+            else{
+
+                  jQuery('#myModal3').removeClass("in");
+                jQuery('#myModal3').removeClass("modal");
+                jQuery(".modal-backdrop").remove();
+
+                 multiSigAddress = y.result;
+
+                CONSOLE_DEBUG && console.log("addmultisig value here : ", multiSigAddress);
+
+                localStorage.setItem("pubaddr", multiSigAddress);
+            }
+
+           
 
 
 

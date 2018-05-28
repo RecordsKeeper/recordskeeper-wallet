@@ -126,21 +126,21 @@ footer {
                         </div>
                         <p class="font14">If you're a new user please click on the create XRK wallet button.</p>
                         <div class="col-md-6">
-                             <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal1">Create XRK Wallet</button>
+                             <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal1">Create XRK Wallet</button>
                            
                         </div>
                        <div class="col-md-6">
                          
 
-                           <button type="submit" class="createwalletBtn margintop30" id="createmultisig" data-toggle="modal" data-target="#myModal3">Create Multisig Wallet</button>
+                           <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createmultisig" data-toggle="modal" data-target="#myModal3">Create Multisig Wallet</button>
                        </div>
                        <div class="col-md-12">
-                            <button type="submit" class="createwalletBtn margintop30" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal2">Restore XRK Wallet</button>
+                            <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal2">Restore XRK Wallet</button>
                        </div>
                         
                     </div>
 
-                    <div class="row margintop30">
+                    <div class="row margintop30 mobilemarg">
                         <p class="font14">If you already have XRK wallet, please enter your wallet address here. </p>
                         <input type="text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your XRK wallet address" value="">
                             <div class="pretty p-svg p-curve">
@@ -150,7 +150,7 @@ footer {
                                     <svg class="svg svg-icon" viewBox="0 0 20 20">
                                         <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
                                     </svg>
-                                    <label>Is it a Multisig Wallet</label>
+                                    <label>It is a Multisig Wallet</label>
                                 </div>
                             </div>
                         <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
@@ -185,7 +185,7 @@ footer {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Recordskeeper Wallet</h4>
+                    <h4 class="modal-title">Recordskeeper's XRK Wallet</h4>
                 </div>
                 <div class="modal-body standfont" id="printdiv">
                     <p class="themecolor" ><i class="fas fa-dot-circle themecolor maright10"></i>Your wallet has been created.<br> Please download your private key and save it at a safe place, you will need it for your trasactions.
@@ -245,7 +245,7 @@ footer {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title ">Create RecordsKeeper Wallet</h4>
+                    <h4 class="modal-title ">Create RecordsKeeper's XRK Wallet</h4>
                     <span class="standfont"></span>
                 </div>
                 <div class="modal-body " id="firststand">
@@ -257,9 +257,11 @@ footer {
                         </p>
                         <div class="row">
                             <div class="col-md-6">
+                                <label class="label13"> Password (Optional) </label>
                                 <input type="password" name="firstpass" class="mb20" placeholder="Password (optional)" id="firstpass" value="">
                             </div>
                             <div class="col-md-6">
+                                 <label class="label13"> Confirm Password </label>
                                 <input type="password" name="firstpass" class="mb20" placeholder="Confirm Password" id="confpass" value="" >
                             </div>
                             <div class="colmd-12">
@@ -321,7 +323,7 @@ footer {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="restoretitle">Restore RecordsKeeper Wallet</h4>
+                    <h4 class="modal-title" id="restoretitle">Restore RecordsKeeper's XRK Wallet</h4>
 
                 </div>
                 <p id="congrats">Congratulations !! your wallet has been restored.</p>
@@ -331,7 +333,7 @@ footer {
                          
                          
                           <div class="textareaCont">
-                              <label class="labelrestore"> Enter 24 Seed words in correct order to restore your wallet</label>
+                              <label class="labelrestore"> Enter Seed Phrase here (24 words) wallet</label>
                               <textarea rows="15" cols="100" class="form-control" id="seedTextArea" value="" required="required" style="width: 100% !important"></textarea>
                              
 
@@ -341,7 +343,7 @@ footer {
 
                           <div class="row">
                               <div class="col-md-12">
-                                  <label class="labelrestore">Please enter exactly same password below only If you have set password while creating wallet you are trying to restore. Any password entered will restore a valid XRK wallet which may be different than your actual wallet. Make sure your password is correct.</label>
+                                  <label class="labelrestore">In case you have provided a password while creating the wallet, please provide it as it is here. Any password entered here will restore a valid XRK wallet but that may be different than your actual wallet if the provided password is not exactly same as the original one. So, Make sure your password is correct.</label>
                                   <input type="password" name="firstpass" class="mb20" placeholder="Password" id="restorepass">
                               </div>
 
@@ -393,7 +395,7 @@ footer {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="restoretitle">Restore RecordsKeeper Multisig Wallet</h4>
+                    <h4 class="modal-title" id="restoretitle1">Create RecordsKeeper's XRK Multisig Wallet</h4>
 
                 </div>
                 <!-- <p id="congrats">Congratulations !! your wallet has been restored.</p> -->
@@ -438,7 +440,7 @@ footer {
 
                     <div class="multisigCont">
                         <div class="">
-                            <p class="themecolor font14 regular"><span class="green">Your XRK Multisig wallet has been created successfully.</span><br><br>Please securely store your keys associated with address carefully.
+                            <p class="themecolor font14 regular"><span class="green">Your RecordsKeeper's XRK Multisig wallet has been created successfully.</span><br><br>Please securely store your keys associated with address carefully.
                             </p>
                            
                             <div id="qrcode5">

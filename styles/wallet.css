@@ -1076,6 +1076,16 @@ th{
 
 /*some media queries here */
 
+@media only screen and (max-width: 968px){
+  .mobilemarg{
+    margin-top: 50px;
+  }
+  .btnmobilemarg{
+        margin-top: 43px;
+    margin-bottom: -5px;
+  }
+}
+
 @media only screen and (max-width: 900px){
     .loginContainer{
         width: 100%;
@@ -1236,6 +1246,10 @@ input#authorize{
     margin: auto;
     margin-top: 15%;
     }
+    .or{
+      top: 50%;
+    }
+
 }
 
 
@@ -1576,4 +1590,8 @@ i.fas.fa-plus-circle {
 .signurl{
       word-wrap: break-word;
     width: 69%;
+}
+.label13{
+      font-weight: 600;
+    font-size: 13px;
 }
