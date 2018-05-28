@@ -12,6 +12,11 @@ jQuery(document).ready(function(){
 	CONSOLE_DEBUG && console.log("net", net);
 
 	
+  jQuery(document.body).on('click', '.swal2-confirm btn-success swal2-styled' ,function(){
+                      window.close();
+                 });
+
+
 
 });
 var  transactionID ;
@@ -219,8 +224,8 @@ function sendmultisig(){
                               confirmButtonText: "Close!",
                               timer: 15000
                           });
-
-                 window.location.href = "http://wallet.recordskeeper.co/home.php";
+                 
+                 
                }
                
               

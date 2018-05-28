@@ -59,7 +59,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
     var tin = localStorage.getItem("ismultiSig");
     CONSOLE_DEBUG && console.log("tin", tin);
 
-
+    selectCount();
 
     if (tin == 0) {
 
@@ -201,9 +201,13 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
          jQuery("body").on('click', '.deleterow', function(){
                 decrementCount();
+                count=count+1;
+                jQuery("#n option[value="+count+"]").remove();
+                count= count-1;
+
                 jQuery( "#deleterow"+count+"" ).css("display", "block");
 
-               CONSOLE_DEBUG && console.log("lengthMulti");
+                CONSOLE_DEBUG && console.log("lengthMulti");
 
                 jQuery(this).parent().parent().remove ();
 
@@ -1583,6 +1587,8 @@ function signMultisigTransaction(){
                     confirmButtonText: "Close!",
                     timer: 15000
                 });
+
+
                }
 
                
@@ -1675,6 +1681,7 @@ function createXrkHDWallet() {
 
         jQuery('modalboxaddress').text('Public Address : ' + pubaddr);
         jQuery('modalboxkey').text('Private Key : ' + privkey1);
+        jQuery('modalboxkey').text('Public Key : ' + PublicKeyString);
 
         jQuery("#registered_adr").text(pubaddr);
 
@@ -1731,42 +1738,58 @@ function createXrkHDWallet() {
         onCreateImportAddress(netw);
 
 
-        var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
-            width: 200,
-            height: 200
-        });
-        var qrcode = new QRCode(document.getElementById("qrcode"), {
-            width: 200,
-            height: 200
-        });
+       var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
+           width: 200,
+           height: 200
+       });
+       var qrcode = new QRCode(document.getElementById("qrcode"), {
+           width: 200,
+           height: 200
+       });
 
-        function makeCode() { // qr code generater function for address
+       var qrcode6 = new QRCode(document.getElementById("qrcode6"), {
+           width: 200,
+           height: 200
+       });
 
-            var elText = pubaddr;
-            var elprive = privkey1; //pass  value of address stored in elpriv
+       function makeCode() { // qr code generater function for address
 
-
-            qrcode.makeCode(elText);
-
-        }
-
-        makeCode(); // call the function here 
+           var elText = pubaddr;
+           var elprive = privkey1; //pass  value of address stored in elpriv
 
 
-        function makeCode1() { // qr code generater function for privkey
-            var elText = pubaddr;
-            var elprive = privkey1;
+           qrcode.makeCode(elText);
+
+       }
+
+       makeCode(); // call the function here
+
+       function makeCode6() { // qr code generater function for address
+
+           var elText = PublicKeyString;
+           var elprive = privkey1; //pass  value of address stored in elpriv
 
 
-            qrcode2.makeCode(elprive); //pass  value of privkey stored in elpriv
+           qrcode6.makeCode(elText);
 
-        }
-        makeCode1(); // call the function  
+       }
 
-        jQuery("#printWallet").css("display", "block");
-        jQuery("#modaladdrcont").append("<div> <p class='addrcl'>Public Address : " + pubaddr + "</p><p class ='addrcl'>Private Key : " + privkey1 + "</p></div>");
-        // document.getElementById('modalboxaddress').innerHTML = 'Public Address : '+ pubaddr;
-        // document.getElementById('modalboxkey').innerHTML = 'Private key : '+ privkey1;
+       makeCode6(); // call the function here
+
+       function makeCode1() { // qr code generater function for privkey
+           var elText = pubaddr;
+           var elprive = privkey1;
+
+
+           qrcode2.makeCode(elprive); //pass  value of privkey stored in elpriv
+
+       }
+       makeCode1(); // call the function  
+
+       jQuery("#printWallet").css("display", "block");
+       jQuery("#modaladdrcont").append("<div> <p class='addrcl'>Public Address : " + pubaddr + "</p><p class='addrcl'>Public Key : " + PublicKeyString + "</p><p class ='addrcl'>Private Key : " + privkey1 + "</p></div>");
+       // document.getElementById('modalboxaddress').innerHTML = 'Public Address : '+ pubaddr;
+       // document.getElementById('modalboxkey').innerHTML = 'Private key : '+ privkey1;
 
         jQuery("#seedprint").on("click", function() {
             var imghead = jQuery(".seedcont").html();
@@ -2105,7 +2128,7 @@ function myFunction() {
 
 function addMoreRows() {
 
-
+   
 
     jQuery(".fas").click(function() {
 
@@ -2113,10 +2136,11 @@ function addMoreRows() {
         jQuery(".deleterow").css("display", "none");
 
         incrementCount();
+         selectCount();
 
         jQuery(".mainro").append("<div class='row multirow'><div class='col-md-2 pad10 fonts12 '>Public Key " + count + "  : </div><div class='col-md-9'><input type='text' name='publickey" + count + "' placeholder='Enter Public Key " + count + "'  id='publickey" + count + "' value='' required='required'></div><div class = 'col-md-1'> <i class='fas fa-minus-circle deleterow' id='deleterow"+count+"'></i> </div> </div>");
 
-
+           jQuery("#n").append("<option  value="+count+">"+count+"</option>");
 
 
     });
@@ -2232,6 +2256,38 @@ function mainRow(){
 
     jQuery(".mainro").append("<div class='firstrow multirow row'><div class='col-md-2 pad10 fonts12 '> Public Key 1 : </div><div class='col-md-9'><input type='text' name='publickey1' placeholder='Enter Public Key 1' id='publickey1' value='' required='required'></div></div><div class='firstrow multirow row'><div class='col-md-2 pad10 fonts12 '>Public Key 2 : </div><div class='col-md-9'><input type='text' name='publickey2' placeholder='Enter Public Key 2' id='publickey2' value='' required='required'></div></div> ");
 }
+
+
+
+function selectCount(){
+
+    for(i=count; i <= count ; i ++ ){
+        CONSOLE_DEBUG && console.log("count", count);
+        if (count > 2 ) {
+            jQuery("#selc").append("<option value='"+count+"' id='option"+count+"'>"+count+"</option>");
+        }
+    }
+}
+
+function deleteCount(){
+
+    for(i=count; i >= count ; i -- ){
+        CONSOLE_DEBUG && console.log("count", count);
+        
+
+        if (count > 2 ) {
+           // $('.ct option[value='+count+']').remove();
+           // jQuery('.ct').find('[value='+count+']').remove();
+           $('#sel')
+           .find('option')
+            .remove()
+            .end()
+            .append("<option value='"+count+"' id='option"+count+"'>"+count+"</option>");
+        }
+    }
+}
+
+
 
 
 

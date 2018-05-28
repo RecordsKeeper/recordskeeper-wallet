@@ -144,6 +144,7 @@ footer {
 					Private Key : 
 				</label>
 				<input type="password" name="signerprivkey" id="signerprivkey" value="" placeholder="Enter your private key">
+
 				 <button  class="createwalletBtn margintop30" id="signersend">Sign Transaction</button>
 				<div class="signtransUrl signurlCont">
 				
@@ -206,18 +207,6 @@ footer {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/js/tableexport.js"></script>
 
-<script type="text/javascript">
 
-$(document).ready(function(){
-	
-});
-
-
-
-
-
-
-
-</script>
 </body>
 </html>

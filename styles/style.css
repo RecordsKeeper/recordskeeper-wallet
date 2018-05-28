@@ -77,7 +77,7 @@ body{
     width: 100%;
   }
   #qrcode {
-    width:40%;
+    width:30%;
     margin: 10px;
     float: left;
       
@@ -93,7 +93,13 @@ body{
     width: 100%;
   }
   #qrcode2 {
-    width:40%;
+    width:30%;
+    margin: 10px;
+    float: right;
+      
+  }
+  #qrcode6 {
+    width:30%;
     margin: 10px;
     float: right;
       
@@ -106,6 +112,13 @@ p#seed {
     font-weight: 600;
     margin-bottom: -10px;
     -webkit-print-color-adjust: exact; 
+}
+
+.addrcl{
+  margin-top: 10px;
+}
+.walletcontent{
+  margin-bottom: 30px;
 }
 
   @media print {

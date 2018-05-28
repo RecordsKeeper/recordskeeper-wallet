@@ -216,6 +216,7 @@ footer {
                                 </div>
 
                             </div>
+                             
                         </div>
                         <div class="row walletcontent">
                             <p id="modalboxaddress" class="modc">
@@ -283,13 +284,19 @@ footer {
 
                 <div class='row walletcontent' id="qrcodecontainer">
                     <img src='images/testnet.png' id='printimg'>
-                    <div class='col-md-6'>
+                    <div class='col-md-4'>
                         
                         <div id='qrcode'>
                             <p class='qrlabel'>Public Address</p>
                         </div>
                     </div>
-                    <div class='col-md-6'>
+                    <div class='col-md-4'>
+                        
+                        <div id='qrcode6'>
+                            <p class='qrlabel'>Public Key</p>
+                        </div>
+                    </div>
+                    <div class='col-md-4'>
 
                         <div id='qrcode2'>
                             <p class='qrlabel'>Private Key</p>
@@ -431,7 +438,11 @@ footer {
                        <div class="row margintop30">
                             <div class="col-md-4">
                                  <label class="reqsignlabel">Required Signatures <span class="red">*</span> </label>
-                                <input type="number" name="n" id="n" value="" placeholder="Enter no. of signatures" required="required">
+                               <!--  <input type="number" name="n" id="n" value="" placeholder="Enter no. of signatures" required="required"> -->
+                             <select name="n" id="n" required="required">
+                                   <option value="1">1</option>
+                                   <option value="2">2</option>
+                               </select>
 
                             </div>
                             <div class="col-md-8 ptop10">
