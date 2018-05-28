@@ -1595,3 +1595,28 @@ i.fas.fa-plus-circle {
       font-weight: 600;
     font-size: 13px;
 }
+i.fas.fa-minus-circle{
+      font-size: 20px;
+    margin-top: 8px;
+    color: #242a3a;
+    cursor: pointer;
+}
+
+.row.multirow {
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+@media (min-width: 768px)
+.modal-dialog {
+    width: 650px;
+    margin: 30px auto;
+}
+
+}
+
+
+

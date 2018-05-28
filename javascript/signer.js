@@ -118,7 +118,7 @@ function signMultisigTransaction(){
 
   				                   
 
-  				                    var URLBase = "http://localhost:8888/wallet/recordskeeper-wallet/signer.php?multisig=";
+  				                    var URLBase = "http://wallet.recordskeeper.co/signer.php?multisig=";
   				                    var TrailingFixedData = signmultiTransactionHex;
 
   				                    finalURL = URLBase +  TrailingFixedData + "&redeemScript="+redeemScript+"&txid="+decodeMultisigVinTxid+"&vout="+decodeMultisigVout+"&getRawTransactionResp="+getRawTransactionResp;

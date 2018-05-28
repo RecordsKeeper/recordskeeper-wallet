@@ -21,7 +21,9 @@ $(".modal").on("hidden.bs.modal", function(){
                                 $('#restoremultiform')[0].reset();
                 $( "#qrcode5" ).find( "img" ).remove();
 
+                $(".mainro").empty();
 
+                count = 2;
 
             });
 

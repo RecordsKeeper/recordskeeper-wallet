@@ -8,32 +8,16 @@ jQuery(function(){
 jQuery(document).ready(function($) {
 
   /* Docs scrollspy */
-  $('body').scrollspy({
-    target: '.bs-sidebar',
-    offset: 0
-  })
-
+  
   $(window).on('load', function () {
-    $('body').scrollspy('refresh')
+    
   })
 
   // back to top
   setTimeout(function () {
     var $sideBar = $('.bs-sidebar')
 
-    $sideBar.affix({
-      offset: {
-        top: function () {
-          var offsetTop      = $sideBar.offset().top
-          var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
-
-          return (this.top = offsetTop - sideBarMargin)
-        }
-      , bottom: function () {
-          return (this.bottom = $('.bs-footer').outerHeight(true))
-        }
-      }
-    })
+    
   }, 100)
 
   /* Run examples */

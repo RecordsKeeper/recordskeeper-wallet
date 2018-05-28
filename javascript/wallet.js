@@ -77,6 +77,11 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
 
 
+    
+
+
+
+
     clearModalInputs();
 
     addMoreRows();
@@ -194,6 +199,16 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
     networkToggle(); // Network Toggle function
 
+         jQuery("body").on('click', '.deleterow', function(){
+                decrementCount();
+                jQuery( "#deleterow"+count+"" ).css("display", "block");
+
+               CONSOLE_DEBUG && console.log("lengthMulti");
+
+                jQuery(this).parent().parent().remove ();
+
+         });
+
     // createMultisigWallet();
 
     if (document.getElementById("currentdate") != null) {
@@ -263,11 +278,14 @@ jQuery(document).ready(function() { // document ready function starts here, so y
             .find("input[type=checkbox], input[type=radio]")
             .prop("checked", "")
             .end();
+            jQuery(".mainro").empty();
 
         jQuery("#confpass").css("border", "1px solid #a4aaba");
         jQuery("#congrats").css("display", "none");
         jQuery(".token").remove();
         jQuery("#restoreErrorP").css("display", "none");
+        
+
     });
 
     jQuery("#signmultitransaction").click(function(){
@@ -931,6 +949,8 @@ function filterTable() {
 function clearModalInputs() {
     jQuery('#myModal2').on('hidden.bs.modal', function() {
         jQuery('#sendUSD').val('');
+        jQuery(".modal-backdrop").css("display", "none");
+
     });
 }
 
@@ -1116,6 +1136,8 @@ function restoreWallet() {
 
 
 function createMultisigWallet(e) {
+
+
 
 
     if (numItems >= requiredSignatures) {
@@ -1533,7 +1555,7 @@ function signMultisigTransaction(){
 
                    
 
-                    var URLBase = "http://localhost:8888/wallet/recordskeeper-wallet/signer.php?multisig=";
+                    var URLBase = "http://wallet.recordskeeper.co/signer.php?multisig=";
                     var TrailingFixedData = signmultiTransactionHex;
 
                     finalURL = URLBase +  TrailingFixedData + "&redeemScript="+redeemScript+"&txid="+decodeMultisigVinTxid+"&vout="+decodeMultisigVout+"&getRawTransactionResp="+getRawTransactionResp;
@@ -2088,10 +2110,11 @@ function addMoreRows() {
     jQuery(".fas").click(function() {
 
 
+        jQuery(".deleterow").css("display", "none");
 
         incrementCount();
 
-        jQuery(".mainro").append("<div class=' multirow'><div class='col-md-2 pad10 fonts12 '>Public Key " + count + "  : </div><div class='col-md-10'><input type='text' name='publickey" + count + "' placeholder='Enter Public Key " + count + "'  id='publickey" + count + "' value='' required='required'></div></div>");
+        jQuery(".mainro").append("<div class='row multirow'><div class='col-md-2 pad10 fonts12 '>Public Key " + count + "  : </div><div class='col-md-9'><input type='text' name='publickey" + count + "' placeholder='Enter Public Key " + count + "'  id='publickey" + count + "' value='' required='required'></div><div class = 'col-md-1'> <i class='fas fa-minus-circle deleterow' id='deleterow"+count+"'></i> </div> </div>");
 
 
 
@@ -2109,6 +2132,12 @@ function incrementCount() {
     CONSOLE_DEBUG && console.log("count", count);
 }
 
+function decrementCount(){
+
+    count--;
+
+    CONSOLE_DEBUG && console.log("decrement count", count);
+}
 
 
 function valueChanged() {
@@ -2150,9 +2179,9 @@ function AddMultisig() {
 
             if( y.result == null ){
                 
-               jQuery('#myModal3').removeClass("in");
-               jQuery('#myModal3').removeClass("modal");
-                jQuery(".modal-backdrop").remove();
+               jQuery('#myModal3').css("display", "none");
+               jQuery('#myModal3').css("display", "none")
+                jQuery(".modal-backdrop").css("display", "none")
                 swal({
                     title: 'Invalid Public Keys !',
                     type: 'error',
@@ -2166,9 +2195,8 @@ function AddMultisig() {
             }
             else{
 
-                  jQuery('#myModal3').removeClass("in");
-                jQuery('#myModal3').removeClass("modal");
-                jQuery(".modal-backdrop").remove();
+       
+
 
                  multiSigAddress = y.result;
 
@@ -2189,10 +2217,21 @@ function AddMultisig() {
 }
 
 
+jQuery("#createmultisig").click(function(){
+    
+
+    if ( jQuery('.mainro').children().length == 0 ) {
+    // div has no other tags inside it
+        mainRow();
+    }
+});
 
 
 
+function mainRow(){
 
+    jQuery(".mainro").append("<div class='firstrow multirow row'><div class='col-md-2 pad10 fonts12 '> Public Key 1 : </div><div class='col-md-9'><input type='text' name='publickey1' placeholder='Enter Public Key 1' id='publickey1' value='' required='required'></div></div><div class='firstrow multirow row'><div class='col-md-2 pad10 fonts12 '>Public Key 2 : </div><div class='col-md-9'><input type='text' name='publickey2' placeholder='Enter Public Key 2' id='publickey2' value='' required='required'></div></div> ");
+}
 
 
 

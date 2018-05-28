@@ -141,7 +141,7 @@ footer {
                     </div>
 
                     <div class="row margintop30 mobilemarg">
-                        <p class="font14">If you already have XRK wallet, please enter your wallet address here. </p>
+                        <p class="font14">If you already have RecordsKeeper's XRK wallet, please enter your wallet address here. </p>
                         <input type="text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your XRK wallet address" value="">
                             <div class="pretty p-svg p-curve">
                                 <input type="checkbox" class="checkboxmulti" />
@@ -253,7 +253,7 @@ footer {
                     <div id="fistmodbod">
                        
                         <p class="themecolor regular   font14">
-                             You may create XRK wallet without any password but it is highly recommended that you provide a password for additional security of your wallet.
+                             You may create RecordsKeeper's XRK wallet without any password but it is highly recommended that you provide a password for additional security of your wallet.
                         </p>
                         <div class="row">
                             <div class="col-md-6">
@@ -333,7 +333,7 @@ footer {
                          
                          
                           <div class="textareaCont">
-                              <label class="labelrestore"> Enter Seed Phrase here (24 words) wallet</label>
+                              <label class="labelrestore"> Enter Seed Phrase here (24 words) </label>
                               <textarea rows="15" cols="100" class="form-control" id="seedTextArea" value="" required="required" style="width: 100% !important"></textarea>
                              
 
@@ -400,21 +400,25 @@ footer {
                 </div>
                 <!-- <p id="congrats">Congratulations !! your wallet has been restored.</p> -->
                 <div class="modal-body " id="restoremodBody">
+
+                <p class="themecolor regular   font14">
+                             You can submit the public keys by filling the required no of public keys in the input box. You can add boxes by clicking on the add button to add public keys as per your requirement. In the “Required Signatures” dropdown list select the no. of required public addresses which must be required to sign the transaction with multisignature address.
+                </p>
                     <form id="restoremultiform"  name="restoremultiform"   action="" >
                       <div class="mainro">
-                        <div class="firstrow multirow">
+                        <div class="firstrow multirow row">
                             <div class="col-md-2 pad10 fonts12 ">
                                 Public Key 1 : 
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <input type="text" name="publickey1" placeholder="Enter Public Key 1"  id="publickey1" value="" required="required">
                             </div>
                         </div>
-                        <div class="firstrow multirow">
+                        <div class="firstrow multirow row">
                             <div class="col-md-2 pad10 fonts12 ">
                                 Public Key 2 : 
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <input type="text" name="publickey2" placeholder="Enter Public Key 2"  id="publickey2" value="" required="required">
                             </div>
                         </div>
