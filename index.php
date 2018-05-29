@@ -455,6 +455,7 @@ footer {
                     </form>
 
                     <div class="multisigCont">
+                        <img src='images/testnet.png' id='printimgMultisig'>
                         <div class="">
                             <p class="themecolor font14 regular"><span class="green">Your RecordsKeeper's XRK Multisig wallet has been created successfully.</span><br><br>Please securely store your keys associated with address carefully.
                             </p>
@@ -482,7 +483,7 @@ footer {
                 <div class="modal-footer">
                     <div class="col-md-12 margbot10">
                       <a download="RecordsKeeper-wallet-key.json" id="downloadlink" download>Download</a>
-                    <a id="printWallet2" value="Print" class="noprint">Print Wallet</a>
+                    <a id="printWalletmultisig" value="Print" class="noprint">Print Wallet</a>
                     </div>
                     
 

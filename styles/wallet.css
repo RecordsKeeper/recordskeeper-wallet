@@ -224,8 +224,14 @@ margin-bottom: 5px;
     font-size: 15px;
     display: none;
 }
-#printimg3{
+#printimg3, #printimgMultisig{
   display: none;
+}
+
+#printWalletmultisig {
+    font-size: 13px;
+    font-weight: 600;
+    display: none;
 }
 #printWallet{
   float: right;

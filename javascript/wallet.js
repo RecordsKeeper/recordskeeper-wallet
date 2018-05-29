@@ -1,9 +1,9 @@
-bitcore = require('bitcore-lib');
-Mnemonic = require('bitcore-mnemonic');
-buffer = bitcore.util.buffer;
+// required bitcore.js libraries to interact with blockchain //
+    bitcore = require('bitcore-lib');
+    Mnemonic = require('bitcore-mnemonic');
+    buffer = bitcore.util.buffer;
 
-
-
+// List of global variables declared and Console toggle can be achieved by changing the value of CONSOLE_DEBUG to either true or false //
 
 var CONSOLE_DEBUG = true;
 var privkey1;
@@ -38,8 +38,11 @@ var globalpublickeyhex;
 var sendRecipientaddressmulti ;
 var multisigtransactionHex ;
 var decodeMultisigVout;
+var decodeMultisigVinTxid;
 
-jQuery(document).ready(function() { // document ready function starts here, so you can call all the function which you want to run after the DOM is ready
+// document.ready function to put the methods ready in DOM 
+
+jQuery(document).ready(function() { 
 
     // Animate loader off screen
 
@@ -49,9 +52,6 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
     showAddress();
     
-
-    
-
     CONSOLE_DEBUG && console.log("homeMultisig", homeMultisig);
 
     homeMultisig = localStorage.getItem("ismultiSig");
@@ -78,13 +78,6 @@ jQuery(document).ready(function() { // document ready function starts here, so y
 
     jQuery(".tag-ctn").css("width", "100% !important");
 
-
-
-    
-
-
-
-
     clearModalInputs();
 
     addMoreRows();
@@ -101,17 +94,11 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         CONSOLE_DEBUG && console.log("address_pubkeyhash_version", address_pubkeyhash_version);
         CONSOLE_DEBUG && console.log("address_checksum_value", address_checksum_value);
         CONSOLE_DEBUG && console.log("private_key_version", private_key_version);
-
-
-
-
         jQuery('#top').css('background', '#22283a');
         jQuery('#top').css('color', '#ffffff');
         jQuery('.tgl-light').prop('checked', true);
         jQuery('#togglecontlabel').text('Main Network');
         jQuery('nav#nav').css('background', '#22283a');
-
-       
         jQuery('#walletloginbtn').click(function() {
 
                   valueChanged();
@@ -125,14 +112,12 @@ jQuery(document).ready(function() { // document ready function starts here, so y
            
 
         });
-
-
         mainNetAddr = localStorage.getItem("mainNetAddr");
         jQuery('#registered_adr').val(mainNetAddr);
         jQuery("#printimg").attr("src", "images/mainnet.png");
         jQuery("#printimg2").attr("src", "images/mainnet.png");
         jQuery("#printimg3").attr("src", "images/mainnet.png");
-
+        jQuery("#printimgMultisig").attr("src", "images/mainnet.png");
         jQuery('walletheader').css('background', '#22283a');
     } else if (net == "TestNetwork") {
 
@@ -142,8 +127,6 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         CONSOLE_DEBUG && console.log("address_pubkeyhash_version", address_pubkeyhash_version);
         CONSOLE_DEBUG && console.log("address_checksum_value", address_checksum_value);
         CONSOLE_DEBUG && console.log("private_key_version", private_key_version);
-
-
         jQuery('#top').css('background', '#54b2ce');
         jQuery('#togglecontlabel').text('Test Network');
         jQuery('button').addClass('testnetColor');
@@ -163,10 +146,7 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         jQuery("#printimg").attr("src", "images/testnet.png");
         jQuery("#printimg2").attr("src", "images/testnet.png");
         jQuery("#printimg3").attr("src", "images/testnet.png");
-
-
-
-
+        jQuery("#printimgMultisig").attr("src", "images/testnet.png");
         jQuery('walletheader').css('background', 'rgb(84, 178, 206)');
     } else {
 
@@ -176,7 +156,6 @@ jQuery(document).ready(function() { // document ready function starts here, so y
         CONSOLE_DEBUG && console.log("address_pubkeyhash_version", address_pubkeyhash_version);
         CONSOLE_DEBUG && console.log("address_checksum_value", address_checksum_value);
         CONSOLE_DEBUG && console.log("private_key_version", private_key_version);
-
         net == "MainNetwork";
         localStorage.setItem("network", "MainNetwork");
         jQuery('#cb1').prop('checked', true);
@@ -187,31 +166,26 @@ jQuery(document).ready(function() { // document ready function starts here, so y
             localStorage.setItem("mainNetAddr", mainNetAddr);
             valueChanged();
         });
-
         mainNetAddr = localStorage.getItem("mainNetAddr");
         jQuery('#registered_adr').val(mainNetAddr);
         jQuery("#printimg").attr("src", "images/mainnet.png");
         jQuery("#printimg2").attr("src", "images/mainnet.png");
         jQuery("#printimg3").attr("src", "images/mainnet.png");
-
+        jQuery("#printimgMultisig").attr("src", "images/mainnet.png");
         jQuery('walletheader').css('background', '#22283a');
-
-
     }
 
 
     networkToggle(); // Network Toggle function
+
 
          jQuery("body").on('click', '.deleterow', function(){
                 decrementCount();
                 count=count+1;
                 jQuery("#n option[value="+count+"]").remove();
                 count= count-1;
-
                 jQuery( "#deleterow"+count+"" ).css("display", "block");
-
                 CONSOLE_DEBUG && console.log("lengthMulti");
-
                 jQuery(this).parent().parent().remove ();
 
          });
@@ -1201,7 +1175,7 @@ function createMultisigWallet(e) {
 
             jQuery(".multisigCont").fadeIn();
 
-
+            jQuery("#printWalletmultisig").css("display", "block");
 
             pubaddr = multiSigAddress ;
             localStorage.setItem("pubaddr", multiSigAddress);
@@ -1273,39 +1247,43 @@ function createMultisigWallet(e) {
                     link.style.display = 'block';
                 })();
 
-                 jQuery("#printWallet2").css("display", "block");
+                 jQuery("#printWallet2").css("display", "block !important");
                  jQuery("#modaladdrcont").append("<div> <p class='addrcl'>XRK Multisig Address : " + pubaddr +"</p></div>");
 
-        jQuery("#printWallet2").click(function() {
+                  jQuery("#printWalletmultisig").on("click", function()   {
 
-            jQuery("#printwalletcont").show();
+                       // jQuery("#printimgMultisig").css("display", "block");
+                        var imghead = jQuery(".multisigCont").html();
+                        var contents = jQuery("#seed").html();
+                        var contents2 = jQuery(".seedlabel").html();
+                        var frame1 = jQuery('<iframe />');
+                        frame1[0].name = "frame1";
+                        
+                        jQuery("body").append(frame1);
+                        var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
+                        frameDoc.document.open();
+                        
+                        //Create a new HTML document.
+                        frameDoc.document.write('<html><head><title>Print Wallet</title><style> .seedlabel{ width : 100%; } #seed{width: 100%; clear:both;}p#seed { font-size: 15px; padding: 15px; background: #eae8e8; border-radius: 4px; font-weight: 600;margin-bottom: -10px;-webkit-print-color-adjust: exact; position:absolute ; top : 15px; } #seedprintcont{ position : relative ; width : 100%;} #seedprintim{ position: relative ; } #seedpl{ position : absolute; top :100px; left:20px; } #contenpl{ position : absolute; top :140px; left:20px; word-wrap:break-word; width :70%; } #printimg2{display: block !important ; width : 81.8% !important ;} </style>');
+                        frameDoc.document.write('</head><body>');
+                        //Append the external CSS file.
+                        frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
+                        //Append the DIV contents.
 
-            var contents = jQuery("#modaladdrcont").html();
-            var contents2 = jQuery(".multisigCont").html();
-            var frame1 = jQuery('<iframe />');
-            frame1[0].name = "frame1";
-            
-            jQuery("body").append(frame1);
-            var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
-            frameDoc.document.open();
-            //Create a new HTML document.
-            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; img{width:550px !important} </style>');
-            frameDoc.document.write('</head><body>');
-            //Append the external CSS file.
-            frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
-            //Append the DIV contents.
+                        frameDoc.document.write(imghead);
 
-            frameDoc.document.write(contents2);
-            frameDoc.document.write(contents);
+                        
 
-            frameDoc.document.write('</body></html>');
-            frameDoc.document.close();
-            setTimeout(function() {
-                window.frames["frame1"].focus();
-                window.frames["frame1"].print();
-                frame1.remove();
-            }, 1500);
-        });
+
+                     
+                        frameDoc.document.write('</body></html>');
+                        frameDoc.document.close();
+                        setTimeout(function() {
+                            window.frames["frame1"].focus();
+                            window.frames["frame1"].print();
+                            frame1.remove();
+                        }, 1500);
+                    });
 
    
 
@@ -1927,35 +1905,56 @@ function createXrkHDWallet() {
 
             jQuery("#printwalletcont").show();
 
+
             var contents = jQuery("#modaladdrcont").html();
             var contents2 = jQuery("#qrcodecontainer").html();
             var frame1 = jQuery('<iframe />');
             frame1[0].name = "frame1";
-            // frame1.css({ "position": "absolute", "top": "-1000000px" });
+            
             jQuery("body").append(frame1);
             var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
+
             frameDoc.document.open();
+
             //Create a new HTML document.
             frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; img{width:550px !important} </style>');
             frameDoc.document.write('</head><body>');
+
             //Append the external CSS file.
+
             frameDoc.document.write('<link href="styles/style.css" rel="stylesheet" type="text/css" media="print"/>');
+
             //Append the DIV contents.
 
             frameDoc.document.write(contents2);
             frameDoc.document.write(contents);
 
             frameDoc.document.write('</body></html>');
+
             frameDoc.document.close();
+
             setTimeout(function() {
                 window.frames["frame1"].focus();
                 window.frames["frame1"].print();
                 frame1.remove();
             }, 1500);
+
         });
 
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // function to generate BIP39XRKwallet

@@ -53,6 +53,9 @@ body{
     background: white;
    
   }
+ .multisigCont{
+  width: 100%;
+ } 
   
    #printWallet {
     float: right;
