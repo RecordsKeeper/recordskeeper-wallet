@@ -1384,7 +1384,7 @@ function sendMultitransaction() {
 
                                 swal({
                                     icon: "error",
-                                    title: 'Invalid Reciepient Address !',
+                                    title: 'Invalid Recipient Address !',
                                     html: '<p></p>',
                                     type: 'error',
                                     confirmButtonClass: "btn-danger",
