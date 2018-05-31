@@ -1380,15 +1380,31 @@ function sendMultitransaction() {
                     }
                    else  if ( x.result == null ){
 
-                         swal({
-                            icon: "error",
-                            title: 'Insufficient funds !',
-                            html: '<p></p>',
-                            type: 'error',
-                            confirmButtonClass: "btn-danger",
-                            confirmButtonText: "OK!",
-                            timer: 15000
-                        });
+                            if(x.error['code']== -1){
+
+                                swal({
+                                    icon: "error",
+                                    title: 'Invalid Reciepient Address !',
+                                    html: '<p></p>',
+                                    type: 'error',
+                                    confirmButtonClass: "btn-danger",
+                                    confirmButtonText: "OK!",
+                                    timer: 15000
+                                });
+
+                            }else{
+                                swal({
+                                    icon: "error",
+                                    title: 'Insufficient funds !',
+                                    html: '<p></p>',
+                                    type: 'error',
+                                    confirmButtonClass: "btn-danger",
+                                    confirmButtonText: "OK!",
+                                    timer: 15000
+                                });
+                            }
+
+                         
 
                     }else{
 
