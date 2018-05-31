@@ -1149,7 +1149,7 @@ th{
     .signerdiv {
     width: 100% !important;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 0%;
     }
 
     #content {
@@ -1190,7 +1190,7 @@ th{
 } .signerdiv {
     width: 100%;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 0%;
     }
     
     .loginputcontainer{
@@ -1253,7 +1253,7 @@ input#authorize{
      .signerdiv {
     width: 100%;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 0%;
     }
     .or{
       top: 50%;
@@ -1581,7 +1581,7 @@ i.fas.fa-plus-circle {
 .signerdiv{
       width: 60%;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 5%;
 }
 .signlabel{
       font-size: 13px;
