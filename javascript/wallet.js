@@ -51,6 +51,8 @@ jQuery(document).ready(function() {
     var newAddressCount = 1; //   set the newAddressCounter to 1
 
     showAddress();
+
+
     
     CONSOLE_DEBUG && console.log("homeMultisig", homeMultisig);
 
@@ -59,12 +61,17 @@ jQuery(document).ready(function() {
     var tin = localStorage.getItem("ismultiSig");
     CONSOLE_DEBUG && console.log("tin", tin);
 
+    // jQuery(".signtransUrl").removeClass(hidden);
+
     selectCount();
 
     if (tin == 0) {
 
         jQuery(".normalsend").css("display", "block");
         jQuery(".multisend").css("display", "none");
+         jQuery("#multiForm").css("display", "none !important");
+          jQuery("#multiForm").removeClass('hidden');
+         jQuery("#multiForm").addClass('displaynone');
     } else {
         jQuery(".normalsend").css("display", "none");
         jQuery("#pfform").css("display", "none !important");
@@ -99,6 +106,7 @@ jQuery(document).ready(function() {
         jQuery('.tgl-light').prop('checked', true);
         jQuery('#togglecontlabel').text('Main Network');
         jQuery('nav#nav').css('background', '#22283a');
+        jQuery("button#closemod").css('background', '#22283a !important');
         jQuery('#walletloginbtn').click(function() {
 
                   valueChanged();
@@ -131,6 +139,7 @@ jQuery(document).ready(function() {
         jQuery('#togglecontlabel').text('Test Network');
         jQuery('button').addClass('testnetColor');
         jQuery('nav#nav').css('background', 'rgb(84, 178, 206)');
+        jQuery("button#closemod").css('background', 'rgb(84, 178, 206) !important');
         jQuery('#walletloginbtn').click(function() {
 
             testNetAddr = jQuery('#registered_adr').val();
@@ -173,6 +182,7 @@ jQuery(document).ready(function() {
         jQuery("#printimg3").attr("src", "images/mainnet.png");
         jQuery("#printimgMultisig").attr("src", "images/mainnet.png");
         jQuery('walletheader').css('background', '#22283a');
+        jQuery("button#closemod").css('background', '#22283a !important');
     }
 
 
@@ -458,13 +468,16 @@ copyToClipBoard : It Copies the html of element childAddresses
 
 
 
-function copyToClipBoard(id) {
-    var jQuerytemp = jQuery("<input>");
-    jQuery("body").append(jQuerytemp);
-    jQuerytemp.val(jQuery('#childAddresses' + id).text()).select();
-    document.execCommand("copy");
-    jQuerytemp.remove();
-}
+// function copyToClipBoard(id) {
+
+//     var jQuerytemp = jQuery("<input>");
+//     jQuery("body").append(jQuerytemp);
+//     jQuerytemp.val(jQuery('#childAddresses' + id).text()).select();
+//     document.execCommand("copy");
+//     jQuerytemp.remove();
+
+
+// }
 
 
 
@@ -1056,7 +1069,7 @@ function restoreWallet() {
 
 
 
-        jQuery("#modaladdrcont").append("<div> <p class='addrcl'>Public Address : " + restoreResult.address + "</p><p class ='addrcl'>Private Key : " + restoreResult.privateKey + "</p></div>");
+        jQuery("#modaladdrcont").append("<div> <p class='addrcl'>xrk_wallet_address : " + restoreResult.address + "</p><p class ='addrcl'>xrk_wallet_private_key : " + restoreResult.privateKey + "</p></div>");
 
 
 
@@ -1168,6 +1181,7 @@ function createMultisigWallet(e) {
 
             // var address = new bitcore.Address(publicKeys,  bitcore.Networks.test, requiredSignatures);
 
+            jQuery("#submitPbKeys").css("display", "none");
 
             jQuery("#restoremultiform").fadeOut();
 
@@ -1313,16 +1327,19 @@ function sendMultitransaction() {
 
     jQuery("#sendmultitran").click(function() {
 
-         jQuery("#multisigModal").fadeOut();
+         jQuery("#multisigModal").modal('hide');
+
+         jQuery("#multisigModal").css("display", "none !important");
+         jQuery(".modal-backdrop.in").css("display", "none");
 
          multisigAmount = jQuery("#multisigAmount").val();
          sendRecipientaddressmulti = jQuery("#sendRecipientaddressmulti").val();
 
-         if ( multisigAmount == '' && sendRecipientaddressmulti == ''){
+         if ( multisigAmount == '' || sendRecipientaddressmulti == ''){
             jQuery('.modal-dialog').css("display", "none") ;
             swal({
                     icon: "error",
-                    title: 'Enter Both fields carefully !',
+                    title: 'Please Enter the required fields!',
                     html: '<p></p>',
                     type: 'error',
                     confirmButtonClass: "btn-danger",
@@ -1348,15 +1365,47 @@ function sendMultitransaction() {
                 success: function(Response) {
                     var x = Response;
                     x = JSON.parse(x);
-                    // CONSOLE_DEBUG && console.log("multisigtransaction hex : ", x);
-                    multisigtransactionHex = x.result ;
+                   
 
-                    CONSOLE_DEBUG && console.log("multisigtransactionhex : ", multisigtransactionHex);
+                    if(x.result != null){
+                         jQuery("#multisigModal").modal('show');
+                         multisigtransactionHex = x.result ;
+
+                        CONSOLE_DEBUG && console.log("multisigtransactionhex : ", multisigtransactionHex);
 
 
-                    decodeMultisigTransaction() ;
+                        decodeMultisigTransaction() ;
 
-                   listaddressesSendButton();
+                        listaddressesSendButton();
+                    }
+                   else  if ( x.result == null ){
+
+                         swal({
+                            icon: "error",
+                            title: 'Insufficient funds !',
+                            html: '<p></p>',
+                            type: 'error',
+                            confirmButtonClass: "btn-danger",
+                            confirmButtonText: "OK!",
+                            timer: 15000
+                        });
+
+                    }else{
+
+                        jQuery("#multisigModal").modal('show');
+
+                        multisigtransactionHex = x.result ;
+
+                        CONSOLE_DEBUG && console.log("multisigtransactionhex : ", multisigtransactionHex);
+
+
+                        decodeMultisigTransaction() ;
+
+                        listaddressesSendButton();
+
+                    }
+
+                    
 
                     
                 }
@@ -1390,6 +1439,8 @@ function decodeMultisigTransaction(){
 
             success: function(Response) {
                 var decodeMultisigResponse = Response;
+
+
 
                 var decodeMultisigResponse = JSON.parse(decodeMultisigResponse);
                 CONSOLE_DEBUG && console.log("decodetransaction hex : ", decodeMultisigResponse);
@@ -1641,6 +1692,8 @@ function signMultisigTransaction(){
                    jQuery(".signtransUrl").css("display", "block");
                    jQuery(".signurl").text(finalURL);
                    jQuery(".asignhref").attr("href", finalURL);
+                   jQuery(".txhexurl").text(finalURL);
+                   jQuery("#txhexcodeurlinput").text(finalURL);
 
 
                     
@@ -1654,14 +1707,16 @@ function signMultisigTransaction(){
                  sendmultisig();
                  swal({
                     title: 'Transaction Successful !',
-
+                    html: '<p>You can check your transaction status in wallet </p><a class="bold" href="' + transactionUrl + transactionID +'" target="_blank"> <b>Check Transaction status here:</b><br>'+ transactionID +'</a>',
                     type: 'success',
-                    confirmButtonClass: "btn-success",
+                    confirmButtonClass: "btn-success confirmRedirect",
                     confirmButtonText: "Close!",
                     timer: 15000
                 });
 
-
+                        jQuery(".confirmRedirect").click(function(){
+                            window.location.href = "http://wallet.recordskeeper.co/";
+                          });
                }
 
                
@@ -1676,13 +1731,13 @@ function signMultisigTransaction(){
 
 function sendmultisig(){
 
-
     jQuery.ajax({
             type: "POST",
             url: 'sendmultisig.php',
            
             data: {
                 net: net,
+                
                 multisigsendhex: multisigsendhex
                 
             },
@@ -1690,15 +1745,68 @@ function sendmultisig(){
             success: function(Response) {
                
                var multiSigResponse = Response ;
-               multiSigResponse = JSON.parse(multiSigResponse);
-               multiSigResponse = multiSigResponse.result ;
-               CONSOLE_DEBUG && console.log("sendmultisig Response : ", multiSigResponse);
 
-                
+               multiSigResp = JSON.parse(multiSigResponse);
+               multiSigResponse = multiSigResp.result ;
+               CONSOLE_DEBUG && console.log("sendmultisig Response : ", multiSigResponse);
+               transactionID = multiSigResponse ;
+
+              if( multiSigResponse == null && multiSigResp.error['code'] == -26  ){
+
+                    swal({
+                        icon: "error",
+                        title: 'Amount is too low for multisig transaction',
+                        html: '<p></p>',
+                        type: 'error',
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "OK!",
+                        timer: 15000
+                     });
+
+               }
+
+               else if( multiSigResponse == null ){
+
+                  swal({
+                    icon: "error",
+                      title: 'Transaction already in Blockchain',
+                      html: '<p></p>',
+                      type: 'error',
+                      confirmButtonClass: "btn-danger",
+                      confirmButtonText: "OK!",
+                      timer: 15000
+                   });
+
+               }
+
+               else {
+                          swal({
+                              title: 'Transaction Successful !',
+                              html: '<p>You can check your transaction status in wallet </p><a class="bold" href="' + transactionUrl + transactionID +'" target="_blank"> <b>Check Transaction status here:</b><br>'+ transactionID +'</a>',
+                              type: 'success',
+                              confirmButtonClass: "btn-success confirmRedirect",
+                              confirmButtonText: "Close!",
+                              timer: 15000
+                          });
+                          jQuery(".confirmRedirect").click(function(){
+                            window.location.href = "http://wallet.recordskeeper.co/";
+                          });
+                      
+                  
+               }
+               
+              
+              
+
+              
+              
 
             }
 
           });
+
+       
+
 }
 
 
@@ -1710,6 +1818,8 @@ function createXrkHDWallet() {
 
         var firstpass = jQuery("#firstpass").val();
         var secondpass = jQuery("#confpass").val();
+
+
 
         if (firstpass != secondpass) {
 
@@ -1862,7 +1972,7 @@ function createXrkHDWallet() {
        makeCode1(); // call the function  
 
        jQuery("#printWallet").css("display", "block");
-       jQuery("#modaladdrcont").append("<div> <p class='addrcl'>Public Address : " + pubaddr + "</p><p class='addrcl'>Public Key : " + PublicKeyString + "</p><p class ='addrcl'>Private Key : " + privkey1 + "</p></div>");
+       jQuery("#modaladdrcont").append("<div> <p class='addrcl'>xrk_wallet_address : <br> " + pubaddr + "</p><p class='addrcl'>xrk_wallet_public_key : <br>" + PublicKeyString + "</p><p class ='addrcl'>xrk_wallet_private_key : <br>" + privkey1 + "</p></div>");
        // document.getElementById('modalboxaddress').innerHTML = 'Public Address : '+ pubaddr;
        // document.getElementById('modalboxkey').innerHTML = 'Private key : '+ privkey1;
 
@@ -2386,6 +2496,18 @@ function deleteCount(){
 
 
 
+
+
+function copyToClipboard(element) {
+
+ var temp = jQuery("<input>");
+ jQuery("body").append(temp);
+ temp.val(jQuery(element).text()).select();
+ document.execCommand("copy");
+ temp.remove();
+ jQuery(".copied").fadeIn().delay(3000);
+ jQuery(".copied").fadeOut();
+}
 
 // Wait for the DOM to be ready
 jQuery(function() {

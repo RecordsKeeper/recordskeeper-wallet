@@ -297,6 +297,9 @@ margin-bottom: 5px;
 button.close.testnetColor {
     background: white !important;
 }
+
+
+
 /*#hexdata{
   width: 85%;
 }*/
@@ -1146,7 +1149,7 @@ th{
     .signerdiv {
     width: 100% !important;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 5%;
     }
 
     #content {
@@ -1645,4 +1648,62 @@ i.fas.fa-eye, i.fas.fa-eye-slash{
     z-index: 2;
     cursor: pointer;
 }
+.boldB{
+  font-weight: 600;
+  color: black;
+}
+.ulfonts{
+      font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+        margin-left: -20px;
+}
+.txhexurl{
+      padding: 31px;
+    background: #179617fc;
+    color: white;
+    word-wrap: break-word;
+    border-radius: 4px;
+    position: relative;
+    font-weight: 600;
+}
+.txhexurlCont{
+  position: relative;
+}
+.copyfaiconspan{
+      position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+.copyfaicon{
+         font-size: 26px;
+    color: white;
+    font-weight: 400;
+}
 
+
+.copied {
+    background: #060404b3;
+    color: white;
+    padding: 4px;
+    text-align: center;
+    width: 75px;
+    font-size: 13px;
+    font-weight: 800;
+    border-radius: 9px;
+    position: absolute;
+    top: -21px;
+    right: 2px;
+
+    display: none;
+}
+.bold{
+  font-weight: 600;
+}
+button#closemod {
+    float: right;
+}

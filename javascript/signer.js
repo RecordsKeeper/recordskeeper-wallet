@@ -28,6 +28,8 @@ jQuery(document).ready(function(){
 
     		
             signMultisigTransaction();
+
+
             
 
     	});
@@ -171,13 +173,16 @@ function signMultisigTransaction(){
   				                    finalURL = URLBase +  TrailingFixedData + "&redeemScript="+redeemScript+"&txid="+decodeMultisigVinTxid+"&vout="+decodeMultisigVout+"&getRawTransactionResp="+getRawTransactionResp;
   				                    CONSOLE_DEBUG && console.log("finalURL", finalURL);
 
-  				                   jQuery(".signtransUrl").css("display", "block");
-                             jQuery('#signerprivkey').val('');
-                               jQuery('#signersend').prop('disabled', true);
-                               jQuery('#signersend').removeClass('testnetColor');
-                               jQuery('#signersend').addClass('disabledbtn');
-  				                   jQuery(".signurl").text(finalURL);
-  				                   jQuery(".asignhref").attr("href", finalURL);
+                              jQuery(".signtransUrl").css("display", "block");
+                              jQuery('#signerprivkey').val('');
+                              jQuery('#signersend').prop('disabled', true);
+                              jQuery('#signersend').removeClass('testnetColor');
+                              jQuery('#signersend').addClass('disabledbtn');
+                              jQuery(".signurl").text(finalURL);
+                              jQuery(".asignhref").attr("href", finalURL);
+                              jQuery("#txhexcodeUrl").text(finalURL);
+                              jQuery("#txhexcodeurlinputsigner").text(finalURL);
+                              jQuery(".txhexurlCont").css("display", "block");
                            
 
   	            				}
@@ -262,16 +267,19 @@ function sendmultisig(){
                }
 
                else {
-                 swal({
+                          swal({
                               title: 'Transaction Successful !',
-                              html: '<a href="' + transactionUrl + transactionID +'" target="_blank"> <b>Check Transaction status here:</b><br>'+ transactionID +'</a>',
+                              html: '<p>You can check your transaction status in wallet </p><a class="bold" href="' + transactionUrl + transactionID +'" target="_blank"> <b>Check Transaction status here:</b><br>'+ transactionID +'</a>',
                               type: 'success',
-                              confirmButtonClass: "btn-success",
+                              confirmButtonClass: "btn-success confirmRedirect",
                               confirmButtonText: "Close!",
                               timer: 15000
                           });
-                 
-                 
+                          jQuery(".confirmRedirect").click(function(){
+                            window.location.href = "http://wallet.recordskeeper.co/";
+                          });
+                      
+                  
                }
                
               
@@ -286,6 +294,18 @@ function sendmultisig(){
 
        
 
+}
+
+
+function copyToClipboardsigner(element) {
+
+ var temp = jQuery("<input>");
+ jQuery("body").append(temp);
+ temp.val(jQuery(element).text()).select();
+ document.execCommand("copy");
+ temp.remove();
+ jQuery(".copied").fadeIn().delay(3000);
+ jQuery(".copied").fadeOut();
 }
 
 

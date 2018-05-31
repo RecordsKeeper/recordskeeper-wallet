@@ -133,7 +133,7 @@ footer {
                        <div class="col-md-6">
                          
 
-                           <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createmultisig" data-toggle="modal" data-target="#myModal3">Create Multisig Wallet</button>
+                           <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createmultisig" data-toggle="modal" data-target="#myModal3">Create MultiSig Wallet</button>
                        </div>
                        <div class="col-md-12">
                             <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal2">Restore XRK Wallet</button>
@@ -151,7 +151,7 @@ footer {
                                     <svg class="svg svg-icon" viewBox="0 0 20 20">
                                         <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
                                     </svg>
-                                    <label>It is a Multisig Wallet</label>
+                                    <label>It is a MultiSig Wallet</label>
                                 </div>
                             </div>
                         <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
@@ -288,19 +288,19 @@ footer {
                     <div class='col-md-4'>
                         
                         <div id='qrcode'>
-                            <p class='qrlabel'>Public Address</p>
+                            <p class='qrlabel'>xrk_wallet_address</p>
                         </div>
                     </div>
                     <div class='col-md-4'>
                         
                         <div id='qrcode6'>
-                            <p class='qrlabel'>Public Key</p>
+                            <p class='qrlabel'>xrk_wallet_public_key</p>
                         </div>
                     </div>
                     <div class='col-md-4'>
 
                         <div id='qrcode2'>
-                            <p class='qrlabel'>Private Key</p>
+                            <p class='qrlabel'>xrk_wallet_private_key</p>
                         </div>
                     </div>
                 </div>
@@ -403,13 +403,13 @@ footer {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="restoretitle1">Create RecordsKeeper's XRK Multisig Wallet</h4>
+                    <h4 class="modal-title" id="restoretitle1">Create RecordsKeeper's XRK MultiSig Wallet</h4>
 
                 </div>
                 <!-- <p id="congrats">Congratulations !! your wallet has been restored.</p> -->
                 <div class="modal-body " id="restoremodBody">
 
-                <p class="themecolor regular   font14">
+                <p class="themecolor regular   font14" id="submitPbKeys">
                              You can submit the public keys by filling the required no. of public keys in the input box. You can add any no of public keys by clicking on the "plus" button as per your requirement. In the “Required Signatures” dropdown list select the no. of required public addresses which must be passed to sign the transaction with multisignature address.
                 </p>
                     <form id="restoremultiform"  name="restoremultiform"   action="" >
@@ -448,7 +448,7 @@ footer {
                             </div>
                             <div class="col-md-8 ptop10">
                                  <label>   </label>
-                                 <button type="submit" class="crmultiwa  " id="createmultisigwal">Create  Multisig Wallet</button >
+                                 <button type="submit" class="crmultiwa  " id="createmultisigwal">Create  MultiSig Wallet</button >
                             </div>
                             
                         </div>
@@ -457,7 +457,7 @@ footer {
                     <div class="multisigCont">
                         <img src='images/testnet.png' id='printimgMultisig'>
                         <div class="">
-                            <p class="themecolor font14 regular"><span class="green">Your RecordsKeeper's XRK Multisig wallet has been created successfully.</span><br><br>Please securely store your keys associated with address carefully.
+                            <p class="themecolor font14 regular"><span class="green">Your RecordsKeeper's XRK MultiSig wallet has been created successfully.</span><br><br>Please securely store your keys associated with address carefully.
                             </p>
                            
                             <div id="qrcode5">
@@ -465,7 +465,7 @@ footer {
 
                                     </p>
                                 </div>
-                            <p class="multilabel">Multisig address :  <span id="multiaddress">mqoVVmrnVSS1AVR1qoFsrLuDXcphcLWjXr</span> </p>
+                            <p class="multilabel">MultiSig address :  <span id="multiaddress">mqoVVmrnVSS1AVR1qoFsrLuDXcphcLWjXr</span> </p>
                            
                         </div>
                     </div>

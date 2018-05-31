@@ -18,6 +18,7 @@
     	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 		<meta name="author" content="http://psdhtml.me">
 		<link rel="stylesheet" media="screen" href="styles/screen.css">
+		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
 		
 		<link rel="stylesheet" media="print" href="styles/print.css">
@@ -281,7 +282,7 @@ footer {
 				<span class="suffix">XRK</span>
 			</p>
 			<p class="approxFee ">
-				Approximate Fee : 
+				Approximate Fee : 0.0328 XRK
 			</p>
 
 		</div>
@@ -319,44 +320,60 @@ footer {
 			</p>
 		</div>
 	</div>
-	<div  name="multiForm" method="post" class="sendform" id="multiForm">
-		<p class="showaddr fnone senderaddr">
-				Sender's
-		</p>
+	<div  name="multiForm" method="post" class="" id="multiForm">
 		<div class="">
-			
-			<p>
-				<label for="sendRecipientaddress">Enter Recipient Address </label>
-				<input type="text" id="sendRecipientaddressmulti" name="sendRecipientaddressmulti" placeholder="Recipient Address" onchange="checkRecAddressFilled();">
-				<span class="suffix"><i class="icon-qr"></i></span>
-		    </p>
-
-		    <p>
-				<label for="faa">Enter XRK Amount</label>
-				<input type="number" id="multisigAmount" name="multisigAmount" placeholder="XRK Amount" >
-				<span class="suffix">XRK</span>
+			<p class="showaddr fnone senderaddr">
+				Sender's
 			</p>
-			<p class="approxFee ">
-				Approximate Fee : 
-			</p>
-			<div class="signtransUrl">
-
+			<div class="sendform">
 				
+				<p>
+					<label for="sendRecipientaddress">Enter Recipient Address </label>
+					<input type="text" id="sendRecipientaddressmulti" name="sendRecipientaddressmulti" placeholder="Recipient Address" onchange="checkRecAddressFilled();">
+					<span class="suffix"><i class="icon-qr"></i></span>
+			    </p>
+
+			    <p>
+					<label for="faa">Enter XRK Amount</label>
+					<input type="number" id="multisigAmount" name="multisigAmount" placeholder="XRK Amount" >
+					<span class="suffix">XRK</span>
+				</p>
+				<p class="approxFee ">
+					Approximate Fee : 
+				</p>		
+			</div>
+			
+			<button id="sendmultitran" >Send Transaction</button>
+			
+			<p class="formerrorpara"></p>
+			<div id ="txid"></div>
+			<div class="signtransUrl">			
 				<a href="" class="asignhref">
 					
-				<p class="sharethisUrl">Click here and then Share the url to other signers to complete the transaction</p>	
-						
+					<p class="sharethisUrl">Click here and then Share the url to other signers to complete the transaction
 					</p>
-				</a>
+				</a>	
+					<div class="txhexurlCont">
+						<p class="txhexurl" id="txhexcodeUrl">
+							
+						</p>
+						<input type="text" name="txhexcodeurlinput" class="hidden" id="txhexcodeurlinput" value="">
+						<span class="copyfaiconspan" id="copyButton" onclick = "copyToClipboard('#txhexcodeurlinput')"  >Copy
+								 <i class="far fa-copy copyfaicon" id="copyHexicon" >
+								 	
+								 </i>
+						</span>
+						<div class="copied">
+							Copied
+						</span>
+						<!-- <button id="copyButton" onclick = "copyToClipboard('#txhexcodeurlinput')"></button> -->
+					</div>
+						
+				
 			</div>
 		</div>
-		
-		<button id="sendmultitran"  data-toggle="modal" data-target="#multisigModal">Send Transaction</button>
-		
-		<p class="formerrorpara"></p>
-		<div id ="txid"></div>
-		
 	</div>
+	
 	
 </div>
 </div>
@@ -406,7 +423,7 @@ footer {
       </div>
       <div class="modal-footer">
         <button id="sendt">SEND</button>
-        <button type="button" class="close errorclose "  data-dismiss="modal">CANCEL</button>
+        <button type="button" class="close errorclose "   data-dismiss="modal">CANCEL</button>
       </div>
     </div>
 
@@ -432,7 +449,7 @@ footer {
       </div>
       <div class="modal-footer">
         
-        <button type="button" class="close errorclose" id="" data-dismiss="modal">CLOSE</button>
+        <button type="button" class="close errorclose closemod" id="closemod" data-dismiss="modal">CLOSE</button>
       </div>
     </div>
 
@@ -446,7 +463,7 @@ footer {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title ">Send Multisig Transaction !</h4>
+        <h4 class="modal-title ">Send MultiSig Transaction !</h4>
       </div>
       <div class="modal-body standfont">
       		
@@ -460,7 +477,7 @@ footer {
       </div>
       <div class="modal-footer">
         
-        <button type="button" class="close errorclose" id="" data-dismiss="modal">CLOSE</button>
+        <button type="button" class="close errorclose closemod" id="" data-dismiss="modal">CLOSE</button>
       </div>
     </div>
 
@@ -474,8 +491,8 @@ footer {
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title ">Send Multisig Transaction !</h4>
+        <button type="button" class="close " data-dismiss="modal">&times;</button>
+        <h4 class="modal-title ">Send MultiSig Transaction !</h4>
       </div>
       <div class="modal-body standfont">
       		
@@ -491,7 +508,7 @@ footer {
       </div>
       <div class="modal-footer">
         
-        <button type="button" class="close errorclose" id="" data-dismiss="modal">CLOSE</button>
+        <button type="button" class=" closemod" id="closemod" data-dismiss="modal">CLOSE</button>
       </div>
     </div>
 

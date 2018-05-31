@@ -82,6 +82,9 @@ footer {
     z-index: 2;
     min-height: 68vh;
 }
+.txhexurlCont{
+	display: none;
+}
 		</style>
 	</head>
 	<body>
@@ -108,13 +111,13 @@ footer {
 							<li class="active"><a href="./">Tosh-2</a></li>
 							<li class="a"><a href="./">Add Device</a></li>
 						</ul> -->
-						<div id="togglecont">
+						<!-- <div id="togglecont">
 							<input class="tgl tgl-light" id="cb1" type="checkbox"/>
     					    <label class="tgl-btn" for="cb1"></label>
-						</div>
-						<span >
+						</div> -->
+						<!-- <span >
 							<label id="togglecontlabel">Main Network</label>
-						</span>
+						</span> -->
 						 
 					
 				</ul>
@@ -140,7 +143,28 @@ footer {
 				
 				<div class="signerdiv">
 					<div class="heading">
-					Sign this transaction hex using your private key
+					Sign a MultiSig Transaction
+					</div>
+					<div class="introduction">
+						<ul class="ulfonts">
+							<li>This is a signing window for the MultiSig wallet transaction.
+							</li>
+							<li>
+								If you are one of the members of the MultiSig you will be able to sign the 	transaction &amp; generate the link for next signer.
+							</li>
+							<li>
+								If you are the last needed signer then you will be able to generate the final transaction link which you can open it in RecordsKeeper Blockchain explorer.
+
+							</li>
+							<li>
+								If you are not the member of the MultiSig wallet then you will not be able to sign the transaction.
+
+							</li>
+							<li>
+								In case you get some internet error etc while signing the transaction then please use the signer link again to sign the transaction again.<span class="boldB"> Please do not sign your own signed transaction</span> .
+
+							</li>
+						</ul>
 					</div>
 					<div class="signlabel" id="signtxhex"> Transaction Hex :  </div>
 					<label class="signlabel">
@@ -165,6 +189,21 @@ footer {
 						</p>		
 					</a>
 				</div>
+				<div class="txhexurlCont">
+						<p class="txhexurl" id="txhexcodeUrl">
+							
+						</p>
+						<input type="text" name="txhexcodeurlinput" class="hidden" id="txhexcodeurlinputsigner" value="">
+						<span class="copyfaiconspan" id="copyButton" onclick = "copyToClipboardsigner('#txhexcodeurlinputsigner')"  data-toggle="Copied!" title="Hooray!">Copy
+								 <i class="far fa-copy copyfaicon" id="copyHexiconsign" >
+								 	
+								 </i>
+						</span>
+						<div class="copied">
+							Copied
+						</span>
+						<!-- <button id="copyButton" onclick = "copyToClipboard('#txhexcodeurlinput')"></button> -->
+				</div>
 			</div>
 			</div>
 			
@@ -175,7 +214,7 @@ footer {
 
 
 <footer id="footer">
-<ul>
+	<ul>
 		<li>&copy; RecordsKeeper @ 2016-2018. All rights reserved</li>
 		<li><a href="./" target="_blank">Terms</a></li>
 		<li><a href="./" target="_blank">Privacy Policy</a></li>
@@ -188,9 +227,7 @@ footer {
 		<li><a href="http://airdrop.recordskeeper.co/" target="_blank">Airdrop</a></li>
 		<li><a href="http://demo.recordskeeper.co/" target="_blank">Demo</a></li>
 	    <li><a href="https://docs.recordskeeper.co/" target="_blank">Docs</a></li>
-
-
-</ul>
+	</ul>
 </footer>
 </div>
 

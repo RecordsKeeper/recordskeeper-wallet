@@ -25,6 +25,8 @@ jQuery(document).ready(function(){
 
               checkAmountFilled();		//function to check Amount
 
+              
+
             jQuery("#transactid").click(function(){						
             		var xrkBalance = jQuery('#liBalanceBTC').val();
             		CONSOLE_DEBUG && console.log( 'xrkBalance', xrkBalance);
@@ -238,13 +240,7 @@ function checkBoth(){
                           	  jQuery('#myModal1').modal('hide');
 
                           	CONSOLE_DEBUG && console.log('You Entered valid Recipient Address');
-                          	 // jQuery('h4.modal-title').text('Authorize Transaction ');
-                          	 // jQuery('h4.modal-title').css("color", "#3f4453");
-                          	 // jQuery('#modalshowaddr').css("color", "#3f4453");
-                          	 // jQuery('#sendt').css("display", "block");
-                          	 //  jQuery('#sendUSD').css("display", "block");
-                          	 // jQuery('#modalshowaddr').text('Public Address : '+ pubaddr);
-                          	 // document.getElementById('modalshowaddress').innerHTML = 'Public Address : '+ pubaddr;
+  
 
                           	 jQuery('#myModal2').modal('show');
 
