@@ -106,6 +106,7 @@ jQuery(document).ready(function() {
         jQuery('.tgl-light').prop('checked', true);
         jQuery('#togglecontlabel').text('Main Network');
         jQuery('nav#nav').css('background', '#22283a');
+        jQuery('head').append('<style> span.select:before{background : #22283a !important ;}</style>');
         jQuery("button#closemod").css('background', '#22283a !important');
         jQuery('#walletloginbtn').click(function() {
 
@@ -140,6 +141,8 @@ jQuery(document).ready(function() {
         jQuery('button').addClass('testnetColor');
         jQuery('nav#nav').css('background', 'rgb(84, 178, 206)');
         jQuery("button#closemod").css('background', 'rgb(84, 178, 206) !important');
+       
+        jQuery('head').append('<style> span.select:before{background : #339ab9 !important}</style>');
         jQuery('#walletloginbtn').click(function() {
 
             testNetAddr = jQuery('#registered_adr').val();
@@ -181,7 +184,9 @@ jQuery(document).ready(function() {
         jQuery("#printimg2").attr("src", "images/mainnet.png");
         jQuery("#printimg3").attr("src", "images/mainnet.png");
         jQuery("#printimgMultisig").attr("src", "images/mainnet.png");
+        jQuery(".select:before").css('background', '#22283a');
         jQuery('walletheader').css('background', '#22283a');
+        jQuery('head').append('<style> span.select:before{background : #22283a !important ;}</style>');
         jQuery("button#closemod").css('background', '#22283a !important');
     }
 
@@ -1557,19 +1562,21 @@ function listaddresses(){
                 CONSOLE_DEBUG && console.log("Multisig validity: ", multiSigval);
 
 
-                        if ( multiSigval == undefined && redeemScript == undefined && ismultiSig == 1 ){
+                    
 
-                                swal({
-                                            icon: "error",
-                                            title: 'This is not a multiSig Address, please uncheck the checkbox !',
-                                            html: '<p></p>',
-                                            type: 'error',
-                                            confirmButtonClass: "btn-danger",
-                                            confirmButtonText: "OK!",
-                                            timer: 15000
-                                    });
+
+
+                        if ( multiSigval == undefined && redeemScript == undefined ){
+
+                              ismultiSig = 0;
+                              localStorage.setItem("ismultiSig", ismultiSig);
+                               importAddress(net, pubaddr);
+                            reloadPage();
                         }
                         else if ( multiSigval == undefined && redeemScript == undefined){
+
+                            ismultiSig = 0;
+                              localStorage.setItem("ismultiSig", ismultiSig);
 
                                 importAddress(net, pubaddr);
                             reloadPage();
@@ -1577,29 +1584,21 @@ function listaddresses(){
                         
                         else if ( multiSigval == undefined ){
 
-                                swal({
-                                            icon: "error",
-                                            title: 'This is not a multiSig Address !',
-                                            html: '<p></p>',
-                                            type: 'error',
-                                            confirmButtonClass: "btn-danger",
-                                            confirmButtonText: "OK!",
-                                            timer: 15000
-                                    });
+                                ismultiSig = 0;
+                                  localStorage.setItem("ismultiSig", ismultiSig);
+                                  importAddress(net, pubaddr);
+                            reloadPage();
                         }
-                        else if ( ismultiSig == 0  && multiSigval == "multisig" ){
+                        else if ( multiSigval == "multisig" ){
 
-                                swal({
-                                            icon: "error",
-                                            title: 'Please check the checkbox because this is a multisig Address !',
-                                            html: '<p></p>',
-                                            type: 'error',
-                                            confirmButtonClass: "btn-danger",
-                                            confirmButtonText: "OK!",
-                                            timer: 15000
-                                    });
+                                ismultiSig = 1;
+                                 localStorage.setItem("ismultiSig", ismultiSig);
+                                 importAddress(net, pubaddr);
+                            reloadPage();
                         }
                         else{
+                            ismultiSig = 0;
+                                 localStorage.setItem("ismultiSig", ismultiSig);
                             importAddress(net, pubaddr);
                             reloadPage();
                         }
@@ -1886,7 +1885,7 @@ function createXrkHDWallet() {
 
         jQuery("#registered_adr").text(pubaddr);
 
-        var dataStr = "data:text/json;charset=utf-8," + ('{' + '"xrk_wallet_address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk_wallet_private_key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk_wallet_public_key"' + ":" + '"' + PublicKeyString + '"' + "," + '"xrk_wallet_recovery_seed"' + ":" + '"' + seed + '"' + '}');
+        var dataStr = "data:text/json;charset=utf-8," + ('{' + '"xrk-wallet-address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk-wallet-private-key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk-wallet-public-key"' + ":" + '"' + PublicKeyString + '"' + "," + '"xrk-wallet-recovery-seed"' + ":" + '"' + seed + '"' + '}');
 
         var dlAnchorElem = document.getElementById('downloadlink');
 
@@ -1923,7 +1922,7 @@ function createXrkHDWallet() {
                 textbox = document.getElementById(privkey1);
             var link = document.getElementById('downloadlink');
 
-            link.href = makeTextFile('{' + '"xrk_address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk_private_key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk_PublicKey"' + ":" + '"' + PublicKeyString + '"}');
+            link.href = makeTextFile('{' + '"xrk-address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk-private-key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk-PublicKey"' + ":" + '"' + PublicKeyString + '"}');
             
             link.style.display = 'block';
         })();
@@ -1988,7 +1987,7 @@ function createXrkHDWallet() {
        makeCode1(); // call the function  
 
        jQuery("#printWallet").css("display", "block");
-       jQuery("#modaladdrcont").append("<div> <p class='addrcl'>xrk_wallet_address : <br> " + pubaddr + "</p><p class='addrcl'>xrk_wallet_public_key : <br>" + PublicKeyString + "</p><p class ='addrcl'>xrk_wallet_private_key : <br>" + privkey1 + "</p></div>");
+       jQuery("#modaladdrcont").append("<div> <p class='addrcl'>xrk-wallet-address : <br> " + pubaddr + "</p><p class='addrcl'>xrk-wallet-public-key : <br>" + PublicKeyString + "</p><p class ='addrcl'>xrk-wallet-private-key : <br>" + privkey1 + "</p></div>");
        // document.getElementById('modalboxaddress').innerHTML = 'Public Address : '+ pubaddr;
        // document.getElementById('modalboxkey').innerHTML = 'Private key : '+ privkey1;
 

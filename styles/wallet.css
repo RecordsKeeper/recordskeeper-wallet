@@ -1707,3 +1707,9 @@ i.fas.fa-eye, i.fas.fa-eye-slash{
 button#closemod {
     float: right;
 }
+.ptop18{
+      padding-top: 18px !important;
+}
+.pretty.p-svg.p-curve{
+  display: none;
+}

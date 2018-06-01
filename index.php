@@ -288,19 +288,19 @@ footer {
                     <div class='col-md-4'>
                         
                         <div id='qrcode'>
-                            <p class='qrlabel'>xrk_wallet_address</p>
+                            <p class='qrlabel'>xrk-wallet-address</p>
                         </div>
                     </div>
                     <div class='col-md-4'>
                         
                         <div id='qrcode6'>
-                            <p class='qrlabel'>xrk_wallet_public_key</p>
+                            <p class='qrlabel'>xrk-wallet-public-key</p>
                         </div>
                     </div>
                     <div class='col-md-4'>
 
                         <div id='qrcode2'>
-                            <p class='qrlabel'>xrk_wallet_private_key</p>
+                            <p class='qrlabel'>xrk-wallet-private-key</p>
                         </div>
                     </div>
                 </div>
@@ -446,7 +446,7 @@ footer {
                                </select>
 
                             </div>
-                            <div class="col-md-8 ptop10">
+                            <div class="col-md-8 ptop18">
                                  <label>   </label>
                                  <button type="submit" class="crmultiwa  " id="createmultisigwal">Create  MultiSig Wallet</button >
                             </div>
