@@ -125,7 +125,7 @@ footer {
                         <div class="or">
                             <span>OR</span>
                         </div>
-                        <p class="font14">If you're a new user please click on the create XRK wallet button.</p>
+                        <p class="font14">If you're a new user please click on the create XRK wallet or XRK MultiSig wallet button.</p>
                         <div class="col-md-6">
                              <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal1">Create XRK Wallet</button>
                            
@@ -142,7 +142,7 @@ footer {
                     </div>
 
                     <div class="row margintop30 mobilemarg">
-                        <p class="font14">If you already have RecordsKeeper's XRK wallet, please enter your wallet address here. </p>
+                        <p class="font14">If you already have RecordsKeeper's XRK wallet or XRK MultiSig wallet, please enter your wallet address here. </p>
                         <input type="text" class="registered_address logininputs" name="registered_adr" id="registered_adr" placeholder="Enter your XRK wallet address" value="">
                             <div class="pretty p-svg p-curve">
                                 <input type="checkbox" class="checkboxmulti" />
