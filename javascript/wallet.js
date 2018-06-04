@@ -5,7 +5,7 @@
 
 // List of global variables declared and Console toggle can be achieved by changing the value of CONSOLE_DEBUG to either true or false //
 
-var CONSOLE_DEBUG = true;
+var CONSOLE_DEBUG = false;
 var privkey1;
 var pubaddr;
 var pubkey1;
@@ -230,16 +230,14 @@ jQuery(document).ready(function() {
 
         } 
         else if ( ismultiSig == 0 ){
+                importAddress(netw, pubaddr, "Address");
                 listaddresses();
-                onCreateImportAddress(netw)
-                reloadPage();
                  
                 
         }
         else if( ismultiSig == 1 ){
+                importAddress(netw, pubaddr, "Address"); 
                 listaddresses();
-                onCreateImportAddress(netw)
-                reloadPage();
                 
         }
       
