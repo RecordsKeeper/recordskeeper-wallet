@@ -218,8 +218,6 @@ jQuery(document).ready(function() {
         CONSOLE_DEBUG && console.log(pubaddr);
         localStorage.setItem("pubaddr", pubaddr);
 
-
-
         net = localStorage.getItem("network");
 
         CONSOLE_DEBUG && console.log("wallet address ", pubaddr);
@@ -229,20 +227,19 @@ jQuery(document).ready(function() {
             jQuery("#registered_adr").css("border", "1px solid red");
 
         } 
-        else if ( ismultiSig == 0 ){
+        else if (ismultiSig == 0){
                 importAddress(netw, pubaddr, "Address");
                 listaddresses();
                  
                 
         }
-        else if( ismultiSig == 1 ){
+        else if(ismultiSig == 1){
                 importAddress(netw, pubaddr, "Address"); 
                 listaddresses();
                 
         }
       
     });
-
 
 
 
@@ -324,6 +321,7 @@ function importAddress(netw, pubaddr, status) {
         url: 'importaddress.php',
         data: ({
             public: a,
+            async: false,
             net: local
         }),
         success: function(Response) {
@@ -1542,9 +1540,11 @@ function listaddresses(){
                                     timer: 15000
                             });
                }
-               else{
+               else {
+                    
+                    importAddress(net, pubaddr);
                     CONSOLE_DEBUG && console.log("listaddresses Response : ", listaddressesResponse);
-
+ 
                 redeemScript = listaddressesResponse.result[0].hex;
                 CONSOLE_DEBUG && console.log("redeemScript Response : ", redeemScript);
 
