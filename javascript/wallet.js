@@ -231,23 +231,18 @@ jQuery(document).ready(function() {
         } 
         else if ( ismultiSig == 0 ){
                 listaddresses();
+                onCreateImportAddress(netw)
+                reloadPage();
                  
                 
-
         }
         else if( ismultiSig == 1 ){
                 listaddresses();
+                onCreateImportAddress(netw)
+                reloadPage();
                 
-
         }
-        else {
-
-            importAddress(net, pubaddr);
-            reloadPage();
-
-
-
-        }
+      
     });
 
 
@@ -1536,9 +1531,6 @@ function listaddresses(){
 
                listaddressesResponse = JSON.parse(listaddressesResponse);
 
-
-
-               
 
                if(listaddressesResponse.error != null){
                 
