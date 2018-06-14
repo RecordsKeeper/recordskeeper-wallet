@@ -281,9 +281,9 @@ footer {
 				<input type="number" id="sendBTC" name="sendBTC" placeholder="XRK Amount" onchange="checkAmountFilled();">
 				<span class="suffix">XRK</span>
 			</p>
-			<p class="approxFee ">
+			<!-- <p class="approxFee ">
 				Approximate Fee : 0.0328 XRK
-			</p>
+			</p> -->
 
 		</div>
 		<div class="row">
