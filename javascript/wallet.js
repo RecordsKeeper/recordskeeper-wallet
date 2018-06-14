@@ -529,9 +529,9 @@ function listaddresstransactions() {
                         CONSOLE_DEBUG && console.log(x.result);
                         getPagination('#tableone');
                         if (local == "TestNetwork") {
-                            var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
+                            var str1 = "https://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
                         } else {
-                            var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
+                            var str1 = "https://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
                         }
                         var str2 = x.result[i].txid;
                         var str3 = str1.concat(str2);
@@ -587,9 +587,9 @@ function listaddresstransactions() {
                         CONSOLE_DEBUG && console.log(hours);
                         CONSOLE_DEBUG && console.log(x.result)
                         if (local == "TestNetwork") {
-                            var str1 = "http://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
+                            var str1 = "https://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/";
                         } else {
-                            var str1 = "http://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
+                            var str1 = "https://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/";
                         }
                         var str2 = x.result[i].txid;
                         var str3 = str1.concat(str2);
