@@ -85,6 +85,7 @@ footer {
 </head>
 
 <body>
+    
 
     <div class="se-pre-con"></div>
 
@@ -154,7 +155,7 @@ footer {
                                     <label>It is a MultiSig Wallet</label>
                                 </div>
                             </div>
-                        <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
+                        <button type="submit" class="createwalletBtn margintop30">Submit</button>
 
 
                     </div>

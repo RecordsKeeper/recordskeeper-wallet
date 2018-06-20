@@ -8,7 +8,7 @@
 * { margin: 0; padding: 0; }
 *, :before, :after { -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-html { overflow-y: scroll; min-height: 100%; margin: 0 0 1px; font-size: 100.01%; -webkit-tap-highlight-color: rgba(0,0,0,0); -moz-osx-font-smoothing: grayscale; -webkit-overflow-scrolling: touch; -ms-content-zooming: none; }
+html { overflow-y:hidden; min-height: 100%; margin: 0 0 1px; font-size: 100.01%; -webkit-tap-highlight-color: rgba(0,0,0,0); -moz-osx-font-smoothing: grayscale; -webkit-overflow-scrolling: touch; -ms-content-zooming: none; }
 body { min-height: 100%; background: #ecf1f5; font-size: 62.5%; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 body, textarea, input, select, option, button { color: #7f91a3; font-family: Lato, Arial, Helvetica, sans-serif; line-height: 1.38461538462; }
@@ -19,6 +19,7 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 
 
 /*! Layout --------- */
+
 #root { overflow: hidden; position: relative;  min-height: 100vh; padding: 61px 59px 0 79px; }
 	#top { position: fixed; left: 0; top: 0; right: 0; z-index: 9; height: 49px; background: #212739; }
 		/*#logo { position: absolute; left: 0; top: 0; bottom: 0;  margin: 0; }*/
@@ -109,9 +110,10 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
         #footer {
          z-index: 1;
     padding: 0 0 0 20px;
-    bottom: -50px;
-    font-size: 12px;
-    margin-top: 130px;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    
         }
 		#footer ul { overflow: hidden; list-style: none; margin-right: 0px; padding: 0; width: 88%;
     margin: auto; }
@@ -534,6 +536,13 @@ svg:not(:root) { overflow: hidden; }
 
 
 /* Responsive --------- */
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+ 
+ html{overflow-y: scroll; }
+}
+
+
 @media only screen and (max-width: 93.75em) { /* 1500 */
 #root { padding-right: 20px; padding-left: 20px; }
 #nav { right: 20px; }
@@ -609,7 +618,7 @@ svg:not(:root) { overflow: hidden; }
 	.list-a ul li a i, .list-a .btn i, list-a ul li a i.icon-x, .list-a .btn i.icon-x { margin-right: 3px; } 
 }
 @media only screen and (max-width: 62.5em) { /* 1000 */
-#root { padding-left: 20px; }
+#root { padding-left: 20px; overflow-y:scroll; }
 #top { }
 	#top > .menu, #heading > .menu { top: 0; }
 #heading { margin-left: -20px; }
