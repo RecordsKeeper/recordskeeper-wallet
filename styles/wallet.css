@@ -85,8 +85,8 @@
     opacity: 0;
 }
 button#walletloginbtn {
-    float: right !important;
-    margin-right: 232px;
+    /*float: right !important;
+    margin-right: 232px;*/
 }
 
 .pretty .state label {

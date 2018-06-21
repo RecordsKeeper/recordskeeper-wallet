@@ -8,7 +8,7 @@
 * { margin: 0; padding: 0; }
 *, :before, :after { -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-html { overflow-y:hidden; min-height: 100%; margin: 0 0 1px; font-size: 100.01%; -webkit-tap-highlight-color: rgba(0,0,0,0); -moz-osx-font-smoothing: grayscale; -webkit-overflow-scrolling: touch; -ms-content-zooming: none; }
+html { overflow-y:scroll; min-height: 100%; margin: 0 0 1px; font-size: 100.01%; -webkit-tap-highlight-color: rgba(0,0,0,0); -moz-osx-font-smoothing: grayscale; -webkit-overflow-scrolling: touch; -ms-content-zooming: none; }
 body { min-height: 100%; background: #ecf1f5; font-size: 62.5%; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 body, textarea, input, select, option, button { color: #7f91a3; font-family: Lato, Arial, Helvetica, sans-serif; line-height: 1.38461538462; }

@@ -155,7 +155,7 @@ footer {
                                     <label>It is a MultiSig Wallet</label>
                                 </div>
                             </div>
-                        <button type="submit" class="createwalletBtn margintop30">Submit</button>
+                        <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
 
 
                     </div>
