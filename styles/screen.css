@@ -21,7 +21,7 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 /*! Layout --------- */
 
 #root { overflow: hidden; position: relative;  min-height: 100vh; padding: 61px 59px 0 79px; }
-	#top { position: fixed; left: 0; top: 0; right: 0; z-index: 9; height: 49px; background: #212739; }
+	#top { position: fixed; left: 0; top: 0; right: 0; z-index: 9; height: 49px; background: #54b2ce; }
 		/*#logo { position: absolute; left: 0; top: 0; bottom: 0;  margin: 0; }*/
 			
 			
@@ -108,11 +108,15 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 	#content { position: relative; z-index: 2; }
 		#content > *:last-child { margin-bottom: 18px; }
         #footer {
-         z-index: 1;
-    padding: 0 0 0 20px;
-    bottom: 0;
+          
+    font-size: 12px;
+    text-align: center;
     width: 100%;
+    margin: 0 auto;   
     position: fixed;
+    bottom: 15px;
+    left: 6%;
+    z-index: 1;
     
         }
 		#footer ul { overflow: hidden; list-style: none; margin-right: 0px; padding: 0; width: 88%;

@@ -74,6 +74,7 @@ footer {
   grid-row-start: 2 !important;
   grid-row-end: 3 !important;
 }
+ 
 #signersend{
 	display: block !important ; 
 }
@@ -98,9 +99,9 @@ footer {
 				</p>
 				<nav id="skip">
 					<ul>
-						<li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
-						<li><a href="#content" accesskey="c">Skip to content (c)</a></li>
-						<li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
+						<li><a href="#nav" accesskey="n">Skip to Navigation (n)</a></li>
+						<li><a href="#content" accesskey="c">Skip to Content (c)</a></li>
+						<li><a href="#footer" accesskey="f">Skip to Footer (f)</a></li>
 					</ul>
 				</nav>
 				<nav id="nav">
@@ -110,16 +111,16 @@ footer {
 							<li><a href="./">Toshendra</a></li>
 							<li class="active"><a href="./">Tosh-2</a></li>
 							<li class="a"><a href="./">Add Device</a></li>
-						</ul> -->
-						<!-- <div id="togglecont">
+						</ul> 
+						<div id="togglecont">
 							<input class="tgl tgl-light" id="cb1" type="checkbox"/>
     					    <label class="tgl-btn" for="cb1"></label>
-						</div> -->
-						<!-- <span >
+						</div> 
+						<span >
 							<label id="togglecontlabel">Main Network</label>
-						</span> -->
+						</span> 
 						 
-					
+					</li> -->
 				</ul>
 				
 			</nav>

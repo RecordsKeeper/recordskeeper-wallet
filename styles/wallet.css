@@ -85,8 +85,8 @@
     opacity: 0;
 }
 button#walletloginbtn {
-    /*float: right !important;
-    margin-right: 232px;*/
+    float: right !important;
+    margin-right: 232px;
 }
 
 .pretty .state label {
@@ -1086,6 +1086,11 @@ th{
 /*some media queries here */
 
 @media only screen and (max-width: 968px){
+
+  button#walletloginbtn {
+    float: left !important; 
+    margin-left: 32% !important;
+}
   .mobilemarg{
     margin-top: 50px;
   }
@@ -1096,6 +1101,12 @@ th{
 }
 
 @media only screen and (max-width: 900px){
+   
+    button#walletloginbtn {
+    float: left !important; 
+    margin-left: 32% !important;
+}
+
     .loginContainer{
         width: 100%;
     }
@@ -1135,6 +1146,11 @@ th{
 
 
 @media only screen and (max-width : 770px){
+
+     button#walletloginbtn {
+    float: left !important; 
+   margin-left: 32% !important;
+}
     
     .loginputcontainer{
             width: 480px;
@@ -1178,6 +1194,11 @@ th{
 
 }
 @media only screen and (max-width : 458px){
+
+   button#walletloginbtn {
+   float: left !important; 
+   margin-left: 32% !important;
+}
 
     #logo img {
      width: 100%; 

@@ -315,9 +315,9 @@
 				</p>
 				<nav id="skip">
 					<ul>
-						<li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
-						<li><a href="#content" accesskey="c">Skip to content (c)</a></li>
-						<li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
+						<li><a href="#nav" accesskey="n">Skip to Navigation (n)</a></li>
+						<li><a href="#content" accesskey="c">Skip to Content (c)</a></li>
+						<li><a href="#footer" accesskey="f">Skip to Footer (f)</a></li>
 					</ul>
 				</nav>
 				<nav id="nav">

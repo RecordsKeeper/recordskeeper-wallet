@@ -94,9 +94,9 @@ footer {
 				</p>
 				<nav id="skip">
 					<ul>
-						<li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
-						<li><a href="#content" accesskey="c">Skip to content (c)</a></li>
-						<li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
+						<li><a href="#nav" accesskey="n">Skip to Navigation (n)</a></li>
+						<li><a href="#content" accesskey="c">Skip to Content (c)</a></li>
+						<li><a href="#footer" accesskey="f">Skip to Footer (f)</a></li>
 					</ul>
 				</nav>
 				<nav id="nav">
@@ -300,17 +300,17 @@ footer {
 		<div class="optionaldiv">
 			
 			<p>
-				<label for="fad">Enter the key label for Transaction</label>
+				<label for="fad">Enter the Key Label for Transaction</label>
 				<input type="text" name="sendd" value="" placeholder="Record Identifier Key" id="keydata">
 			</p>
 
 			<p>
-			<label for="fac">Enter the Data to save</label>
+			<label for="fac">Enter the Data to Save</label>
 			<input type="text" name="senddata" value="" placeholder="Optional Data" id="hexdata">
 			</p>
 
 		</div>
-		<button id="sendpopup" data-toggle="modal"  id="sendTransSubmit">Send Transaction</button>
+		<button id="sendpopup" data-toggle="modal"  id="sendTransSubmit">SEND TRANSACTION</button>
 		
 		<p class="formerrorpara"></p>
 		<div id ="txid"></div>

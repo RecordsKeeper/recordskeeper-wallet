@@ -42,12 +42,6 @@
  
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
   
-
-
-
-    
-
-
     <!-- link for table to css cdn here  -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/css/tableexport.css">
     <meta property="og:title" content="">
@@ -59,32 +53,34 @@
     <style type="text/css">
     </style>
     <style type="text/css">
+
             html {
-  height: 100%;
-}
-body {
-  min-height: 100% !important;
-  display: grid !important;
-  grid-template-rows: 1fr auto !important;
-}
-footer {
-  grid-row-start: 2 !important;
-  grid-row-end: 3 !important;
-}
-#signersend{
-    display: block !important  !important; 
-}
-#content {
-    position: relative;
-    z-index: 2;
-    min-height: 68vh;
-}
+            height: 100%;
+            }
+
+            body {
+            min-height: 100% !important;
+            display: grid !important;
+            grid-template-rows: 1fr auto !important;
+            }
+            footer {
+            grid-row-start: 2 !important;
+            grid-row-end: 3 !important;
+            }
+            #signersend{
+            display: block !important  !important; 
+            }
+            #content {
+            position: relative;
+            z-index: 2;
+            min-height: 68vh;
+            }
 
         </style>
 
-</head>
+     </head>
 
-<body>
+   <body>
     
 
     <div class="se-pre-con"></div>
@@ -99,9 +95,9 @@ footer {
             </p>
             <nav id="skip">
                 <ul>
-                    <li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
-                    <li><a href="#content" accesskey="c">Skip to content (c)</a></li>
-                    <li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
+                    <li><a href="#nav" accesskey="n">Skip to Navigation (n)</a></li>
+                    <li><a href="#content" accesskey="c">Skip to Content (c)</a></li>
+                    <li><a href="#footer" accesskey="f">Skip to Footer (f)</a></li>
                 </ul>
             </nav>
             <nav id="nav">
@@ -126,18 +122,18 @@ footer {
                         <div class="or">
                             <span>OR</span>
                         </div>
-                        <p class="font14">If you're a new user please click on the create XRK wallet or XRK MultiSig wallet button.</p>
+                        <p class="font14">If you a're a new user, please click on the create XRK wallet or XRK MultiSig wallet button.</p>
                         <div class="col-md-6">
-                             <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal1">Create XRK Wallet</button>
+                             <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal1">CREATE XRK WALLET</button>
                            
                         </div>
                        <div class="col-md-6">
                          
 
-                           <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createmultisig" data-toggle="modal" data-target="#myModal3">Create MultiSig Wallet</button>
+                           <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createmultisig" data-toggle="modal" data-target="#myModal3">CREATE MULTISIG WALLET</button>
                        </div>
                        <div class="col-md-12">
-                            <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal2">Restore XRK Wallet</button>
+                            <button type="submit" class="createwalletBtn margintop30 btnmobilemarg" id="createkeypairsbtn1" data-toggle="modal" data-target="#myModal2">RESTORE XRK WALLET</button>
                        </div>
                         
                     </div>
