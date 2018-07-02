@@ -1113,21 +1113,26 @@ th{
     #top > .menu{
         display: none;
     }
-      #footer {
-    /* position: absolute; */
+      /*#footer {
+     position: absolute; 
     z-index: 1;
     padding: 0 0 0 20px;
     bottom: -50px;
     font-size: 10px;
     margin-top: 50px;
-}
+}*/
 .pagination {
     cursor: pointer;
     /* font-size: 13px; */
     margin-top: -16px;
 }
+
+#modaladdrcont{
+    
+    word-wrap: break-word;
+  }
 #footer{
-      bottom: 20px;
+    /*  bottom: 20px;*/
     width: 90%;
     position: absolute;
     padding-left: 0px;
