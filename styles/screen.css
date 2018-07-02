@@ -8,7 +8,7 @@
 * { margin: 0; padding: 0; }
 *, :before, :after { -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-html { overflow-y:scroll; min-height: 100%; margin: 0 0 1px; font-size: 100.01%; -webkit-tap-highlight-color: rgba(0,0,0,0); -moz-osx-font-smoothing: grayscale; -webkit-overflow-scrolling: touch; -ms-content-zooming: none; }
+html { min-height: 100%; margin: 0 0 1px; font-size: 100.01%; -webkit-tap-highlight-color: rgba(0,0,0,0); -moz-osx-font-smoothing: grayscale; -webkit-overflow-scrolling: touch; -ms-content-zooming: none; }
 body { min-height: 100%; background: #ecf1f5; font-size: 62.5%; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 body, textarea, input, select, option, button { color: #7f91a3; font-family: Lato, Arial, Helvetica, sans-serif; line-height: 1.38461538462; }
@@ -20,7 +20,7 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 
 /*! Layout --------- */
 
-#root { overflow: hidden; position: relative;  min-height: 100vh; padding: 61px 59px 0 79px; }
+#root { overflow: hidden; position: relative; min-height: 100vh; padding: 61px 59px 0 79px; }
 	#top { position: fixed; left: 0; top: 0; right: 0; z-index: 9; height: 49px; background: #54b2ce; }
 		/*#logo { position: absolute; left: 0; top: 0; bottom: 0;  margin: 0; }*/
 			
@@ -109,15 +109,21 @@ article, aside, details, div, figcaption, figure, footer, header, hgroup, main, 
 		#content > *:last-child { margin-bottom: 18px; }
         #footer {
           
-    font-size: 12px;
+    /*font-size: 12px;
     text-align: center;
     width: 100%;
     margin: 0 auto;   
     position: fixed;
     bottom: 15px;
     left: 6%;
-    z-index: 1;
+    z-index: 1;*/
     
+
+  position: relative;
+  right: 0;
+  left: 80px;
+  text-align: center;
+
         }
 		#footer ul { overflow: hidden; list-style: none; margin-right: 0px; padding: 0; width: 88%;
     margin: auto; }
@@ -642,7 +648,7 @@ svg:not(:root) { overflow: hidden; }
 		#aside > ul > li.active > a:before, #aside > ul > li > a:hover:before { margin-top: -3px; }
 .menu-active #mobile { left: 0; }
 .menu-active #shadow, .heading-active #heading ul { visibility: visible; opacity: 1; }
-#footer { padding-left: 0; padding-right: 0; }
+#footer { padding-left: 0; padding-right: 0; left:25px; }
 #footer, #aside > ul { display: -moz-box; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
 #footer { -webkit-justify-content: center; justify-content: center; }
 

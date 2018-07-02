@@ -73,6 +73,7 @@ body {
 footer {
   grid-row-start: 2 !important;
   grid-row-end: 3 !important;
+  
 }
 #signersend{
 	display: block !important  !important; 
