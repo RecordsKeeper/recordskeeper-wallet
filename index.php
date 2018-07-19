@@ -362,15 +362,21 @@
                       </div>
                        <div class='row walletcontent' id="qrcodecontainer2">
                           <img id='printimg3' src='' >
-                          <div class='col-md-6 code3' >
+                          <div class='col-md-4 code3' >
                                 <p class='qrlabel'>Public Address</p>
                                 <div id='qrcode3'>
                                     
                                 </div>
                           </div>
-                          <div class='col-md-6 code4'>
+                          <div class='col-md-4 code4'>
                                   <p class='qrlabel'>Private Key</p>
                                   <div id='qrcode4'>
+                                      
+                                  </div>
+                          </div>
+                            <div class='col-md-4'>
+                                  <p class='qrlabel'>Public Key</p>
+                                  <div id='qrcode7'>
                                       
                                   </div>
                           </div>

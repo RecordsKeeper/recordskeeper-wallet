@@ -994,7 +994,8 @@ function restoreWallet() {
     CONSOLE_DEBUG && console.log(restoreResult);
     CONSOLE_DEBUG && console.log("restoreResult.status", restoreResult.status);
     CONSOLE_DEBUG && console.log("restoreResult.address", restoreResult.address);
-    CONSOLE_DEBUG && console.log("restoreResult.privatekey", restoreResult.privateKey);
+    
+    
 
     if (restoreResult.status == 'success') {
 
@@ -1009,6 +1010,8 @@ function restoreWallet() {
 
             jQuery('#qrcode3').children().remove();
             jQuery('#qrcode4').children().remove();
+            jQuery('#qrcode7').children().remove();
+
             jQuery(".restoreappend").remove();
 
         }
@@ -1016,12 +1019,14 @@ function restoreWallet() {
 
 
         var privatekey = restoreResult.privateKey;
+        var publickey = restoreResult.publicKey;
 
         jQuery(".restorebefore").css("display", "none");
 
 
 
-        jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : " + restoreResult.address + "</p><p class='publicad'>Private Key : " + privatekey + "</p> </div> ");
+        jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : " + restoreResult.address + "</p><p class='publicad'>Private Key : " + privatekey + "</p><p class='publicad'>Public Key : " + publickey + "</p> </div> ");
+        
 
 
         // document.getElementById('seed').innerHTML =  seed ;
@@ -1034,12 +1039,19 @@ function restoreWallet() {
             width: 200,
             height: 200
         });
+        var qrcode7 = new QRCode(document.getElementById("qrcode7"), {
+            width: 200,
+            height: 200
+        });
+
 
 
         function makeCode() { // qr code generater function for address
 
             var elText = restoreResult.address;
             var elprive = restoreResult.privateKey; //pass  value of address stored in elpriv
+            var elpub = restoreResult.publicKey;
+            
 
 
             qrcode3.makeCode(elText);
@@ -1052,6 +1064,7 @@ function restoreWallet() {
         function makeCode2() { // qr code generater function for privkey
             var elText = restoreResult.address;
             var elprive = restoreResult.privateKey;
+            var elpub = restoreResult.publicKey;
 
 
             qrcode5.makeCode(elprive); //pass  value of privkey stored in elpriv
@@ -1060,12 +1073,26 @@ function restoreWallet() {
 
         makeCode2(); // call the function  
 
+        function makeCode3() { // qr code generater function for address
+
+            var elText = restoreResult.address;
+            var elprive = restoreResult.privateKey;
+            var elpub = restoreResult.publicKey;
+            
+
+
+            qrcode7.makeCode(elpub);
+
+        }
+
+        makeCode3(); // call the function here 
+
         jQuery("#qrcodecontainer2").css("display", "block");
         jQuery("#congrats").css("display", "block");
 
 
 
-        jQuery("#modaladdrcont").append("<div> <p class='addrcl'>xrk_wallet_address : " + restoreResult.address + "</p><p class ='addrcl'>xrk_wallet_private_key : " + restoreResult.privateKey + "</p></div>");
+        jQuery("#modaladdrcont").append("<div> <p class='addrcl'>xrk_wallet_address : " + restoreResult.address + "</p><p class ='addrcl'>xrk_wallet_private_key : " + restoreResult.privateKey + "</p><p class ='addrcl'>xrk_wallet_private_key : " + restoreResult.publicKey + "</p></div>");
 
 
 
@@ -1089,7 +1116,7 @@ function restoreWallet() {
             frameDoc.document.open();
             //Create a new HTML document.
 
-            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer2{ margin-bottom : 150 px; width : 100%; } #printimg{ width : 100%;}#modaladdrcont{display: none !important ;  margin-top:20px; } .modc{display : none} #printimg3{ width : 100 % ; }  .code4{ position : absolute ; top : 75px; right : 43%; }   </style> ');
+            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer2{ margin-bottom : 150 px; width : 100%; } #printimg{ width : 100%;}#modaladdrcont{display: none !important ;  margin-top:20px; } .modc{display : none} #printimg3{ width : 100% ; }  .code4{ position : absolute ; top : 125px; right : 43%; clear: both;}   </style> ');
 
             frameDoc.document.write('</head><body>');
 
@@ -2154,7 +2181,8 @@ function restoreBip39XRKWallet(codeStr, password = '', address_pubkeyhash_versio
     var xrkWallet = {
         "status": "success",
         "address": xrkPublicAddress,
-        "privateKey": publicKeyHex
+        "publicKey": publicKeyHex,
+        "privateKey": xrkPrivateKey
     };
 
     return xrkWallet;
