@@ -1043,7 +1043,7 @@ function restoreWallet() {
 
 
 
-        jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>xrk_wallet_address : " + restoreResult.address + "</p><p class='publicad'>xrk_wallet_private_key : " + privatekey + "</p><p class='publicad'>xrk_wallet_public_key: " + publickey + "</p> </div> ");
+        jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>xrk-wallet-address : " + restoreResult.address + "</p><p class='publicad'>xrk-wallet-public-key : " + publickey + "</p><p class='publicad'>xrk-wallet-private-key: " + privatekey + "</p> </div> ");
         
 
 
@@ -1110,7 +1110,7 @@ function restoreWallet() {
 
 
 
-        jQuery("#modaladdrcont").append("<div> <p class='addrcl'>xrk_wallet_address : " + restoreResult.address + "</p><p class ='addrcl'>xrk_wallet_private_key : " + restoreResult.privateKey + "</p><p class ='addrcl'>xrk_wallet_private_key : " + restoreResult.publicKey + "</p></div>");
+        jQuery("#modaladdrcont").append("<div> <p class='addrcl'>xrk-wallet-address : " + restoreResult.address + "</p><p class ='addrcl'>xrk-wallet-public-key : " + restoreResult.publicKey + "</p><p class ='addrcl'>xrk-wallet-private-key : " + restoreResult.privateKey + "</p></div>");
 
 
 
@@ -1135,7 +1135,7 @@ function restoreWallet() {
             frameDoc.document.open();
             //Create a new HTML document.
 
-            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{ } #qrcodecontainer2{ margin-bottom : 150 px; width: 100%; } #printimg{ width : 100%; }#modaladdrcont{ width : 100%; display: none !important ;  clear : both ; margin-top:20px; } .modc{display : none} .code3{ width : 100% ; }  .code4{ position : absolute ; top : 75px; right : 40%; } .code5{ position : absolute ; top : 75px; right : 10%; }   </style> ');
+            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{ } #qrcodecontainer2{ margin-bottom : 150 px; width: 100%; } #printimg{ width : 100%; }#modaladdrcont{ width : 100%; display: none !important ;  clear : both ; margin-top:20px; } .modc{display : none} .code3{ width : 100% ; }  .code5{ position : absolute ; top : 75px; right : 40%; } .code4{ position : absolute ; top : 75px; right : 10%; }   </style> ');
 
 
             frameDoc.document.write('</head><body>');
@@ -1900,9 +1900,9 @@ function createXrkHDWallet() {
 
         jQuery("#qrcode").find('img').remove();
 
-        jQuery("#qrcode2").find('img').remove();
-
         jQuery("#qrcode6").find('img').remove();
+
+        jQuery("#qrcode2").find('img').remove();
 
         jQuery("#qrcodecontainer").css("display", "block");
 
@@ -1917,12 +1917,14 @@ function createXrkHDWallet() {
         CONSOLE_DEBUG && console.log("PublicKeyString value here : ",PublicKeyString);
 
         jQuery('modalboxaddress').text('Public Address : ' + pubaddr);
-        jQuery('modalboxkey').text('Private Key : ' + privkey1);
+        
         jQuery('modalboxkey').text('Public Key : ' + PublicKeyString);
+
+        jQuery('modalboxkey').text('Private Key : ' + privkey1);
 
         jQuery("#registered_adr").text(pubaddr);
 
-        var dataStr = "data:text/json;charset=utf-8," + ('{' + '"xrk-wallet-address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk-wallet-private-key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk-wallet-public-key"' + ":" + '"' + PublicKeyString + '"' + "," + '"xrk-wallet-recovery-seed"' + ":" + '"' + seed + '"' + '}');
+        var dataStr = "data:text/json;charset=utf-8," + ('{' + '"xrk-wallet-address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk-wallet-public-key"' + ":" + '"' + PublicKeyString + '"' + "," + '"xrk-wallet-private-key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk-wallet-recovery-seed"' + ":" + '"' + seed + '"' + '}');
 
         var dlAnchorElem = document.getElementById('downloadlink');
 
@@ -1959,7 +1961,7 @@ function createXrkHDWallet() {
                 textbox = document.getElementById(privkey1);
             var link = document.getElementById('downloadlink');
 
-            link.href = makeTextFile('{' + '"xrk-address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk-private-key"' + ":" + '"' + privkey1 + '"' + "," + '"xrk-PublicKey"' + ":" + '"' + PublicKeyString + '"}');
+            link.href = makeTextFile('{' + '"xrk-address"' + ":" + '"' + pubaddr + '"' + "," + '"xrk-public-key"' + ":" + '"' + PublicKeyString + '"' + "," + '"xrk-private-key"' + ":" + '"' + privkey1  + '"}');
             
             link.style.display = 'block';
         })();
@@ -1975,16 +1977,18 @@ function createXrkHDWallet() {
         onCreateImportAddress(netw);
 
 
-       var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
-           width: 200,
-           height: 200
-       });
        var qrcode = new QRCode(document.getElementById("qrcode"), {
            width: 200,
            height: 200
        });
 
        var qrcode6 = new QRCode(document.getElementById("qrcode6"), {
+           width: 200,
+           height: 200
+       });
+
+
+       var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
            width: 200,
            height: 200
        });
@@ -2079,7 +2083,7 @@ function createXrkHDWallet() {
             frameDoc.document.open();
 
             //Create a new HTML document.
-            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; img{width:550px !important} </style>');
+            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none};  </style>');
             frameDoc.document.write('</head><body>');
 
             //Append the external CSS file.

@@ -189,7 +189,7 @@ textarea {
 .qrlabel{
   font-weight: 600;
     font-size: 12px;
-    width: 75% ;
+   /* width: 75% ;*/
     text-align: center;
 }
 .mb20{

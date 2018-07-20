@@ -363,20 +363,22 @@
                        <div class='row walletcontent' id="qrcodecontainer2">
                           <img id='printimg3' src='' >
                           <div class='col-md-4 code3' >
-                                <p class='qrlabel'>Public Address</p>
+                                <p class='qrlabel'>xrk-wallet-address</p>
                                 <div id='qrcode3'>
                                     
                                 </div>
                           </div>
-                          <div class='col-md-4 code4'>
-                                  <p class='qrlabel'>Private Key</p>
-                                  <div id='qrcode4'>
+
+                            <div class='col-md-4 code5'>
+                                  <p class='qrlabel'>xrk-wallet-public-key</p>
+                                  <div id='qrcode7'>
                                       
                                   </div>
                           </div>
-                            <div class='col-md-4 code5'>
-                                  <p class='qrlabel'>Public Key</p>
-                                  <div id='qrcode7'>
+
+                          <div class='col-md-4 code4'>
+                                  <p class='qrlabel'>xrk-wallet-private-key</p>
+                                  <div id='qrcode4'>
                                       
                                   </div>
                           </div>
