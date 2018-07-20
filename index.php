@@ -374,7 +374,7 @@
                                       
                                   </div>
                           </div>
-                            <div class='col-md-4'>
+                            <div class='col-md-4 code5'>
                                   <p class='qrlabel'>Public Key</p>
                                   <div id='qrcode7'>
                                       

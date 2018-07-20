@@ -996,6 +996,21 @@ function restoreWallet() {
     CONSOLE_DEBUG && console.log("restoreResult.address", restoreResult.address);
     
     
+       
+        jQuery(".restoreappend").remove();
+
+        jQuery("#qrcode3").find('img').remove();
+
+        jQuery("#qrcode4").find('img').remove();
+
+        jQuery("#qrcode7").find('img').remove();
+
+        jQuery(".restorebefore").css("display", "none");
+
+
+        
+
+    
 
     if (restoreResult.status == 'success') {
 
@@ -1006,26 +1021,29 @@ function restoreWallet() {
 
         // jQuery("#restoretitle").text("Restore XRK Wallet")
 
-        if (jQuery('#qrcode3').children().length > 0) {
+        // if (jQuery('#qrcode3').children().length > 0) {
 
-            jQuery('#qrcode3').children().remove();
-            jQuery('#qrcode4').children().remove();
-            jQuery('#qrcode7').children().remove();
+        //     jQuery('#qrcode3').children().remove();
+        //     jQuery('#qrcode4').children().remove();
+        //     jQuery('#qrcode7').children().remove();
 
-            jQuery(".restoreappend").remove();
+        //     jQuery(".restoreappend").remove();
 
-        }
+        // }
 
+
+        
 
 
         var privatekey = restoreResult.privateKey;
         var publickey = restoreResult.publicKey;
+        
 
-        jQuery(".restorebefore").css("display", "none");
+        
 
 
 
-        jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>Public Address : " + restoreResult.address + "</p><p class='publicad'>Private Key : " + privatekey + "</p><p class='publicad'>Public Key : " + publickey + "</p> </div> ");
+        jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>xrk_wallet_address : " + restoreResult.address + "</p><p class='publicad'>xrk_wallet_private_key : " + privatekey + "</p><p class='publicad'>xrk_wallet_public_key: " + publickey + "</p> </div> ");
         
 
 
@@ -1081,7 +1099,7 @@ function restoreWallet() {
             
 
 
-            qrcode7.makeCode(elpub);
+            qrcode7.makeCode(elpub.toString());
 
         }
 
@@ -1106,6 +1124,7 @@ function restoreWallet() {
 
             // jQuery("#printwalletcont").show();
             // var congrat = jQuery("#congrats").html();
+            
             var contents = jQuery(".restoreappend").html();
             var contents2 = jQuery("#qrcodecontainer2").html();
             var frame1 = jQuery('<iframe />');
@@ -1116,7 +1135,8 @@ function restoreWallet() {
             frameDoc.document.open();
             //Create a new HTML document.
 
-            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer2{ margin-bottom : 150 px; width : 100%; } #printimg{ width : 100%;}#modaladdrcont{display: none !important ;  margin-top:20px; } .modc{display : none} #printimg3{ width : 100% ; }  .code4{ position : absolute ; top : 125px; right : 43%; clear: both;}   </style> ');
+            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{ } #qrcodecontainer2{ margin-bottom : 150 px; width: 100%; } #printimg{ width : 100%; }#modaladdrcont{ width : 100%; display: none !important ;  clear : both ; margin-top:20px; } .modc{display : none} .code3{ width : 100% ; }  .code4{ position : absolute ; top : 75px; right : 40%; } .code5{ position : absolute ; top : 75px; right : 10%; }   </style> ');
+
 
             frameDoc.document.write('</head><body>');
 
