@@ -1118,7 +1118,7 @@ function restoreWallet() {
             frameDoc.document.open();
             //Create a new HTML document.
 
-            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{ } #qrcodecontainer2{ margin-bottom : 150 px; width: 100%; } #printimg{ width : 100%; }#modaladdrcont{ width : 100%; display: none !important ;  clear : both ; margin-top:20px; } .modc{display : none} .code3{ width : 100% ; }  .code5{ position : absolute ; top : 75px; right : 40%; } .code4{ position : absolute ; top : 75px; right : 10%; }   </style> ');
+            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{ } #printimg{ width : 100%; } #qrcodecontainer2{ margin-bottom : 150 px; width: 100%; } #modaladdrcont{ width : 100%; display: none !important ;  clear : both ; margin-top:20px; } .modc{display : none} .code3{ width : 100% ; }  .code5{ position : absolute ; top : 75px; right : 40%; } .code4{ position : absolute ; top : 75px; right : 10%; }   </style> ');
 
 
             frameDoc.document.write('</head><body>');
@@ -2066,7 +2066,7 @@ function createXrkHDWallet() {
             frameDoc.document.open();
 
             //Create a new HTML document.
-            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none};  </style>');
+            frameDoc.document.write('<html><head><title>Print Wallet</title><style>@page{size:landscape; } #qrcodecontainer{ margin-bottom : 150 px; } #printimg{ width : 100%;} #modaladdrcont{ width : 100%; display: none !important ; clear : both ; margin-top:20px; } .addrcl{width : 100% ; clear : both;} .modc{display : none}; .code1{ width : 100% ; }  .code2{ position : relative ; right : 40%; } .code6{ position : relative ; left : 20%; } </style>');
             frameDoc.document.write('</head><body>');
 
             //Append the external CSS file.
