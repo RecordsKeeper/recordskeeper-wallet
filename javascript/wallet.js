@@ -245,15 +245,23 @@ jQuery(document).ready(function() {
 
     createXrkHDWallet();
 
-    
+
 
     jQuery("#restoreform").submit(function(event) {
 
         event.preventDefault();
 
+        
+
         restoreWallet();
 
+
+
+        $('.form-control').tokenfield('setTokens', []);
+        $('.form-control').val('');
+
     });
+
 
 
     jQuery('.modal').on('hidden.bs.modal', function(e) {
@@ -267,7 +275,7 @@ jQuery(document).ready(function() {
             jQuery(".mainro").empty();
 
         jQuery("#confpass").css("border", "1px solid #a4aaba");
-        jQuery("#congrats").css("display", "none");
+
         jQuery(".token").remove();
         jQuery("#restoreErrorP").css("display", "none");
         
@@ -971,7 +979,7 @@ function restoreWallet() {
 
     // jQuery("#restoreWalletBtn").click(function(){
 
-
+    
     jQuery("#printWallet2").css("display", "block");
 
     if (jQuery("#qrcode3").children.length)
@@ -979,9 +987,6 @@ function restoreWallet() {
         var seedCode = jQuery("#seedTextArea").val().replace(/,/g, "").trim();
 
     // seedCode = jQuery("#seedTextArea").val().replace(/,/g, "");
-
-
-
 
     CONSOLE_DEBUG && console.log("seedCode", seedCode);
 
@@ -994,10 +999,7 @@ function restoreWallet() {
     CONSOLE_DEBUG && console.log(restoreResult);
     CONSOLE_DEBUG && console.log("restoreResult.status", restoreResult.status);
     CONSOLE_DEBUG && console.log("restoreResult.address", restoreResult.address);
-    
-    
-       
-        jQuery(".restoreappend").remove();
+        
 
         jQuery("#qrcode3").find('img').remove();
 
@@ -1005,10 +1007,7 @@ function restoreWallet() {
 
         jQuery("#qrcode7").find('img').remove();
 
-        jQuery(".restorebefore").css("display", "none");
-
-
-        
+        jQuery(".restoreappend").remove();
 
     
 
@@ -1016,34 +1015,18 @@ function restoreWallet() {
 
         jQuery("#restoreErrorP").css("display", "none");
 
-        jQuery("#congrats").css("display", "block");
         jQuery("#qrcodecontainer2").css("display", "block");
 
-        // jQuery("#restoretitle").text("Restore XRK Wallet")
-
-        // if (jQuery('#qrcode3').children().length > 0) {
-
-        //     jQuery('#qrcode3').children().remove();
-        //     jQuery('#qrcode4').children().remove();
-        //     jQuery('#qrcode7').children().remove();
-
-        //     jQuery(".restoreappend").remove();
-
-        // }
-
-
         
-
-
         var privatekey = restoreResult.privateKey;
         var publickey = restoreResult.publicKey;
         
 
-        
+        jQuery(".restorebefore").css("display", "none");
 
 
 
-        jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>xrk-wallet-address : " + restoreResult.address + "</p><p class='publicad'>xrk-wallet-public-key : " + publickey + "</p><p class='publicad'>xrk-wallet-private-key: " + privatekey + "</p> </div> ");
+        jQuery("#restoremodBody").append("<div class='restoreappend'><p class='publicad'>xrk-wallet-address : <br> " + restoreResult.address + "</p><p class='publicad'>xrk-wallet-public-key : <br> " + publickey + "</p><p class='publicad'>xrk-wallet-private-key: <br> " + privatekey + "</p> </div> ");
         
 
 
@@ -1162,10 +1145,10 @@ function restoreWallet() {
     } else {
 
         jQuery("#restoreErrorP").css("display", "block");
+
     }
 
 
-    // });
 
 }
 
@@ -1390,7 +1373,7 @@ function sendMultitransaction() {
                     timer: 15000
                 });
 
-
+myModal2
          }
          else if ( multisigAmount != '' && sendRecipientaddressmulti != ''){
             jQuery('.modal-dialog').css("display", "block") ;
