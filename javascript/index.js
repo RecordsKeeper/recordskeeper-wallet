@@ -8,6 +8,7 @@ $(".modal").on("hidden.bs.modal", function(){
                 $(".addrcl").remove();
                 $("#qrcodecontainer").css("display", "none");
                 $("#qrcodecontainer2").css("display", "none");
+                $("#congrats").css("display", "none");
                 // $("#qrcode").children().remove();
                 // $("#qrcode2").children().remove();
                 $("#qrcode3").children().remove();
