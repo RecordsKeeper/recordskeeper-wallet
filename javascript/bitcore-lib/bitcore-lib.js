@@ -2622,8 +2622,7 @@ Base58Check.decode = function(s) {
     throw new Error('Input must be a string');
 
   var buf = new Buffer(Base58.decode(s));
-  // console.log("Base 58 decoded value: ",Base58.decode(s));
-  // console.log("Base 58 decoded : ", buf.toString('hex')); // Hex Private Key
+
   var address_checksum_buf = new Buffer('07cb53da', 'hex');
 
 
@@ -2635,10 +2634,6 @@ Base58Check.decode = function(s) {
   var csum = xorBuffer(csumOriginal,address_checksum_buf);
 
   var hash = sha256sha256(data);
-  // console.log("charm csumOriginal: ", csumOriginal.toString('hex'));
-  // console.log("charm csum: ", csum.toString('hex'));
-  // console.log("address buf", address_checksum_buf.toString('hex'));
-
   var hash4 = hash.slice(0, 4);
 
 
@@ -2663,7 +2658,7 @@ Base58Check.decodetest = function(s) {
 
   var hash = sha256sha256(data);
   var hash4 = hash.slice(0, 4);
-  // console.log("charm hash: ", hash4.toString('hex')); 
+
 
   if (csum.toString('hex') !== hash4.toString('hex'))
     throw new Error("Checksum mismatch");
@@ -5161,9 +5156,6 @@ if (network=="livenet")
 
         var buf1 = buffer.replace(/\s*,\s*/g, ",");
         buf1 = buf1.replace(/,/g,"");
-        
-        //console.log(buf1);
-        //console.log(buf1.length);
 
         buf = buf1.slice(0, -2);
 

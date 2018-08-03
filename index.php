@@ -151,10 +151,10 @@
                                     <label>It is a MultiSig Wallet</label>
                                 </div>
                             </div>
-                        <p id="restorelink1" style="font-size:14px;"><a data-toggle="modal" data-target="#myModal4" >Forget your XRK Public Address? Click here </a></p>
                             
                         <button type="submit" class="createwalletBtn " id="walletloginbtn">Submit</button>
-
+                        <div class="clearfix"> </div>
+                        <p id="restorelink1" style="margin: 25 0 -22 0;"><a data-toggle="modal" data-target="#myModal4" >Forgot your XRK Address? Click here </a></p>
 
                     </div>
                 </div>
@@ -508,7 +508,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="restoretitle1">Restore RecordsKeeper's XRK Address</h4>
+                    <h4 class="modal-title" id="restoretitle1">Retrieve XRK Wallet from Private Key</h4>
 
                 </div>
 
@@ -518,7 +518,7 @@
                          
                          
                           <div class="textareaCont">
-                              <label class="labelrestore"> Enter Your XRK Wallet's Private Key here </label>
+                              <label class="labelrestore"> Enter your Private Key here </label>
                               <input type="text" class="form-control" id="userprivatekey" value="" required="required" style="width: 100% !important"></input>
                              
 
@@ -530,7 +530,7 @@
                         
                               <div class="colmd-12">
 
-                                  <button type="submit" class="walletBtn margintop30" id="restoreAddressBtn">Restore XRK Wallet Address</button>
+                                  <button type="submit" class="walletBtn margintop30" id="restoreAddressBtn">Retrieve XRK Wallet </button>
                                   
 
                               </div>

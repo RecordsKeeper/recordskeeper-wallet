@@ -1018,13 +1018,14 @@ jQuery("#restoreAddressBtn").click(function() {
 
         var pubaddress = userXrkWallet.address;
         var publickey = userXrkWallet.publicKey;
+        var privatekey = userXrkWallet.privateKey;
         
         jQuery(".restorebefore1").css("display", "none");
 
         
 
 
-        jQuery("#restoremodBody1").append("<div class='restoreappend'><p class='publicad'>xrk-wallet-address : <br> " + userXrkWallet.address + "</p><p class='publicad'>xrk-wallet-public-key : <br> " + userXrkWallet.publicKey + "</p></div> ");
+        jQuery("#restoremodBody1").append("<div class='restoreappend'><p class='publicad'>xrk-wallet-address : <br> " + userXrkWallet.address + "</p><p class='publicad'>xrk-wallet-public-key : <br> " + userXrkWallet.publicKey + "</p><p class='publicad'>xrk-wallet-private-key : <br> " + userXrkWallet.privateKey + "</p></div> ");
         
 
 
@@ -1045,7 +1046,7 @@ jQuery("#restoreAddressBtn").click(function() {
     
     catch(error) {
 
-        console.log(error);
+        //console.log(error);
         jQuery("#restoreErrorP1").css("display", "block");
 
     }
@@ -2349,7 +2350,8 @@ function generateXRKAddressFromPrivateKey(userprivkey) {
             var xrkWallet = {
                 "status": "success",
                 "address": xrkPublicAddress,
-                "publicKey": PublicKeyString
+                "publicKey": PublicKeyString,
+                "privateKey": userprivkey
             };
 
     } 
@@ -2373,7 +2375,6 @@ function generateXRKAddressFromPrivateKey(userprivkey) {
             var pubBuftoHex = buffer.bufferToHex(pub);
             //console.log("Hex buffer is ", pubbuftoHex);
             
-
             // step 3: Calculate sha256 hash of the public key
             var publicKeySHA256Hash = new bitcore.crypto.Hash.sha256(pub);
 
@@ -2418,7 +2419,8 @@ function generateXRKAddressFromPrivateKey(userprivkey) {
             var xrkWallet = {
                 "status": "success",
                 "address": xrkPublicAddress,
-                "publicKey": pubBuftoHex
+                "publicKey": pubBuftoHex,
+                "privateKey": userprivkey
             };
 
     }
@@ -2497,16 +2499,16 @@ function createXRKAddressFromPrivateKey(masterPrivateKey, address_pubkeyhash_ver
     var xrkPublicAddress = bitcore.encoding.Base58.encode(xrkPublicBinaryAddress);
 
 
-    console.log("public key hex is: " + publicKeyHex);
+    //console.log("public key hex is: " + publicKeyHex);
 
     // convert publicKeyString to toString 
 
     PublicKeyString = publicKeyHex.toString();
 
-    console.log("PublicKeyString key hex is: " + PublicKeyString);
+    //console.log("PublicKeyString key hex is: " + PublicKeyString);
 
 
-    console.log("public address is : " + xrkPublicAddress);
+    //console.log("public address is : " + xrkPublicAddress);
 
 
 

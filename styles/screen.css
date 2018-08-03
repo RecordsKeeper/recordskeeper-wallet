@@ -12,7 +12,7 @@ html { min-height: 100%; margin: 0 0 1px; font-size: 100.01%; -webkit-tap-highli
 body { min-height: 100%; background: #ecf1f5; font-size: 62.5%; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 body, textarea, input, select, option, button { color: #7f91a3; font-family: Lato, Arial, Helvetica, sans-serif; line-height: 1.38461538462; }
-li, dt, dd, p, figure, th, td, caption, legend, pre { font-size: 1.2em; } li *, dt *, dd *, p *, figure *, th *, td *, legend * { font-size: 1em; }
+li, dt, dd, p, figure, th, td, caption, legend, pre { font-size: 1.24em; } li *, dt *, dd *, p *, figure *, th *, td *, legend * { font-size: 1em; }
 ul, ol, dl, p, figure, table, pre, h1, h2, h3, h4, h5, h6, legend, .table-wrapper { margin-bottom: 18px; }
 
 article, aside, details, div, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
