@@ -2095,6 +2095,7 @@ Point.prototype.validate = function validate() {
 };
 
 Point.pointToCompressed = function pointToCompressed(point) {
+
   var xbuf = point.getX().toBuffer({size: 32});
   var ybuf = point.getY().toBuffer({size: 32});
 
@@ -2521,6 +2522,16 @@ Base58.validCharacters = function validCharacters(chars) {
   return _.all(_.map(chars, function(char) { return _.contains(ALPHABET, char); }));
 };
 
+function xorBuffer(bufA, bufB) {
+   var xorBuf = buffer.emptyBuffer(bufA.length);
+
+   for (var i = 0; i < bufA.length; i++)
+       xorBuf[i] = bufA[i] ^ bufB[i];
+   CONSOLE_DEBUG && console.log(xorBuf);
+   return xorBuf;
+
+}
+
 Base58.prototype.set = function(obj) {
   this.buf = obj.buf || this.buf || undefined;
   return this;
@@ -2537,7 +2548,9 @@ Base58.decode = function(str) {
   if (typeof str !== 'string') {
     throw new Error('Input should be a string');
   }
+  // console.log(Buffer(bs58.decode(str));
   return new Buffer(bs58.decode(str));
+
 };
 
 Base58.prototype.fromBuffer = function(buf) {
@@ -2609,6 +2622,37 @@ Base58Check.decode = function(s) {
     throw new Error('Input must be a string');
 
   var buf = new Buffer(Base58.decode(s));
+  // console.log("Base 58 decoded value: ",Base58.decode(s));
+  // console.log("Base 58 decoded : ", buf.toString('hex')); // Hex Private Key
+  var address_checksum_buf = new Buffer('07cb53da', 'hex');
+
+
+  if (buf.length < 4)
+    throw new Error("Input string too short");
+
+  var data = buf.slice(0, -4);
+  var csumOriginal = buf.slice(-4);
+  var csum = xorBuffer(csumOriginal,address_checksum_buf);
+
+  var hash = sha256sha256(data);
+  // console.log("charm csumOriginal: ", csumOriginal.toString('hex'));
+  // console.log("charm csum: ", csum.toString('hex'));
+  // console.log("address buf", address_checksum_buf.toString('hex'));
+
+  var hash4 = hash.slice(0, 4);
+
+
+  if (csum.toString('hex') !== hash4.toString('hex'))
+    throw new Error("Checksum mismatch");
+
+  return data;
+};
+
+Base58Check.decodetest = function(s) {
+  if (typeof s !== 'string')
+    throw new Error('Input must be a string');
+
+  var buf = new Buffer(Base58.decode(s));
 
   if (buf.length < 4)
     throw new Error("Input string too short");
@@ -2616,14 +2660,17 @@ Base58Check.decode = function(s) {
   var data = buf.slice(0, -4);
   var csum = buf.slice(-4);
 
+
   var hash = sha256sha256(data);
   var hash4 = hash.slice(0, 4);
+  // console.log("charm hash: ", hash4.toString('hex')); 
 
   if (csum.toString('hex') !== hash4.toString('hex'))
     throw new Error("Checksum mismatch");
 
   return data;
 };
+
 
 Base58Check.checksum = function(buffer) {
   return sha256sha256(buffer).slice(0, 4);
@@ -5093,33 +5140,97 @@ PrivateKey._getRandomBN = function(){
  */
 PrivateKey._transformBuffer = function(buf, network) {
 
-  var info = {};
+if (network=="livenet") 
 
-  if (buf.length === 32) {
-    return PrivateKey._transformBNBuffer(buf, network);
-  }
+    {
 
-  info.network = Networks.get(buf[0], 'privatekey');
+        var buffer = buf.toString('hex');
+        // var insertStep = Math.floor(33 / privateKeyVer.length);
 
-  if (!info.network) {
-    throw new Error('Invalid network');
-  }
+        for (var i = 0; i < 4; i++) 
+          {
+              var hello = " ";
 
-  if (network && info.network !== Networks.get(network)) {
-    throw new TypeError('Private key network mismatch');
-  }
+              var bufA = buffer.slice(0, ((i * 18)));
+              var bufB = buffer.slice(2+((i * 18)), buffer.length); 
 
-  if (buf.length === 1 + 32 + 1 && buf[1 + 32 + 1 - 1] === 1) {
-    info.compressed = true;
-  } else if (buf.length === 1 + 32) {
-    info.compressed = false;
-  } else {
-    throw new Error('Length of buffer must be 33 (uncompressed) or 34 (compressed)');
-  }
+              var bufC = hello.concat([bufA, bufB]);
 
-  info.bn = BN.fromBuffer(buf.slice(1, 32 + 1));
+              buffer = bufC;           
+          }
 
-  return info;
+        var buf1 = buffer.replace(/\s*,\s*/g, ",");
+        buf1 = buf1.replace(/,/g,"");
+        
+        //console.log(buf1);
+        //console.log(buf1.length);
+
+        buf = buf1.slice(0, -2);
+
+        var info = {};
+
+        if ((buf.length/2) === 32) {
+          return PrivateKey._transformBNBuffer(buf, network);
+        }
+
+        info.network = Networks.get(buf[0], 'privatekey');
+
+        if (!info.network) {
+          throw new Error('Invalid network');
+        }
+
+        if (network && info.network !== Networks.get(network)) {
+          throw new TypeError('Private key network mismatch');
+        }
+
+        if (buf.length === 1 + 32 + 1 && buf[1 + 32 + 1 - 1] === 1) {
+          info.compressed = true;
+        } else if (buf.length === 1 + 32) {
+          info.compressed = false;
+        } else {
+          throw new Error('Length of buffer must be 33 (uncompressed) or 34 (compressed)');
+        }
+
+        info.bn = BN.fromBuffer(buf.slice(1, 32 + 1));
+
+        return info;
+
+    }
+
+  else 
+
+       {
+
+         var info = {};
+
+          if (buf.length === 32) {
+            return PrivateKey._transformBNBuffer(buf, network);
+          }
+
+          info.network = Networks.get(buf[0], 'privatekey');
+
+          if (!info.network) {
+            throw new Error('Invalid network');
+          }
+
+          if (network && info.network !== Networks.get(network)) {
+            throw new TypeError('Private key network mismatch');
+          }
+
+          if (buf.length === 1 + 32 + 1 && buf[1 + 32 + 1 - 1] === 1) {
+            info.compressed = true;
+          } else if (buf.length === 1 + 32) {
+            info.compressed = false;
+          } else {
+            throw new Error('Length of buffer must be 33 (uncompressed) or 34 (compressed)');
+          }
+
+          info.bn = BN.fromBuffer(buf.slice(1, 32 + 1));
+
+          return info;
+
+       }
+  
 };
 
 /**
@@ -5146,7 +5257,13 @@ PrivateKey._transformBNBuffer = function(buf, network) {
  * @private
  */
 PrivateKey._transformWIF = function(str, network) {
-  return PrivateKey._transformBuffer(Base58Check.decode(str), network);
+  if (network == "livenet") {
+    return PrivateKey._transformBuffer(Base58Check.decode(str), network);
+  }
+  else{
+    return PrivateKey._transformBuffer(Base58Check.decodetest(str), network);
+  }
+  
 };
 
 /**
@@ -24041,7 +24158,7 @@ SHA256.outSize = 256;
 SHA256.hmacStrength = 192;
 SHA256.padLength = 64;
 
-SHA256.prototype._update = function _update(msg, start) {
+SHA256.prototype._update = function _(msg, start) {
   var W = this.W;
 
   for (var i = 0; i < 16; i++)

@@ -1,6 +1,10 @@
 $(document).ready(function(){
 $(".modal").on("hidden.bs.modal", function(){
                 $(".restorebefore").css("display", "block");
+                $(".restorebefore1").css("display", "block");
+                $(".restoreErrorP1").css("display", "none");
+                $(".restoreErrorP").css("display", "none");
+                jQuery('#userprivatekey').val('');
                 $(".restoreappend").remove();
                 $("#firststand").css("display", "block");
                 $(".createappend").remove();
@@ -19,16 +23,15 @@ $(".modal").on("hidden.bs.modal", function(){
                 $(".errorsignP").css("display", "none");
                 $("#restoremultiform").css("display", "block");
                 $(".multisigCont").css("display", "none");
-                                $('#restoremultiform')[0].reset();
+                $('#restoremultiform')[0].reset();
                 $( "#qrcode5" ).find( "img" ).remove();
-
                 $(".mainro").empty();
 
                 count = 2;
 
             });
 
-			  MnemonicsArray = Mnemonic.Words.ENGLISH;
+			  //MnemonicsArray = Mnemonic.Words.ENGLISH;
                 
           
      

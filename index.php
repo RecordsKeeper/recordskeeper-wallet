@@ -151,7 +151,9 @@
                                     <label>It is a MultiSig Wallet</label>
                                 </div>
                             </div>
-                        <button type="submit" class="createwalletBtn margintop30" id="walletloginbtn">Submit</button>
+                        <p id="restorelink1" style="font-size:14px;"><a data-toggle="modal" data-target="#myModal4" >Forget your XRK Public Address? Click here </a></p>
+                            
+                        <button type="submit" class="createwalletBtn " id="walletloginbtn">Submit</button>
 
 
                     </div>
@@ -493,6 +495,52 @@
                     
 
                     <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div id="myModal4" class="modal fade" role="dialog">
+        <div class="modal-dialog">  
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="restoretitle1">Restore RecordsKeeper's XRK Address</h4>
+
+                </div>
+
+                <div class="modal-body " id="restoremodBody1">
+                    <form id="restoreform1">
+                      <div class="restorebefore1">
+                         
+                         
+                          <div class="textareaCont">
+                              <label class="labelrestore"> Enter Your XRK Wallet's Private Key here </label>
+                              <input type="text" class="form-control" id="userprivatekey" value="" required="required" style="width: 100% !important"></input>
+                             
+
+                              <p id="restoreErrorP1"> Please Enter a valid Private Key</p>
+                          </div>
+
+
+                          <div class="row">
+                        
+                              <div class="colmd-12">
+
+                                  <button type="submit" class="walletBtn margintop30" id="restoreAddressBtn">Restore XRK Wallet Address</button>
+                                  
+
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                    </form>
+                </div>
+
+<!--                     <button type="button" class="btn btn-default" id="createKeyCloseBtn" data-dismiss="modal">Close</button> -->
                 </div>
             </div>
 

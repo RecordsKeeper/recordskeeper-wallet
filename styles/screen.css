@@ -399,7 +399,7 @@ form { }
 		.select:before { content: "\e918"; display: block; position: absolute; right: 0; top: 0; bottom: 0; z-index: 2; width: 41px; border-radius: 0 4px 4px 0; background: #53b2ce; color: #fff; font-family: i; font-size: 7px; line-height: 35px; text-align: center; }
 	textarea { height: 80px; min-height: 80px; padding: 9px 9px 9px 18px; }  
 	input, select, textarea { display: block; width: 100%; border-radius: 4px; border: 1px solid #a4aaba; background: #fff; color: #a4aaba; font-size: 12px; } 
-	button, input[type="button"], input[type="reset"], input[type="submit"] { overflow: hidden; float: none; min-width: 80px; padding: 7.5px 27px; box-shadow: 0 2px 4px rgba(11,31,79,.5); border-radius: 35px; border: 0; background: #a118b9; color: #fff; font-size: 14px; text-align: center; text-transform: uppercase; }
+	button, input[type="button"], input[type="reset"], input[type="submit"] { overflow: hidden; float: none; min-width: 80px; padding: 7.5px 27px; box-shadow: 0 2px 4px rgba(11,31,79,.5); border-radius: 35px; border: 0; background: #22283a; color: #fff; font-size: 14px; text-align: center; text-transform: uppercase; }
 		button i { display: inline-block; position: relative; left: -12px; top: -1px; margin: 0 5px 0 0; font-size: 11px; }
 		button[type="reset"], input[type="reset"] { background: #fff; color: #293043; }
 
