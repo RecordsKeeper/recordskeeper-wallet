@@ -552,21 +552,21 @@
     <!-- all the script here to make the page load faster -->
 
 
-    <script src="javascript/jquery.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js"></script> -->
-    <script src="javascript/bootstrap-tokenfield.min.js"></script>
+    <script src="js/bootstrap-tokenfield.min.js"></script>
          
 
-    <script src="javascript/scripts.js"></script>
-    <script src="javascript/custom.js"></script>
-    <script src="javascript/mobile.js"></script>
-    <script src="javascript/index.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/mobile.js"></script>
+    <script src="js/index.js"></script>
      <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="javascript/typeahead.bundle.js" charset="UTF-8"></script>
-        <script type="text/javascript" src="javascript/typeahead.bundle.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/typeahead.bundle.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="js/typeahead.bundle.js" charset="UTF-8"></script>
 
-    <script type="text/javascript" src="javascript/docs.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/docs.js" charset="UTF-8"></script>
 
     <script>
 
@@ -576,14 +576,14 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script> -->
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
-    <script src="javascript/table2CSV.js"></script>
+    <script src="js/table2CSV.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.all.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="javascript/bitcore-lib/bitcore-lib.js"></script>
-    <script src="javascript/bitcore-mnemonic/bitcore-mnemonic.js"></script>
+    <script src="js/bitcore-lib/bitcore-lib.js"></script>
+    <script src="js/bitcore-mnemonic/bitcore-mnemonic.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-    <script src="javascript/wallet.js"></script>
+    <script src="js/wallet.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
 
